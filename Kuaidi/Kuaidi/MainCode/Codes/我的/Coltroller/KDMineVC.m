@@ -24,7 +24,7 @@
     
     [self addChildViews];
 }
-
+//66666666666
 -(void)addChildViews{
     
     //隐藏自定义导航栏
@@ -53,7 +53,7 @@
     desLabel.font =[UIFont fontWithName:@"PingFang-SC-Regular" size: 13];
     [self.view addSubview:desLabel];
     
-    //寄件二维码UIView
+    //寄件二维码UIView*******
     UIView*  scanView = [[UIView alloc]initWithFrame:CGRectMake(kAdaptationWidth(18), _headImgVIew.bottom+kAdaptationWidth(24), kAdaptationWidth(339), kAdaptationWidth(60))];
     scanView.backgroundColor=[UIColor whiteColor];
     scanView.layer.cornerRadius=6.0f;
@@ -65,6 +65,11 @@
     scanTitleLabel.textColor=[UIColor blackColor];
     scanTitleLabel.font = [UIFont fontWithName:@"PingFang-SC-Bold" size: 15];
     [scanView addSubview:scanTitleLabel];
+    
+    UIImageView* scanIconImgView = [[UIImageView alloc]initWithFrame:CGRectMake(kAdaptationWidth(297), kAdaptationWidth(10), kAdaptationWidth(18), kAdaptationWidth(18))];
+    scanIconImgView.image=[UIImage imageNamed:@"我的-图标-二维码"];
+    [scanView addSubview:scanIconImgView];
+    scanIconImgView.centerY=scanTitleLabel.centerY;
     
     //淘宝客  京东客
     UIView*  platformView = [[UIView alloc]initWithFrame:CGRectMake(kAdaptationWidth(18), scanView.bottom+kAdaptationWidth(12), kAdaptationWidth(339), kAdaptationWidth(103))];
@@ -99,6 +104,32 @@
     jdLabel.font = [UIFont fontWithName:@"PingFang-SC-Medium" size: 15];
     jdLabel.textAlignment=NSTextAlignmentCenter;
     [platformView addSubview:jdLabel];
+    
+    //订单导入UIView*******
+    UIView*  orderBgView = [[UIView alloc]initWithFrame:CGRectMake(kAdaptationWidth(18), platformView.bottom+kAdaptationWidth(12), kAdaptationWidth(339), kAdaptationWidth(105))];
+    orderBgView.backgroundColor=[UIColor whiteColor];
+    orderBgView.layer.cornerRadius=6.0f;
+    orderBgView.layer.masksToBounds=YES;
+    [self.view addSubview:orderBgView];
+    
+    UILabel* orderTitleLabel =[[UILabel alloc]initWithFrame:CGRectMake(kAdaptationWidth(18), kAdaptationWidth(15), kAdaptationWidth(120), kAdaptationWidth(15))];
+    orderTitleLabel.text=@"订单导入";
+    orderTitleLabel.textColor=[UIColor blackColor];
+    orderTitleLabel.font = [UIFont fontWithName:@"PingFang-SC-Bold" size: 15];
+    [orderBgView addSubview:orderTitleLabel];
+    
+    NSArray* btnImgNameArr = @[@"我的-图标-淘宝",@"我的-图标-京东",@"我的-图标-顺丰"];
+    for(NSInteger i=0;i<3;i++){
+        UIButton* btn = [[UIButton alloc]initWithFrame:CGRectMake(kAdaptationWidth(33)+i* kAdaptationWidth(48+65),orderTitleLabel.bottom+kAdaptationWidth(10), kAdaptationWidth(48), kAdaptationWidth(48))];
+        btn.tag = i;
+        [btn setImage:[UIImage imageNamed:btnImgNameArr[i]] forState:UIControlStateNormal];
+        btn.layer.borderWidth=1.0f;
+        btn.layer.borderColor=rgb(220, 220, 220, 1).CGColor;
+        btn.layer.cornerRadius=kAdaptationWidth(24);
+        btn.layer.masksToBounds=YES;
+        [orderBgView addSubview:btn];
+    }
+    
 }
 
 //淘宝客按钮
