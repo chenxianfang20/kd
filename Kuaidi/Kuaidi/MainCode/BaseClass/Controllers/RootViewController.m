@@ -45,7 +45,7 @@
     if (_backButton == nil) {
         
         _backButton =[UIButton buttonWithType:UIButtonTypeCustom];
-        [_backButton setImage:[UIImage imageNamed:@"返回"] forState:UIControlStateNormal];
+        [_backButton setImage:[UIImage imageNamed:@"图标-后退"] forState:UIControlStateNormal];
         [_backButton addTarget:self action:@selector(back) forControlEvents:UIControlEventTouchUpInside];
         _backButton.frame=CGRectMake(0 , NavibarH - 44, 50, 44);
         [_nav addSubview:_backButton];
@@ -55,13 +55,13 @@
         
         _rightBtn=[UIButton buttonWithType:UIButtonTypeCustom];
         _rightBtn.frame=CGRectMake(kScreenWidth-50-5, NavibarH - 44, 50, 44);
-       [_rightBtn setImage:[UIImage imageNamed:@"更多1"] forState:UIControlStateNormal];
+        [_rightBtn setImage:[UIImage imageNamed:@"更多1"] forState:UIControlStateNormal];
         [self.nav addSubview:_rightBtn];
         _rightBtn.titleLabel.font = kAdaptationFont(8);
         [_rightBtn addTarget:self action:@selector(rightClick:) forControlEvents:UIControlEventTouchUpInside];
     }
     _rightBtn.hidden = YES;
-
+    
     //标题可能是文字
     if (!_titleView) {
         _titleView = [HCTTitleView titleView];
