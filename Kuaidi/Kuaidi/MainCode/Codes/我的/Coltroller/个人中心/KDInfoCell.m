@@ -28,7 +28,7 @@
 }
 -(void)addChildViews{
     
-    _headImgView = [[UIImageView alloc]initWithFrame:CGRectMake(kAdaptationWidth(10), is_iPhoneX?kAdaptationWidth(13):kAdaptationWidth(8), kAdaptationWidth(24), kAdaptationWidth(24))];
+    _headImgView = [[UIImageView alloc]initWithFrame:CGRectMake(kAdaptationWidth(10), kAdaptationWidth(10), kAdaptationWidth(25), kAdaptationWidth(25))];
     [self addSubview:_headImgView];
     
     _titleLabel=[[UILabel alloc]initWithFrame:CGRectMake(kAdaptationWidth(60), _headImgView.top, kAdaptationWidth(100), kAdaptationWidth(24))];
