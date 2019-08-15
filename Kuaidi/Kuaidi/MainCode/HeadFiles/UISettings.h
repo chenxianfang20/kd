@@ -66,4 +66,6 @@
 
 #define kScreenRealHeight (kScreenHeight - NavibarH - TabbarH)
 
+#define is_iPhoneX (IS_IPHONE_X == YES || IS_IPHONE_Xr == YES || IS_IPHONE_Xs == YES || IS_IPHONE_Xs_Max == YES)
+
 #endif /* UISettings_h */

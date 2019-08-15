@@ -53,7 +53,7 @@
     [item setTitleTextAttributes:attrsNor forState:UIControlStateNormal];
     
     //item.imageInsets=UIEdgeInsetsMake(6, 0, -6, 0);
-    item.titlePositionAdjustment=UIOffsetMake(0, (IS_IPHONE_X == YES || IS_IPHONE_Xr == YES || IS_IPHONE_Xs == YES || IS_IPHONE_Xs_Max == YES)?4:-2);
+    item.titlePositionAdjustment=UIOffsetMake(0, is_iPhoneX?4:-2);
 }
 //添加子控制器
 -(void)addChildViewController{
