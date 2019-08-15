@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		11DFD2E1117B7E0825E346F0 /* libPods-Kuaidi.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A26641192201A6307C867746 /* libPods-Kuaidi.a */; };
+		163AE1862305A62A00B16015 /* KDTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 163AE1852305A62A00B16015 /* KDTitleView.m */; };
 		3D65BF40230102F400B12F3D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D65BF3F230102F400B12F3D /* AppDelegate.m */; };
 		3D65BF46230102F400B12F3D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3D65BF44230102F400B12F3D /* Main.storyboard */; };
 		3D65BF48230102F700B12F3D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3D65BF47230102F700B12F3D /* Assets.xcassets */; };
@@ -111,6 +112,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		163AE1842305A62A00B16015 /* KDTitleView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KDTitleView.h; sourceTree = "<group>"; };
+		163AE1852305A62A00B16015 /* KDTitleView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KDTitleView.m; sourceTree = "<group>"; };
 		310B9CC0F78DB0FB65918064 /* Pods-Kuaidi.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Kuaidi.debug.xcconfig"; path = "Target Support Files/Pods-Kuaidi/Pods-Kuaidi.debug.xcconfig"; sourceTree = "<group>"; };
 		3D65BF3B230102F400B12F3D /* Kuaidi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Kuaidi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3D65BF3E230102F400B12F3D /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -259,6 +262,22 @@
 				A26641192201A6307C867746 /* libPods-Kuaidi.a */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		163AE1822305A60F00B16015 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				163AE1842305A62A00B16015 /* KDTitleView.h */,
+				163AE1852305A62A00B16015 /* KDTitleView.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		163AE1832305A60F00B16015 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		3D65BF32230102F400B12F3D = {
@@ -444,8 +463,8 @@
 		3D65BFBA2301150200B12F3D /* 寄件 */ = {
 			isa = PBXGroup;
 			children = (
-				3D65BFC62301171100B12F3D /* View */,
-				3D65BFC52301170C00B12F3D /* Model */,
+				163AE1832305A60F00B16015 /* Model */,
+				163AE1822305A60F00B16015 /* View */,
 				3D65BFC4230116FE00B12F3D /* Controller */,
 			);
 			path = "寄件";
@@ -478,20 +497,6 @@
 				3D65BFC82301173E00B12F3D /* KDMailingVC.m */,
 			);
 			path = Controller;
-			sourceTree = "<group>";
-		};
-		3D65BFC52301170C00B12F3D /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		3D65BFC62301171100B12F3D /* View */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = View;
 			sourceTree = "<group>";
 		};
 		3D65BFCA2301176700B12F3D /* Model */ = {
@@ -907,6 +912,7 @@
 				3D65BFBF230115D000B12F3D /* UIView+Toast.m in Sources */,
 				F465DE4D230454FF002DFD4C /* KDMineVC.m in Sources */,
 				3D65BF962301086A00B12F3D /* RootCustomCell.m in Sources */,
+				163AE1862305A62A00B16015 /* KDTitleView.m in Sources */,
 				3D65BFC32301169500B12F3D /* UIView+YYAdd.m in Sources */,
 				3D65BF4E230102F700B12F3D /* main.m in Sources */,
 				3D65BF922301086A00B12F3D /* RootViewController.m in Sources */,

@@ -7,6 +7,7 @@
 //
 
 #import "KDMailingVC.h"
+#import "KDTitleView.h"
 
 @interface KDMailingVC ()
 
@@ -46,6 +47,17 @@
     gl.locations = @[@(0.0),@(1.0f)];
     [bgView.layer addSublayer:gl];
     [contentView addSubview:bgView];
+    
+    KDTitleView *titleView = [[KDTitleView alloc] initWithFrame:CGRectMake(18, 0, 246, 40)];
+    [contentView addSubview:titleView];
+    
+    UIView *lineView = [[UIView alloc] initWithFrame:CGRectMake(18 + 246 + 18, 0, 1, 16)];
+    lineView.backgroundColor = rgb(255, 255, 255, 0.72);
+    lineView.center = CGPointMake(lineView.center.x, self.titleView.frame.size.height/2.0);
+    [contentView addSubview:lineView];
+    
+    UIButton *recordButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    
 }
 
 @end
