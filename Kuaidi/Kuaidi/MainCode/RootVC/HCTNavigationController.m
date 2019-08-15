@@ -7,6 +7,7 @@
 //  自定义 NavigationController 
 
 #import "HCTNavigationController.h"
+#import "Settings.h"
 //#import "HCTHttpsForZSTVC.h"
 //#import "HCTHallVC.h"
 @interface HCTNavigationController ()
@@ -18,6 +19,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
 }
 + (void)load
 {

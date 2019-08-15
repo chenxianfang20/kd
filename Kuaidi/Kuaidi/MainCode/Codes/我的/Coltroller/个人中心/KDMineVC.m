@@ -41,7 +41,7 @@
     self.nav.hidden = YES;
     
     CGFloat heightX= 0;
-    if(is_iPhoneX){
+    if((IS_IPHONE_X == YES || IS_IPHONE_Xr == YES || IS_IPHONE_Xs == YES || IS_IPHONE_Xs_Max == YES)){
         heightX=20;
     }
     //顶部背景图片
@@ -238,7 +238,7 @@
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return  is_iPhoneX?kAdaptationWidth(50):kAdaptationWidth(40);
+    return  (IS_IPHONE_X == YES || IS_IPHONE_Xr == YES || IS_IPHONE_Xs == YES || IS_IPHONE_Xs_Max == YES)?kAdaptationWidth(50):kAdaptationWidth(40);
 }
 
 -(void)loginTapClick{
