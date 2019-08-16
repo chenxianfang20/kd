@@ -7,7 +7,6 @@
 //  基类视图
 
 #import <UIKit/UIKit.h>
-#import "Settings.h"
 @interface RootCustomView : UIView
 
 @end

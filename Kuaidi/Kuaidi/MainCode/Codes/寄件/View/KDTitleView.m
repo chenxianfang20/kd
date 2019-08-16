@@ -7,7 +7,6 @@
 //
 
 #import "KDTitleView.h"
-#import "Settings.h"
 
 @interface KDTitleView()
 

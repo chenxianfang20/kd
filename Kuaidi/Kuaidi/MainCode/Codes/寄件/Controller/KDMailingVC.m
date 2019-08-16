@@ -57,7 +57,12 @@
     [contentView addSubview:lineView];
     
     UIButton *recordButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    
+    [recordButton setTitle:@"寄件记录" forState:UIControlStateNormal];
+    [recordButton setTitleColor:rgb(223, 47, 49, 1) forState:UIControlStateNormal];
+    recordButton.backgroundColor = rgb(255, 255, 255, 0.72);
+    recordButton.layer.cornerRadius = 9;
+    [contentView addSubview:recordButton];
+//    [recordButton ]
 }
 
 @end

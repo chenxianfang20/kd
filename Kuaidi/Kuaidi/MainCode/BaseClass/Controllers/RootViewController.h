@@ -7,7 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "Settings.h"
 #import "HCTTitleView.h"
 
 @interface RootViewController : UIViewController

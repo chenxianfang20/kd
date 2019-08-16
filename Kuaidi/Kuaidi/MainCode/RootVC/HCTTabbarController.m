@@ -7,7 +7,6 @@
 //  自定义 UITabBarController 作为root
 
 #import "HCTTabbarController.h"
-#import "Settings.h"
 #import "KDMailingVC.h"
 #import "KDCheckPieceVC.h"
 #import "KDMineVC.h"

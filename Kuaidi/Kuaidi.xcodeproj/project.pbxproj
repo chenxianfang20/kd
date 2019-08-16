@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		11DFD2E1117B7E0825E346F0 /* libPods-Kuaidi.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A26641192201A6307C867746 /* libPods-Kuaidi.a */; };
+		16310F6F2306F9D80054311A /* UIView+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 16310F6E2306F9D70054311A /* UIView+Extension.m */; };
+		16310F722306F9F20054311A /* NSDictionary+Log.m in Sources */ = {isa = PBXBuildFile; fileRef = 16310F702306F9F10054311A /* NSDictionary+Log.m */; };
 		163AE1862305A62A00B16015 /* KDTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 163AE1852305A62A00B16015 /* KDTitleView.m */; };
 		3D65BF40230102F400B12F3D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D65BF3F230102F400B12F3D /* AppDelegate.m */; };
 		3D65BF46230102F400B12F3D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3D65BF44230102F400B12F3D /* Main.storyboard */; };
@@ -112,6 +114,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		16310F682306F6F00054311A /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
+		16310F6D2306F9D70054311A /* UIView+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Extension.h"; sourceTree = "<group>"; };
+		16310F6E2306F9D70054311A /* UIView+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Extension.m"; sourceTree = "<group>"; };
+		16310F702306F9F10054311A /* NSDictionary+Log.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+Log.m"; sourceTree = "<group>"; };
+		16310F712306F9F10054311A /* NSDictionary+Log.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+Log.h"; sourceTree = "<group>"; };
 		163AE1842305A62A00B16015 /* KDTitleView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KDTitleView.h; sourceTree = "<group>"; };
 		163AE1852305A62A00B16015 /* KDTitleView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KDTitleView.m; sourceTree = "<group>"; };
 		310B9CC0F78DB0FB65918064 /* Pods-Kuaidi.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Kuaidi.debug.xcconfig"; path = "Target Support Files/Pods-Kuaidi/Pods-Kuaidi.debug.xcconfig"; sourceTree = "<group>"; };
@@ -347,6 +354,7 @@
 			children = (
 				3D65BF3E230102F400B12F3D /* AppDelegate.h */,
 				3D65BF3F230102F400B12F3D /* AppDelegate.m */,
+				16310F682306F6F00054311A /* PrefixHeader.pch */,
 				3D65BF44230102F400B12F3D /* Main.storyboard */,
 				3D65BF47230102F700B12F3D /* Assets.xcassets */,
 				3D65BF49230102F700B12F3D /* LaunchScreen.storyboard */,
@@ -428,6 +436,10 @@
 		3D65BF9B23010B8900B12F3D /* Category */ = {
 			isa = PBXGroup;
 			children = (
+				16310F712306F9F10054311A /* NSDictionary+Log.h */,
+				16310F702306F9F10054311A /* NSDictionary+Log.m */,
+				16310F6D2306F9D70054311A /* UIView+Extension.h */,
+				16310F6E2306F9D70054311A /* UIView+Extension.m */,
 				3D65BFC22301169500B12F3D /* UIView+YYAdd.h */,
 				3D65BFC02301169500B12F3D /* UIView+YYAdd.m */,
 				3D65BFC12301169500B12F3D /* YYKitMacro.h */,
@@ -910,6 +922,8 @@
 				3D65BF952301086A00B12F3D /* RootCustomView.m in Sources */,
 				F465DE4B230454FF002DFD4C /* KDLoginVC.m in Sources */,
 				3D65BFBF230115D000B12F3D /* UIView+Toast.m in Sources */,
+				16310F722306F9F20054311A /* NSDictionary+Log.m in Sources */,
+				16310F6F2306F9D80054311A /* UIView+Extension.m in Sources */,
 				F465DE4D230454FF002DFD4C /* KDMineVC.m in Sources */,
 				3D65BF962301086A00B12F3D /* RootCustomCell.m in Sources */,
 				163AE1862305A62A00B16015 /* KDTitleView.m in Sources */,
@@ -1091,6 +1105,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/Kuaidi/Other/PrefixHeader.pch";
 				INFOPLIST_FILE = Kuaidi/Other/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1108,6 +1124,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/Kuaidi/Other/PrefixHeader.pch";
 				INFOPLIST_FILE = Kuaidi/Other/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
