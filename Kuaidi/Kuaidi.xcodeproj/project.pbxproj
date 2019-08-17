@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		11DFD2E1117B7E0825E346F0 /* libPods-Kuaidi.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A26641192201A6307C867746 /* libPods-Kuaidi.a */; };
 		1619AC532307FDD2003463C7 /* KDGoodsInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1619AC522307FDD2003463C7 /* KDGoodsInfoCell.m */; };
+		1619AC56230804D4003463C7 /* KDGoodsTypeInfoSelectView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1619AC55230804D4003463C7 /* KDGoodsTypeInfoSelectView.m */; };
+		1619AC5923084897003463C7 /* KDExpressRecordController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1619AC5823084897003463C7 /* KDExpressRecordController.m */; };
 		16310F6F2306F9D80054311A /* UIView+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 16310F6E2306F9D70054311A /* UIView+Extension.m */; };
 		16310F722306F9F20054311A /* NSDictionary+Log.m in Sources */ = {isa = PBXBuildFile; fileRef = 16310F702306F9F10054311A /* NSDictionary+Log.m */; };
 		163588032307A3340017F510 /* KDAddressInfoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 163588022307A3340017F510 /* KDAddressInfoView.m */; };
@@ -121,6 +123,10 @@
 /* Begin PBXFileReference section */
 		1619AC512307FDD2003463C7 /* KDGoodsInfoCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KDGoodsInfoCell.h; sourceTree = "<group>"; };
 		1619AC522307FDD2003463C7 /* KDGoodsInfoCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KDGoodsInfoCell.m; sourceTree = "<group>"; };
+		1619AC54230804D4003463C7 /* KDGoodsTypeInfoSelectView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KDGoodsTypeInfoSelectView.h; sourceTree = "<group>"; };
+		1619AC55230804D4003463C7 /* KDGoodsTypeInfoSelectView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KDGoodsTypeInfoSelectView.m; sourceTree = "<group>"; };
+		1619AC5723084897003463C7 /* KDExpressRecordController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KDExpressRecordController.h; sourceTree = "<group>"; };
+		1619AC5823084897003463C7 /* KDExpressRecordController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KDExpressRecordController.m; sourceTree = "<group>"; };
 		16310F682306F6F00054311A /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		16310F6D2306F9D70054311A /* UIView+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Extension.h"; sourceTree = "<group>"; };
 		16310F6E2306F9D70054311A /* UIView+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Extension.m"; sourceTree = "<group>"; };
@@ -301,6 +307,8 @@
 				1635880B2307E1960017F510 /* KDGoodsInfoFooterView.m */,
 				1619AC512307FDD2003463C7 /* KDGoodsInfoCell.h */,
 				1619AC522307FDD2003463C7 /* KDGoodsInfoCell.m */,
+				1619AC54230804D4003463C7 /* KDGoodsTypeInfoSelectView.h */,
+				1619AC55230804D4003463C7 /* KDGoodsTypeInfoSelectView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -532,6 +540,8 @@
 			children = (
 				3D65BFC72301173E00B12F3D /* KDMailingVC.h */,
 				3D65BFC82301173E00B12F3D /* KDMailingVC.m */,
+				1619AC5723084897003463C7 /* KDExpressRecordController.h */,
+				1619AC5823084897003463C7 /* KDExpressRecordController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -944,7 +954,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1619AC56230804D4003463C7 /* KDGoodsTypeInfoSelectView.m in Sources */,
 				3D65BF972301086A00B12F3D /* HCTTitleView.m in Sources */,
+				1619AC5923084897003463C7 /* KDExpressRecordController.m in Sources */,
 				F465DE4E230454FF002DFD4C /* KDInfoCell.m in Sources */,
 				3D65BF9E23010BBB00B12F3D /* UIImage+Image.m in Sources */,
 				3D65BF992301086A00B12F3D /* HCTNavigationController.m in Sources */,

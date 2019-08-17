@@ -10,7 +10,7 @@
 #import "KDGoodsInfoFooterView.h"
 #import "KDGoodsInfoCell.h"
 
-@interface KDGoodsInfoView()<UITableViewDelegate,UITableViewDataSource>
+@interface KDGoodsInfoView()<UITableViewDelegate,UITableViewDataSource,KDGoodsInfoFooterViewDelegate>
 
 @property(nonatomic, strong)KDGoodsInfoFooterView *footerView;
 
@@ -52,6 +52,7 @@
     self.tableHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.width, 12)];
     self.tableHeaderView.backgroundColor = rgb(255, 255, 255, 1);
     self.footerView = [KDGoodsInfoFooterView goodsInfoFooterView];
+    self.footerView.delegate = self;
     self.tableFooterView = self.footerView;
 }
 
@@ -63,7 +64,7 @@
     if (!cell) {
         cell = [[KDGoodsInfoCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellId];
     }
-    
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
 }
 
@@ -78,6 +79,19 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    if ([self.goodsInfoViewDelegate respondsToSelector:@selector(selectCellIndexPath:)]) {
+        [self.goodsInfoViewDelegate selectCellIndexPath:indexPath];
+    }
+    
+}
+
+#pragma mark -- KDGoodsInfoFooterViewDelegate
+-(void)clickConfirmButton{
+    
+    if ([self.goodsInfoViewDelegate respondsToSelector:@selector(clickConfirmButton)]) {
+        [self.goodsInfoViewDelegate clickConfirmButton];
+    }
     
 }
 

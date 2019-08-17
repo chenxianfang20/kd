@@ -10,8 +10,16 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+@protocol KDTitleViewDelegate <NSObject>
+
+@optional
+-(void)lookExpressRecord;
+
+@end
+
 @interface KDTitleView : UIView
 
+@property(nonatomic,assign)id<KDTitleViewDelegate> delegate;
 
 @end
 

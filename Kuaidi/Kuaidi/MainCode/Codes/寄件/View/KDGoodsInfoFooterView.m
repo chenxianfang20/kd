@@ -72,6 +72,7 @@
         make.right.equalTo(self).offset(-18);
         make.size.mas_equalTo(CGSizeMake(96, 42));
     }];
+    [orderButton addTarget:self action:@selector(orderButtonClick:) forControlEvents:UIControlEventTouchUpInside];
 }
 
 -(void)selectButtonConvert:(UIButton *)button{
@@ -82,6 +83,14 @@
     }else{
         button.backgroundColor = rgb(241, 241, 241, 1);
         [button setTitleColor:rgb(169, 169, 169, 1) forState:UIControlStateNormal];
+    }
+    
+}
+
+- (void)orderButtonClick:(UIButton *)button{
+    
+    if ([self.delegate respondsToSelector:@selector(clickConfirmButton)]) {
+        [self.delegate clickConfirmButton];
     }
     
 }

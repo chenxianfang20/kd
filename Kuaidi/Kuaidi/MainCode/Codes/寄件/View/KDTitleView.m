@@ -86,6 +86,14 @@
         make.centerY.equalTo(lineView.mas_centerY).offset(0);
         make.size.mas_equalTo(CGSizeMake(68, 18));
     }];
+    [recordButton addTarget:self action:@selector(recordButtonClick:) forControlEvents:UIControlEventTouchUpInside];
+}
+
+- (void)recordButtonClick:(UIButton *)button{
+    
+    if ([self.delegate respondsToSelector:@selector(lookExpressRecord)]) {
+        [self.delegate lookExpressRecord];
+    }
 }
 
 @end
