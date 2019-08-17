@@ -33,6 +33,7 @@
         _dotView.layer.cornerRadius = 2;
         _dotView.layer.masksToBounds = YES;
         _dotView.backgroundColor = rgb(255, 266, 255, 1.0);
+        [self addSubview:self.dotView];
     }
     return _dotView;
 }
@@ -52,8 +53,9 @@
     CGFloat buttonW = 70;
     CGFloat buttonH = self.frame.size.height;
     for (NSInteger i = 0; i < self.titleArr.count; i++) {
+        
         UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
-        button.frame = CGRectMake((margint + buttonW)*i, 0, buttonW, buttonH);
+        button.frame = CGRectMake(margint + (margint + buttonW)*i, 0, buttonW, buttonH);
         [button setTitle:self.titleArr[i] forState:UIControlStateNormal];
         [button setTitleColor:rgb(255, 255, 255, 1) forState:UIControlStateSelected];
         [button setTitleColor:rgb(255, 255, 255, 0.72) forState:UIControlStateNormal];
@@ -62,11 +64,28 @@
         [self addSubview:button];
         
         if (i == 0) {
-            self.dotView.frame = CGRectMake(0, self.frame.size.height - self.dotView.frame.size.height, self.dotView.frame.size.width, self.dotView.frame.size.height);
-            self.dotView.center = CGPointMake(buttonW/2.0, self.dotView.center.y);
-            [self addSubview:self.dotView];
+            
+            self.dotView.center = CGPointMake(button.center.x, self.height-self.dotView.height/2.0);
         }
     }
+    
+    UIView *lineView = [[UIView alloc] initWithFrame:CGRectMake(margint + (margint + buttonW)*self.titleArr.count, 0, 1, 16)];
+    lineView.backgroundColor = rgb(255, 255, 255, 0.72);
+    lineView.center = CGPointMake(lineView.center.x, self.height/2.0);
+    [self addSubview:lineView];
+    
+    UIButton *recordButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [recordButton setTitle:@"寄件记录" forState:UIControlStateNormal];
+    [recordButton setTitleColor:rgb(223, 47, 49, 1) forState:UIControlStateNormal];
+    recordButton.titleLabel.font = [UIFont fontWithName:@"PingFang-SC-Medium" size: 13];
+    recordButton.backgroundColor = rgb(255, 255, 255, 0.72);
+    recordButton.layer.cornerRadius = 9;
+    [self addSubview:recordButton];
+    [recordButton mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.right.equalTo(self).offset(-18);
+        make.centerY.equalTo(lineView.mas_centerY).offset(0);
+        make.size.mas_equalTo(CGSizeMake(68, 18));
+    }];
 }
 
 @end

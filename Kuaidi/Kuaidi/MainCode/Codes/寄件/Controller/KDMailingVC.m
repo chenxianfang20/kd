@@ -8,12 +8,75 @@
 
 #import "KDMailingVC.h"
 #import "KDTitleView.h"
+#import "KDAddressInfoView.h"
 
-@interface KDMailingVC ()
+@interface KDMailingVC ()<UITableViewDelegate,UITableViewDataSource>
+
+@property(nonatomic, strong)UITableView *tableView;
+
+@property(nonatomic, strong)KDTitleView *sendTitleView;
+
+@property(nonatomic, strong)UILabel *tipLabel;
+
+@property(nonatomic, strong)KDAddressInfoView *addressView;
 
 @end
 
 @implementation KDMailingVC
+-(KDAddressInfoView *)addressView{
+    
+    if (!_addressView) {
+        _addressView = [KDAddressInfoView addressInfoView];
+        _addressView.center = CGPointMake(self.view.width/2.0, _addressView.center.y + 12);
+    }
+    return _addressView;
+}
+-(UILabel *)tipLabel{
+    
+    if (!_tipLabel) {
+        _tipLabel = [[UILabel alloc] init];
+        _tipLabel.text = @"温馨提示：请填写正确的联系方式，\n预约成功后我们的工作人员将在2小时内与您联系。";
+        _tipLabel.textColor = rgb(169, 169, 169, 1);
+        _tipLabel.numberOfLines = 2;
+        _tipLabel.textAlignment = NSTextAlignmentCenter;
+        _tipLabel.font = [UIFont fontWithName:@"PingFang SC" size: 13];
+    }
+    return _tipLabel;
+}
+
+-(KDTitleView *)sendTitleView{
+    
+    if (!_sendTitleView) {
+        _sendTitleView = [[KDTitleView alloc] initWithFrame:CGRectMake(0, 0, self.view.width, 40)];
+    }
+    return _sendTitleView;
+}
+
+-(UITableView *)tableView{
+    
+    if (!_tableView) {
+        _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, self.sendTitleView.height, self.view.width, kScreenRealHeight - self.sendTitleView.height) style:UITableViewStylePlain];
+        _tableView.delegate = self;
+        _tableView.dataSource = self;
+        _tableView.backgroundColor = [UIColor clearColor];
+        _tableView.tableHeaderView = [self headerView];
+        _tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.width, 0)];
+    }
+    return _tableView;
+}
+
+- (UIView *)headerView{
+    
+    
+    
+    UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.width, self.addressView.height)];
+    headerView.backgroundColor = [UIColor clearColor];
+    [headerView addSubview:self.addressView];
+    
+    
+    return headerView;
+    
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -37,6 +100,23 @@
     contentView.backgroundColor = rgb(250, 248, 248, 1);
     [self.view addSubview:contentView];
     
+    [contentView addSubview:[self bgView]];
+    
+    [contentView addSubview:self.sendTitleView];
+    
+    [contentView addSubview:self.tableView];
+    
+    [contentView addSubview:self.tipLabel];
+    
+    [self.tipLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerX.equalTo(contentView.mas_centerX).offset(0);
+        make.bottom.equalTo(contentView.mas_bottom).offset(-25);
+        make.width.mas_equalTo(300);
+    }];
+}
+
+- (UIView *)bgView{
+    
     UIView *bgView = [[UIView alloc] init];
     bgView.frame = CGRectMake(0,0,kScreenWidth,180);
     CAGradientLayer *gl = [CAGradientLayer layer];
@@ -46,23 +126,12 @@
     gl.colors = @[(__bridge id)rgb(250, 248, 248, 1.0).CGColor,(__bridge id)rgb(223, 47, 49, 1.0).CGColor];
     gl.locations = @[@(0.0),@(1.0f)];
     [bgView.layer addSublayer:gl];
-    [contentView addSubview:bgView];
-    
-    KDTitleView *titleView = [[KDTitleView alloc] initWithFrame:CGRectMake(18, 0, 246, 40)];
-    [contentView addSubview:titleView];
-    
-    UIView *lineView = [[UIView alloc] initWithFrame:CGRectMake(18 + 246 + 18, 0, 1, 16)];
-    lineView.backgroundColor = rgb(255, 255, 255, 0.72);
-    lineView.center = CGPointMake(lineView.center.x, self.titleView.frame.size.height/2.0);
-    [contentView addSubview:lineView];
-    
-    UIButton *recordButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    [recordButton setTitle:@"寄件记录" forState:UIControlStateNormal];
-    [recordButton setTitleColor:rgb(223, 47, 49, 1) forState:UIControlStateNormal];
-    recordButton.backgroundColor = rgb(255, 255, 255, 0.72);
-    recordButton.layer.cornerRadius = 9;
-    [contentView addSubview:recordButton];
-//    [recordButton ]
+    return bgView;
+}
+
+#pragma mark -- UITableViewDelegate,UITableViewDataSource
+-(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
+    return 0;
 }
 
 @end
