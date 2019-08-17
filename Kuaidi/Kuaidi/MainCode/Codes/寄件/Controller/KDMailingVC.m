@@ -10,7 +10,6 @@
 #import "KDTitleView.h"
 #import "KDAddressInfoView.h"
 #import "KDGoodsInfoView.h"
-#import "KDGoodsInfoView.h"
 
 @interface KDMailingVC ()<UITableViewDelegate,UITableViewDataSource>
 
@@ -38,7 +37,7 @@
 -(KDGoodsInfoView *)goodsInfoView{
     if (!_goodsInfoView) {
         _goodsInfoView = [KDGoodsInfoView goodsInfoView];
-        _goodsInfoView.frame = CGRectMake(18, CGRectGetMaxY(self.addressView.frame) - 10, _goodsInfoView.width, _goodsInfoView.height);
+        _goodsInfoView.frame = CGRectMake(18, CGRectGetMaxY(self.addressView.frame) - 12, _goodsInfoView.width, _goodsInfoView.height);
     }
     return _goodsInfoView;
 }
@@ -71,6 +70,7 @@
         _tableView.dataSource = self;
         _tableView.backgroundColor = [UIColor clearColor];
         _tableView.tableHeaderView = [self headerView];
+        _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
         _tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.width, 0)];
     }
     return _tableView;

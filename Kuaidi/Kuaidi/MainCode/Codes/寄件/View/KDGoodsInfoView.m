@@ -8,6 +8,7 @@
 
 #import "KDGoodsInfoView.h"
 #import "KDGoodsInfoFooterView.h"
+#import "KDGoodsInfoCell.h"
 
 @interface KDGoodsInfoView()<UITableViewDelegate,UITableViewDataSource>
 
@@ -19,7 +20,7 @@
 
 +(KDGoodsInfoView *)goodsInfoView{
     
-    KDGoodsInfoView *goodsInfoView = [[KDGoodsInfoView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth - 36, 250) style:UITableViewStylePlain];
+    KDGoodsInfoView *goodsInfoView = [[KDGoodsInfoView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth - 36, 252) style:UITableViewStylePlain];
     
     return goodsInfoView;
     
@@ -37,17 +38,18 @@
 -(void)createSubViews{
     
     self.backgroundColor = rgb(255, 255, 255, 1.0);
-    self.layer.shadowColor = rgb(11, 11, 11, 1).CGColor;
+    self.layer.shadowColor = rgb(11, 11, 11, 0.1).CGColor;
     self.layer.shadowOffset = CGSizeMake(0,0);
     self.layer.shadowOpacity = 1;
     self.layer.shadowRadius = 24;
     self.layer.cornerRadius = 12;
+    
     self.separatorStyle = UITableViewCellSeparatorStyleNone;
     
     self.delegate = self;
     self.dataSource = self;
     
-    self.tableHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.width, 10)];
+    self.tableHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.width, 12)];
     self.tableHeaderView.backgroundColor = rgb(255, 255, 255, 1);
     self.footerView = [KDGoodsInfoFooterView goodsInfoFooterView];
     self.tableFooterView = self.footerView;
@@ -56,12 +58,12 @@
 #pragma mark -- UITableViewDelegate,UITableViewDataSource
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    NSString *cellId = @"cellId";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellId];
+    NSString *cellId = @"KDGoodsInfoCell";
+    KDGoodsInfoCell *cell = [tableView dequeueReusableCellWithIdentifier:cellId];
     if (!cell) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellId];
+        cell = [[KDGoodsInfoCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellId];
     }
-    cell.backgroundColor = [UIColor redColor];//rgb(255, 255, 255, 1);
+    
     return cell;
 }
 
@@ -71,6 +73,12 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     return 43.25;
+}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
 }
 
 @end

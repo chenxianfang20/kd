@@ -102,6 +102,14 @@
         make.centerY.equalTo(vLine.mas_centerY).offset(0);
         make.height.mas_equalTo(1);
     }];
+    
+    UIView *bottomView = [[UIView alloc] init];
+    bottomView.backgroundColor = rgb(255, 255, 255, 1);
+    [self addSubview:bottomView];
+    [bottomView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.right.bottom.equalTo(self).offset(0);
+        make.height.mas_equalTo(12);
+    }];
 }
 
 @end

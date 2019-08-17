@@ -1,5 +1,5 @@
 //
-//  KDGoodsInfoFooterView.h
+//  KDGoodsInfoCell.h
 //  Kuaidi
 //
 //  Created by ljp on 2019/8/17.
@@ -10,9 +10,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface KDGoodsInfoFooterView : UIView
-
-+(KDGoodsInfoFooterView *)goodsInfoFooterView;
+@interface KDGoodsInfoCell : UITableViewCell
 
 @end
 

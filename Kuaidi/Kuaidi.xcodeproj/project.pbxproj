@@ -3,11 +3,12 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 51;
+	objectVersion = 50;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		11DFD2E1117B7E0825E346F0 /* libPods-Kuaidi.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A26641192201A6307C867746 /* libPods-Kuaidi.a */; };
+		1619AC532307FDD2003463C7 /* KDGoodsInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1619AC522307FDD2003463C7 /* KDGoodsInfoCell.m */; };
 		16310F6F2306F9D80054311A /* UIView+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 16310F6E2306F9D70054311A /* UIView+Extension.m */; };
 		16310F722306F9F20054311A /* NSDictionary+Log.m in Sources */ = {isa = PBXBuildFile; fileRef = 16310F702306F9F10054311A /* NSDictionary+Log.m */; };
 		163588032307A3340017F510 /* KDAddressInfoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 163588022307A3340017F510 /* KDAddressInfoView.m */; };
@@ -118,6 +119,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1619AC512307FDD2003463C7 /* KDGoodsInfoCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KDGoodsInfoCell.h; sourceTree = "<group>"; };
+		1619AC522307FDD2003463C7 /* KDGoodsInfoCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KDGoodsInfoCell.m; sourceTree = "<group>"; };
 		16310F682306F6F00054311A /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		16310F6D2306F9D70054311A /* UIView+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Extension.h"; sourceTree = "<group>"; };
 		16310F6E2306F9D70054311A /* UIView+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Extension.m"; sourceTree = "<group>"; };
@@ -296,6 +299,8 @@
 				163588082307DF370017F510 /* KDGoodsInfoView.m */,
 				1635880A2307E1960017F510 /* KDGoodsInfoFooterView.h */,
 				1635880B2307E1960017F510 /* KDGoodsInfoFooterView.m */,
+				1619AC512307FDD2003463C7 /* KDGoodsInfoCell.h */,
+				1619AC522307FDD2003463C7 /* KDGoodsInfoCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -944,6 +949,7 @@
 				3D65BF9E23010BBB00B12F3D /* UIImage+Image.m in Sources */,
 				3D65BF992301086A00B12F3D /* HCTNavigationController.m in Sources */,
 				3D65BFC92301173E00B12F3D /* KDMailingVC.m in Sources */,
+				1619AC532307FDD2003463C7 /* KDGoodsInfoCell.m in Sources */,
 				F465DE4C230454FF002DFD4C /* KDInfoModel.m in Sources */,
 				3D65BF9A2301086A00B12F3D /* HCTTabbarController.m in Sources */,
 				3D65BF952301086A00B12F3D /* RootCustomView.m in Sources */,
@@ -1136,6 +1142,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = Y534VL634J;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/Kuaidi/Other/PrefixHeader.pch";
 				INFOPLIST_FILE = Kuaidi/Other/Info.plist;
@@ -1155,6 +1162,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = Y534VL634J;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/Kuaidi/Other/PrefixHeader.pch";
 				INFOPLIST_FILE = Kuaidi/Other/Info.plist;
