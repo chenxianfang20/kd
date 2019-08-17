@@ -9,6 +9,8 @@
 #import "KDMailingVC.h"
 #import "KDTitleView.h"
 #import "KDAddressInfoView.h"
+#import "KDGoodsInfoView.h"
+#import "KDGoodsInfoView.h"
 
 @interface KDMailingVC ()<UITableViewDelegate,UITableViewDataSource>
 
@@ -20,6 +22,8 @@
 
 @property(nonatomic, strong)KDAddressInfoView *addressView;
 
+@property(nonatomic, strong)KDGoodsInfoView *goodsInfoView;
+
 @end
 
 @implementation KDMailingVC
@@ -30,6 +34,13 @@
         _addressView.center = CGPointMake(self.view.width/2.0, _addressView.center.y + 12);
     }
     return _addressView;
+}
+-(KDGoodsInfoView *)goodsInfoView{
+    if (!_goodsInfoView) {
+        _goodsInfoView = [KDGoodsInfoView goodsInfoView];
+        _goodsInfoView.frame = CGRectMake(18, CGRectGetMaxY(self.addressView.frame) - 10, _goodsInfoView.width, _goodsInfoView.height);
+    }
+    return _goodsInfoView;
 }
 -(UILabel *)tipLabel{
     
@@ -67,15 +78,15 @@
 
 - (UIView *)headerView{
     
-    
-    
-    UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.width, self.addressView.height)];
+    UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.width, self.addressView.height + self.goodsInfoView.height)];
     headerView.backgroundColor = [UIColor clearColor];
     [headerView addSubview:self.addressView];
     
+    [headerView addSubview:self.goodsInfoView];
+    
+    [headerView bringSubviewToFront:self.addressView];
     
     return headerView;
-    
 }
 
 - (void)viewDidLoad {

@@ -7,24 +7,13 @@
 //
 
 #import "KDAddressInfoView.h"
+#import "KDUserInfoView.h"
 
 @interface KDAddressInfoView()
 
-@property(nonatomic, strong)UILabel *sendHolder;
+@property(nonatomic, strong)KDUserInfoView *sendUserInfoView;
 
-@property(nonatomic, strong)UILabel *receiveHolder;
-
-@property(nonatomic, strong)UILabel *sendNameLabel;
-
-@property(nonatomic, strong)UILabel *receiveNameLabel;
-
-@property(nonatomic, strong)UILabel *sendPhoneLabel;
-
-@property(nonatomic, strong)UILabel *receivePhoneLabel;
-
-@property(nonatomic, strong)UILabel *sendAddressLabel;
-
-@property(nonatomic, strong)UILabel *receiveAddressLabel;
+@property(nonatomic, strong)KDUserInfoView *receiveUserInfoView;
 
 @end
 
@@ -65,28 +54,16 @@
         
     }];
     
-    UIImageView *sendContactImageV = [[UIImageView alloc] init];
-    sendContactImageV.image = [UIImage imageNamed:@"图标-通讯录"];
-    [self addSubview:sendContactImageV];
-    [sendContactImageV mas_makeConstraints:^(MASConstraintMaker *make) {
-
-        make.right.equalTo(self).offset(-18);
-        make.centerY.equalTo(sendImageV.mas_centerY).offset(0);
-        make.size.mas_equalTo(CGSizeMake(18, 18));
-        
-    }];
-
-    UILabel *sendHolder = [[UILabel alloc] init];
-    self.sendHolder = sendHolder;
-    sendHolder.text = @"请填写寄件人详细信息";
-    sendHolder.textColor = rgb(206, 206, 206, 1.0);
-    sendHolder.font = [UIFont fontWithName:@"PingFang SC" size: 15];
-    [self addSubview:sendHolder];
-    [sendHolder mas_makeConstraints:^(MASConstraintMaker *make) {
+    KDUserInfoView *sendUserInfoView = [KDUserInfoView userInfoView];
+    sendUserInfoView.userInfoType = KDUserInfoTypeSend;
+    self.sendUserInfoView = sendUserInfoView;
+    [self addSubview:sendUserInfoView];
+    [sendUserInfoView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(sendImageV.mas_right).offset(18);
-        make.centerY.equalTo(sendImageV.mas_centerY).offset(0);
+        make.top.right.equalTo(self).offset(0);
+        make.height.mas_equalTo(93);
     }];
-
+    
     UIImageView *receiveImageV = [[UIImageView alloc] init];
     receiveImageV.image = [UIImage imageNamed:@"图标-收件人"];
     [self addSubview:receiveImageV];
@@ -96,28 +73,16 @@
         make.size.mas_equalTo(CGSizeMake(18, 18));
     }];
 
-    UIImageView *receiveContactImageV = [[UIImageView alloc] init];
-    receiveContactImageV.image = [UIImage imageNamed:@"图标-通讯录"];
-    [self addSubview:receiveContactImageV];
-    [receiveContactImageV mas_makeConstraints:^(MASConstraintMaker *make) {
-
-        make.right.equalTo(self).offset(-18);
-        make.centerY.equalTo(receiveImageV.mas_centerY).offset(0);
-        make.size.mas_equalTo(CGSizeMake(18, 18));
-
-    }];
-
-    UILabel *receiveHolder = [[UILabel alloc] init];
-    self.receiveHolder = receiveHolder;
-    receiveHolder.text = @"请请填写收件人详细信息";
-    receiveHolder.textColor = rgb(206, 206, 206, 1.0);
-    receiveHolder.font = [UIFont fontWithName:@"PingFang SC" size: 15];
-    [self addSubview:receiveHolder];
-    [receiveHolder mas_makeConstraints:^(MASConstraintMaker *make) {
+    KDUserInfoView *receiveUserInfoView = [KDUserInfoView userInfoView];
+    receiveUserInfoView.userInfoType = KDUserInfoTypeReceive;
+    self.receiveUserInfoView = receiveUserInfoView;
+    [self addSubview:receiveUserInfoView];
+    [receiveUserInfoView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(receiveImageV.mas_right).offset(18);
-        make.centerY.equalTo(receiveImageV.mas_centerY).offset(0);
+        make.bottom.right.equalTo(self).offset(0);
+        make.height.mas_equalTo(93);
     }];
-
+   
     UIView *vLine = [[UIView alloc] init];
     vLine.backgroundColor = rgb(169, 169, 169, 1);
     [self addSubview:vLine];

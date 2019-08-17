@@ -14,19 +14,22 @@ PODS:
   - AFNetworking/Serialization (3.2.1)
   - AFNetworking/UIKit (3.2.1):
     - AFNetworking/NSURLSession
+  - CRBoxInputView (1.1.2):
+    - Masonry
   - Masonry (0.6.4)
   - MBProgressHUD (1.0.0)
   - MJExtension (3.0.17)
   - MJRefresh (3.1.17)
   - SDCycleScrollView (1.80):
     - SDWebImage (>= 5.0.0)
-  - SDWebImage (5.0.6):
-    - SDWebImage/Core (= 5.0.6)
-  - SDWebImage/Core (5.0.6)
+  - SDWebImage (5.1.0):
+    - SDWebImage/Core (= 5.1.0)
+  - SDWebImage/Core (5.1.0)
   - SVProgressHUD (2.0.4)
 
 DEPENDENCIES:
   - AFNetworking (~> 3.2.1)
+  - CRBoxInputView (= 1.1.2)
   - Masonry (~> 0.6.3)
   - MBProgressHUD (~> 1.0.0)
   - MJExtension (~> 3.0.13)
@@ -38,6 +41,7 @@ DEPENDENCIES:
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - AFNetworking
+    - CRBoxInputView
     - Masonry
     - MBProgressHUD
     - MJExtension
@@ -48,14 +52,15 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   AFNetworking: b6f891fdfaed196b46c7a83cf209e09697b94057
+  CRBoxInputView: d30722aae74237ee07fc8b79c6a9c22604acf8e6
   Masonry: 281802d04d787ea2973179ee8bcb50500579ede2
   MBProgressHUD: 4890f671c94e8a0f3cf959aa731e9de2f036d71a
   MJExtension: 74ec83124a68891619fb7ba9c5c811bbf1691076
   MJRefresh: ee5b68f639775462faba4db0fd243baf4d42c2cf
   SDCycleScrollView: b3c9a5ed840c771c4938978174c7c9d9feefeb96
-  SDWebImage: 920f1a2ff1ca8296ad34f6e0510a1ef1d70ac965
+  SDWebImage: fb387001955223213dde14bc08c8b73f371f8d8f
   SVProgressHUD: bfde85ed6c573ea802b9cb37894ed9b629034f1b
 
-PODFILE CHECKSUM: 1234b307605ea4ff3d1756b3f04989907d143cfb
+PODFILE CHECKSUM: eb4473565fb6891510efc1b1b2616e9d545c1247
 
-COCOAPODS: 1.7.0.beta.2
+COCOAPODS: 1.6.1

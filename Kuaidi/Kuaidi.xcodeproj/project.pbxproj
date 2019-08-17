@@ -11,6 +11,9 @@
 		16310F6F2306F9D80054311A /* UIView+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 16310F6E2306F9D70054311A /* UIView+Extension.m */; };
 		16310F722306F9F20054311A /* NSDictionary+Log.m in Sources */ = {isa = PBXBuildFile; fileRef = 16310F702306F9F10054311A /* NSDictionary+Log.m */; };
 		163588032307A3340017F510 /* KDAddressInfoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 163588022307A3340017F510 /* KDAddressInfoView.m */; };
+		163588062307D74A0017F510 /* KDUserInfoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 163588052307D74A0017F510 /* KDUserInfoView.m */; };
+		163588092307DF370017F510 /* KDGoodsInfoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 163588082307DF370017F510 /* KDGoodsInfoView.m */; };
+		1635880C2307E1960017F510 /* KDGoodsInfoFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1635880B2307E1960017F510 /* KDGoodsInfoFooterView.m */; };
 		163AE1862305A62A00B16015 /* KDTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 163AE1852305A62A00B16015 /* KDTitleView.m */; };
 		3D65BF40230102F400B12F3D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D65BF3F230102F400B12F3D /* AppDelegate.m */; };
 		3D65BF46230102F400B12F3D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3D65BF44230102F400B12F3D /* Main.storyboard */; };
@@ -122,6 +125,12 @@
 		16310F712306F9F10054311A /* NSDictionary+Log.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+Log.h"; sourceTree = "<group>"; };
 		163588012307A3340017F510 /* KDAddressInfoView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KDAddressInfoView.h; sourceTree = "<group>"; };
 		163588022307A3340017F510 /* KDAddressInfoView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KDAddressInfoView.m; sourceTree = "<group>"; };
+		163588042307D74A0017F510 /* KDUserInfoView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KDUserInfoView.h; sourceTree = "<group>"; };
+		163588052307D74A0017F510 /* KDUserInfoView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KDUserInfoView.m; sourceTree = "<group>"; };
+		163588072307DF370017F510 /* KDGoodsInfoView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KDGoodsInfoView.h; sourceTree = "<group>"; };
+		163588082307DF370017F510 /* KDGoodsInfoView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KDGoodsInfoView.m; sourceTree = "<group>"; };
+		1635880A2307E1960017F510 /* KDGoodsInfoFooterView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KDGoodsInfoFooterView.h; sourceTree = "<group>"; };
+		1635880B2307E1960017F510 /* KDGoodsInfoFooterView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KDGoodsInfoFooterView.m; sourceTree = "<group>"; };
 		163AE1842305A62A00B16015 /* KDTitleView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KDTitleView.h; sourceTree = "<group>"; };
 		163AE1852305A62A00B16015 /* KDTitleView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KDTitleView.m; sourceTree = "<group>"; };
 		310B9CC0F78DB0FB65918064 /* Pods-Kuaidi.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Kuaidi.debug.xcconfig"; path = "Target Support Files/Pods-Kuaidi/Pods-Kuaidi.debug.xcconfig"; sourceTree = "<group>"; };
@@ -281,6 +290,12 @@
 				163AE1852305A62A00B16015 /* KDTitleView.m */,
 				163588012307A3340017F510 /* KDAddressInfoView.h */,
 				163588022307A3340017F510 /* KDAddressInfoView.m */,
+				163588042307D74A0017F510 /* KDUserInfoView.h */,
+				163588052307D74A0017F510 /* KDUserInfoView.m */,
+				163588072307DF370017F510 /* KDGoodsInfoView.h */,
+				163588082307DF370017F510 /* KDGoodsInfoView.m */,
+				1635880A2307E1960017F510 /* KDGoodsInfoFooterView.h */,
+				1635880B2307E1960017F510 /* KDGoodsInfoFooterView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -694,7 +709,7 @@
 				3D65BF37230102F400B12F3D /* Sources */,
 				3D65BF38230102F400B12F3D /* Frameworks */,
 				3D65BF39230102F400B12F3D /* Resources */,
-				C5A20815841F08F6BEA1C592 /* [CP] Copy Pods Resources */,
+				53B733005C5F631F09999FF2 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -871,6 +886,30 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		53B733005C5F631F09999FF2 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Kuaidi/Pods-Kuaidi-resources.sh",
+				"${PODS_ROOT}/MJRefresh/MJRefresh/MJRefresh.bundle",
+				"${PODS_ROOT}/SVProgressHUD/SVProgressHUD/SVProgressHUD.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/MJRefresh.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/SVProgressHUD.bundle",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Kuaidi/Pods-Kuaidi-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		8A42EDF47EAC2DAD7FA65DEA /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -891,23 +930,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		C5A20815841F08F6BEA1C592 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Kuaidi/Pods-Kuaidi-resources-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Kuaidi/Pods-Kuaidi-resources-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Kuaidi/Pods-Kuaidi-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -935,9 +957,12 @@
 				163AE1862305A62A00B16015 /* KDTitleView.m in Sources */,
 				3D65BFC32301169500B12F3D /* UIView+YYAdd.m in Sources */,
 				3D65BF4E230102F700B12F3D /* main.m in Sources */,
+				1635880C2307E1960017F510 /* KDGoodsInfoFooterView.m in Sources */,
 				3D65BF922301086A00B12F3D /* RootViewController.m in Sources */,
 				3D65BF40230102F400B12F3D /* AppDelegate.m in Sources */,
+				163588062307D74A0017F510 /* KDUserInfoView.m in Sources */,
 				3D65BFCF2301179300B12F3D /* KDCheckPieceVC.m in Sources */,
+				163588092307DF370017F510 /* KDGoodsInfoView.m in Sources */,
 				3D65BFEC23016F4400B12F3D /* UIColor+Tool.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

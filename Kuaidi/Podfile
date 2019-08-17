@@ -9,4 +9,5 @@ target 'Kuaidi' do
  pod 'Masonry','~> 0.6.3'
  pod 'MBProgressHUD', '~> 1.0.0'
  pod 'SDWebImage'
+ pod 'CRBoxInputView', '1.1.2'
 end
