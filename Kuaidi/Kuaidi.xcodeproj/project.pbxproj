@@ -63,6 +63,7 @@
 		F41C801523081D2F00DA1C2F /* KDPhoneVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F41C801223081D2F00DA1C2F /* KDPhoneVC.m */; };
 		F41C801623081D2F00DA1C2F /* KDCodeVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F41C801323081D2F00DA1C2F /* KDCodeVC.m */; };
 		F427C4EA2308590E0023D48B /* KDPhoneForPwdVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F427C4E92308590E0023D48B /* KDPhoneForPwdVC.m */; };
+		F4646C082308F05600ADDBE9 /* KDMailingScanVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F4646C072308F05600ADDBE9 /* KDMailingScanVC.m */; };
 		F465DE05230454B9002DFD4C /* 图标-后退@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F465DDC7230454B9002DFD4C /* 图标-后退@2x.png */; };
 		F465DE06230454B9002DFD4C /* 登录-背景@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F465DDC8230454B9002DFD4C /* 登录-背景@3x.png */; };
 		F465DE07230454B9002DFD4C /* 图标-账号@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F465DDC9230454B9002DFD4C /* 图标-账号@2x.png */; };
@@ -252,6 +253,8 @@
 		F41C801423081D2F00DA1C2F /* KDPhoneVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KDPhoneVC.h; sourceTree = "<group>"; };
 		F427C4E82308590E0023D48B /* KDPhoneForPwdVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KDPhoneForPwdVC.h; sourceTree = "<group>"; };
 		F427C4E92308590E0023D48B /* KDPhoneForPwdVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KDPhoneForPwdVC.m; sourceTree = "<group>"; };
+		F4646C062308F05600ADDBE9 /* KDMailingScanVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KDMailingScanVC.h; sourceTree = "<group>"; };
+		F4646C072308F05600ADDBE9 /* KDMailingScanVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KDMailingScanVC.m; sourceTree = "<group>"; };
 		F465DDC7230454B9002DFD4C /* 图标-后退@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "图标-后退@2x.png"; sourceTree = "<group>"; };
 		F465DDC8230454B9002DFD4C /* 登录-背景@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "登录-背景@3x.png"; sourceTree = "<group>"; };
 		F465DDC9230454B9002DFD4C /* 图标-账号@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "图标-账号@2x.png"; sourceTree = "<group>"; };
@@ -659,6 +662,7 @@
 		3D65BFD2230117A900B12F3D /* Coltroller */ = {
 			isa = PBXGroup;
 			children = (
+				F4646C052308EFCD00ADDBE9 /* 寄件二维码 */,
 				F427C4E72308515E0023D48B /* 找回登录密码 */,
 				F41C801023081D2F00DA1C2F /* 注册 */,
 				F465DE41230454FE002DFD4C /* 登录 */,
@@ -737,6 +741,15 @@
 				F419CD5D2308610800553E29 /* KDResetLoginPwdVC.m */,
 			);
 			path = "找回登录密码";
+			sourceTree = "<group>";
+		};
+		F4646C052308EFCD00ADDBE9 /* 寄件二维码 */ = {
+			isa = PBXGroup;
+			children = (
+				F4646C062308F05600ADDBE9 /* KDMailingScanVC.h */,
+				F4646C072308F05600ADDBE9 /* KDMailingScanVC.m */,
+			);
+			path = "寄件二维码";
 			sourceTree = "<group>";
 		};
 		F465DDC5230454B9002DFD4C /* 我的 */ = {
@@ -1146,6 +1159,7 @@
 				162AB3B62309168D00EF8225 /* KDExpressSelectCell.m in Sources */,
 				3D65BF40230102F400B12F3D /* AppDelegate.m in Sources */,
 				163588062307D74A0017F510 /* KDUserInfoView.m in Sources */,
+				F4646C082308F05600ADDBE9 /* KDMailingScanVC.m in Sources */,
 				3D65BFCF2301179300B12F3D /* KDCheckPieceVC.m in Sources */,
 				163588092307DF370017F510 /* KDGoodsInfoView.m in Sources */,
 				F41C800723081C0300DA1C2F /* NSString+Valid.m in Sources */,
