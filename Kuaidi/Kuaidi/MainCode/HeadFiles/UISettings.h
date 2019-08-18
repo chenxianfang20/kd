@@ -11,7 +11,8 @@
 
 #define kWindow  [[[UIApplication sharedApplication] windows] lastObject]
 
-
+#define PingFangMedium(fontSize) [UIFont fontWithName:@"PingFangSC-Medium" size: fontSize]
+#define PingFangBold(fontSize) [UIFont fontWithName:@"PingFangSC-Semibold" size: fontSize]
 
 
 /***********************适配相关****************************/

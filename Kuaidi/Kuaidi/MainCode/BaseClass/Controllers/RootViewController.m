@@ -87,6 +87,12 @@
     
 }
 
+/*
+ *  右侧第二个按钮点击事件
+ */
+-(void)rightSecClick:(UIButton*)button{
+    
+}
 
 -(void)viewDidAppear:(BOOL)animated
 {

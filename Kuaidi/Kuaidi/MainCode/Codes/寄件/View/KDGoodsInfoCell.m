@@ -36,7 +36,7 @@
     UILabel *titleLabel = [[UILabel alloc] init];
     titleLabel.text = @"物品信息";
     titleLabel.textColor = rgb(92, 92, 92, 1);
-    titleLabel.font = [UIFont fontWithName:@"PingFang SC" size: 15];
+    titleLabel.font = PingFangMedium(15);
     [self addSubview:titleLabel];
     [titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self).offset(18);
@@ -47,7 +47,7 @@
     textField.userInteractionEnabled = NO;
     textField.placeholder = @"请选择类型、重量";
     textField.textColor = rgb(11, 11, 11, 1);
-    textField.font = [UIFont fontWithName:@"PingFang SC" size: 15];
+    textField.font = PingFangBold(15);
     textField.textAlignment = NSTextAlignmentRight;
     [self addSubview:textField];
     [textField mas_makeConstraints:^(MASConstraintMaker *make) {

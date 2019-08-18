@@ -9,7 +9,8 @@
 #import "RootCustomView.h"
 
 
-typedef void (^eventBlock)();
+typedef void (^eventBlock)(void);
+
 typedef enum : NSUInteger {
     TitleViewType_title,
     TitleViewType_image, //可点

@@ -50,7 +50,7 @@
 -(void)createSubViews{
     
     CGFloat margint = 18;
-    CGFloat buttonW = 70;
+    CGFloat buttonW = 75;
     CGFloat buttonH = self.frame.size.height;
     for (NSInteger i = 0; i < self.titleArr.count; i++) {
         
@@ -59,13 +59,14 @@
         [button setTitle:self.titleArr[i] forState:UIControlStateNormal];
         [button setTitleColor:rgb(255, 255, 255, 1) forState:UIControlStateSelected];
         [button setTitleColor:rgb(255, 255, 255, 0.72) forState:UIControlStateNormal];
-        button.titleLabel.font =  [UIFont fontWithName:@"PingFang-SC-Bold" size: 18];
+        button.titleLabel.font = PingFangMedium(18);
         button.selected = (i == 0);
         [self addSubview:button];
         
         if (i == 0) {
             
             self.dotView.center = CGPointMake(button.center.x, self.height-self.dotView.height/2.0);
+            button.titleLabel.font =  PingFangBold(18);
         }
     }
     
@@ -77,7 +78,7 @@
     UIButton *recordButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [recordButton setTitle:@"寄件记录" forState:UIControlStateNormal];
     [recordButton setTitleColor:rgb(223, 47, 49, 1) forState:UIControlStateNormal];
-    recordButton.titleLabel.font = [UIFont fontWithName:@"PingFang-SC-Medium" size: 13];
+    recordButton.titleLabel.font = PingFangMedium(13);
     recordButton.backgroundColor = rgb(255, 255, 255, 0.72);
     recordButton.layer.cornerRadius = 9;
     [self addSubview:recordButton];
