@@ -45,6 +45,7 @@
 @property (nonatomic) NSInteger selectedIndex;
 @property (nonatomic) BOOL selectedCellExist;
 @property (nonatomic) CGFloat fontPointSizeScale;
+@property (nonatomic) CGFloat vernierHeight;
 @property (nonatomic, strong) MASConstraint *underlineCenterXConstraint;
 @property (nonatomic, strong) MASConstraint *underlineWidthConstraint;
 @end
@@ -289,6 +290,7 @@ static NSString * const SegmentHeaderViewCollectionViewCellIdentifier = @"Segmen
     _vernierHeight = underlineHeight;
     [self.vernier mas_updateConstraints:^(MASConstraintMaker *make) {
         make.top.mas_equalTo(self.height - self.vernierHeight - HG_ONE_PIXEL);
+        make.height.mas_equalTo(underlineHeight);
     }];
 }
 

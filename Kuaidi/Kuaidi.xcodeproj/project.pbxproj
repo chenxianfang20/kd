@@ -22,6 +22,7 @@
 		162AB3D7230953F900EF8225 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 162AB3CF230953F900EF8225 /* README.md */; };
 		162AB3D8230953F900EF8225 /* HGCategoryView.m in Sources */ = {isa = PBXBuildFile; fileRef = 162AB3D1230953F900EF8225 /* HGCategoryView.m */; };
 		162AB3DC2309556000EF8225 /* KDExpressRecordListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 162AB3DB2309556000EF8225 /* KDExpressRecordListController.m */; };
+		162AB3DF23095C9C00EF8225 /* KDExpressRecordCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 162AB3DE23095C9C00EF8225 /* KDExpressRecordCell.m */; };
 		16310F6F2306F9D80054311A /* UIView+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 16310F6E2306F9D70054311A /* UIView+Extension.m */; };
 		16310F722306F9F20054311A /* NSDictionary+Log.m in Sources */ = {isa = PBXBuildFile; fileRef = 16310F702306F9F10054311A /* NSDictionary+Log.m */; };
 		163588032307A3340017F510 /* KDAddressInfoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 163588022307A3340017F510 /* KDAddressInfoView.m */; };
@@ -185,6 +186,8 @@
 		162AB3D2230953F900EF8225 /* HGSegmentedPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HGSegmentedPageViewController.h; sourceTree = "<group>"; };
 		162AB3DA2309556000EF8225 /* KDExpressRecordListController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KDExpressRecordListController.h; sourceTree = "<group>"; };
 		162AB3DB2309556000EF8225 /* KDExpressRecordListController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KDExpressRecordListController.m; sourceTree = "<group>"; };
+		162AB3DD23095C9C00EF8225 /* KDExpressRecordCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KDExpressRecordCell.h; sourceTree = "<group>"; };
+		162AB3DE23095C9C00EF8225 /* KDExpressRecordCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KDExpressRecordCell.m; sourceTree = "<group>"; };
 		16310F682306F6F00054311A /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		16310F6D2306F9D70054311A /* UIView+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Extension.h"; sourceTree = "<group>"; };
 		16310F6E2306F9D70054311A /* UIView+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Extension.m"; sourceTree = "<group>"; };
@@ -436,6 +439,8 @@
 				162AB3B8230919A200EF8225 /* KDTimeSelectView.m */,
 				162AB3BD23092AE400EF8225 /* KDMessageBoardView.h */,
 				162AB3BE23092AE400EF8225 /* KDMessageBoardView.m */,
+				162AB3DD23095C9C00EF8225 /* KDExpressRecordCell.h */,
+				162AB3DE23095C9C00EF8225 /* KDExpressRecordCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1217,6 +1222,7 @@
 				3D65BF962301086A00B12F3D /* RootCustomCell.m in Sources */,
 				F41BCCA32308249900BCD691 /* KDLoginPwdVC.m in Sources */,
 				163AE1862305A62A00B16015 /* KDTitleView.m in Sources */,
+				162AB3DF23095C9C00EF8225 /* KDExpressRecordCell.m in Sources */,
 				F419CD62230865B700553E29 /* KDAboutAsVC.m in Sources */,
 				3D65BFC32301169500B12F3D /* UIView+YYAdd.m in Sources */,
 				F41BCCB223082A1200BCD691 /* UIButton+EnlargeTouchArea.m in Sources */,
