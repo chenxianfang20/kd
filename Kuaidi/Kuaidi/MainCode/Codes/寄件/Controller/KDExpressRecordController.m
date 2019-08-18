@@ -54,18 +54,6 @@
             [controllers addObject:controller];
         }
         
-        
-//        @property (nonatomic, strong) UIFont *titleNomalFont;
-//
-//        /// 选中时的字体大小
-//        @property (nonatomic, strong) UIFont *titleSelectedFont;
-//
-//        /// 未选中时的字体颜色
-//        @property (nonatomic, strong) UIColor *titleNormalColor;
-//
-//        /// 选中时的字体颜色
-//        @property (nonatomic, strong) UIColor *titleSelectedColor;
-        
         CGFloat W = 45;
         CGFloat leftRightMargint = 26;
         CGFloat margint = (self.view.width - leftRightMargint * 2 - titles.count * W)/(titles.count - 1);
@@ -90,9 +78,10 @@
     return _segmentedPageViewController;
 }
 
-
--(UIStatusBarStyle)preferredStatusBarStyle
-{
-    return UIStatusBarStyleDefault;
+- (void)viewWillAppear:(BOOL)animated{
+    
+    [super viewWillAppear:animated];
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault];
 }
+
 @end
