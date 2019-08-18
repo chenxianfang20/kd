@@ -58,7 +58,7 @@ typedef NS_ENUM(NSUInteger, HGCategoryViewAlignment) {
 @property (nonatomic) CGFloat height;
 
 /// 游标的高度
-@property (nonatomic) CGFloat vernierHeight;
+@property (nonatomic) CGFloat underlineHeight;
 
 /// item间距
 @property (nonatomic) CGFloat itemSpacing;
