@@ -11,6 +11,7 @@
 #import "KDInfoModel.h"
 #import "KDLoginVC.h"
 #import "KDAboutAsVC.h"
+#import "KDMailingScanVC.h"
 @interface KDMineVC ()<UITableViewDelegate,UITableViewDataSource>{
     UIScrollView* scrollowView;
 }
@@ -88,6 +89,10 @@
     scanView.layer.cornerRadius=6.0f;
     scanView.layer.masksToBounds=YES;
     [scrollowView addSubview:scanView];
+    
+    UITapGestureRecognizer*  tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(scanViewTapClick)];
+    scanView.userInteractionEnabled = YES;
+    [scanView addGestureRecognizer:tap];
     
     UILabel* scanTitleLabel =[[UILabel alloc]initWithFrame:CGRectMake(kAdaptationWidth(18), 0, kAdaptationWidth(120), kAdaptationWidth(60))];
     scanTitleLabel.text=@"寄件二维码";
@@ -173,7 +178,12 @@
         [self.tableview reloadData];
     }
 }
-
+//寄件二维码扫描
+-(void)scanViewTapClick{
+    KDMailingScanVC* vc = [[KDMailingScanVC alloc]init];
+    vc.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:vc animated:YES];
+}
 
 //订单导入按钮
 -(void)btnClick:(UIButton*)button{
