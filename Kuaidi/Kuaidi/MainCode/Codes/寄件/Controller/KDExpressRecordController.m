@@ -24,7 +24,7 @@
 -(void)setNav{
     
     [self.backButton setImage:[UIImage imageNamed:@""] forState:UIControlStateNormal];
-    self.title = @"寄件记录";
+    self.titleView.title = @"寄件记录";
     
 }
 @end
