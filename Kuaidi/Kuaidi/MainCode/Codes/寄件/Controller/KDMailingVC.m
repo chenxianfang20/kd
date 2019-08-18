@@ -12,6 +12,7 @@
 #import "KDGoodsInfoView.h"
 #import "KDGoodsTypeInfoSelectView.h"
 #import "KDExpressRecordController.h"
+#import "KDExpressSelectView.h"
 
 @interface KDMailingVC ()
 <UITableViewDelegate,
@@ -156,7 +157,11 @@ KDTitleViewDelegate>
 #pragma mark -- KDGoodsInfoViewDelegate
 -(void)selectCellIndexPath:(NSIndexPath *)indexPath{
     
-    [KDGoodsTypeInfoSelectView showSelectViewWithConfirmBlock:^(NSString * _Nonnull goodsType, NSInteger weight, UIImage * _Nonnull image) {
+//    [KDGoodsTypeInfoSelectView showSelectViewWithConfirmBlock:^(NSString * _Nonnull goodsType, NSInteger weight, UIImage * _Nonnull image) {
+//
+//    }];
+    
+    [KDExpressSelectView showSelectViewWithConfirmBlock:^(NSString * _Nonnull expressType) {
         
     }];
     

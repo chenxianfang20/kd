@@ -76,6 +76,10 @@
     
     self.backgroundColor = rgb(255, 255, 255, 1);
     self.layer.cornerRadius = 12;
+    self.layer.shadowColor = rgb(11, 11, 11, 0.1).CGColor;
+    self.layer.shadowOffset = CGSizeMake(0,0);
+    self.layer.shadowOpacity = 1;
+    self.layer.shadowRadius = 24;
     
     UILabel *titleLabel = [[UILabel alloc] init];
     titleLabel.text = @"物品信息";
@@ -94,7 +98,7 @@
     [closeButton mas_makeConstraints:^(MASConstraintMaker *make) {
         make.right.equalTo(self).offset(-21);
         make.centerY.equalTo(titleLabel.mas_centerY).offset(0);
-        make.size.mas_equalTo(CGSizeMake(13, 13));
+        make.size.mas_equalTo(CGSizeMake(15, 15));
     }];
     [closeButton addTarget:self action:@selector(hidden) forControlEvents:UIControlEventTouchUpInside];
     
