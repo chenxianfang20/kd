@@ -7,10 +7,13 @@
 //
 
 #import "KDMessageBoardView.h"
+#import "CBGroupAndStreamView.h"
 
 @interface KDMessageBoardView()
 
 @property(nonatomic, strong)UIView *bgView;
+
+@property(nonatomic, strong)CBGroupAndStreamView *silde;
 
 @end
 
@@ -93,11 +96,78 @@
         make.height.mas_equalTo(48);
     }];
     
+    UIView *messageView = [[UIView  alloc] init];
+    messageView.layer.cornerRadius = 2;
+    messageView.layer.borderWidth = 1;
+    messageView.layer.borderColor = rgb(169, 169, 169, 1.0).CGColor;
+    [self addSubview:messageView];
+    [messageView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(titleLabel.mas_bottom).offset(25);
+        make.left.equalTo(self.mas_left).offset(18);
+        make.right.equalTo(self.mas_right).offset(-18);
+        make.height.mas_equalTo(76);
+    }];
     
+    UITextView *textView = [[UITextView alloc] init];
+    textView.textColor = rgb(11, 11, 11, 1.0);
+    textView.font = PingFangBold(14);
+    textView.placeholder = @"例如：取件地址信息、什么时候来取件、如何联系等信息";
+    textView.placeholderAttributes = @{NSFontAttributeName:PingFangMedium(14),
+                                       NSForegroundColorAttributeName:rgb(206, 206, 206, 1.0)
+                                       };
+    textView.maxInputLength = 60;
+    [messageView addSubview:textView];
+    [textView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(messageView).offset(0);
+        make.left.equalTo(messageView).offset(5);
+        make.right.equalTo(messageView).offset(-5);
+        make.bottom.equalTo(messageView).offset(0);
+    }];
+    
+    NSArray * titleArr = @[@"留言"];
+    NSArray *contentArr = @[@[@"按照寄件地址来取件",@"缺少包装",@"需要爬楼梯",@"到了打电话",@"不方便接电话",@"物品体积大"]];
+    
+    CBGroupAndStreamView * silde = [[CBGroupAndStreamView alloc] initWithFrame:CGRectMake(18, 144, self.width - 36, 90)];
+    silde.backgroundColor = [UIColor redColor];
+    silde.isDefaultSel = NO;
+    silde.isSingle = YES;
+    silde.radius = 4;
+    silde.norColor = rgb(169, 169, 169, 1.0);
+    silde.selColor = rgb(223, 47, 49, 1.0);
+    silde.contentNorColor = rgb(169, 169, 169, 1.0);
+    silde.contentSelColor = rgb(223, 47, 49, 1.0);
+    silde.isSelFillBgColor = NO;
+    silde.titleLabHeight = 0;
+    silde.maragin_x = 12;
+    silde.maragin_y = 12;
+    silde.font = PingFangMedium(13);
+    silde.singleFlagArr = @[@0];
+    [silde setContentView:contentArr titleArr:titleArr];
+    [self addSubview:silde];
+    self.silde = silde;
+    silde.cb_confirmReturnValueBlock = ^(NSArray *valueArr, NSArray *groupIdArr) {
+        NSLog(@"valueArr = %@ \ngroupIdArr = %@",valueArr,groupIdArr);
+    };
+    silde.cb_selectCurrentValueBlock = ^(NSString *value, NSInteger index, NSInteger groupId) {
+        NSLog(@"value = %@----index = %ld------groupId = %ld",value,index,groupId);
+    };
+//    [silde mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.left.equalTo(self).offset(18);
+//        make.right.equalTo(self).offset(-18);
+//        make.top.equalTo(messageView.mas_bottom).offset(18);
+//        make.bottom.equalTo(confirmButton.mas_top).offset(-18);
+//    }];
 }
 
-
+-(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
+    
+    [super touchesBegan:touches withEvent:event];
+    [self endEditing:YES];
+    
+}
 - (void)hidden{
+    
+    [self endEditing:YES];
     
     [UIView animateWithDuration:.25 animations:^{
         

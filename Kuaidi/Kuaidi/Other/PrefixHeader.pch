@@ -22,6 +22,7 @@
 #import <SDWebImage.h>
 #import <SDCycleScrollView.h>
 #import <PGPickerView.h>
+#import "UITextView+Placeholder.h"
 
 
 #endif /* PrefixHeader_pch */

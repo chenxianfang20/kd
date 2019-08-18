@@ -7,8 +7,12 @@
 //
 
 #import "KDExpressRecordController.h"
+#import "HGSegmentedPageViewController.h"
+#import "KDExpressRecordListController.h"
 
 @interface KDExpressRecordController ()
+
+@property (nonatomic, strong) HGSegmentedPageViewController *segmentedPageViewController;
 
 @end
 
@@ -19,6 +23,14 @@
     // Do any additional setup after loading the view.
     
     [self setNav];
+    
+    [self addChildViewController:self.segmentedPageViewController];
+    [self.view addSubview:self.segmentedPageViewController.view];
+    [self.segmentedPageViewController didMoveToParentViewController:self];
+    [self.segmentedPageViewController.view mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.right.bottom.equalTo(self.view).offset(0);
+        make.top.equalTo(self.view).offset(NavibarH);
+    }];
 }
 
 -(void)setNav{
@@ -29,5 +41,34 @@
     self.titleView.titleLable.text = @"寄件记录";
     self.titleView.titleLable.hidden = NO;
     
+}
+
+#pragma mark Getters
+- (HGSegmentedPageViewController *)segmentedPageViewController {
+    if (!_segmentedPageViewController) {
+        NSMutableArray *controllers = [NSMutableArray array];
+        NSArray *titles = @[@"全部", @"未完成", @"已完成", @"待寄出"];
+        for (int i = 0; i < titles.count; i++) {
+            
+            KDExpressRecordListController *controller = [[KDExpressRecordListController alloc] init];
+            [controllers addObject:controller];
+        }
+        _segmentedPageViewController = [[HGSegmentedPageViewController alloc] init];
+        _segmentedPageViewController.pageViewControllers = controllers;
+        _segmentedPageViewController.categoryView.titles = titles;
+        _segmentedPageViewController.categoryView.alignment = HGCategoryViewAlignmentLeft;
+        _segmentedPageViewController.categoryView.originalIndex = 0;
+        _segmentedPageViewController.categoryView.itemSpacing = 25;
+        _segmentedPageViewController.categoryView.backgroundColor = [UIColor whiteColor];
+        _segmentedPageViewController.categoryView.topBorder.hidden = YES;
+        _segmentedPageViewController.categoryView.bottomBorder.hidden = YES;
+    }
+    return _segmentedPageViewController;
+}
+
+
+-(UIStatusBarStyle)preferredStatusBarStyle
+{
+    return UIStatusBarStyleDefault;
 }
 @end
