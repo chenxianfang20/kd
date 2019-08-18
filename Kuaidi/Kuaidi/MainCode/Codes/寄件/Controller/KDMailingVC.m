@@ -13,6 +13,8 @@
 #import "KDGoodsTypeInfoSelectView.h"
 #import "KDExpressRecordController.h"
 #import "KDExpressSelectView.h"
+#import "KDTimeSelectView.h"
+#import "KDMessageBoardView.h"
 
 @interface KDMailingVC ()
 <UITableViewDelegate,
@@ -157,14 +159,25 @@ KDTitleViewDelegate>
 #pragma mark -- KDGoodsInfoViewDelegate
 -(void)selectCellIndexPath:(NSIndexPath *)indexPath{
     
-//    [KDGoodsTypeInfoSelectView showSelectViewWithConfirmBlock:^(NSString * _Nonnull goodsType, NSInteger weight, UIImage * _Nonnull image) {
-//
-//    }];
+    if (indexPath.row == 0) {
+        [KDGoodsTypeInfoSelectView showSelectViewWithConfirmBlock:^(NSString * _Nonnull goodsType, NSInteger weight, UIImage * _Nonnull image) {
     
-    [KDExpressSelectView showSelectViewWithConfirmBlock:^(NSString * _Nonnull expressType) {
+        }];
+    }else if (indexPath.row == 1) {
+        [KDExpressSelectView showSelectViewWithConfirmBlock:^(NSString * _Nonnull expressType) {
+    
+        }];
+    }else if (indexPath.row == 2) {
         
-    }];
-    
+        [KDTimeSelectView showSelectViewWithConfirmBlock:^(NSString * _Nonnull day, NSString * _Nonnull time) {
+            
+        }];
+    }else if (indexPath.row == 3) {
+        
+        [KDMessageBoardView showSelectViewWithConfirmBlock:^(NSString * _Nonnull customerMsg, NSString * _Nonnull traditionMsg) {
+            
+        }];
+    }
 }
 
 -(void)clickConfirmButton{

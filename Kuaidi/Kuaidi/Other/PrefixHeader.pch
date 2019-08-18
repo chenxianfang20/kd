@@ -21,6 +21,7 @@
 #import <AFNetworking.h>
 #import <SDWebImage.h>
 #import <SDCycleScrollView.h>
+#import <PGPickerView.h>
 
 
 #endif /* PrefixHeader_pch */

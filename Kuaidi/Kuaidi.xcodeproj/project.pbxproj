@@ -13,6 +13,8 @@
 		1619AC5923084897003463C7 /* KDExpressRecordController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1619AC5823084897003463C7 /* KDExpressRecordController.m */; };
 		162AB3B32309056400EF8225 /* KDExpressSelectView.m in Sources */ = {isa = PBXBuildFile; fileRef = 162AB3B22309056400EF8225 /* KDExpressSelectView.m */; };
 		162AB3B62309168D00EF8225 /* KDExpressSelectCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 162AB3B52309168D00EF8225 /* KDExpressSelectCell.m */; };
+		162AB3B9230919A200EF8225 /* KDTimeSelectView.m in Sources */ = {isa = PBXBuildFile; fileRef = 162AB3B8230919A200EF8225 /* KDTimeSelectView.m */; };
+		162AB3BF23092AE400EF8225 /* KDMessageBoardView.m in Sources */ = {isa = PBXBuildFile; fileRef = 162AB3BE23092AE400EF8225 /* KDMessageBoardView.m */; };
 		16310F6F2306F9D80054311A /* UIView+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 16310F6E2306F9D70054311A /* UIView+Extension.m */; };
 		16310F722306F9F20054311A /* NSDictionary+Log.m in Sources */ = {isa = PBXBuildFile; fileRef = 16310F702306F9F10054311A /* NSDictionary+Log.m */; };
 		163588032307A3340017F510 /* KDAddressInfoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 163588022307A3340017F510 /* KDAddressInfoView.m */; };
@@ -158,6 +160,10 @@
 		162AB3B22309056400EF8225 /* KDExpressSelectView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KDExpressSelectView.m; sourceTree = "<group>"; };
 		162AB3B42309168D00EF8225 /* KDExpressSelectCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KDExpressSelectCell.h; sourceTree = "<group>"; };
 		162AB3B52309168D00EF8225 /* KDExpressSelectCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KDExpressSelectCell.m; sourceTree = "<group>"; };
+		162AB3B7230919A200EF8225 /* KDTimeSelectView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KDTimeSelectView.h; sourceTree = "<group>"; };
+		162AB3B8230919A200EF8225 /* KDTimeSelectView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KDTimeSelectView.m; sourceTree = "<group>"; };
+		162AB3BD23092AE400EF8225 /* KDMessageBoardView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KDMessageBoardView.h; sourceTree = "<group>"; };
+		162AB3BE23092AE400EF8225 /* KDMessageBoardView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KDMessageBoardView.m; sourceTree = "<group>"; };
 		16310F682306F6F00054311A /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		16310F6D2306F9D70054311A /* UIView+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Extension.h"; sourceTree = "<group>"; };
 		16310F6E2306F9D70054311A /* UIView+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Extension.m"; sourceTree = "<group>"; };
@@ -380,6 +386,10 @@
 				162AB3B22309056400EF8225 /* KDExpressSelectView.m */,
 				162AB3B42309168D00EF8225 /* KDExpressSelectCell.h */,
 				162AB3B52309168D00EF8225 /* KDExpressSelectCell.m */,
+				162AB3B7230919A200EF8225 /* KDTimeSelectView.h */,
+				162AB3B8230919A200EF8225 /* KDTimeSelectView.m */,
+				162AB3BD23092AE400EF8225 /* KDMessageBoardView.h */,
+				162AB3BE23092AE400EF8225 /* KDMessageBoardView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1128,7 +1138,9 @@
 				162AB3B32309056400EF8225 /* KDExpressSelectView.m in Sources */,
 				1619AC5923084897003463C7 /* KDExpressRecordController.m in Sources */,
 				F465DE4E230454FF002DFD4C /* KDInfoCell.m in Sources */,
+				162AB3BF23092AE400EF8225 /* KDMessageBoardView.m in Sources */,
 				3D65BF9E23010BBB00B12F3D /* UIImage+Image.m in Sources */,
+				162AB3B9230919A200EF8225 /* KDTimeSelectView.m in Sources */,
 				3D65BF992301086A00B12F3D /* HCTNavigationController.m in Sources */,
 				F41C800E23081C1300DA1C2F /* ZJCustomHud.m in Sources */,
 				3D65BFC92301173E00B12F3D /* KDMailingVC.m in Sources */,
