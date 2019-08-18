@@ -10,6 +10,7 @@
 #import "KDInfoCell.h"
 #import "KDInfoModel.h"
 #import "KDLoginVC.h"
+#import "KDAboutAsVC.h"
 @interface KDMineVC ()<UITableViewDelegate,UITableViewDataSource>{
     UIScrollView* scrollowView;
 }
@@ -251,7 +252,15 @@
 
     return  kAdaptationWidth(45);
 }
-
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    //关于我们
+    if(indexPath.row == 5){
+        KDAboutAsVC* vc= [[KDAboutAsVC alloc]init];
+        vc.hidesBottomBarWhenPushed=YES;
+        [self.navigationController pushViewController:vc animated:YES];
+    }
+}
 -(void)loginTapClick{
     KDLoginVC* loginVC= [[KDLoginVC alloc]init];
     loginVC.hidesBottomBarWhenPushed=YES;

@@ -7,7 +7,8 @@
 //
 
 #import "KDLoginVC.h"
-
+#import "KDPhoneVC.h"
+#import "KDPhoneForPwdVC.h"
 @interface KDLoginVC ()
 @property (nonatomic,strong) UITextField *phoneTF;
 @property (nonatomic,strong) UITextField *pwdTF;
@@ -172,10 +173,12 @@
 }
 
 -(void)registerBtnClick{
-    
+    KDPhoneVC* phoneVC= [[KDPhoneVC alloc]init];
+    [self.navigationController pushViewController:phoneVC animated:YES];
 }
 -(void)forgetPwdBtnClick{
-    
+    KDPhoneForPwdVC* phoneVC= [[KDPhoneForPwdVC alloc]init];
+    [self.navigationController pushViewController:phoneVC animated:YES];
 }
 -(void)wxLoginBtnClick{
     
@@ -185,6 +188,10 @@
 }
 -(void)wbLoginBtnClick{
     
+}
+
+-(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
+    [self.view endEditing:YES];
 }
 -(void)setNav{
     self.titleView.type = TitleViewType_title;

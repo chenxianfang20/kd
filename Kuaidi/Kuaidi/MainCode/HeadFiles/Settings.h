@@ -16,4 +16,6 @@
 #import "UIView+YYAdd.h"
 #import "UIImage+Image.h"
 #import "UIColor+Tool.h"
+#import "NSString+Valid.h"
+#import "ZJCustomHud.h"
 #endif /* Settings_h */
