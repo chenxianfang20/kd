@@ -13,7 +13,7 @@
 
 #define PingFangMedium(fontSize) [UIFont fontWithName:@"PingFangSC-Medium" size: fontSize]
 #define PingFangBold(fontSize) [UIFont fontWithName:@"PingFangSC-Semibold" size: fontSize]
-
+#define PingFangRegular(fontSize) [UIFont fontWithName:@"PingFangSC-Regular" size: fontSize]
 
 /***********************适配相关****************************/
 
