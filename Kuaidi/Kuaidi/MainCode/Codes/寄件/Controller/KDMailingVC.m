@@ -118,9 +118,13 @@ KDTitleViewDelegate>
 
 - (void)createSubViews{
     
-    UIView *contentView = [[UIView alloc] initWithFrame:CGRectMake(0,NavibarH, kScreenWidth, kScreenRealHeight)];
+    UIView *contentView = [[UIView alloc] init];
     contentView.backgroundColor = rgb(250, 248, 248, 1);
     [self.view addSubview:contentView];
+    [contentView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.right.bottom.equalTo(self.view).offset(0);
+        make.top.equalTo(self.view).offset(NavibarH);
+    }];
     
     [contentView addSubview:[self bgView]];
     
