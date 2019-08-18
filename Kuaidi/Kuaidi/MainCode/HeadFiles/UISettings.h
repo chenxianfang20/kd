@@ -25,6 +25,8 @@
 
 
 #define kMainRedColor @"#DF2F31"
+
+#define kLeftX kAdaptationWidth(18)
 /**
  *   颜色                                    v
  */

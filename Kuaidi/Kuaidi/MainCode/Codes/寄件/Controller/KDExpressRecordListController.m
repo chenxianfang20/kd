@@ -7,7 +7,7 @@
 //
 
 #import "KDExpressRecordListController.h"
-#import "KDExpressRecordCell.h"
+//#import "KDExpressRecordCell.h"
 
 @interface KDExpressRecordListController ()< UITableViewDelegate, UITableViewDataSource>
 
@@ -54,11 +54,11 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    static NSString *const cellIdentifier = @"KDExpressRecordCell";
-    KDExpressRecordCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
-    if (cell == nil) {
-        cell = [[KDExpressRecordCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
-    }
-    return cell;
+//    static NSString *const cellIdentifier = @"KDExpressRecordCell";
+//    KDExpressRecordCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+//    if (cell == nil) {
+//        cell = [[KDExpressRecordCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
+//    }
+    return nil;
 }
 @end

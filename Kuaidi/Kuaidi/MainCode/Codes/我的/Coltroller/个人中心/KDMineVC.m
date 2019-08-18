@@ -11,6 +11,7 @@
 #import "KDInfoModel.h"
 #import "KDLoginVC.h"
 #import "KDAboutAsVC.h"
+#import "KDSetupVC.h"
 #import "KDAddressAdminVC.h"
 #import "KDExpressVC.h"
 #import "KDMailingScanVC.h"
@@ -273,12 +274,19 @@
         vc.hidesBottomBarWhenPushed=YES;
         [self.navigationController pushViewController:vc animated:YES];
     }
-    //常用
+    //常用快递
     if(indexPath.row == 2){
         KDExpressVC* vc= [[KDExpressVC alloc]init];
         vc.hidesBottomBarWhenPushed=YES;
         [self.navigationController pushViewController:vc animated:YES];
     }
+    //系统设置
+    if(indexPath.row == 3){
+        KDSetupVC* vc= [[KDSetupVC alloc]init];
+        vc.hidesBottomBarWhenPushed=YES;
+        [self.navigationController pushViewController:vc animated:YES];
+    }
+    
     //关于我们
     if(indexPath.row == 5){
         KDAboutAsVC* vc= [[KDAboutAsVC alloc]init];
