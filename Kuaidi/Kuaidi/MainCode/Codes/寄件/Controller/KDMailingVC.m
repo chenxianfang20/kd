@@ -56,7 +56,7 @@ KDTitleViewDelegate>
         _tipLabel.textColor = rgb(169, 169, 169, 1);
         _tipLabel.numberOfLines = 2;
         _tipLabel.textAlignment = NSTextAlignmentCenter;
-        _tipLabel.font = [UIFont fontWithName:@"PingFang SC" size: 13];
+        _tipLabel.font = PingFangMedium(13);
     }
     return _tipLabel;
 }

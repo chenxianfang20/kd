@@ -42,7 +42,7 @@
     UILabel *feeTitleLabel = [[UILabel alloc] init];
     feeTitleLabel.text = @"预计运费：";
     feeTitleLabel.textColor = rgb(11, 11, 11, 1);
-    feeTitleLabel.font = [UIFont fontWithName:@"PingFang SC" size: 15];
+    feeTitleLabel.font = PingFangMedium(15);
     [self addSubview:feeTitleLabel];
     [feeTitleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self).offset(18);
@@ -53,7 +53,7 @@
     UILabel *feeValueLabel = [[UILabel alloc] init];
     feeValueLabel.text = @"¥8.0";
     feeValueLabel.textColor = rgb(223, 47, 49, 1);
-    feeValueLabel.font = [UIFont fontWithName:@"PingFang-SC-Heavy" size: 15];
+    feeValueLabel.font = [UIFont fontWithName:@"PingFangSC-Heavy" size: 15];
     [self addSubview:feeValueLabel];
     [feeValueLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(feeTitleLabel.mas_right).offset(0);
@@ -63,7 +63,7 @@
 
     UIButton *orderButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [orderButton setTitle:@"立即下单" forState:UIControlStateNormal];
-    orderButton.titleLabel.font = [UIFont fontWithName:@"PingFang SC" size: 15];
+    orderButton.titleLabel.font = PingFangBold(15);
     [self selectButtonConvert:orderButton];
     orderButton.layer.cornerRadius = 21;
     [self addSubview:orderButton];

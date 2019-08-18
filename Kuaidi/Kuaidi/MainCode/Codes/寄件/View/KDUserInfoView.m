@@ -43,7 +43,7 @@
     self.nameLabel = nameLabel;
     nameLabel.text = @"刘德华";
     nameLabel.textColor = rgb(11, 11, 11, 1);
-    nameLabel.font = [UIFont fontWithName:@"PingFang SC" size: 14];
+    nameLabel.font = PingFangBold(14);
     [self  addSubview:nameLabel];
     [nameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self).offset(18);
@@ -56,7 +56,7 @@
     phoneLabel.text = @"150 1358 1358";
     phoneLabel.textColor = rgb(11, 11, 11, 1);
     phoneLabel.textAlignment = NSTextAlignmentRight;
-    phoneLabel.font = [UIFont fontWithName:@"PingFang SC" size: 16];
+    phoneLabel.font = PingFangBold(16);
     [self addSubview:phoneLabel];
     [phoneLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self).offset(19);
@@ -69,7 +69,7 @@
     addressLabel.text = @"广东省 深圳市 龙岗区 横岗街道大运软件小镇大运软件小镇01栋";
     addressLabel.textColor = rgb(169, 169, 169, 1);
     addressLabel.numberOfLines = 0;
-    addressLabel.font = [UIFont fontWithName:@"PingFang SC" size: 14];
+    addressLabel.font = PingFangMedium(14);
     [self addSubview:addressLabel];
     [addressLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(nameLabel.mas_bottom).offset(10);
@@ -93,7 +93,7 @@
     holderLabel.hidden = YES;
     self.holderLabel = holderLabel;
     holderLabel.textColor = rgb(206, 206, 206, 1.0);
-    holderLabel.font = [UIFont fontWithName:@"PingFang SC" size: 15];
+    holderLabel.font = PingFangMedium(15);
     [self addSubview:holderLabel];
     [holderLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self).offset(0);

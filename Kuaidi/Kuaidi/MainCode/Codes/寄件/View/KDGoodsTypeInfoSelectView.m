@@ -80,7 +80,7 @@
     UILabel *titleLabel = [[UILabel alloc] init];
     titleLabel.text = @"物品信息";
     titleLabel.textColor = rgb(92, 92, 92, 1);
-    titleLabel.font =  [UIFont fontWithName:@"PingFang SC" size: 18];
+    titleLabel.font = PingFangBold(18);
     [self addSubview:titleLabel];
     [titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self).offset(19);
@@ -101,7 +101,7 @@
     UILabel *goodsTitleLabel = [[UILabel alloc] init];
     goodsTitleLabel.text = @"物品类型（必填）";
     goodsTitleLabel.textColor = rgb(11, 11, 11, 1);
-    goodsTitleLabel.font = [UIFont fontWithName:@"PingFang SC" size: 15];
+    goodsTitleLabel.font = PingFangBold(15);
     [self addSubview:goodsTitleLabel];
     [goodsTitleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self).offset(18);
@@ -112,7 +112,7 @@
     UIButton *notSendTipBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [notSendTipBtn setTitle:@"什么不能寄？" forState:UIControlStateNormal];
     [notSendTipBtn setTitleColor:rgb(49, 191, 189, 1) forState:UIControlStateNormal];
-    notSendTipBtn.titleLabel.font = [UIFont fontWithName:@"PingFang SC" size: 14];
+    notSendTipBtn.titleLabel.font = PingFangBold(14);
     [self addSubview:notSendTipBtn];
     [notSendTipBtn mas_makeConstraints:^(MASConstraintMaker *make) {
         make.right.equalTo(self).offset(-18);
@@ -129,7 +129,7 @@
         
         UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
         [button setTitle:self.titles[i] forState:UIControlStateNormal];
-        button.titleLabel.font = [UIFont fontWithName:@"PingFang SC" size: 13];
+        button.titleLabel.font = PingFangMedium(13);
         button.layer.borderWidth = 1;
         button.layer.cornerRadius = 4;
         button.selected = (i == 0);
@@ -147,7 +147,7 @@
     UILabel *weightTitleLabel = [[UILabel alloc] init];
     weightTitleLabel.text = @"物品重量（必填）";
     weightTitleLabel.textColor = rgb(11, 11, 11, 1);
-    weightTitleLabel.font = [UIFont fontWithName:@"PingFang SC" size: 15];
+    weightTitleLabel.font = PingFangBold(15);
     [self addSubview:weightTitleLabel];
     [weightTitleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self).offset(18);
@@ -158,7 +158,7 @@
     UILabel *pictrueTitleLabel = [[UILabel alloc] init];
     pictrueTitleLabel.text = @"物品拍照（选填）";
     pictrueTitleLabel.textColor = rgb(11, 11, 11, 1);
-    pictrueTitleLabel.font = [UIFont fontWithName:@"PingFang SC" size: 15];
+    pictrueTitleLabel.font = PingFangBold(15);
     [self addSubview:pictrueTitleLabel];
     [pictrueTitleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self).offset(18);
@@ -169,7 +169,7 @@
     UILabel *unitLabel = [[UILabel alloc] init];
     unitLabel.text = @"公斤";
     unitLabel.textColor = rgb(92, 92, 92, 1);
-    unitLabel.font = [UIFont fontWithName:@"PingFang SC" size: 15];
+    unitLabel.font = PingFangBold(15);
     [self addSubview:unitLabel];
     [unitLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.right.equalTo(self).offset(-18);
@@ -190,7 +190,7 @@
     countLabel.text = @"30";
     countLabel.textAlignment = NSTextAlignmentCenter;
     countLabel.textColor = rgb(11, 11, 11, 1);
-    countLabel.font = [UIFont fontWithName:@"PingFang SC" size: 20];
+    countLabel.font = PingFangBold(20);
     [self addSubview:countLabel];
     [countLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.right.equalTo(addButton.mas_left).offset(0);
@@ -221,7 +221,7 @@
     tipLabel.text = @"照片可以帮助快递小哥判断物品的大小以及选择合适的运输工具。";
     tipLabel.textColor = rgb(169, 169, 169, 1);
     tipLabel.numberOfLines = 0;
-    tipLabel.font = [UIFont fontWithName:@"PingFang SC" size: 13];
+    tipLabel.font = PingFangMedium(13);
     [self addSubview:tipLabel];
     [tipLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(addImageButton.mas_right).offset(19);
@@ -234,7 +234,7 @@
     confirmButton.layer.cornerRadius = 24;
     [confirmButton setTitle:@"确定" forState:UIControlStateNormal];
     [confirmButton setTitleColor:rgb(255, 255, 255, 1) forState:UIControlStateNormal];
-    confirmButton.titleLabel.font = [UIFont fontWithName:@"PingFang SC" size: 15];
+    confirmButton.titleLabel.font = PingFangBold(15);
     [self addSubview:confirmButton];
     [confirmButton mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self).offset(18);
