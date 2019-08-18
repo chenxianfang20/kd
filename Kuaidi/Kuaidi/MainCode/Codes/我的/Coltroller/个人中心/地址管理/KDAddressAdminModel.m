@@ -9,5 +9,12 @@
 #import "KDAddressAdminModel.h"
 
 @implementation KDAddressAdminModel
++(instancetype)ModelWithDict:(NSDictionary*)dict{
+    KDAddressAdminModel* model=[[self alloc]init];
+    model.name=dict[@"name"];
+    model.phone=dict[@"phone"];
+    model.address=dict[@"address"];
+    return model;
+}
 
 @end

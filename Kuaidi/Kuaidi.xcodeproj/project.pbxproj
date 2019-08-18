@@ -126,6 +126,10 @@
 		F465DE4C230454FF002DFD4C /* KDInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F465DE48230454FE002DFD4C /* KDInfoModel.m */; };
 		F465DE4D230454FF002DFD4C /* KDMineVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F465DE49230454FE002DFD4C /* KDMineVC.m */; };
 		F465DE4E230454FF002DFD4C /* KDInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F465DE4A230454FE002DFD4C /* KDInfoCell.m */; };
+		F4C3083C2309351E00CF65CA /* KDAddressAdminVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F4C3083B2309351E00CF65CA /* KDAddressAdminVC.m */; };
+		F4C3083F230935F400CF65CA /* KDAddressAdminModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F4C3083E230935F400CF65CA /* KDAddressAdminModel.m */; };
+		F4C30842230936CC00CF65CA /* KDAddressAdminCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F4C30841230936CC00CF65CA /* KDAddressAdminCell.m */; };
+		F4C30846230942F900CF65CA /* KDExpressVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F4C30845230942F900CF65CA /* KDExpressVC.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -317,6 +321,14 @@
 		F465DE48230454FE002DFD4C /* KDInfoModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KDInfoModel.m; sourceTree = "<group>"; };
 		F465DE49230454FE002DFD4C /* KDMineVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KDMineVC.m; sourceTree = "<group>"; };
 		F465DE4A230454FE002DFD4C /* KDInfoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KDInfoCell.m; sourceTree = "<group>"; };
+		F4C3083A2309351E00CF65CA /* KDAddressAdminVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KDAddressAdminVC.h; sourceTree = "<group>"; };
+		F4C3083B2309351E00CF65CA /* KDAddressAdminVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KDAddressAdminVC.m; sourceTree = "<group>"; };
+		F4C3083D230935F400CF65CA /* KDAddressAdminModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KDAddressAdminModel.h; sourceTree = "<group>"; };
+		F4C3083E230935F400CF65CA /* KDAddressAdminModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KDAddressAdminModel.m; sourceTree = "<group>"; };
+		F4C30840230936CB00CF65CA /* KDAddressAdminCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KDAddressAdminCell.h; sourceTree = "<group>"; };
+		F4C30841230936CC00CF65CA /* KDAddressAdminCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KDAddressAdminCell.m; sourceTree = "<group>"; };
+		F4C30844230942F900CF65CA /* KDExpressVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KDExpressVC.h; sourceTree = "<group>"; };
+		F4C30845230942F900CF65CA /* KDExpressVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KDExpressVC.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -847,6 +859,8 @@
 		F465DE44230454FE002DFD4C /* 个人中心 */ = {
 			isa = PBXGroup;
 			children = (
+				F4C308432309429E00CF65CA /* 常用快递 */,
+				F4C30839230934A100CF65CA /* 地址管理 */,
 				F419CD5F2308658100553E29 /* 关于我们 */,
 				F465DE46230454FE002DFD4C /* KDMineVC.h */,
 				F465DE49230454FE002DFD4C /* KDMineVC.m */,
@@ -856,6 +870,28 @@
 				F465DE4A230454FE002DFD4C /* KDInfoCell.m */,
 			);
 			path = "个人中心";
+			sourceTree = "<group>";
+		};
+		F4C30839230934A100CF65CA /* 地址管理 */ = {
+			isa = PBXGroup;
+			children = (
+				F4C3083A2309351E00CF65CA /* KDAddressAdminVC.h */,
+				F4C3083B2309351E00CF65CA /* KDAddressAdminVC.m */,
+				F4C30840230936CB00CF65CA /* KDAddressAdminCell.h */,
+				F4C30841230936CC00CF65CA /* KDAddressAdminCell.m */,
+				F4C3083D230935F400CF65CA /* KDAddressAdminModel.h */,
+				F4C3083E230935F400CF65CA /* KDAddressAdminModel.m */,
+			);
+			path = "地址管理";
+			sourceTree = "<group>";
+		};
+		F4C308432309429E00CF65CA /* 常用快递 */ = {
+			isa = PBXGroup;
+			children = (
+				F4C30844230942F900CF65CA /* KDExpressVC.h */,
+				F4C30845230942F900CF65CA /* KDExpressVC.m */,
+			);
+			path = "常用快递";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1119,12 +1155,14 @@
 				F465DE4E230454FF002DFD4C /* KDInfoCell.m in Sources */,
 				3D65BF9E23010BBB00B12F3D /* UIImage+Image.m in Sources */,
 				3D65BF992301086A00B12F3D /* HCTNavigationController.m in Sources */,
+				F4C30846230942F900CF65CA /* KDExpressVC.m in Sources */,
 				F41C800E23081C1300DA1C2F /* ZJCustomHud.m in Sources */,
 				3D65BFC92301173E00B12F3D /* KDMailingVC.m in Sources */,
 				1619AC532307FDD2003463C7 /* KDGoodsInfoCell.m in Sources */,
 				F427C4EA2308590E0023D48B /* KDPhoneForPwdVC.m in Sources */,
 				F465DE4C230454FF002DFD4C /* KDInfoModel.m in Sources */,
 				3D65BF9A2301086A00B12F3D /* HCTTabbarController.m in Sources */,
+				F4C3083C2309351E00CF65CA /* KDAddressAdminVC.m in Sources */,
 				3D65BF952301086A00B12F3D /* RootCustomView.m in Sources */,
 				163588032307A3340017F510 /* KDAddressInfoView.m in Sources */,
 				F419CD5E2308610800553E29 /* KDResetLoginPwdVC.m in Sources */,
@@ -1139,9 +1177,11 @@
 				F41BCCA32308249900BCD691 /* KDLoginPwdVC.m in Sources */,
 				163AE1862305A62A00B16015 /* KDTitleView.m in Sources */,
 				F419CD62230865B700553E29 /* KDAboutAsVC.m in Sources */,
+				F4C3083F230935F400CF65CA /* KDAddressAdminModel.m in Sources */,
 				3D65BFC32301169500B12F3D /* UIView+YYAdd.m in Sources */,
 				F41BCCB223082A1200BCD691 /* UIButton+EnlargeTouchArea.m in Sources */,
 				3D65BF4E230102F700B12F3D /* main.m in Sources */,
+				F4C30842230936CC00CF65CA /* KDAddressAdminCell.m in Sources */,
 				1635880C2307E1960017F510 /* KDGoodsInfoFooterView.m in Sources */,
 				F41C801623081D2F00DA1C2F /* KDCodeVC.m in Sources */,
 				3D65BF922301086A00B12F3D /* RootViewController.m in Sources */,

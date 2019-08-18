@@ -20,12 +20,11 @@
     
     self.view.backgroundColor = rgb(245, 245, 245, 1);
     self.titleView.type = TitleViewType_title;
-    
+    [self.navigationController.navigationBar setBarStyle:UIBarStyleBlack];
     
     self.navigationController.navigationBar.barStyle = UIBarStyleBlackTranslucent;
     
     self.navigationController.navigationBar.hidden = YES;
-    
     if (!_nav) {
         _nav = [[UIView alloc]initWithFrame:CGRectMake(0, 0, kScreenWidth, NavibarH)];
         _nav.backgroundColor = [UIColor whiteColor];
@@ -97,6 +96,7 @@
 -(void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault];
     
     
     
@@ -108,7 +108,7 @@
 
 -(UIStatusBarStyle)preferredStatusBarStyle
 {
-    return UIStatusBarStyleLightContent;
+    return UIStatusBarStyleDefault;
 }
 
 @end

@@ -37,14 +37,14 @@
     redBgView.backgroundColor=[UIColor redColor];
     [topBgView addSubview:redBgView];
     //标题
-    UILabel* titleLabel=[[UILabel alloc]initWithFrame:CGRectMake(0, kAdaptationWidth(15), kAdaptationWidth(267), 20)];
+    UILabel* titleLabel=[[UILabel alloc]initWithFrame:CGRectMake(0, kAdaptationWidth(18), kAdaptationWidth(267), 20)];
     titleLabel.text=@"微信扫一扫 直接寄快递";
     titleLabel.textColor=[UIColor whiteColor];
-    titleLabel.font =[UIFont fontWithName:@"PingFang SC" size: 18];
+    titleLabel.font =PingFangBold(18);
     titleLabel.textAlignment=NSTextAlignmentCenter;
     [topBgView addSubview:titleLabel];
     
-    UIView* whiteScanBgView =[[UIView alloc]initWithFrame:CGRectMake(kAdaptationWidth(41), titleLabel.bottom+kAdaptationWidth(10), kAdaptationWidth(186), kAdaptationWidth(186))];
+    UIView* whiteScanBgView =[[UIView alloc]initWithFrame:CGRectMake(kAdaptationWidth(41), titleLabel.bottom+kAdaptationWidth(14), kAdaptationWidth(186), kAdaptationWidth(186))];
     whiteScanBgView.backgroundColor=[UIColor whiteColor];
     [topBgView addSubview:whiteScanBgView];
     
@@ -52,7 +52,7 @@
     UILabel* desLabel=[[UILabel alloc]initWithFrame:CGRectMake(0, redBgView.bottom+ kAdaptationWidth(8), kAdaptationWidth(267), 43)];
     desLabel.text=@"扫码后填写你的收件地址，我就\n可以给你寄快递了！";
     desLabel.textColor=[UIColor colorWithHex:@"#5C5C5C"];
-    desLabel.font =[UIFont fontWithName:@"PingFang SC" size: 14];
+    desLabel.font =PingFangRegular(14);
     desLabel.textAlignment=NSTextAlignmentCenter;
     desLabel.numberOfLines=0;
     [topBgView addSubview:desLabel];
@@ -66,12 +66,51 @@
     UILabel* bottomDesLabel=[[UILabel alloc]initWithFrame:CGRectMake(0, sepLabel.bottom+ kAdaptationWidth(2), kAdaptationWidth(267), 43)];
     bottomDesLabel.text=@"由快递么提供技术支持";
     bottomDesLabel.textColor=[UIColor colorWithHex:@"#A9A9A9"];
-    bottomDesLabel.font =[UIFont fontWithName:@"PingFang SC" size: 13];
+    bottomDesLabel.font =PingFangMedium(13);
     bottomDesLabel.textAlignment=NSTextAlignmentCenter;
     [topBgView addSubview:bottomDesLabel];
     
+    UIButton*  saveScanImgBtn = [[UIButton alloc]initWithFrame:CGRectMake(topBgView.left, topBgView.bottom+4, topBgView.width, kAdaptationWidth(45))];
+    [saveScanImgBtn setTitle:@"保存二维码" forState:UIControlStateNormal];
+    [saveScanImgBtn setTitleColor:[UIColor colorWithHex:kMainRedColor]  forState:UIControlStateNormal];
+    saveScanImgBtn.titleLabel.font = PingFangBold(18);
+    [scrollowView addSubview:saveScanImgBtn];
+    
+    //底部寄件地址
+    UILabel* addressTitleLabel=[[UILabel alloc]initWithFrame:CGRectMake(kAdaptationWidth(54), saveScanImgBtn.bottom+ kAdaptationWidth(22), kAdaptationWidth(180), 15)];
+    addressTitleLabel.text=@"默认寄件地址：";
+    addressTitleLabel.textColor=rgb(80, 80, 80, 1);
+    addressTitleLabel.font =PingFangMedium(15);
+    [scrollowView addSubview:addressTitleLabel];
+    
+    UIView* adressBgView =[[UIView alloc]initWithFrame:CGRectMake(kAdaptationWidth(54), addressTitleLabel.bottom+10, kAdaptationWidth(267), kAdaptationWidth(95))];
+    adressBgView.backgroundColor=[UIColor whiteColor];
+    adressBgView.layer.cornerRadius=8.0f;
+    adressBgView.layer.masksToBounds=YES;
+    [scrollowView addSubview:adressBgView];
+    scrollowView.contentSize= CGSizeMake(kScreenWidth, adressBgView.bottom+8);
+    
+    UIImageView* leftImgView = [[UIImageView alloc]initWithFrame:CGRectMake(kAdaptationWidth(18), kAdaptationWidth(38), kAdaptationWidth(18), kAdaptationWidth(18))];
+    leftImgView.image = [UIImage imageNamed:@"图标-寄件人"];
+    [adressBgView addSubview:leftImgView];
+    
+    UIImageView* rightImgView = [[UIImageView alloc]initWithFrame:CGRectMake(kAdaptationWidth(231), kAdaptationWidth(38), kAdaptationWidth(18), kAdaptationWidth(18))];
+    rightImgView.image = [UIImage imageNamed:@"图标-通讯录"];
+    [adressBgView addSubview:rightImgView];
     
     
+    UILabel* infoLabel=[[UILabel alloc]initWithFrame:CGRectMake(kAdaptationWidth(54), kAdaptationWidth(18), kAdaptationWidth(220), 15)];
+    infoLabel.text=@"刘德华  15089754936";
+    infoLabel.textColor=[UIColor colorWithHex:@"#0B0B0B"];
+    infoLabel.font =PingFangMedium(15);
+    [adressBgView addSubview:infoLabel];
+    
+    UILabel* addressLabel=[[UILabel alloc]initWithFrame:CGRectMake(kAdaptationWidth(54),infoLabel.bottom+ kAdaptationWidth(8), kAdaptationWidth(160), 40)];
+    addressLabel.text=@"广东省深圳市龙岗区横岗街道大运软件小镇大运中心";
+    addressLabel.textColor=[UIColor colorWithHex:@"#A9A9A9"];
+    addressLabel.font =PingFangMedium(13);
+    [adressBgView addSubview:addressLabel];
+    addressLabel.numberOfLines=0;
     
     //底部分享按钮
     UIView* shareBgView =[[UIView alloc]initWithFrame:CGRectMake(0, kScreenHeight-kAdaptationWidth(90), kScreenWidth, kAdaptationWidth(90))];

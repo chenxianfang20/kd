@@ -31,22 +31,22 @@
     UILabel* titleLabel=[[UILabel alloc]initWithFrame:CGRectMake(0,NavibarH+ kAdaptationWidth(42), kScreenWidth, 30)];
     titleLabel.text=@"请设置登录密码";
     titleLabel.textColor=[UIColor colorWithHex:@"#0B0B0B"];
-    titleLabel.font =[UIFont fontWithName:@"PingFang SC" size: 30];
+    titleLabel.font =PingFangBold(30);
     titleLabel.textAlignment=NSTextAlignmentCenter;
     [self.view addSubview:titleLabel];
     
     //副标题
-    UILabel* desLabel=[[UILabel alloc]initWithFrame:CGRectMake(0,titleLabel.bottom+ kAdaptationWidth(6), kScreenWidth, 30)];
+    UILabel* desLabel=[[UILabel alloc]initWithFrame:CGRectMake(0,titleLabel.bottom, kScreenWidth, 30)];
     desLabel.text=@"密码长度不小于6位";
     desLabel.textColor=[UIColor colorWithHex:@"#A9A9A9"];
-    desLabel.font =[UIFont fontWithName:@"PingFang SC" size: 15];
+    desLabel.font =PingFangMedium(15);
     desLabel.textAlignment=NSTextAlignmentCenter;
     [self.view addSubview:desLabel];
     
     self.pwdTF=[[UITextField alloc]initWithFrame:CGRectMake(kAdaptationWidth(36), desLabel.bottom+ kAdaptationWidth(45), kAdaptationWidth(303), kAdaptationWidth(50))];
     self.pwdTF.secureTextEntry=YES;
     self.pwdTF.textColor=[UIColor colorWithHex:@"#DF2F31"];
-    self.pwdTF.font= [UIFont fontWithName:@"PingFang SC" size: 24];
+    self.pwdTF.font= PingFangBold(25);
     self.pwdTF.placeholder=@"请输入登录密码";
     [self.pwdTF setValue: [UIFont fontWithName:@"PingFang-SC-Medium" size: 15] forKeyPath:@"_placeholderLabel.font"];
     [self.view addSubview:self.pwdTF];

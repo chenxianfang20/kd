@@ -30,15 +30,15 @@
     UILabel* titleLabel=[[UILabel alloc]initWithFrame:CGRectMake(0,NavibarH+ kAdaptationWidth(42), kScreenWidth, 30)];
     titleLabel.text=@"请输入短信验证";
     titleLabel.textColor=[UIColor colorWithHex:@"#0B0B0B"];
-    titleLabel.font =[UIFont fontWithName:@"PingFang SC" size: 30];
+    titleLabel.font =PingFangBold(30);
     titleLabel.textAlignment=NSTextAlignmentCenter;
     [self.view addSubview:titleLabel];
     
     //副标题
-    UILabel* desLabel=[[UILabel alloc]initWithFrame:CGRectMake(0,titleLabel.bottom+ kAdaptationWidth(6), kScreenWidth, 30)];
+    UILabel* desLabel=[[UILabel alloc]initWithFrame:CGRectMake(0,titleLabel.bottom, kScreenWidth, 30)];
     desLabel.text=[NSString stringWithFormat:@"验证码已经发送至：%@",self.phoneStr];
     desLabel.textColor=[UIColor colorWithHex:@"#A9A9A9"];
-    desLabel.font =[UIFont fontWithName:@"PingFang SC" size: 15];
+    desLabel.font =PingFangMedium(15);
     desLabel.textAlignment=NSTextAlignmentCenter;
     [self.view addSubview:desLabel];
     
@@ -56,7 +56,7 @@
     CRBoxInputCellProperty *cellProperty = [CRBoxInputCellProperty new];
     cellProperty.showLine = YES; //必需
     cellProperty.borderWidth=0;
-    cellProperty.cellFont=[UIFont fontWithName:@"PingFang SC" size: 30];
+    cellProperty.cellFont=PingFangBold(30);
     cellProperty.cellTextColor=[UIColor colorWithHex:@"#DF2F31"];
     cellProperty.customLineViewBlock = ^CRLineView * _Nonnull{
         CRLineView *lineView = [CRLineView new];

@@ -22,6 +22,9 @@
 #define kAdaptationFont(size) ([UIFont systemFontOfSize:size * kScale])
 #define kAdaptationBoldFont(size) ([UIFont boldSystemFontOfSize:size * kScale])
 #define kAdaptationWidth(a) (a  * kScale)
+
+
+#define kMainRedColor @"#DF2F31"
 /**
  *   颜色                                    v
  */

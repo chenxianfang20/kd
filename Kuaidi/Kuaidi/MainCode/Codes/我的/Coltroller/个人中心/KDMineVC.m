@@ -11,6 +11,8 @@
 #import "KDInfoModel.h"
 #import "KDLoginVC.h"
 #import "KDAboutAsVC.h"
+#import "KDAddressAdminVC.h"
+#import "KDExpressVC.h"
 #import "KDMailingScanVC.h"
 @interface KDMineVC ()<UITableViewDelegate,UITableViewDataSource>{
     UIScrollView* scrollowView;
@@ -264,6 +266,19 @@
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
+    
+    //地址管理
+    if(indexPath.row == 1){
+        KDAddressAdminVC* vc= [[KDAddressAdminVC alloc]init];
+        vc.hidesBottomBarWhenPushed=YES;
+        [self.navigationController pushViewController:vc animated:YES];
+    }
+    //常用
+    if(indexPath.row == 2){
+        KDExpressVC* vc= [[KDExpressVC alloc]init];
+        vc.hidesBottomBarWhenPushed=YES;
+        [self.navigationController pushViewController:vc animated:YES];
+    }
     //关于我们
     if(indexPath.row == 5){
         KDAboutAsVC* vc= [[KDAboutAsVC alloc]init];

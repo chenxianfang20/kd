@@ -8,10 +8,14 @@
 
 #import <Foundation/Foundation.h>
 
-NS_ASSUME_NONNULL_BEGIN
+
 
 @interface KDAddressAdminModel : NSObject
 
+@property (nonatomic,strong) NSString *name;
+@property (nonatomic,strong) NSString *phone;
+@property (nonatomic,strong) NSString *address;
++(instancetype)ModelWithDict:(NSDictionary*)dict;
 @end
 
-NS_ASSUME_NONNULL_END
+

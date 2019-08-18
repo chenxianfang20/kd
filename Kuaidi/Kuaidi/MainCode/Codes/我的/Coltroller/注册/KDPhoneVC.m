@@ -33,21 +33,21 @@
     UILabel* titleLabel=[[UILabel alloc]initWithFrame:CGRectMake(0,NavibarH+ kAdaptationWidth(42), kScreenWidth, 30)];
     titleLabel.text=@"请输入手机号码";
     titleLabel.textColor=[UIColor colorWithHex:@"#0B0B0B"];
-    titleLabel.font =[UIFont fontWithName:@"PingFang SC" size: 30];
+    titleLabel.font =PingFangBold(30);
     titleLabel.textAlignment=NSTextAlignmentCenter;
     [self.view addSubview:titleLabel];
     
     //副标题
-    UILabel* desLabel=[[UILabel alloc]initWithFrame:CGRectMake(0,titleLabel.bottom+ kAdaptationWidth(6), kScreenWidth, 30)];
+    UILabel* desLabel=[[UILabel alloc]initWithFrame:CGRectMake(0,titleLabel.bottom, kScreenWidth, 30)];
     desLabel.text=@"中国（+86）";
     desLabel.textColor=[UIColor colorWithHex:@"#A9A9A9"];
-    desLabel.font =[UIFont fontWithName:@"PingFang SC" size: 15];
+    desLabel.font =PingFangMedium(15) ;
     desLabel.textAlignment=NSTextAlignmentCenter;
     [self.view addSubview:desLabel];
     
     self.phoneTF=[[UITextField alloc]initWithFrame:CGRectMake(kAdaptationWidth(36), desLabel.bottom+ kAdaptationWidth(62), kAdaptationWidth(303), kAdaptationWidth(50))];
-    self.phoneTF.textColor=[UIColor colorWithHex:@"#DF2F31"];
-    self.phoneTF.font= [UIFont fontWithName:@"PingFang SC" size: 24];
+    self.phoneTF.textColor=[UIColor colorWithHex:kMainRedColor];
+    self.phoneTF.font= PingFangBold(25);
     self.phoneTF.placeholder=@"请输入手机号码";
     self.phoneTF.keyboardType=UIKeyboardTypeNumberPad;
     [self.phoneTF setValue: [UIFont fontWithName:@"PingFang-SC-Medium" size: 15] forKeyPath:@"_placeholderLabel.font"];
@@ -56,7 +56,7 @@
     [self.phoneTF addTarget:self action:@selector(phoneTFChanged:) forControlEvents:UIControlEventEditingChanged];
     
     UILabel* sepLabel = [[UILabel alloc]initWithFrame:CGRectMake(kAdaptationWidth(36), _phoneTF.bottom, kAdaptationWidth(303), 1)];
-    sepLabel.backgroundColor=[UIColor colorWithHex:@"#DF2F31"];
+    sepLabel.backgroundColor=[UIColor colorWithHex:kMainRedColor];
     [self.view addSubview:sepLabel];
     
     //下一步

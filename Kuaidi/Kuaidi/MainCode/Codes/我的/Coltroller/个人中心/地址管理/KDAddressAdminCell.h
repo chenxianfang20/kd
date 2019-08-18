@@ -8,10 +8,14 @@
 
 #import "RootCustomCell.h"
 
-NS_ASSUME_NONNULL_BEGIN
-
+#import "KDAddressAdminModel.h"
+typedef void(^EditBtnBlock)(void);
+typedef void(^DeleteBtnBlock) (void);
 @interface KDAddressAdminCell : RootCustomCell
+@property (nonatomic,strong) KDAddressAdminModel *model;
 
+@property (nonatomic,copy) EditBtnBlock  editBtnBlock;
+@property (nonatomic,copy) DeleteBtnBlock  deleteBtnBlock;
 @end
 
-NS_ASSUME_NONNULL_END
+
