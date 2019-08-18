@@ -35,6 +35,30 @@
 		3D65BFC92301173E00B12F3D /* KDMailingVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D65BFC82301173E00B12F3D /* KDMailingVC.m */; };
 		3D65BFCF2301179300B12F3D /* KDCheckPieceVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D65BFCE2301179300B12F3D /* KDCheckPieceVC.m */; };
 		3D65BFEC23016F4400B12F3D /* UIColor+Tool.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D65BFEB23016F4400B12F3D /* UIColor+Tool.m */; };
+		F419CD5B2308603600553E29 /* KDCodeForPwdVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F419CD5A2308603600553E29 /* KDCodeForPwdVC.m */; };
+		F419CD5E2308610800553E29 /* KDResetLoginPwdVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F419CD5D2308610800553E29 /* KDResetLoginPwdVC.m */; };
+		F419CD62230865B700553E29 /* KDAboutAsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F419CD61230865B700553E29 /* KDAboutAsVC.m */; };
+		F419CD652308669700553E29 /* 关于-图片@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F419CD632308669700553E29 /* 关于-图片@2x.png */; };
+		F419CD662308669700553E29 /* 关于-图片@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F419CD642308669700553E29 /* 关于-图片@3x.png */; };
+		F41BCCA32308249900BCD691 /* KDLoginPwdVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F41BCCA22308249900BCD691 /* KDLoginPwdVC.m */; };
+		F41BCCAA2308298400BCD691 /* 注册-图标-未选@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F41BCCA42308298000BCD691 /* 注册-图标-未选@2x.png */; };
+		F41BCCAB2308298400BCD691 /* 注册-图标-未选@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F41BCCA52308298100BCD691 /* 注册-图标-未选@3x.png */; };
+		F41BCCAC2308298400BCD691 /* 注册-图标-开眼@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F41BCCA62308298200BCD691 /* 注册-图标-开眼@2x.png */; };
+		F41BCCAD2308298400BCD691 /* 注册-图标-选中@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F41BCCA72308298200BCD691 /* 注册-图标-选中@3x.png */; };
+		F41BCCAE2308298400BCD691 /* 注册-图标-选中@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F41BCCA82308298300BCD691 /* 注册-图标-选中@2x.png */; };
+		F41BCCAF2308298400BCD691 /* 注册-图标-开眼@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F41BCCA92308298300BCD691 /* 注册-图标-开眼@3x.png */; };
+		F41BCCB223082A1200BCD691 /* UIButton+EnlargeTouchArea.m in Sources */ = {isa = PBXBuildFile; fileRef = F41BCCB023082A1100BCD691 /* UIButton+EnlargeTouchArea.m */; };
+		F41C800123081BDA00DA1C2F /* 注册-图标-后退@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F41C7FFD23081BDA00DA1C2F /* 注册-图标-后退@2x.png */; };
+		F41C800223081BDA00DA1C2F /* 注册-图标-后退@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F41C7FFE23081BDA00DA1C2F /* 注册-图标-后退@3x.png */; };
+		F41C800323081BDA00DA1C2F /* 图标-清除@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F41C7FFF23081BDA00DA1C2F /* 图标-清除@2x.png */; };
+		F41C800423081BDA00DA1C2F /* 图标-清除@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F41C800023081BDA00DA1C2F /* 图标-清除@3x.png */; };
+		F41C800723081C0300DA1C2F /* NSString+Valid.m in Sources */ = {isa = PBXBuildFile; fileRef = F41C800623081C0300DA1C2F /* NSString+Valid.m */; };
+		F41C800D23081C1300DA1C2F /* 成功图片@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F41C800A23081C1300DA1C2F /* 成功图片@2x.png */; };
+		F41C800E23081C1300DA1C2F /* ZJCustomHud.m in Sources */ = {isa = PBXBuildFile; fileRef = F41C800B23081C1300DA1C2F /* ZJCustomHud.m */; };
+		F41C800F23081C1300DA1C2F /* 失败图片@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F41C800C23081C1300DA1C2F /* 失败图片@2x.png */; };
+		F41C801523081D2F00DA1C2F /* KDPhoneVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F41C801223081D2F00DA1C2F /* KDPhoneVC.m */; };
+		F41C801623081D2F00DA1C2F /* KDCodeVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F41C801323081D2F00DA1C2F /* KDCodeVC.m */; };
+		F427C4EA2308590E0023D48B /* KDPhoneForPwdVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F427C4E92308590E0023D48B /* KDPhoneForPwdVC.m */; };
 		F465DE05230454B9002DFD4C /* 图标-后退@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F465DDC7230454B9002DFD4C /* 图标-后退@2x.png */; };
 		F465DE06230454B9002DFD4C /* 登录-背景@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F465DDC8230454B9002DFD4C /* 登录-背景@3x.png */; };
 		F465DE07230454B9002DFD4C /* 图标-账号@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F465DDC9230454B9002DFD4C /* 图标-账号@2x.png */; };
@@ -182,6 +206,40 @@
 		3D65BFEB23016F4400B12F3D /* UIColor+Tool.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Tool.m"; sourceTree = "<group>"; };
 		6A402E0BE0DC5701A3D49873 /* Pods-Kuaidi.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Kuaidi.release.xcconfig"; path = "Target Support Files/Pods-Kuaidi/Pods-Kuaidi.release.xcconfig"; sourceTree = "<group>"; };
 		A26641192201A6307C867746 /* libPods-Kuaidi.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Kuaidi.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F419CD592308603600553E29 /* KDCodeForPwdVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KDCodeForPwdVC.h; sourceTree = "<group>"; };
+		F419CD5A2308603600553E29 /* KDCodeForPwdVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KDCodeForPwdVC.m; sourceTree = "<group>"; };
+		F419CD5C2308610800553E29 /* KDResetLoginPwdVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KDResetLoginPwdVC.h; sourceTree = "<group>"; };
+		F419CD5D2308610800553E29 /* KDResetLoginPwdVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KDResetLoginPwdVC.m; sourceTree = "<group>"; };
+		F419CD60230865B700553E29 /* KDAboutAsVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KDAboutAsVC.h; sourceTree = "<group>"; };
+		F419CD61230865B700553E29 /* KDAboutAsVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KDAboutAsVC.m; sourceTree = "<group>"; };
+		F419CD632308669700553E29 /* 关于-图片@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "关于-图片@2x.png"; sourceTree = "<group>"; };
+		F419CD642308669700553E29 /* 关于-图片@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "关于-图片@3x.png"; sourceTree = "<group>"; };
+		F41BCCA12308249900BCD691 /* KDLoginPwdVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KDLoginPwdVC.h; sourceTree = "<group>"; };
+		F41BCCA22308249900BCD691 /* KDLoginPwdVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KDLoginPwdVC.m; sourceTree = "<group>"; };
+		F41BCCA42308298000BCD691 /* 注册-图标-未选@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "注册-图标-未选@2x.png"; sourceTree = "<group>"; };
+		F41BCCA52308298100BCD691 /* 注册-图标-未选@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "注册-图标-未选@3x.png"; sourceTree = "<group>"; };
+		F41BCCA62308298200BCD691 /* 注册-图标-开眼@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "注册-图标-开眼@2x.png"; sourceTree = "<group>"; };
+		F41BCCA72308298200BCD691 /* 注册-图标-选中@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "注册-图标-选中@3x.png"; sourceTree = "<group>"; };
+		F41BCCA82308298300BCD691 /* 注册-图标-选中@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "注册-图标-选中@2x.png"; sourceTree = "<group>"; };
+		F41BCCA92308298300BCD691 /* 注册-图标-开眼@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "注册-图标-开眼@3x.png"; sourceTree = "<group>"; };
+		F41BCCB023082A1100BCD691 /* UIButton+EnlargeTouchArea.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+EnlargeTouchArea.m"; sourceTree = "<group>"; };
+		F41BCCB123082A1100BCD691 /* UIButton+EnlargeTouchArea.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+EnlargeTouchArea.h"; sourceTree = "<group>"; };
+		F41C7FFD23081BDA00DA1C2F /* 注册-图标-后退@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "注册-图标-后退@2x.png"; sourceTree = "<group>"; };
+		F41C7FFE23081BDA00DA1C2F /* 注册-图标-后退@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "注册-图标-后退@3x.png"; sourceTree = "<group>"; };
+		F41C7FFF23081BDA00DA1C2F /* 图标-清除@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "图标-清除@2x.png"; sourceTree = "<group>"; };
+		F41C800023081BDA00DA1C2F /* 图标-清除@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "图标-清除@3x.png"; sourceTree = "<group>"; };
+		F41C800523081C0200DA1C2F /* NSString+Valid.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Valid.h"; sourceTree = "<group>"; };
+		F41C800623081C0300DA1C2F /* NSString+Valid.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Valid.m"; sourceTree = "<group>"; };
+		F41C800923081C1300DA1C2F /* ZJCustomHud.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJCustomHud.h; sourceTree = "<group>"; };
+		F41C800A23081C1300DA1C2F /* 成功图片@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "成功图片@2x.png"; sourceTree = "<group>"; };
+		F41C800B23081C1300DA1C2F /* ZJCustomHud.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJCustomHud.m; sourceTree = "<group>"; };
+		F41C800C23081C1300DA1C2F /* 失败图片@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "失败图片@2x.png"; sourceTree = "<group>"; };
+		F41C801123081D2F00DA1C2F /* KDCodeVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KDCodeVC.h; sourceTree = "<group>"; };
+		F41C801223081D2F00DA1C2F /* KDPhoneVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KDPhoneVC.m; sourceTree = "<group>"; };
+		F41C801323081D2F00DA1C2F /* KDCodeVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KDCodeVC.m; sourceTree = "<group>"; };
+		F41C801423081D2F00DA1C2F /* KDPhoneVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KDPhoneVC.h; sourceTree = "<group>"; };
+		F427C4E82308590E0023D48B /* KDPhoneForPwdVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KDPhoneForPwdVC.h; sourceTree = "<group>"; };
+		F427C4E92308590E0023D48B /* KDPhoneForPwdVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KDPhoneForPwdVC.m; sourceTree = "<group>"; };
 		F465DDC7230454B9002DFD4C /* 图标-后退@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "图标-后退@2x.png"; sourceTree = "<group>"; };
 		F465DDC8230454B9002DFD4C /* 登录-背景@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "登录-背景@3x.png"; sourceTree = "<group>"; };
 		F465DDC9230454B9002DFD4C /* 图标-账号@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "图标-账号@2x.png"; sourceTree = "<group>"; };
@@ -400,6 +458,7 @@
 		3D65BF732301050C00B12F3D /* Tools */ = {
 			isa = PBXGroup;
 			children = (
+				F41C800823081C1300DA1C2F /* ZJCustomHUD */,
 				3D65BF9B23010B8900B12F3D /* Category */,
 			);
 			path = Tools;
@@ -461,6 +520,10 @@
 		3D65BF9B23010B8900B12F3D /* Category */ = {
 			isa = PBXGroup;
 			children = (
+				F41BCCB123082A1100BCD691 /* UIButton+EnlargeTouchArea.h */,
+				F41BCCB023082A1100BCD691 /* UIButton+EnlargeTouchArea.m */,
+				F41C800523081C0200DA1C2F /* NSString+Valid.h */,
+				F41C800623081C0300DA1C2F /* NSString+Valid.m */,
 				16310F712306F9F10054311A /* NSDictionary+Log.h */,
 				16310F702306F9F10054311A /* NSDictionary+Log.m */,
 				16310F6D2306F9D70054311A /* UIView+Extension.h */,
@@ -576,6 +639,8 @@
 		3D65BFD2230117A900B12F3D /* Coltroller */ = {
 			isa = PBXGroup;
 			children = (
+				F427C4E72308515E0023D48B /* 找回登录密码 */,
+				F41C801023081D2F00DA1C2F /* 注册 */,
 				F465DE41230454FE002DFD4C /* 登录 */,
 				F465DE44230454FE002DFD4C /* 个人中心 */,
 			);
@@ -591,16 +656,82 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		F419CD5F2308658100553E29 /* 关于我们 */ = {
+			isa = PBXGroup;
+			children = (
+				F419CD60230865B700553E29 /* KDAboutAsVC.h */,
+				F419CD61230865B700553E29 /* KDAboutAsVC.m */,
+			);
+			path = "关于我们";
+			sourceTree = "<group>";
+		};
+		F41C7FFC23081BDA00DA1C2F /* 注册 */ = {
+			isa = PBXGroup;
+			children = (
+				F41BCCA62308298200BCD691 /* 注册-图标-开眼@2x.png */,
+				F41BCCA92308298300BCD691 /* 注册-图标-开眼@3x.png */,
+				F41BCCA42308298000BCD691 /* 注册-图标-未选@2x.png */,
+				F41BCCA52308298100BCD691 /* 注册-图标-未选@3x.png */,
+				F41BCCA82308298300BCD691 /* 注册-图标-选中@2x.png */,
+				F41BCCA72308298200BCD691 /* 注册-图标-选中@3x.png */,
+				F41C7FFD23081BDA00DA1C2F /* 注册-图标-后退@2x.png */,
+				F41C7FFE23081BDA00DA1C2F /* 注册-图标-后退@3x.png */,
+				F41C7FFF23081BDA00DA1C2F /* 图标-清除@2x.png */,
+				F41C800023081BDA00DA1C2F /* 图标-清除@3x.png */,
+			);
+			path = "注册";
+			sourceTree = "<group>";
+		};
+		F41C800823081C1300DA1C2F /* ZJCustomHUD */ = {
+			isa = PBXGroup;
+			children = (
+				F41C800923081C1300DA1C2F /* ZJCustomHud.h */,
+				F41C800A23081C1300DA1C2F /* 成功图片@2x.png */,
+				F41C800B23081C1300DA1C2F /* ZJCustomHud.m */,
+				F41C800C23081C1300DA1C2F /* 失败图片@2x.png */,
+			);
+			path = ZJCustomHUD;
+			sourceTree = "<group>";
+		};
+		F41C801023081D2F00DA1C2F /* 注册 */ = {
+			isa = PBXGroup;
+			children = (
+				F41C801423081D2F00DA1C2F /* KDPhoneVC.h */,
+				F41C801223081D2F00DA1C2F /* KDPhoneVC.m */,
+				F41C801123081D2F00DA1C2F /* KDCodeVC.h */,
+				F41C801323081D2F00DA1C2F /* KDCodeVC.m */,
+				F41BCCA12308249900BCD691 /* KDLoginPwdVC.h */,
+				F41BCCA22308249900BCD691 /* KDLoginPwdVC.m */,
+			);
+			path = "注册";
+			sourceTree = "<group>";
+		};
+		F427C4E72308515E0023D48B /* 找回登录密码 */ = {
+			isa = PBXGroup;
+			children = (
+				F427C4E82308590E0023D48B /* KDPhoneForPwdVC.h */,
+				F427C4E92308590E0023D48B /* KDPhoneForPwdVC.m */,
+				F419CD592308603600553E29 /* KDCodeForPwdVC.h */,
+				F419CD5A2308603600553E29 /* KDCodeForPwdVC.m */,
+				F419CD5C2308610800553E29 /* KDResetLoginPwdVC.h */,
+				F419CD5D2308610800553E29 /* KDResetLoginPwdVC.m */,
+			);
+			path = "找回登录密码";
+			sourceTree = "<group>";
+		};
 		F465DDC5230454B9002DFD4C /* 我的 */ = {
 			isa = PBXGroup;
 			children = (
+				F41C7FFC23081BDA00DA1C2F /* 注册 */,
+				F465DDDB230454B9002DFD4C /* 已登录未实名 */,
 				F465DDC6230454B9002DFD4C /* 登录 */,
 				F465DDD7230454B9002DFD4C /* 图片-头像@2x.png */,
 				F465DDD8230454B9002DFD4C /* 图片-头像@3x.png */,
 				F465DDD9230454B9002DFD4C /* 我的-背景@3x.png */,
 				F465DDDA230454B9002DFD4C /* 我的-背景@2x.png */,
-				F465DDDB230454B9002DFD4C /* 已登录未实名 */,
 				F465DDF4230454B9002DFD4C /* 图标-淘宝@2x.png */,
+				F419CD632308669700553E29 /* 关于-图片@2x.png */,
+				F419CD642308669700553E29 /* 关于-图片@3x.png */,
 				F465DDF5230454B9002DFD4C /* 图标-京东@2x.png */,
 				F465DDF6230454B9002DFD4C /* 图标-京东@3x.png */,
 				F465DDF7230454B9002DFD4C /* 图标-淘宝@3x.png */,
@@ -693,6 +824,7 @@
 		F465DE44230454FE002DFD4C /* 个人中心 */ = {
 			isa = PBXGroup;
 			children = (
+				F419CD5F2308658100553E29 /* 关于我们 */,
 				F465DE46230454FE002DFD4C /* KDMineVC.h */,
 				F465DE49230454FE002DFD4C /* KDMineVC.m */,
 				F465DE45230454FE002DFD4C /* KDInfoModel.h */,
@@ -821,42 +953,56 @@
 				F465DE18230454B9002DFD4C /* 我的-背景@2x.png in Resources */,
 				F465DE21230454B9002DFD4C /* 我的-图标-京东@2x.png in Resources */,
 				F465DE19230454B9002DFD4C /* 我的-图标-积分@3x.png in Resources */,
+				F41C800123081BDA00DA1C2F /* 注册-图标-后退@2x.png in Resources */,
 				F465DE29230454B9002DFD4C /* 我的-图标-二维码@2x.png in Resources */,
 				F465DE11230454B9002DFD4C /* 图标-微博@2x.png in Resources */,
 				F465DE26230454B9002DFD4C /* 我的-图标-京东@3x.png in Resources */,
 				F465DE36230454B9002DFD4C /* 图标-我的-未选@2x.png in Resources */,
 				F465DE22230454B9002DFD4C /* 我的-图标-前往@2x.png in Resources */,
 				F465DE35230454B9002DFD4C /* 图标-我的-未选@3x.png in Resources */,
+				F41BCCAB2308298400BCD691 /* 注册-图标-未选@3x.png in Resources */,
+				F41BCCAE2308298400BCD691 /* 注册-图标-选中@2x.png in Resources */,
 				F465DE31230454B9002DFD4C /* 图标-淘宝@2x.png in Resources */,
 				F465DE2B230454B9002DFD4C /* 我的-图标-个人@2x.png in Resources */,
+				F41C800423081BDA00DA1C2F /* 图标-清除@3x.png in Resources */,
+				F41C800323081BDA00DA1C2F /* 图标-清除@2x.png in Resources */,
+				F41C800D23081C1300DA1C2F /* 成功图片@2x.png in Resources */,
 				F465DE3D230454BA002DFD4C /* 图标-寄件-未选@3x.png in Resources */,
+				F41BCCAC2308298400BCD691 /* 注册-图标-开眼@2x.png in Resources */,
 				F465DE38230454BA002DFD4C /* 图标-我的-选中@3x.png in Resources */,
 				F465DE24230454B9002DFD4C /* 我的-图标-淘宝@3x.png in Resources */,
 				F465DE07230454B9002DFD4C /* 图标-账号@2x.png in Resources */,
 				F465DE25230454B9002DFD4C /* 我的-图标-前往@3x.png in Resources */,
 				F465DE16230454B9002DFD4C /* 图片-头像@3x.png in Resources */,
+				F41C800F23081C1300DA1C2F /* 失败图片@2x.png in Resources */,
 				F465DE33230454B9002DFD4C /* 图标-京东@3x.png in Resources */,
 				F465DE39230454BA002DFD4C /* 图标-查件-未选@3x.png in Resources */,
 				F465DE3E230454BA002DFD4C /* 图标-查件-选中@2x.png in Resources */,
 				3D65BF4B230102F700B12F3D /* LaunchScreen.storyboard in Resources */,
 				F465DE10230454B9002DFD4C /* 图标-微信@2x.png in Resources */,
+				F41BCCAD2308298400BCD691 /* 注册-图标-选中@3x.png in Resources */,
 				F465DE1E230454B9002DFD4C /* 我的-图标-帮助中心@2x.png in Resources */,
+				F419CD662308669700553E29 /* 关于-图片@3x.png in Resources */,
 				F465DE28230454B9002DFD4C /* 我的-图标-地址管理@2x.png in Resources */,
 				F465DE27230454B9002DFD4C /* 我的-图标-顺丰@2x.png in Resources */,
+				F419CD652308669700553E29 /* 关于-图片@2x.png in Resources */,
 				F465DE34230454B9002DFD4C /* 图标-淘宝@3x.png in Resources */,
 				F465DE0A230454B9002DFD4C /* 图标-后退@3x.png in Resources */,
 				F465DE3F230454BA002DFD4C /* 图标-查件-选中@3x.png in Resources */,
 				F465DE05230454B9002DFD4C /* 图标-后退@2x.png in Resources */,
 				F465DE40230454BA002DFD4C /* 图标-寄件-未选@2x.png in Resources */,
 				F465DE0C230454B9002DFD4C /* 图标-QQ@3x.png in Resources */,
+				F41C800223081BDA00DA1C2F /* 注册-图标-后退@3x.png in Resources */,
 				F465DE2E230454B9002DFD4C /* 我的-图标-个人@3x.png in Resources */,
 				F465DE2F230454B9002DFD4C /* 我的-图标-关于我们@2x.png in Resources */,
 				F465DE06230454B9002DFD4C /* 登录-背景@3x.png in Resources */,
 				F465DE20230454B9002DFD4C /* 我的-图标-顺丰@3x.png in Resources */,
 				3D65BF48230102F700B12F3D /* Assets.xcassets in Resources */,
+				F41BCCAA2308298400BCD691 /* 注册-图标-未选@2x.png in Resources */,
 				F465DE3C230454BA002DFD4C /* 图标-查件-未选@2x.png in Resources */,
 				F465DE23230454B9002DFD4C /* 我的-图标-淘宝@2x.png in Resources */,
 				F465DE1C230454B9002DFD4C /* 我的-图标-积分@2x.png in Resources */,
+				F41BCCAF2308298400BCD691 /* 注册-图标-开眼@3x.png in Resources */,
 				F465DE0E230454B9002DFD4C /* Logo@3x.png in Resources */,
 				F465DE37230454BA002DFD4C /* 图标-我的-选中@2x.png in Resources */,
 				F465DE2A230454B9002DFD4C /* 我的-图标-关于我们@3x.png in Resources */,
@@ -948,27 +1094,37 @@
 				F465DE4E230454FF002DFD4C /* KDInfoCell.m in Sources */,
 				3D65BF9E23010BBB00B12F3D /* UIImage+Image.m in Sources */,
 				3D65BF992301086A00B12F3D /* HCTNavigationController.m in Sources */,
+				F41C800E23081C1300DA1C2F /* ZJCustomHud.m in Sources */,
 				3D65BFC92301173E00B12F3D /* KDMailingVC.m in Sources */,
 				1619AC532307FDD2003463C7 /* KDGoodsInfoCell.m in Sources */,
+				F427C4EA2308590E0023D48B /* KDPhoneForPwdVC.m in Sources */,
 				F465DE4C230454FF002DFD4C /* KDInfoModel.m in Sources */,
 				3D65BF9A2301086A00B12F3D /* HCTTabbarController.m in Sources */,
 				3D65BF952301086A00B12F3D /* RootCustomView.m in Sources */,
 				163588032307A3340017F510 /* KDAddressInfoView.m in Sources */,
+				F419CD5E2308610800553E29 /* KDResetLoginPwdVC.m in Sources */,
+				F419CD5B2308603600553E29 /* KDCodeForPwdVC.m in Sources */,
 				F465DE4B230454FF002DFD4C /* KDLoginVC.m in Sources */,
 				3D65BFBF230115D000B12F3D /* UIView+Toast.m in Sources */,
 				16310F722306F9F20054311A /* NSDictionary+Log.m in Sources */,
+				F41C801523081D2F00DA1C2F /* KDPhoneVC.m in Sources */,
 				16310F6F2306F9D80054311A /* UIView+Extension.m in Sources */,
 				F465DE4D230454FF002DFD4C /* KDMineVC.m in Sources */,
 				3D65BF962301086A00B12F3D /* RootCustomCell.m in Sources */,
+				F41BCCA32308249900BCD691 /* KDLoginPwdVC.m in Sources */,
 				163AE1862305A62A00B16015 /* KDTitleView.m in Sources */,
+				F419CD62230865B700553E29 /* KDAboutAsVC.m in Sources */,
 				3D65BFC32301169500B12F3D /* UIView+YYAdd.m in Sources */,
+				F41BCCB223082A1200BCD691 /* UIButton+EnlargeTouchArea.m in Sources */,
 				3D65BF4E230102F700B12F3D /* main.m in Sources */,
 				1635880C2307E1960017F510 /* KDGoodsInfoFooterView.m in Sources */,
+				F41C801623081D2F00DA1C2F /* KDCodeVC.m in Sources */,
 				3D65BF922301086A00B12F3D /* RootViewController.m in Sources */,
 				3D65BF40230102F400B12F3D /* AppDelegate.m in Sources */,
 				163588062307D74A0017F510 /* KDUserInfoView.m in Sources */,
 				3D65BFCF2301179300B12F3D /* KDCheckPieceVC.m in Sources */,
 				163588092307DF370017F510 /* KDGoodsInfoView.m in Sources */,
+				F41C800723081C0300DA1C2F /* NSString+Valid.m in Sources */,
 				3D65BFEC23016F4400B12F3D /* UIColor+Tool.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
