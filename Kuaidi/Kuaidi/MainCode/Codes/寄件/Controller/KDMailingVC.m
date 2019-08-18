@@ -10,8 +10,14 @@
 #import "KDTitleView.h"
 #import "KDAddressInfoView.h"
 #import "KDGoodsInfoView.h"
+#import "KDGoodsTypeInfoSelectView.h"
+#import "KDExpressRecordController.h"
 
-@interface KDMailingVC ()<UITableViewDelegate,UITableViewDataSource>
+@interface KDMailingVC ()
+<UITableViewDelegate,
+UITableViewDataSource,
+KDGoodsInfoViewDelegate,
+KDTitleViewDelegate>
 
 @property(nonatomic, strong)UITableView *tableView;
 
@@ -37,6 +43,7 @@
 -(KDGoodsInfoView *)goodsInfoView{
     if (!_goodsInfoView) {
         _goodsInfoView = [KDGoodsInfoView goodsInfoView];
+        _goodsInfoView.goodsInfoViewDelegate = self;
         _goodsInfoView.frame = CGRectMake(18, CGRectGetMaxY(self.addressView.frame) - 12, _goodsInfoView.width, _goodsInfoView.height);
     }
     return _goodsInfoView;
@@ -58,6 +65,7 @@
     
     if (!_sendTitleView) {
         _sendTitleView = [[KDTitleView alloc] initWithFrame:CGRectMake(0, 0, self.view.width, 40)];
+        _sendTitleView.delegate = self;
     }
     return _sendTitleView;
 }
@@ -115,9 +123,9 @@
     
     [contentView addSubview:self.sendTitleView];
     
-    [contentView addSubview:self.tableView];
-    
     [contentView addSubview:self.tipLabel];
+    
+    [contentView addSubview:self.tableView];
     
     [self.tipLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.centerX.equalTo(contentView.mas_centerX).offset(0);
@@ -143,6 +151,29 @@
 #pragma mark -- UITableViewDelegate,UITableViewDataSource
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     return 0;
+}
+
+#pragma mark -- KDGoodsInfoViewDelegate
+-(void)selectCellIndexPath:(NSIndexPath *)indexPath{
+    
+    [KDGoodsTypeInfoSelectView showSelectViewWithConfirmBlock:^(NSString * _Nonnull goodsType, NSInteger weight, UIImage * _Nonnull image) {
+        
+    }];
+    
+}
+
+-(void)clickConfirmButton{
+    
+   
+}
+
+#pragma mark -- KDTitleViewDelegate
+-(void)lookExpressRecord{
+    
+    KDExpressRecordController *vc = [[KDExpressRecordController alloc] init];
+    vc.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:vc animated:YES];
+    
 }
 
 @end
