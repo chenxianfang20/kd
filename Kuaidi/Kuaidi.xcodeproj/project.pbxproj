@@ -11,7 +11,6 @@
 		1619AC532307FDD2003463C7 /* KDGoodsInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1619AC522307FDD2003463C7 /* KDGoodsInfoCell.m */; };
 		1619AC56230804D4003463C7 /* KDGoodsTypeInfoSelectView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1619AC55230804D4003463C7 /* KDGoodsTypeInfoSelectView.m */; };
 		1619AC5923084897003463C7 /* KDExpressRecordController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1619AC5823084897003463C7 /* KDExpressRecordController.m */; };
-		162AB3D7230953F900EF8225 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 162AB3CF230953F900EF8225 /* README.md */; };
 		162AB3FF230968C400EF8225 /* KDExpressRecordCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 162AB3FE230968C400EF8225 /* KDExpressRecordCell.m */; };
 		16310F6F2306F9D80054311A /* UIView+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 16310F6E2306F9D70054311A /* UIView+Extension.m */; };
 		16310F722306F9F20054311A /* NSDictionary+Log.m in Sources */ = {isa = PBXBuildFile; fileRef = 16310F702306F9F10054311A /* NSDictionary+Log.m */; };
@@ -32,6 +31,7 @@
 		164097062309B2CE0055C0FB /* KDMessageBoardView.m in Sources */ = {isa = PBXBuildFile; fileRef = 164097042309B2CD0055C0FB /* KDMessageBoardView.m */; };
 		1658A26E2309B43600439FC3 /* KDExpressRecordListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1658A26D2309B43600439FC3 /* KDExpressRecordListController.m */; };
 		1658A2742309B53800439FC3 /* KDExpressSelectCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1658A2722309B53700439FC3 /* KDExpressSelectCell.m */; };
+		167B6DDF2309BABF001C0D15 /* KDExpressModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 167B6DDE2309BABF001C0D15 /* KDExpressModel.m */; };
 		3D65BF40230102F400B12F3D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D65BF3F230102F400B12F3D /* AppDelegate.m */; };
 		3D65BF46230102F400B12F3D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3D65BF44230102F400B12F3D /* Main.storyboard */; };
 		3D65BF48230102F700B12F3D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3D65BF47230102F700B12F3D /* Assets.xcassets */; };
@@ -226,6 +226,8 @@
 		1658A26D2309B43600439FC3 /* KDExpressRecordListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KDExpressRecordListController.m; path = "../../../../../../../Desktop/Kuaidi/Kuaidi/MainCode/Codes/寄件/Controller/KDExpressRecordListController.m"; sourceTree = "<group>"; };
 		1658A2722309B53700439FC3 /* KDExpressSelectCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KDExpressSelectCell.m; sourceTree = "<group>"; };
 		1658A2732309B53700439FC3 /* KDExpressSelectCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KDExpressSelectCell.h; sourceTree = "<group>"; };
+		167B6DDD2309BABF001C0D15 /* KDExpressModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KDExpressModel.h; sourceTree = "<group>"; };
+		167B6DDE2309BABF001C0D15 /* KDExpressModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KDExpressModel.m; sourceTree = "<group>"; };
 		310B9CC0F78DB0FB65918064 /* Pods-Kuaidi.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Kuaidi.debug.xcconfig"; path = "Target Support Files/Pods-Kuaidi/Pods-Kuaidi.debug.xcconfig"; sourceTree = "<group>"; };
 		3D65BF3B230102F400B12F3D /* Kuaidi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Kuaidi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3D65BF3E230102F400B12F3D /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -523,6 +525,22 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		167B6DDB2309BA92001C0D15 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				167B6DDD2309BABF001C0D15 /* KDExpressModel.h */,
+				167B6DDE2309BABF001C0D15 /* KDExpressModel.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		167B6DDC2309BA92001C0D15 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		3D65BF32230102F400B12F3D = {
 			isa = PBXGroup;
 			children = (
@@ -739,9 +757,9 @@
 		3D65BFBC2301151800B12F3D /* 我的 */ = {
 			isa = PBXGroup;
 			children = (
+				167B6DDB2309BA92001C0D15 /* Model */,
+				167B6DDC2309BA92001C0D15 /* View */,
 				3D65BFD2230117A900B12F3D /* Coltroller */,
-				3D65BFD1230117A100B12F3D /* View */,
-				3D65BFD02301179800B12F3D /* Model */,
 			);
 			path = "我的";
 			sourceTree = "<group>";
@@ -769,20 +787,6 @@
 				164096E92309B1160055C0FB /* KDExpressSendInfoController.m */,
 			);
 			path = Controller;
-			sourceTree = "<group>";
-		};
-		3D65BFD02301179800B12F3D /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		3D65BFD1230117A100B12F3D /* View */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = View;
 			sourceTree = "<group>";
 		};
 		3D65BFD2230117A900B12F3D /* Coltroller */ = {
@@ -1176,7 +1180,6 @@
 				F41C800323081BDA00DA1C2F /* 图标-清除@2x.png in Resources */,
 				F41C800D23081C1300DA1C2F /* 成功图片@2x.png in Resources */,
 				F465DE3D230454BA002DFD4C /* 图标-寄件-未选@3x.png in Resources */,
-				162AB3D7230953F900EF8225 /* README.md in Resources */,
 				F41BCCAC2308298400BCD691 /* 注册-图标-开眼@2x.png in Resources */,
 				F465DE38230454BA002DFD4C /* 图标-我的-选中@3x.png in Resources */,
 				F465DE24230454B9002DFD4C /* 我的-图标-淘宝@3x.png in Resources */,
@@ -1312,6 +1315,7 @@
 				F4C30846230942F900CF65CA /* KDExpressVC.m in Sources */,
 				F41C800E23081C1300DA1C2F /* ZJCustomHud.m in Sources */,
 				3D65BFC92301173E00B12F3D /* KDMailingVC.m in Sources */,
+				167B6DDF2309BABF001C0D15 /* KDExpressModel.m in Sources */,
 				1619AC532307FDD2003463C7 /* KDGoodsInfoCell.m in Sources */,
 				164097032309B29C0055C0FB /* KDTimeSelectView.m in Sources */,
 				F427C4EA2308590E0023D48B /* KDPhoneForPwdVC.m in Sources */,
