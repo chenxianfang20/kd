@@ -29,7 +29,6 @@
 		164097002309B26B0055C0FB /* KDExpressSelectView.m in Sources */ = {isa = PBXBuildFile; fileRef = 164096FF2309B26B0055C0FB /* KDExpressSelectView.m */; };
 		164097032309B29C0055C0FB /* KDTimeSelectView.m in Sources */ = {isa = PBXBuildFile; fileRef = 164097022309B29C0055C0FB /* KDTimeSelectView.m */; };
 		164097062309B2CE0055C0FB /* KDMessageBoardView.m in Sources */ = {isa = PBXBuildFile; fileRef = 164097042309B2CD0055C0FB /* KDMessageBoardView.m */; };
-		1658A26E2309B43600439FC3 /* KDExpressRecordListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1658A26D2309B43600439FC3 /* KDExpressRecordListController.m */; };
 		1658A2742309B53800439FC3 /* KDExpressSelectCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1658A2722309B53700439FC3 /* KDExpressSelectCell.m */; };
 		167B6DDF2309BABF001C0D15 /* KDExpressModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 167B6DDE2309BABF001C0D15 /* KDExpressModel.m */; };
 		3D65BF40230102F400B12F3D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D65BF3F230102F400B12F3D /* AppDelegate.m */; };
@@ -51,6 +50,9 @@
 		3D65BFC92301173E00B12F3D /* KDMailingVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D65BFC82301173E00B12F3D /* KDMailingVC.m */; };
 		3D65BFCF2301179300B12F3D /* KDCheckPieceVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D65BFCE2301179300B12F3D /* KDCheckPieceVC.m */; };
 		3D65BFEC23016F4400B12F3D /* UIColor+Tool.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D65BFEB23016F4400B12F3D /* UIColor+Tool.m */; };
+		3D696F87230A784C00593437 /* KDExpressRecordListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D696F86230A784C00593437 /* KDExpressRecordListController.m */; };
+		3D696F8D230A797F00593437 /* KDNetWorkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D696F8A230A797F00593437 /* KDNetWorkManager.m */; };
+		3D696F8E230A797F00593437 /* KDSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D696F8B230A797F00593437 /* KDSessionManager.m */; };
 		F419CD5B2308603600553E29 /* KDCodeForPwdVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F419CD5A2308603600553E29 /* KDCodeForPwdVC.m */; };
 		F419CD5E2308610800553E29 /* KDResetLoginPwdVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F419CD5D2308610800553E29 /* KDResetLoginPwdVC.m */; };
 		F419CD62230865B700553E29 /* KDAboutAsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F419CD61230865B700553E29 /* KDAboutAsVC.m */; };
@@ -222,8 +224,6 @@
 		164097022309B29C0055C0FB /* KDTimeSelectView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KDTimeSelectView.m; sourceTree = "<group>"; };
 		164097042309B2CD0055C0FB /* KDMessageBoardView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KDMessageBoardView.m; sourceTree = "<group>"; };
 		164097052309B2CE0055C0FB /* KDMessageBoardView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KDMessageBoardView.h; sourceTree = "<group>"; };
-		1658A26C2309B43600439FC3 /* KDExpressRecordListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KDExpressRecordListController.h; path = "../../../../../../../Desktop/Kuaidi/Kuaidi/MainCode/Codes/寄件/Controller/KDExpressRecordListController.h"; sourceTree = "<group>"; };
-		1658A26D2309B43600439FC3 /* KDExpressRecordListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KDExpressRecordListController.m; path = "../../../../../../../Desktop/Kuaidi/Kuaidi/MainCode/Codes/寄件/Controller/KDExpressRecordListController.m"; sourceTree = "<group>"; };
 		1658A2722309B53700439FC3 /* KDExpressSelectCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KDExpressSelectCell.m; sourceTree = "<group>"; };
 		1658A2732309B53700439FC3 /* KDExpressSelectCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KDExpressSelectCell.h; sourceTree = "<group>"; };
 		167B6DDD2309BABF001C0D15 /* KDExpressModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KDExpressModel.h; sourceTree = "<group>"; };
@@ -272,6 +272,13 @@
 		3D65BFCE2301179300B12F3D /* KDCheckPieceVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KDCheckPieceVC.m; sourceTree = "<group>"; };
 		3D65BFEA23016F4400B12F3D /* UIColor+Tool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIColor+Tool.h"; sourceTree = "<group>"; };
 		3D65BFEB23016F4400B12F3D /* UIColor+Tool.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Tool.m"; sourceTree = "<group>"; };
+		3D696F85230A784C00593437 /* KDExpressRecordListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KDExpressRecordListController.h; sourceTree = "<group>"; };
+		3D696F86230A784C00593437 /* KDExpressRecordListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KDExpressRecordListController.m; sourceTree = "<group>"; };
+		3D696F89230A797F00593437 /* KDNetWorkManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KDNetWorkManager.h; sourceTree = "<group>"; };
+		3D696F8A230A797F00593437 /* KDNetWorkManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KDNetWorkManager.m; sourceTree = "<group>"; };
+		3D696F8B230A797F00593437 /* KDSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KDSessionManager.m; sourceTree = "<group>"; };
+		3D696F8C230A797F00593437 /* KDSessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KDSessionManager.h; sourceTree = "<group>"; };
+		3D696F8F230A80A300593437 /* NetWork.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NetWork.h; sourceTree = "<group>"; };
 		6A402E0BE0DC5701A3D49873 /* Pods-Kuaidi.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Kuaidi.release.xcconfig"; path = "Target Support Files/Pods-Kuaidi/Pods-Kuaidi.release.xcconfig"; sourceTree = "<group>"; };
 		A26641192201A6307C867746 /* libPods-Kuaidi.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Kuaidi.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F419CD592308603600553E29 /* KDCodeForPwdVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KDCodeForPwdVC.h; sourceTree = "<group>"; };
@@ -630,6 +637,7 @@
 		3D65BF732301050C00B12F3D /* Tools */ = {
 			isa = PBXGroup;
 			children = (
+				3D696F88230A797400593437 /* 网络 */,
 				F41C800823081C1300DA1C2F /* ZJCustomHUD */,
 				3D65BF9B23010B8900B12F3D /* Category */,
 			);
@@ -674,6 +682,7 @@
 				3D65BF872301086900B12F3D /* Settings.h */,
 				3D65BF8A2301086900B12F3D /* ErrorCodes.h */,
 				3D65BF8C2301086900B12F3D /* Notifactions.h */,
+				3D696F8F230A80A300593437 /* NetWork.h */,
 			);
 			path = HeadFiles;
 			sourceTree = "<group>";
@@ -772,8 +781,8 @@
 				3D65BFC82301173E00B12F3D /* KDMailingVC.m */,
 				1619AC5723084897003463C7 /* KDExpressRecordController.h */,
 				1619AC5823084897003463C7 /* KDExpressRecordController.m */,
-				1658A26C2309B43600439FC3 /* KDExpressRecordListController.h */,
-				1658A26D2309B43600439FC3 /* KDExpressRecordListController.m */,
+				3D696F85230A784C00593437 /* KDExpressRecordListController.h */,
+				3D696F86230A784C00593437 /* KDExpressRecordListController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -799,6 +808,17 @@
 				F465DE44230454FE002DFD4C /* 个人中心 */,
 			);
 			path = Coltroller;
+			sourceTree = "<group>";
+		};
+		3D696F88230A797400593437 /* 网络 */ = {
+			isa = PBXGroup;
+			children = (
+				3D696F89230A797F00593437 /* KDNetWorkManager.h */,
+				3D696F8A230A797F00593437 /* KDNetWorkManager.m */,
+				3D696F8C230A797F00593437 /* KDSessionManager.h */,
+				3D696F8B230A797F00593437 /* KDSessionManager.m */,
+			);
+			path = "网络";
 			sourceTree = "<group>";
 		};
 		85C9C2D267F047A7B217FF08 /* Pods */ = {
@@ -1320,11 +1340,13 @@
 				164097032309B29C0055C0FB /* KDTimeSelectView.m in Sources */,
 				F427C4EA2308590E0023D48B /* KDPhoneForPwdVC.m in Sources */,
 				F465DE4C230454FF002DFD4C /* KDInfoModel.m in Sources */,
+				3D696F8E230A797F00593437 /* KDSessionManager.m in Sources */,
 				3D65BF9A2301086A00B12F3D /* HCTTabbarController.m in Sources */,
 				F4C3083C2309351E00CF65CA /* KDAddressAdminVC.m in Sources */,
 				3D65BF952301086A00B12F3D /* RootCustomView.m in Sources */,
 				164096E52309B0930055C0FB /* UITextView+Placeholder.m in Sources */,
 				163588032307A3340017F510 /* KDAddressInfoView.m in Sources */,
+				3D696F8D230A797F00593437 /* KDNetWorkManager.m in Sources */,
 				F419CD5E2308610800553E29 /* KDResetLoginPwdVC.m in Sources */,
 				F419CD5B2308603600553E29 /* KDCodeForPwdVC.m in Sources */,
 				F465DE4B230454FF002DFD4C /* KDLoginVC.m in Sources */,
@@ -1338,7 +1360,6 @@
 				F41BCCA32308249900BCD691 /* KDLoginPwdVC.m in Sources */,
 				163AE1862305A62A00B16015 /* KDTitleView.m in Sources */,
 				164096FD2309B2420055C0FB /* CBGroupAndStreamView.m in Sources */,
-				1658A26E2309B43600439FC3 /* KDExpressRecordListController.m in Sources */,
 				164096F62309B1620055C0FB /* HGSegmentedPageViewController.m in Sources */,
 				F419CD62230865B700553E29 /* KDAboutAsVC.m in Sources */,
 				F4C3083F230935F400CF65CA /* KDAddressAdminModel.m in Sources */,
@@ -1349,6 +1370,7 @@
 				F4C30842230936CC00CF65CA /* KDAddressAdminCell.m in Sources */,
 				1658A2742309B53800439FC3 /* KDExpressSelectCell.m in Sources */,
 				1635880C2307E1960017F510 /* KDGoodsInfoFooterView.m in Sources */,
+				3D696F87230A784C00593437 /* KDExpressRecordListController.m in Sources */,
 				F41C801623081D2F00DA1C2F /* KDCodeVC.m in Sources */,
 				3D65BF922301086A00B12F3D /* RootViewController.m in Sources */,
 				164096EE2309B1290055C0FB /* DKScanView.m in Sources */,

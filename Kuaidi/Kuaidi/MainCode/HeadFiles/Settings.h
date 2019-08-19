@@ -12,10 +12,13 @@
 
 #import "UISettings.h"
 #import "Notifactions.h"
+#import "NetWork.h"
 #import "UIView+Toast.h"
 #import "UIView+YYAdd.h"
 #import "UIImage+Image.h"
 #import "UIColor+Tool.h"
 #import "NSString+Valid.h"
 #import "ZJCustomHud.h"
+
+#import "KDNetWorkManager.h"
 #endif /* Settings_h */

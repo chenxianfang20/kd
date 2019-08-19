@@ -22,6 +22,7 @@
     
     [self setNav];
     [self addChildViews];
+    [self sendCode];
 }
 -(void)addChildViews{
     
@@ -125,6 +126,18 @@
         [_nextBtn setBackgroundImage:[UIImage imageWithColor:[UIColor colorWithHex:@"#F1F1F1"]] forState:UIControlStateNormal];
     }
 }
+
+-(void)sendCode{
+    NSString *phoneStr =[self.phoneStr stringByReplacingOccurrencesOfString:@" "withString:@""];
+    NSDictionary*  dic = @{@"phone":phoneStr};
+    
+    [KDNetWorkManager GetHttpDataWithUrlStr:kSendCode Dic:dic SuccessBlock:^(id obj) {
+        NSLog(@"ttt===%@",obj);
+    } FailureBlock:^(id obj) {
+        
+    }];
+}
+
 -(void)setNav{
     self.titleView.type = TitleViewType_title;
     self.titleView.titleLable.textColor=[UIColor colorWithHex:@"#0B0B0B"];
