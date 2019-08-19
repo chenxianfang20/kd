@@ -16,6 +16,8 @@
     [self setNav];
     
     [self addChildViews];
+    
+    
 }
 
 -(void)addChildViews{
@@ -49,5 +51,16 @@
     [self.titleView setTitle:@"关于我们"];
     self.nav.backgroundColor = [UIColor clearColor];
     self.backgroungImgView.hidden=YES;
+    [self sendCode];
+}
+-(void)sendCode{
+   
+    
+    
+    [KDNetWorkManager GetHttpDataWithUrlStr:kArticles Dic:nil SuccessBlock:^(id obj) {
+        NSLog(@"ttt===%@",obj);
+    } FailureBlock:^(id obj) {
+        
+    }];
 }
 @end

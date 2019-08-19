@@ -16,4 +16,6 @@
 
 #define kSendCode @"/api/user/public/sendCode"
 
+#define kArticles @"/api/portal/articles/2"
+
 #endif /* NetWork_h */
