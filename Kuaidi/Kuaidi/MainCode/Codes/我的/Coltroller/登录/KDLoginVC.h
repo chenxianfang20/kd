@@ -8,10 +8,10 @@
 
 #import "RootViewController.h"
 
-NS_ASSUME_NONNULL_BEGIN
+typedef void(^LoginBlock)(void);
 
 @interface KDLoginVC : RootViewController
-
+@property (nonatomic,copy) LoginBlock  loginBlock;
 @end
 
-NS_ASSUME_NONNULL_END
+

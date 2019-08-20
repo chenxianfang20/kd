@@ -19,6 +19,7 @@
 #import "UIColor+Tool.h"
 #import "NSString+Valid.h"
 #import "ZJCustomHud.h"
-
+#import "KDUserModelTool.h"
+#import "KDUserModel.h"
 #import "KDNetWorkManager.h"
 #endif /* Settings_h */

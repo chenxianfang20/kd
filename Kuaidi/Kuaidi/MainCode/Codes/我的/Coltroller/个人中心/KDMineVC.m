@@ -68,8 +68,10 @@
     _headImgVIew.image = [UIImage imageNamed:@"图片-头像"];
     [scrollowView addSubview:_headImgVIew];
     
+    
+   
     _nameLabel=[[UILabel alloc]initWithFrame:CGRectMake(kAdaptationWidth(96), kAdaptationWidth(53)+heightX, kAdaptationWidth(260), kAdaptationWidth(22))];
-    _nameLabel.text=@"登录/注册";
+    
     _nameLabel.textColor=[UIColor whiteColor];
     _nameLabel.font = [UIFont fontWithName:@"PingFang-SC-Medium" size: 22];
     [scrollowView addSubview:_nameLabel];
@@ -77,6 +79,15 @@
     UITapGestureRecognizer* clickTap= [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(loginTapClick)];
     _nameLabel.userInteractionEnabled=YES;
     [_nameLabel addGestureRecognizer:clickTap];
+    
+     KDUserModel* model = [KDUserModelTool userModel];
+    if(model.token){
+        _nameLabel.text = model.mobile;
+        _nameLabel.userInteractionEnabled=NO;
+    }else{
+        _nameLabel.text=@"登录/注册";
+        _nameLabel.userInteractionEnabled=YES;
+    }
     
     
     //欢迎使用快递么
@@ -297,6 +308,17 @@
 -(void)loginTapClick{
     KDLoginVC* loginVC= [[KDLoginVC alloc]init];
     loginVC.hidesBottomBarWhenPushed=YES;
+    __weak typeof(self) weakSelf = self;
+    loginVC.loginBlock=^{
+        KDUserModel* model = [KDUserModelTool userModel];
+        if(model.token){
+            weakSelf.nameLabel.text = model.mobile;
+            weakSelf.nameLabel.userInteractionEnabled=NO;
+        }else{
+            weakSelf.nameLabel.text=@"登录/注册";
+            weakSelf.nameLabel.userInteractionEnabled=YES;
+        }
+    };
     [self.navigationController pushViewController:loginVC animated:YES];
 }
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView{

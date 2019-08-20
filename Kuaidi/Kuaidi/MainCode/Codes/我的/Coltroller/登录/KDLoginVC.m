@@ -9,7 +9,10 @@
 #import "KDLoginVC.h"
 #import "KDPhoneVC.h"
 #import "KDPhoneForPwdVC.h"
-@interface KDLoginVC ()
+@interface KDLoginVC (){
+    UIButton* loginBtn;
+    NSInteger i;
+}
 @property (nonatomic,strong) UITextField *phoneTF;
 @property (nonatomic,strong) UITextField *pwdTF;
 @end
@@ -24,6 +27,7 @@
     [self addChildViews];
 }
 -(void)addChildViews{
+    i=0;
     self.view.backgroundColor=[UIColor colorWithHex:@"#FAF8F8"];
     UIImageView* topBgImgView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, kScreenWidth, kAdaptationWidth(274))];
     topBgImgView.image = [UIImage imageNamed:@"登录-背景"];
@@ -83,13 +87,14 @@
     longinBgView.backgroundColor=[UIColor colorWithHex:@"#FAF8F8"];
     [infoBgView addSubview:longinBgView];
     
-    UIButton* loginBtn = [[UIButton alloc]initWithFrame:CGRectMake(kAdaptationWidth(18), kAdaptationWidth(150), kAdaptationWidth(303), kAdaptationWidth(48))];
+    loginBtn = [[UIButton alloc]initWithFrame:CGRectMake(kAdaptationWidth(18), kAdaptationWidth(150), kAdaptationWidth(303), kAdaptationWidth(48))];
     [loginBtn setTitle:@"确定" forState:UIControlStateNormal];
     [loginBtn setBackgroundImage:[UIImage imageWithColor:[UIColor colorWithHex:@"#ECECEC"]] forState:UIControlStateNormal];
     loginBtn.titleLabel.font = [UIFont fontWithName:@"PingFang-SC-Bold" size: 15];
     [loginBtn setTitleColor:[UIColor colorWithHex:@"#5C5C5C"] forState:UIControlStateNormal];
     [loginBtn addTarget:self action:@selector(loginBtnClick) forControlEvents:UIControlEventTouchUpInside];
     [infoBgView addSubview:loginBtn];
+    loginBtn.userInteractionEnabled=NO;
     
     //快速注册按钮
     UIButton* registerBtn = [[UIButton alloc]initWithFrame:CGRectMake(2, infoBgView.bottom+ kAdaptationWidth(2), kAdaptationWidth(105), kAdaptationWidth(50))];
@@ -160,16 +165,71 @@
     wbLabel.centerX=wbLoginBtn.centerX;
 }
 
--(void)phoneTFChanged:(UITextField*)text{
-    
+-(void)phoneTFChanged:(UITextField*)textField{
+    if (textField == self.phoneTF) {
+        if (textField.text.length > i) {
+            if (textField.text.length == 4 || textField.text.length == 9 ) {//输入
+                NSMutableString * str = [[NSMutableString alloc ] initWithString:textField.text];
+                [str insertString:@" " atIndex:(textField.text.length-1)];
+                textField.text = str;
+            }if (textField.text.length >= 13 ) {//输入完成
+                textField.text = [textField.text substringToIndex:13];
+                [textField resignFirstResponder];
+            }
+            i = textField.text.length;
+            
+        }else if (textField.text.length < i){//删除
+            if (textField.text.length == 4 || textField.text.length == 9) {
+                textField.text = [NSString stringWithFormat:@"%@",textField.text];
+                textField.text = [textField.text substringToIndex:(textField.text.length-1)];
+            }
+            i = textField.text.length;
+        }
+        
+        NSString *phoneFieldStr =[self.phoneTF.text stringByReplacingOccurrencesOfString:@" "withString:@""];
+        if (textField.text.length >= 13 && [NSString isValidatePhoneNum:phoneFieldStr]&&self.pwdTF.text.length>=6) {//输入完成
+            loginBtn.userInteractionEnabled=YES;
+            [loginBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+            [loginBtn setBackgroundImage:[UIImage imageWithColor:rgb(247, 70, 74,1)] forState:UIControlStateNormal];
+        }else{
+            loginBtn.userInteractionEnabled=NO;
+            [loginBtn setTitleColor:[UIColor colorWithHex:@"#A9A9A9"]  forState:UIControlStateNormal];
+            [loginBtn setBackgroundImage:[UIImage imageWithColor:[UIColor colorWithHex:@"#F1F1F1"]] forState:UIControlStateNormal];
+        }
+    }
 }
 
 -(void)pwdTFChanged:(UITextField*)text{
     
+    NSString *phoneFieldStr =[self.phoneTF.text stringByReplacingOccurrencesOfString:@" "withString:@""];
+    if (self.phoneTF.text.length >= 13 && [NSString isValidatePhoneNum:phoneFieldStr]&&text.text.length>=6) {//输入完成
+        loginBtn.userInteractionEnabled=YES;
+        [loginBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        [loginBtn setBackgroundImage:[UIImage imageWithColor:rgb(247, 70, 74,1)] forState:UIControlStateNormal];
+    }else{
+        loginBtn.userInteractionEnabled=NO;
+        [loginBtn setTitleColor:[UIColor colorWithHex:@"#A9A9A9"]  forState:UIControlStateNormal];
+        [loginBtn setBackgroundImage:[UIImage imageWithColor:[UIColor colorWithHex:@"#F1F1F1"]] forState:UIControlStateNormal];
+    }
 }
 
 -(void)loginBtnClick{
-    
+    NSString *phoneStr =[self.phoneTF.text stringByReplacingOccurrencesOfString:@" "withString:@""];
+    NSDictionary*  dic = @{@"username":phoneStr,@"password":self.pwdTF.text,@"device_type":@"iphone"};
+    __weak typeof(self) weakSelf =self;
+    [KDNetWorkManager GetHttpDataWithUrlStr:kLogin Dic:dic SuccessBlock:^(id obj) {
+        if([obj[@"code"] integerValue] == 1){
+            KDUserModel* model = [KDUserModel  ModelWithDict:obj[@"data"][@"user"]];
+            model.token =obj[@"data"][@"token"];
+            [KDUserModelTool saveUserModel:model];
+            if(weakSelf.loginBlock){
+                weakSelf.loginBlock();
+            }
+            [weakSelf.navigationController popViewControllerAnimated:YES];
+        }
+    } FailureBlock:^(id obj) {
+        
+    }];
 }
 
 -(void)registerBtnClick{
