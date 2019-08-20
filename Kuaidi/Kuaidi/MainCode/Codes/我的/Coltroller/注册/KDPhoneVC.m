@@ -33,7 +33,7 @@
     UILabel* titleLabel=[[UILabel alloc]initWithFrame:CGRectMake(0,NavibarH+ kAdaptationWidth(42), kScreenWidth, 30)];
     titleLabel.text=@"请输入手机号码";
     titleLabel.textColor=[UIColor colorWithHex:@"#0B0B0B"];
-    titleLabel.font =PingFangBold(30);
+    titleLabel.font =PingFangBold(28);
     titleLabel.textAlignment=NSTextAlignmentCenter;
     [self.view addSubview:titleLabel];
     
@@ -82,9 +82,8 @@
         return;
     }
     
-    KDCodeVC* vc= [[KDCodeVC alloc]init];
-    vc.phoneStr = self.phoneTF.text;
-    [self.navigationController pushViewController:vc animated:YES];
+    [self sendCode];
+    
 }
 -(void)phoneTFChanged:(UITextField*)textField{
     if (textField == self.phoneTF) {
@@ -119,7 +118,22 @@
         }
     }
 }
-
+-(void)sendCode{
+    NSString *phoneStr =[self.phoneTF.text stringByReplacingOccurrencesOfString:@" "withString:@""];
+    NSDictionary*  dic = @{@"phone":phoneStr};
+    __weak typeof(self) weakSelf =self;
+    [KDNetWorkManager GetHttpDataWithUrlStr:kSendCode Dic:dic SuccessBlock:^(id obj) {
+        if([obj[@"code"] integerValue] == 1){
+            KDCodeVC* vc= [[KDCodeVC alloc]init];
+            vc.phoneStr = weakSelf.phoneTF.text;
+            [weakSelf.navigationController pushViewController:vc animated:YES];
+        }else{
+            [weakSelf.view showToastWithText:obj[@"msg"] time:1];
+        }
+    } FailureBlock:^(id obj) {
+        
+    }];
+}
 -(void)setNav{
     self.titleView.type = TitleViewType_title;
     self.titleView.titleLable.textColor=[UIColor colorWithHex:@"#0B0B0B"];

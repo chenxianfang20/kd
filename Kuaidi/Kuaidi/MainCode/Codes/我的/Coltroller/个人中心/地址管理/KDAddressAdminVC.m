@@ -9,6 +9,7 @@
 #import "KDAddressAdminVC.h"
 #import "KDAddressAdminCell.h"
 #import "KDAddressAdminModel.h"
+#import "KDNewAddressVC.h"
 @interface KDAddressAdminVC()<UITableViewDelegate,UITableViewDataSource>
 
 
@@ -91,7 +92,8 @@
 }
 //新增地址
 -(void)addressBtnClick{
-    
+    KDNewAddressVC *vc=[[KDNewAddressVC alloc]init];
+    [self.navigationController pushViewController:vc animated:YES];
 }
 /**
  *  懒加载
