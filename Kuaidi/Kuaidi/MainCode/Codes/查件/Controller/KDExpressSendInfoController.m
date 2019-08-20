@@ -8,6 +8,7 @@
 
 #import "KDExpressSendInfoController.h"
 #import "DKExpressSendInfoHeaderView.h"
+#import "KDExpressTitleView.h"
 
 @interface KDExpressSendInfoController ()<UITableViewDelegate,UITableViewDataSource>
 
@@ -15,9 +16,19 @@
 
 @property(nonatomic, strong)DKExpressSendInfoHeaderView *headerView;
 
+@property(nonatomic, strong)KDExpressTitleView *expressTitleView;
+
 @end
 
 @implementation KDExpressSendInfoController
+
+-(KDExpressTitleView *)expressTitleView{
+    
+    if (!_expressTitleView) {
+        _expressTitleView = [KDExpressTitleView expressTitleView];
+    }
+    return _expressTitleView;
+}
 
 -(DKExpressSendInfoHeaderView *)headerView{
     
@@ -70,7 +81,21 @@
     
     [contentView addSubview:[self bgView]];
     
+    [contentView addSubview:self.expressTitleView];
+    [self.expressTitleView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(contentView).offset(0);
+        make.left.equalTo(contentView).offset(18);
+        make.right.equalTo(contentView).offset(-18);
+        make.height.mas_equalTo(90);
+    }];
+    
     [contentView addSubview:self.tableView];
+    [self.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(contentView).offset(18);
+        make.right.equalTo(contentView).offset(-18);
+        make.top.equalTo(self.expressTitleView.mas_bottom).offset(12);
+        make.bottom.equalTo(contentView).offset(-17);
+    }];
 }
 
 - (UIView *)bgView{
