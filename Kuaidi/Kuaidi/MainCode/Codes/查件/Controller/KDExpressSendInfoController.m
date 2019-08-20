@@ -7,8 +7,8 @@
 //
 
 #import "KDExpressSendInfoController.h"
+#import "DKExpressSendInfoCell.h"
 #import "DKExpressSendInfoHeaderView.h"
-#import "KDExpressTitleView.h"
 
 @interface KDExpressSendInfoController ()<UITableViewDelegate,UITableViewDataSource>
 
@@ -16,19 +16,11 @@
 
 @property(nonatomic, strong)DKExpressSendInfoHeaderView *headerView;
 
-@property(nonatomic, strong)KDExpressTitleView *expressTitleView;
+@property(nonatomic, strong)UIView *footerView;
 
 @end
 
 @implementation KDExpressSendInfoController
-
--(KDExpressTitleView *)expressTitleView{
-    
-    if (!_expressTitleView) {
-        _expressTitleView = [KDExpressTitleView expressTitleView];
-    }
-    return _expressTitleView;
-}
 
 -(DKExpressSendInfoHeaderView *)headerView{
     
@@ -38,14 +30,47 @@
     return _headerView;
 }
 
+-(UIView *)footerView{
+    
+    if (!_footerView) {
+        _footerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 24)];
+        _footerView.backgroundColor = [UIColor clearColor];
+        
+        UIView *shadowView = [[UIView alloc] init];
+        shadowView.backgroundColor = rgb(255, 255, 255, 1.0);
+        shadowView.layer.shadowColor = rgb(11, 11, 11, 0.1).CGColor;
+        shadowView.layer.shadowOffset = CGSizeMake(0,3);
+        shadowView.layer.shadowOpacity = 2;
+        shadowView.layer.shadowRadius = 3;
+        shadowView.layer.cornerRadius = 12;
+        [_footerView addSubview:shadowView];
+        [shadowView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.top.bottom.equalTo(self->_footerView).offset(0);
+            make.left.equalTo(self->_footerView).offset(18);
+            make.right.equalTo(self->_footerView).offset(-18);
+        }];
+        
+        UIView *maskView = [[UIView alloc] init];
+        maskView.backgroundColor = [UIColor whiteColor];
+        [shadowView addSubview:maskView];
+        [maskView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.right.top.equalTo(shadowView).offset(0);
+            make.height.mas_equalTo(12);
+        }];
+    }
+    return _footerView;
+}
+
 -(UITableView *)tableView{
     
     if (!_tableView) {
-        _tableView = [[UITableView alloc] initWithFrame:CGRectMake(18, 0, kScreenWidth - 36, kScreenHeight - NavibarH) style:UITableViewStylePlain];
+        _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight - NavibarH) style:UITableViewStylePlain];
         _tableView.delegate = self;
         _tableView.dataSource = self;
         _tableView.backgroundColor = [UIColor clearColor];
         _tableView.tableHeaderView = self.headerView;
+        _tableView.tableFooterView = self.footerView;
+        _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     }
     return _tableView;
 }
@@ -81,20 +106,12 @@
     
     [contentView addSubview:[self bgView]];
     
-    [contentView addSubview:self.expressTitleView];
-    [self.expressTitleView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(contentView).offset(0);
-        make.left.equalTo(contentView).offset(18);
-        make.right.equalTo(contentView).offset(-18);
-        make.height.mas_equalTo(90);
-    }];
-    
     [contentView addSubview:self.tableView];
     [self.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(contentView).offset(18);
-        make.right.equalTo(contentView).offset(-18);
-        make.top.equalTo(self.expressTitleView.mas_bottom).offset(12);
-        make.bottom.equalTo(contentView).offset(-17);
+        make.left.equalTo(contentView).offset(0);
+        make.right.equalTo(contentView).offset(0);
+        make.top.equalTo(contentView).offset(0);
+        make.bottom.equalTo(contentView).offset(0);
     }];
 }
 
@@ -110,10 +127,11 @@
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
     NSString *cellId = @"cellId";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellId];
+    DKExpressSendInfoCell *cell = [tableView dequeueReusableCellWithIdentifier:cellId];
     if (!cell) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellId];
+        cell = [[DKExpressSendInfoCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellId];
     }
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
 }
 

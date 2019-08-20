@@ -7,12 +7,38 @@
 //
 
 #import "DKExpressSendInfoHeaderView.h"
+#import "KDExpressTitleView.h"
+
+@interface DKExpressSendInfoHeaderView()
+
+@property(nonatomic, strong)KDExpressTitleView *expressTitleView;
+
+@property(nonatomic, strong)NSArray *iconArr;
+
+@end
+
 
 @implementation DKExpressSendInfoHeaderView
 
+-(KDExpressTitleView *)expressTitleView{
+    
+    if (!_expressTitleView) {
+        _expressTitleView = [KDExpressTitleView expressTitleView];
+    }
+    return _expressTitleView;
+}
+
+-(NSArray *)iconArr{
+    
+    if (!_iconArr) {
+        _iconArr = @[@"图标-反序",@"图标-未订阅",@"图标-分享"];
+    }
+    return _iconArr;
+}
+
 +(DKExpressSendInfoHeaderView *)expressSendInfoHeaderView{
     
-    DKExpressSendInfoHeaderView *view = [[DKExpressSendInfoHeaderView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth - 36, 156 + 44)];
+    DKExpressSendInfoHeaderView *view = [[DKExpressSendInfoHeaderView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 94 + 90 + 12)];
     return view;
 }
 
@@ -29,54 +55,94 @@
     
     self.backgroundColor = [UIColor clearColor];
     
-    UIView *expressTitleView = [[UIView alloc] init];
-    expressTitleView.backgroundColor = rgb(255, 255, 255, 1.0);
-    expressTitleView.layer.shadowColor = rgb(11, 11, 11, 0.1).CGColor;
-    expressTitleView.layer.shadowOffset = CGSizeMake(0,0);
-    expressTitleView.layer.shadowOpacity = 1;
-    expressTitleView.layer.shadowRadius = 24;
-    expressTitleView.layer.cornerRadius = 12;
-    [self addSubview:expressTitleView];
-    [expressTitleView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.left.right.equalTo(self).offset(0);
+    [self addSubview:self.expressTitleView];
+    [self.expressTitleView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self).offset(0);
+        make.left.equalTo(self).offset(18);
+        make.right.equalTo(self).offset(-18);
         make.height.mas_equalTo(90);
     }];
     
-    UIImageView *iconImageV = [[UIImageView alloc] init];
-    iconImageV.image = [UIImage imageNamed:@""];
-    iconImageV.backgroundColor = [UIColor redColor];
-    iconImageV.layer.cornerRadius = 27;
-    iconImageV.layer.borderWidth = 1;
-    iconImageV.layer.borderColor = rgb(253, 255, 254, 1.0).CGColor;
-    [expressTitleView addSubview:iconImageV];
-    [iconImageV mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(expressTitleView).offset(18);
-        make.centerY.equalTo(expressTitleView).offset(0);
-        make.size.mas_equalTo(CGSizeMake(54, 54));
+    UIView *expressInfoView = [[UIView alloc] init];
+    expressInfoView.backgroundColor = rgb(255, 255, 255, 1.0);
+    expressInfoView.layer.shadowColor = rgb(11, 11, 11, 0.1).CGColor;
+    expressInfoView.layer.shadowOffset = CGSizeMake(0,0);
+    expressInfoView.layer.shadowOpacity = 1;
+    expressInfoView.layer.shadowRadius = 24;
+    expressInfoView.layer.cornerRadius = 12;
+    [self addSubview:expressInfoView];
+    [expressInfoView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.expressTitleView.mas_bottom).offset(12);
+        make.left.equalTo(self).offset(18);
+        make.right.equalTo(self).offset(-18);
+        make.height.mas_equalTo(54);
     }];
     
-    UILabel *expressTitleLabel = [[UILabel alloc] init];
-    expressTitleLabel.textColor = rgb(11, 11, 11, 1.0);
-    expressTitleLabel.font = PingFangBold(18);
-    expressTitleLabel.text = @"顺丰快递";
-    [expressTitleView addSubview:expressTitleLabel];
-    [expressTitleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(iconImageV.mas_right).offset(18);
-        make.top.equalTo(expressTitleView).offset(25);
-        make.height.mas_equalTo(17);
-    }];
-
-    UILabel *expressNoLabel = [[UILabel alloc] init];
-    expressNoLabel.text = @"73114959694127";
-    expressNoLabel.textColor = rgb(92, 92, 92, 1.0);
-    expressNoLabel.font = PingFangMedium(16);
-    [expressTitleView addSubview:expressNoLabel];
-    [expressNoLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(iconImageV.mas_right).offset(18);
-        make.top.equalTo(expressTitleLabel.mas_bottom).offset(10);
+    UIView *maskView = [[UIView alloc] init];
+    maskView.backgroundColor = [UIColor whiteColor];
+    [expressInfoView addSubview:maskView];
+    [maskView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.right.bottom.equalTo(expressInfoView).offset(0);
+        make.height.mas_equalTo(12);
     }];
     
+    UILabel *expressInfoLabel = [[UILabel alloc] init];
+    expressInfoLabel.text = @"物流信息";
+    expressInfoLabel.textColor = rgb(92, 92, 92, 1.0);
+    expressInfoLabel.font = PingFangBold(15);
+    [expressInfoView addSubview:expressInfoLabel];
+    [expressInfoLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(expressInfoView).offset(18);
+        make.centerY.equalTo(expressInfoView).offset(0);
+    }];
     
+    for (NSInteger i = 0; i < self.iconArr.count; i++) {
+        
+        UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+        [button setImage:[UIImage imageNamed:self.iconArr[i]] forState:UIControlStateNormal];
+        [expressInfoView addSubview:button];
+        [button mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.right.equalTo(expressInfoView).offset(-(17 + (20 + 22) * i));
+            make.centerY.equalTo(expressInfoView).offset(0);
+            make.size.mas_equalTo(CGSizeMake(20, 20));
+        }];
+        
+    }
+    
+    UIView *statusView = [[UIView alloc] init];
+    statusView.backgroundColor = rgb(255, 255, 255, 1.0);
+    statusView.layer.shadowColor = rgb(11, 11, 11, 0.1).CGColor;
+    statusView.layer.shadowOffset = CGSizeMake(0,-5);
+    statusView.layer.shadowOpacity = 1;
+    [self addSubview:statusView];
+    [statusView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.bottom.equalTo(self).offset(0);
+        make.left.equalTo(self).offset(18);
+        make.right.equalTo(self).offset(-18);
+        make.top.equalTo(expressInfoView.mas_bottom).offset(0);
+    }];
+    
+    UILabel *statuLabel = [[UILabel alloc] init];
+    statuLabel.textColor = rgb(223, 47, 49, 1.0);
+    statuLabel.font = PingFangBold(15);
+    statuLabel.text = @"已签收";
+    [statusView addSubview:statuLabel];
+    [statuLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(statusView).offset(18);
+        make.centerY.equalTo(statusView).offset(0);
+    }];
+    
+    UIView *line = [[UIView alloc] init];
+    line.backgroundColor = rgb(241, 241, 241, 1.0);
+    [statusView addSubview:line];
+    [line mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(statusView).offset(18);
+        make.right.equalTo(statusView).offset(-18);
+        make.bottom.equalTo(statusView).offset(0);
+        make.height.mas_equalTo(1);
+    }];
+    
+    [self bringSubviewToFront:expressInfoView];
 }
 
 @end

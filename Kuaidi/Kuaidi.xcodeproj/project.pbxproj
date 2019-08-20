@@ -13,6 +13,7 @@
 		1619AC5923084897003463C7 /* KDExpressRecordController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1619AC5823084897003463C7 /* KDExpressRecordController.m */; };
 		162AB3FF230968C400EF8225 /* KDExpressRecordCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 162AB3FE230968C400EF8225 /* KDExpressRecordCell.m */; };
 		162DEB86230C46220099F44E /* KDExpressTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 162DEB85230C46220099F44E /* KDExpressTitleView.m */; };
+		162DEB89230C4AE60099F44E /* DKExpressSendInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 162DEB88230C4AE60099F44E /* DKExpressSendInfoCell.m */; };
 		16310F6F2306F9D80054311A /* UIView+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 16310F6E2306F9D70054311A /* UIView+Extension.m */; };
 		16310F722306F9F20054311A /* NSDictionary+Log.m in Sources */ = {isa = PBXBuildFile; fileRef = 16310F702306F9F10054311A /* NSDictionary+Log.m */; };
 		163588032307A3340017F510 /* KDAddressInfoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 163588022307A3340017F510 /* KDAddressInfoView.m */; };
@@ -199,6 +200,8 @@
 		162AB3FE230968C400EF8225 /* KDExpressRecordCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KDExpressRecordCell.m; sourceTree = "<group>"; };
 		162DEB84230C46220099F44E /* KDExpressTitleView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KDExpressTitleView.h; sourceTree = "<group>"; };
 		162DEB85230C46220099F44E /* KDExpressTitleView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KDExpressTitleView.m; sourceTree = "<group>"; };
+		162DEB87230C4AE60099F44E /* DKExpressSendInfoCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DKExpressSendInfoCell.h; sourceTree = "<group>"; };
+		162DEB88230C4AE60099F44E /* DKExpressSendInfoCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DKExpressSendInfoCell.m; sourceTree = "<group>"; };
 		16310F682306F6F00054311A /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		16310F6D2306F9D70054311A /* UIView+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Extension.h"; sourceTree = "<group>"; };
 		16310F6E2306F9D70054311A /* UIView+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Extension.m"; sourceTree = "<group>"; };
@@ -553,6 +556,8 @@
 				162DEB85230C46220099F44E /* KDExpressTitleView.m */,
 				1661B01B230AE5DD0028801C /* DKExpressSendInfoHeaderView.h */,
 				1661B01C230AE5DD0028801C /* DKExpressSendInfoHeaderView.m */,
+				162DEB87230C4AE60099F44E /* DKExpressSendInfoCell.h */,
+				162DEB88230C4AE60099F44E /* DKExpressSendInfoCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1412,6 +1417,7 @@
 				164096F62309B1620055C0FB /* HGSegmentedPageViewController.m in Sources */,
 				F419CD62230865B700553E29 /* KDAboutAsVC.m in Sources */,
 				1661B01D230AE5DD0028801C /* DKExpressSendInfoHeaderView.m in Sources */,
+				162DEB89230C4AE60099F44E /* DKExpressSendInfoCell.m in Sources */,
 				F4C3083F230935F400CF65CA /* KDAddressAdminModel.m in Sources */,
 				3D65BFC32301169500B12F3D /* UIView+YYAdd.m in Sources */,
 				F424E6BD23098716002D340E /* KDSetupVC.m in Sources */,
@@ -1606,7 +1612,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = Y534VL634J;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/Kuaidi/Other/PrefixHeader.pch";
 				INFOPLIST_FILE = Kuaidi/Other/Info.plist;
@@ -1626,7 +1632,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = Y534VL634J;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/Kuaidi/Other/PrefixHeader.pch";
 				INFOPLIST_FILE = Kuaidi/Other/Info.plist;
