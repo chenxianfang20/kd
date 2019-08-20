@@ -1,0 +1,82 @@
+//
+//  DKExpressSendInfoHeaderView.m
+//  Kuaidi
+//
+//  Created by ljp on 2019/8/19.
+//  Copyright © 2019 ios01. All rights reserved.
+//
+
+#import "DKExpressSendInfoHeaderView.h"
+
+@implementation DKExpressSendInfoHeaderView
+
++(DKExpressSendInfoHeaderView *)expressSendInfoHeaderView{
+    
+    DKExpressSendInfoHeaderView *view = [[DKExpressSendInfoHeaderView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth - 36, 156 + 44)];
+    return view;
+}
+
+-(instancetype)initWithFrame:(CGRect)frame{
+    
+    self= [super initWithFrame:frame];
+    if (self) {
+        [self createSubViews];
+    }
+    return self;
+}
+
+-(void)createSubViews{
+    
+    self.backgroundColor = [UIColor clearColor];
+    
+    UIView *expressTitleView = [[UIView alloc] init];
+    expressTitleView.backgroundColor = rgb(255, 255, 255, 1.0);
+    expressTitleView.layer.shadowColor = rgb(11, 11, 11, 0.1).CGColor;
+    expressTitleView.layer.shadowOffset = CGSizeMake(0,0);
+    expressTitleView.layer.shadowOpacity = 1;
+    expressTitleView.layer.shadowRadius = 24;
+    expressTitleView.layer.cornerRadius = 12;
+    [self addSubview:expressTitleView];
+    [expressTitleView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.left.right.equalTo(self).offset(0);
+        make.height.mas_equalTo(90);
+    }];
+    
+    UIImageView *iconImageV = [[UIImageView alloc] init];
+    iconImageV.image = [UIImage imageNamed:@""];
+    iconImageV.backgroundColor = [UIColor redColor];
+    iconImageV.layer.cornerRadius = 27;
+    iconImageV.layer.borderWidth = 1;
+    iconImageV.layer.borderColor = rgb(253, 255, 254, 1.0).CGColor;
+    [expressTitleView addSubview:iconImageV];
+    [iconImageV mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(expressTitleView).offset(18);
+        make.centerY.equalTo(expressTitleView).offset(0);
+        make.size.mas_equalTo(CGSizeMake(54, 54));
+    }];
+    
+    UILabel *expressTitleLabel = [[UILabel alloc] init];
+    expressTitleLabel.textColor = rgb(11, 11, 11, 1.0);
+    expressTitleLabel.font = PingFangBold(18);
+    expressTitleLabel.text = @"顺丰快递";
+    [expressTitleView addSubview:expressTitleLabel];
+    [expressTitleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(iconImageV.mas_right).offset(18);
+        make.top.equalTo(expressTitleView).offset(25);
+        make.height.mas_equalTo(17);
+    }];
+
+    UILabel *expressNoLabel = [[UILabel alloc] init];
+    expressNoLabel.text = @"73114959694127";
+    expressNoLabel.textColor = rgb(92, 92, 92, 1.0);
+    expressNoLabel.font = PingFangMedium(16);
+    [expressTitleView addSubview:expressNoLabel];
+    [expressNoLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(iconImageV.mas_right).offset(18);
+        make.top.equalTo(expressTitleLabel.mas_bottom).offset(10);
+    }];
+    
+    
+}
+
+@end

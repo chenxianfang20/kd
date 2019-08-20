@@ -18,7 +18,7 @@
 
 +(DKScanView *)scanView{
     
-    DKScanView *view = [[DKScanView alloc] initWithFrame:CGRectMake(0, 0, 339, 156)];
+    DKScanView *view = [[DKScanView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth - 36, 156)];
     return view;
 }
 

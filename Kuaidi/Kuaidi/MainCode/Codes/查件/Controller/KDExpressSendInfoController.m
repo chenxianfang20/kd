@@ -7,12 +7,37 @@
 //
 
 #import "KDExpressSendInfoController.h"
+#import "DKExpressSendInfoHeaderView.h"
 
-@interface KDExpressSendInfoController ()
+@interface KDExpressSendInfoController ()<UITableViewDelegate,UITableViewDataSource>
+
+@property(nonatomic, strong)UITableView *tableView;
+
+@property(nonatomic, strong)DKExpressSendInfoHeaderView *headerView;
 
 @end
 
 @implementation KDExpressSendInfoController
+
+-(DKExpressSendInfoHeaderView *)headerView{
+    
+    if (!_headerView) {
+        _headerView = [DKExpressSendInfoHeaderView expressSendInfoHeaderView];
+    }
+    return _headerView;
+}
+
+-(UITableView *)tableView{
+    
+    if (!_tableView) {
+        _tableView = [[UITableView alloc] initWithFrame:CGRectMake(18, 0, kScreenWidth - 36, kScreenHeight - NavibarH) style:UITableViewStylePlain];
+        _tableView.delegate = self;
+        _tableView.dataSource = self;
+        _tableView.backgroundColor = [UIColor clearColor];
+        _tableView.tableHeaderView = self.headerView;
+    }
+    return _tableView;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -44,6 +69,8 @@
     }];
     
     [contentView addSubview:[self bgView]];
+    
+    [contentView addSubview:self.tableView];
 }
 
 - (UIView *)bgView{
@@ -54,5 +81,22 @@
     return bgView;
 }
 
+#pragma mark -- UITableViewDelegate,UITableViewDataSource
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    NSString *cellId = @"cellId";
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellId];
+    if (!cell) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellId];
+    }
+    return cell;
+}
+
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    return 10;
+}
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    return 44;
+}
 
 @end
