@@ -12,12 +12,12 @@
 
 #define kBaseUrl @"https://kuaidi.foldbook.net"
 
-
 //发送验证码
 #define kSendCode @"/api/user/public/sendCode"
-
 //注册
 #define kRegister @"/api/user/public/register"
+//登录
+#define kLogin @"/api/user/public/login"
 
 
 //关于我们

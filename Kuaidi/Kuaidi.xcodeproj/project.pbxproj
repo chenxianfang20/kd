@@ -77,6 +77,8 @@
 		F41C801523081D2F00DA1C2F /* KDPhoneVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F41C801223081D2F00DA1C2F /* KDPhoneVC.m */; };
 		F41C801623081D2F00DA1C2F /* KDCodeVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F41C801323081D2F00DA1C2F /* KDCodeVC.m */; };
 		F42119B8230AD71C001481CE /* KDNewAddressVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F42119B7230AD71C001481CE /* KDNewAddressVC.m */; };
+		F422E956230C4E8000F10B21 /* KDUserModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F422E955230C4E8000F10B21 /* KDUserModel.m */; };
+		F422E95A230C51FE00F10B21 /* KDUserModelTool.m in Sources */ = {isa = PBXBuildFile; fileRef = F422E959230C51FE00F10B21 /* KDUserModelTool.m */; };
 		F424E6B423098026002D340E /* KDExpressCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F424E6B323098026002D340E /* KDExpressCell.m */; };
 		F424E6B82309857C002D340E /* 图标-收藏 @3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F424E6B62309857C002D340E /* 图标-收藏 @3x.png */; };
 		F424E6B92309857C002D340E /* 图标-收藏 @2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F424E6B72309857C002D340E /* 图标-收藏 @2x.png */; };
@@ -322,6 +324,10 @@
 		F41C801423081D2F00DA1C2F /* KDPhoneVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KDPhoneVC.h; sourceTree = "<group>"; };
 		F42119B6230AD71C001481CE /* KDNewAddressVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KDNewAddressVC.h; sourceTree = "<group>"; };
 		F42119B7230AD71C001481CE /* KDNewAddressVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KDNewAddressVC.m; sourceTree = "<group>"; };
+		F422E954230C4E8000F10B21 /* KDUserModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KDUserModel.h; sourceTree = "<group>"; };
+		F422E955230C4E8000F10B21 /* KDUserModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KDUserModel.m; sourceTree = "<group>"; };
+		F422E958230C51FE00F10B21 /* KDUserModelTool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KDUserModelTool.h; sourceTree = "<group>"; };
+		F422E959230C51FE00F10B21 /* KDUserModelTool.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KDUserModelTool.m; sourceTree = "<group>"; };
 		F424E6AF23097F67002D340E /* KDExpressModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KDExpressModel.h; sourceTree = "<group>"; };
 		F424E6B023097F67002D340E /* KDExpressModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KDExpressModel.m; sourceTree = "<group>"; };
 		F424E6B223098026002D340E /* KDExpressCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KDExpressCell.h; sourceTree = "<group>"; };
@@ -550,6 +556,7 @@
 		167B6DDB2309BA92001C0D15 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				F422E957230C51E400F10B21 /* 用户模型 */,
 				167B6DDD2309BABF001C0D15 /* KDExpressModel.h */,
 				167B6DDE2309BABF001C0D15 /* KDExpressModel.m */,
 			);
@@ -902,6 +909,17 @@
 				F42119B7230AD71C001481CE /* KDNewAddressVC.m */,
 			);
 			path = "添加地址";
+			sourceTree = "<group>";
+		};
+		F422E957230C51E400F10B21 /* 用户模型 */ = {
+			isa = PBXGroup;
+			children = (
+				F422E954230C4E8000F10B21 /* KDUserModel.h */,
+				F422E955230C4E8000F10B21 /* KDUserModel.m */,
+				F422E958230C51FE00F10B21 /* KDUserModelTool.h */,
+				F422E959230C51FE00F10B21 /* KDUserModelTool.m */,
+			);
+			path = "用户模型";
 			sourceTree = "<group>";
 		};
 		F424E6B523098568002D340E /* 个人中心 */ = {
@@ -1389,6 +1407,7 @@
 				F419CD5B2308603600553E29 /* KDCodeForPwdVC.m in Sources */,
 				F465DE4B230454FF002DFD4C /* KDLoginVC.m in Sources */,
 				F424E6B423098026002D340E /* KDExpressCell.m in Sources */,
+				F422E956230C4E8000F10B21 /* KDUserModel.m in Sources */,
 				3D65BFBF230115D000B12F3D /* UIView+Toast.m in Sources */,
 				16310F722306F9F20054311A /* NSDictionary+Log.m in Sources */,
 				F41C801523081D2F00DA1C2F /* KDPhoneVC.m in Sources */,
@@ -1400,6 +1419,7 @@
 				164096FD2309B2420055C0FB /* CBGroupAndStreamView.m in Sources */,
 				164096F62309B1620055C0FB /* HGSegmentedPageViewController.m in Sources */,
 				F419CD62230865B700553E29 /* KDAboutAsVC.m in Sources */,
+				F422E95A230C51FE00F10B21 /* KDUserModelTool.m in Sources */,
 				F4C3083F230935F400CF65CA /* KDAddressAdminModel.m in Sources */,
 				3D65BFC32301169500B12F3D /* UIView+YYAdd.m in Sources */,
 				F424E6BD23098716002D340E /* KDSetupVC.m in Sources */,

@@ -178,4 +178,11 @@
 -(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
     [self.view endEditing:YES];
 }
+
+-(void)dealloc{
+    if(self.timer){
+        [_timer invalidate];
+        _timer=nil;
+    }
+}
 @end
