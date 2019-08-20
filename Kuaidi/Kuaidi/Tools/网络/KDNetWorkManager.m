@@ -17,6 +17,7 @@
 {
     
     NSString* urlStr = [NSString stringWithFormat:@"%@%@",kBaseUrl,url];
+    NSLog(@"allUrl:%@ dic:\n%@",urlStr,dic);
     AFHTTPSessionManager *manager = [KDSessionManager sharedHttpSessionManager];
     manager.responseSerializer.acceptableContentTypes =[NSSet setWithObjects:@"application/json", @"text/json", @"text/javascript",@"text/html",@"text/plain",nil];
     [manager POST:urlStr parameters:dic progress:^(NSProgress * _Nonnull uploadProgress) {
@@ -44,7 +45,7 @@
 {
     
     NSString* urlStr = [NSString stringWithFormat:@"%@%@",kBaseUrl,url];
-    
+    NSLog(@"allUrl:%@ dic:\n%@",urlStr,dic);
     
     AFHTTPSessionManager *manager = [KDSessionManager sharedHttpSessionManager];
     manager.responseSerializer.acceptableContentTypes =[NSSet setWithObjects:@"application/json", @"text/json", @"text/javascript",@"text/html",@"text/plain",nil];
