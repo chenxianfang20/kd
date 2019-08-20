@@ -7,7 +7,12 @@
 //
 
 #import "KDAboutAsVC.h"
+@interface KDAboutAsVC()
 
+@property (nonatomic,strong) UILabel* infoLabel;
+@property (nonatomic,strong) UIView*  infoBgView;
+
+@end
 @implementation KDAboutAsVC
 
 - (void)viewDidLoad {
@@ -17,6 +22,7 @@
     
     [self addChildViews];
     
+    [self getData];
     
 }
 
@@ -31,19 +37,18 @@
     iconImgView.image = [UIImage imageNamed:@"关于-图片"];
     [self.view addSubview:iconImgView];
     
-    UIView*  infoBgView = [[UIView alloc]initWithFrame:CGRectMake(kAdaptationWidth(18), NavibarH+kAdaptationWidth(82), kAdaptationWidth(339), kAdaptationWidth(202))];
-    infoBgView.backgroundColor=[UIColor whiteColor];
-    infoBgView.layer.cornerRadius=10.0f;
-    infoBgView.layer.masksToBounds=YES;
-    [self.view addSubview:infoBgView];
+     _infoBgView= [[UIView alloc]initWithFrame:CGRectMake(kAdaptationWidth(18), NavibarH+kAdaptationWidth(82), kAdaptationWidth(339), kAdaptationWidth(502))];
+    _infoBgView.backgroundColor=[UIColor whiteColor];
+    _infoBgView.layer.cornerRadius=10.0f;
+    _infoBgView.layer.masksToBounds=YES;
+    [self.view addSubview:_infoBgView];
     
     
-    UILabel* infoLabel=[[UILabel alloc]initWithFrame:CGRectMake(kAdaptationWidth(18), kAdaptationWidth(24), kAdaptationWidth(295), kAdaptationWidth(154))];
-    infoLabel.text=@"      公司介绍文字测试，公司介绍文字测试，公司介绍文字测试，公司介绍文字测试，公司介绍文字测试，公司介绍文字测试，公司介绍文字测试，公司介绍文字测试。\n     公司介绍文字测试，公司介绍文字测试，公司介绍文字测试，公司介绍文字测试，公司介绍文字测试，公司介绍文字测试。";
-    infoLabel.textColor=[UIColor colorWithHex:@"#5C5C5C"];
-    infoLabel.font =[UIFont fontWithName:@"PingFang SC" size: 14];
-    infoLabel.numberOfLines=0;
-    [infoBgView addSubview:infoLabel];
+    _infoLabel=[[UILabel alloc]initWithFrame:CGRectMake(kAdaptationWidth(18), kAdaptationWidth(24), kAdaptationWidth(295), kAdaptationWidth(502))];
+    _infoLabel.textColor=[UIColor colorWithHex:@"#5C5C5C"];
+    _infoLabel.font =[UIFont fontWithName:@"PingFang SC" size: 14];
+    _infoLabel.numberOfLines=0;
+    [_infoBgView addSubview:_infoLabel];
     
 }
 -(void)setNav{
@@ -51,14 +56,15 @@
     [self.titleView setTitle:@"关于我们"];
     self.nav.backgroundColor = [UIColor clearColor];
     self.backgroungImgView.hidden=YES;
-    [self sendCode];
 }
--(void)sendCode{
-   
-    
-    
+-(void)getData{
+    __weak typeof(self)weakSelf = self;
     [KDNetWorkManager GetHttpDataWithUrlStr:kArticles Dic:nil SuccessBlock:^(id obj) {
         NSLog(@"ttt===%@",obj);
+        weakSelf.infoLabel.text =obj[@"data"][@"post_content"];
+        [weakSelf.infoLabel sizeToFit];
+        weakSelf.infoBgView.height =weakSelf.infoLabel.height+48;
+        
     } FailureBlock:^(id obj) {
         
     }];

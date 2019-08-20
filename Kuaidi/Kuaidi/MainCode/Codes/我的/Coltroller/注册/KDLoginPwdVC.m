@@ -31,7 +31,7 @@
     UILabel* titleLabel=[[UILabel alloc]initWithFrame:CGRectMake(0,NavibarH+ kAdaptationWidth(42), kScreenWidth, 30)];
     titleLabel.text=@"请设置登录密码";
     titleLabel.textColor=[UIColor colorWithHex:@"#0B0B0B"];
-    titleLabel.font =PingFangBold(30);
+    titleLabel.font =PingFangBold(28);
     titleLabel.textAlignment=NSTextAlignmentCenter;
     [self.view addSubview:titleLabel];
     
@@ -130,6 +130,19 @@
         [self.view showToastWithText:@"密码不得少于6位" time:1];
         return;
     }
+    NSString *phoneStr =[self.phoneStr stringByReplacingOccurrencesOfString:@" "withString:@""];
+    NSDictionary*  dic = @{@"username":phoneStr,@"password":self.pwdTF.text,@"verification_code":self.codeStr};
+    __weak typeof(self) weakSelf =self;
+    [KDNetWorkManager GetHttpDataWithUrlStr:kSendCode Dic:dic SuccessBlock:^(id obj) {
+        if([obj[@"code"] integerValue] == 1){
+           
+            [ZJCustomHud showWithSuccess:@"注册成功"];
+            [weakSelf.navigationController popToRootViewControllerAnimated:YES];
+        }
+    } FailureBlock:^(id obj) {
+        
+    }];
+    
    
 }
 

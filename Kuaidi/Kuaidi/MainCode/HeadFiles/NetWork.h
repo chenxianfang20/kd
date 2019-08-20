@@ -10,12 +10,17 @@
 #define NetWork_h
 
 
-#define kBaseUrl @"http://47.112.115.154:3000/mock/23"
+#define kBaseUrl @"https://kuaidi.foldbook.net"
 
 
-
+//发送验证码
 #define kSendCode @"/api/user/public/sendCode"
 
+//注册
+#define kRegister @"/api/user/public/register"
+
+
+//关于我们
 #define kArticles @"/api/portal/articles/2"
 
 #endif /* NetWork_h */
