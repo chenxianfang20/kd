@@ -19,7 +19,8 @@
 //登录
 #define kLogin @"/api/user/public/login"
 
-
+//登录
+#define kAddressList @"/api/user/address/index"
 //关于我们
 #define kArticles @"/api/portal/articles/2"
 

@@ -59,7 +59,7 @@
 }
 -(void)getData{
     __weak typeof(self)weakSelf = self;
-    [KDNetWorkManager GetHttpDataWithUrlStr:kArticles Dic:nil SuccessBlock:^(id obj) {
+    [KDNetWorkManager GetHttpDataWithUrlStr:kArticles Dic:nil headDic:nil SuccessBlock:^(id obj) {
         NSLog(@"ttt===%@",obj);
         weakSelf.infoLabel.text =obj[@"data"][@"post_content"];
         [weakSelf.infoLabel sizeToFit];

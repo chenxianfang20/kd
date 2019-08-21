@@ -133,7 +133,7 @@
     NSString *phoneStr =[self.phoneStr stringByReplacingOccurrencesOfString:@" "withString:@""];
     NSDictionary*  dic = @{@"username":phoneStr,@"password":self.pwdTF.text,@"verification_code":self.codeStr};
     __weak typeof(self) weakSelf =self;
-    [KDNetWorkManager GetHttpDataWithUrlStr:kRegister Dic:dic SuccessBlock:^(id obj) {
+    [KDNetWorkManager GetHttpDataWithUrlStr:kRegister Dic:dic headDic:nil SuccessBlock:^(id obj) {
         if([obj[@"code"] integerValue] == 1){
            
             [ZJCustomHud showWithSuccess:@"注册成功"];

@@ -41,7 +41,7 @@
 
 
 /** Post 请求 */
-+(void)GetHttpDataWithUrlStr:(NSString *)url Dic:(NSDictionary *)dic SuccessBlock:(success)successBlock FailureBlock:(failure)failureBlock
++(void)GetHttpDataWithUrlStr:(NSString *)url Dic:(NSDictionary *)dic headDic:(NSDictionary*)headDic SuccessBlock:(success)successBlock FailureBlock:(failure)failureBlock
 {
     
     NSString* urlStr = [NSString stringWithFormat:@"%@%@",kBaseUrl,url];
@@ -49,6 +49,11 @@
     
     AFHTTPSessionManager *manager = [KDSessionManager sharedHttpSessionManager];
     manager.responseSerializer.acceptableContentTypes =[NSSet setWithObjects:@"application/json", @"text/json", @"text/javascript",@"text/html",@"text/plain",nil];
+    
+    NSArray* keys=[headDic allKeys];
+    for (NSString * key in keys) {
+        [manager.requestSerializer setValue:headDic[key] forHTTPHeaderField:key];
+    }
     [manager GET:urlStr parameters:dic progress:^(NSProgress * _Nonnull uploadProgress) {
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         /** 这里是处理事件的回调 */

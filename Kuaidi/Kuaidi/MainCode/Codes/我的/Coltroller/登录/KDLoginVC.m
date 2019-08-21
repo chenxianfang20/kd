@@ -217,7 +217,7 @@
     NSString *phoneStr =[self.phoneTF.text stringByReplacingOccurrencesOfString:@" "withString:@""];
     NSDictionary*  dic = @{@"username":phoneStr,@"password":self.pwdTF.text,@"device_type":@"iphone"};
     __weak typeof(self) weakSelf =self;
-    [KDNetWorkManager GetHttpDataWithUrlStr:kLogin Dic:dic SuccessBlock:^(id obj) {
+    [KDNetWorkManager GetHttpDataWithUrlStr:kLogin Dic:dic headDic:nil SuccessBlock:^(id obj) {
         if([obj[@"code"] integerValue] == 1){
             KDUserModel* model = [KDUserModel  ModelWithDict:obj[@"data"][@"user"]];
             model.token =obj[@"data"][@"token"];
