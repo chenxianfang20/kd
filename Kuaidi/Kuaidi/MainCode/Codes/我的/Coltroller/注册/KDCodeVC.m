@@ -127,7 +127,7 @@
     NSString *phoneStr =[self.phoneStr stringByReplacingOccurrencesOfString:@" "withString:@""];
     NSDictionary*  dic = @{@"phone":phoneStr};
     __weak typeof(self) weakSelf =self;
-    [KDNetWorkManager GetHttpDataWithUrlStr:kSendCode Dic:dic SuccessBlock:^(id obj) {
+    [KDNetWorkManager GetHttpDataWithUrlStr:kSendCode Dic:dic headDic:nil SuccessBlock:^(id obj) {
         if([obj[@"code"] integerValue] == 1){
             weakSelf.timeCount=60;
             weakSelf.timer=[NSTimer scheduledTimerWithTimeInterval:1.0f target:self selector:@selector(timeCountTimer) userInfo:nil repeats:YES];

@@ -22,5 +22,5 @@ typedef void (^failure)(id obj);
 /** Post 请求 */
 +(void)PostHttpDataWithUrlStr:(NSString *)url Dic:(NSDictionary *)dic SuccessBlock:(success)successBlock FailureBlock:(failure)failureBlock;
 /** Post 请求 */
-+(void)GetHttpDataWithUrlStr:(NSString *)url Dic:(NSDictionary *)dic SuccessBlock:(success)successBlock FailureBlock:(failure)failureBlock;
++(void)GetHttpDataWithUrlStr:(NSString *)url Dic:(NSDictionary *)dic headDic:(NSDictionary*)headDic SuccessBlock:(success)successBlock FailureBlock:(failure)failureBlock;
 @end

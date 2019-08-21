@@ -23,6 +23,17 @@
     
     [self setNav];
     [self addChildViews];
+    
+    KDUserModel* model = [KDUserModelTool userModel];
+    NSDictionary* dic = @{@"XX-Token":model.token,@"XX-Device-Type":@"iOS"};
+    __weak typeof(self) weakSelf =self;
+    [KDNetWorkManager GetHttpDataWithUrlStr:kAddressList Dic:nil headDic:dic SuccessBlock:^(id obj) {
+        if([obj[@"code"] integerValue] == 1){
+           
+        }
+    } FailureBlock:^(id obj) {
+        
+    }];
 }
 
 

@@ -122,7 +122,7 @@
     NSString *phoneStr =[self.phoneTF.text stringByReplacingOccurrencesOfString:@" "withString:@""];
     NSDictionary*  dic = @{@"phone":phoneStr};
     __weak typeof(self) weakSelf =self;
-    [KDNetWorkManager GetHttpDataWithUrlStr:kSendCode Dic:dic SuccessBlock:^(id obj) {
+    [KDNetWorkManager GetHttpDataWithUrlStr:kSendCode Dic:dic headDic:nil SuccessBlock:^(id obj) {
         if([obj[@"code"] integerValue] == 1){
             KDCodeVC* vc= [[KDCodeVC alloc]init];
             vc.phoneStr = weakSelf.phoneTF.text;
