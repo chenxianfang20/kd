@@ -40,7 +40,7 @@
         shadowView.backgroundColor = rgb(255, 255, 255, 1.0);
         shadowView.layer.shadowColor = rgb(11, 11, 11, 0.1).CGColor;
         shadowView.layer.shadowOffset = CGSizeMake(0,3);
-        shadowView.layer.shadowOpacity = 2;
+        shadowView.layer.shadowOpacity = 0.7;
         shadowView.layer.shadowRadius = 3;
         shadowView.layer.cornerRadius = 12;
         [_footerView addSubview:shadowView];
@@ -139,7 +139,7 @@
     return 10;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return 44;
+    return 115;
 }
 
 @end
