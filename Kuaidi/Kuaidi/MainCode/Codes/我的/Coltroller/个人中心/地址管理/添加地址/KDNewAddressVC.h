@@ -8,10 +8,10 @@
 
 #import "RootViewController.h"
 
-
+typedef void (^MyBlock)(void);
 
 @interface KDNewAddressVC : RootViewController
-
+@property (nonatomic,copy) MyBlock  myBlock;
 @end
 
 

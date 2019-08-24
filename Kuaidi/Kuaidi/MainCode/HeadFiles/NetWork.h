@@ -10,6 +10,9 @@
 #define NetWork_h
 
 
+#define kDeviceType  @"iphone"
+
+
 #define kBaseUrl @"https://kuaidi.foldbook.net"
 
 //发送验证码
@@ -19,8 +22,18 @@
 //登录
 #define kLogin @"/api/user/public/login"
 
-//登录
+//地址列表
 #define kAddressList @"/api/user/address/index"
+//新增地址
+#define kAddAddress @"/api/user/address/add"
+//删除地址
+#define kDeleteAddress @"/api/user/address/delete"
+
+
+
+#define kWuLiu @"/logistics/wuliu/index"
+
+
 //关于我们
 #define kArticles @"/api/portal/articles/2"
 

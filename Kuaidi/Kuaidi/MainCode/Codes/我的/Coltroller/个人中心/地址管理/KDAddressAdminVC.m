@@ -24,16 +24,7 @@
     [self setNav];
     [self addChildViews];
     
-    KDUserModel* model = [KDUserModelTool userModel];
-    NSDictionary* dic = @{@"XX-Token":model.token,@"XX-Device-Type":@"iOS"};
-    __weak typeof(self) weakSelf =self;
-    [KDNetWorkManager GetHttpDataWithUrlStr:kAddressList Dic:nil headDic:dic SuccessBlock:^(id obj) {
-        if([obj[@"code"] integerValue] == 1){
-           
-        }
-    } FailureBlock:^(id obj) {
-        
-    }];
+    [self getAddressList];
 }
 
 
@@ -56,14 +47,7 @@
     [addressBgView addSubview:addressBtn];
     
     
-    //临时数据
-    KDAddressAdminModel* model = [[KDAddressAdminModel alloc]init];
-    model.name=@"刘德华";
-    model.phone=@"150 1358 1358";
-    model.address=@"广东省 深圳市 龙岗区横岗街道大运软件小镇大运 软件小镇01栋";
-    [self.dataSource addObject:model];
-    [self.dataSource addObject:model];
-    [self.tableview reloadData];
+    
     
 }
 #pragma mark- tableview delegate
@@ -82,14 +66,14 @@
     }
     KDAddressAdminModel* model=self.dataSource[indexPath.row];
     cell.model=model;
-    
+    __weak typeof(self)weakSelf = self;
     //编辑
     cell.editBtnBlock=^{
         
     };
     //删除
     cell.deleteBtnBlock=^{
-        
+        [weakSelf deleteAddressWithID:model];
     };
     return cell;
 }
@@ -104,8 +88,52 @@
 //新增地址
 -(void)addressBtnClick{
     KDNewAddressVC *vc=[[KDNewAddressVC alloc]init];
+    __weak typeof(self) weakSelf = self;
+    vc.myBlock=^{
+        if(weakSelf.dataSource.count>0){
+            [weakSelf.dataSource removeAllObjects];
+        }
+        [weakSelf getAddressList];
+    };
     [self.navigationController pushViewController:vc animated:YES];
 }
+
+-(void)deleteAddressWithID:(KDAddressAdminModel*) addressAdminModel{
+    KDUserModel* model = [KDUserModelTool userModel];
+    NSDictionary* headData = @{@"XX-Token":model.token,@"XX-Device-Type":kDeviceType};
+    NSDictionary* dic = @{@"id":addressAdminModel.addressID};
+    __weak typeof(self) weakSelf =self;
+    [KDNetWorkManager GetHttpDataWithUrlStr:kDeleteAddress Dic:dic headDic:headData SuccessBlock:^(id obj) {
+        if([obj[@"code"] integerValue] == 1){
+            [weakSelf.dataSource removeObject:addressAdminModel];
+            [weakSelf.tableview reloadData];
+            [ZJCustomHud showWithSuccess:@"删除成功"];
+        }
+    } FailureBlock:^(id obj) {
+        
+    }];
+}
+
+-(void)getAddressList{
+    KDUserModel* model = [KDUserModelTool userModel];
+    NSDictionary* dic = @{@"XX-Token":model.token,@"XX-Device-Type":kDeviceType};
+    __weak typeof(self) weakSelf =self;
+    [KDNetWorkManager GetHttpDataWithUrlStr:kAddressList Dic:nil headDic:dic SuccessBlock:^(id obj) {
+        if([obj[@"code"] integerValue] == 1){
+            NSArray*  resArr = obj[@"data"];
+            if(resArr.count>0){
+                for(NSDictionary * modelDic in  resArr){
+                    KDAddressAdminModel* model = [KDAddressAdminModel ModelWithDict:modelDic];
+                    [weakSelf.dataSource addObject:model];
+                }
+                [weakSelf.tableview reloadData];
+            }
+        }
+    } FailureBlock:^(id obj) {
+        
+    }];
+}
+
 /**
  *  懒加载
  */
@@ -131,6 +159,7 @@
     }
     return _tableview;
 }
+
 -(void)setNav{
     self.titleView.type = TitleViewType_title;
     self.titleView.titleLable.textColor=[UIColor colorWithHex:@"#0B0B0B"];

@@ -54,6 +54,7 @@
     for (NSString * key in keys) {
         [manager.requestSerializer setValue:headDic[key] forHTTPHeaderField:key];
     }
+    
     [manager GET:urlStr parameters:dic progress:^(NSProgress * _Nonnull uploadProgress) {
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         /** 这里是处理事件的回调 */

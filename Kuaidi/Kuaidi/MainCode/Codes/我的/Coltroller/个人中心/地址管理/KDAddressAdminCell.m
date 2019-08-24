@@ -84,8 +84,8 @@
 
 -(void)setModel:(KDAddressAdminModel *)model{
     _nameLabel.text=model.name;
-    _phoneLabel.text=model.phone;
-    _addressLabel.text=model.address;
+    _phoneLabel.text=model.mobile;
+    _addressLabel.text=[NSString stringWithFormat:@"%@ %@ %@",model.province_name,model.city_name,model.address];
 }
 -(void)editBtnClick{
     if(self.editBtnBlock){

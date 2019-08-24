@@ -13,8 +13,13 @@
 @interface KDAddressAdminModel : NSObject
 
 @property (nonatomic,strong) NSString *name;
-@property (nonatomic,strong) NSString *phone;
+@property (nonatomic,strong) NSString *mobile;
+@property (nonatomic,strong) NSString *province_name;
+@property (nonatomic,strong) NSString *city_name;
 @property (nonatomic,strong) NSString *address;
+@property (nonatomic,strong) NSString *addressID;
+
+@property (nonatomic,strong) NSString *isDefault;
 +(instancetype)ModelWithDict:(NSDictionary*)dict;
 @end
 

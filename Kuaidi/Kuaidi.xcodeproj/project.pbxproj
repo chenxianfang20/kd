@@ -158,6 +158,8 @@
 		F481FF67230AE99000761A3A /* 地址-图标-语音@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F481FF61230AE98F00761A3A /* 地址-图标-语音@3x.png */; };
 		F481FF68230AE99000761A3A /* 地址-图标-照片@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F481FF62230AE98F00761A3A /* 地址-图标-照片@2x.png */; };
 		F481FF69230AE99000761A3A /* 地址-图标-照片@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F481FF63230AE99000761A3A /* 地址-图标-照片@3x.png */; };
+		F4B9A26F2311729D00614EB4 /* city.plist in Resources */ = {isa = PBXBuildFile; fileRef = F4B9A26D2311729D00614EB4 /* city.plist */; };
+		F4B9A2702311729D00614EB4 /* CityChoose.m in Sources */ = {isa = PBXBuildFile; fileRef = F4B9A26E2311729D00614EB4 /* CityChoose.m */; };
 		F4C3083C2309351E00CF65CA /* KDAddressAdminVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F4C3083B2309351E00CF65CA /* KDAddressAdminVC.m */; };
 		F4C3083F230935F400CF65CA /* KDAddressAdminModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F4C3083E230935F400CF65CA /* KDAddressAdminModel.m */; };
 		F4C30842230936CC00CF65CA /* KDAddressAdminCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F4C30841230936CC00CF65CA /* KDAddressAdminCell.m */; };
@@ -423,6 +425,9 @@
 		F481FF61230AE98F00761A3A /* 地址-图标-语音@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "地址-图标-语音@3x.png"; sourceTree = "<group>"; };
 		F481FF62230AE98F00761A3A /* 地址-图标-照片@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "地址-图标-照片@2x.png"; sourceTree = "<group>"; };
 		F481FF63230AE99000761A3A /* 地址-图标-照片@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "地址-图标-照片@3x.png"; sourceTree = "<group>"; };
+		F4B9A26C2311729D00614EB4 /* CityChoose.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CityChoose.h; sourceTree = "<group>"; };
+		F4B9A26D2311729D00614EB4 /* city.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = city.plist; sourceTree = "<group>"; };
+		F4B9A26E2311729D00614EB4 /* CityChoose.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CityChoose.m; sourceTree = "<group>"; };
 		F4C3083A2309351E00CF65CA /* KDAddressAdminVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KDAddressAdminVC.h; sourceTree = "<group>"; };
 		F4C3083B2309351E00CF65CA /* KDAddressAdminVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KDAddressAdminVC.m; sourceTree = "<group>"; };
 		F4C3083D230935F400CF65CA /* KDAddressAdminModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KDAddressAdminModel.h; sourceTree = "<group>"; };
@@ -920,6 +925,7 @@
 		F42119B5230AD6EC001481CE /* 添加地址 */ = {
 			isa = PBXGroup;
 			children = (
+				F4B9A26B2311729D00614EB4 /* CityChooseVeiw */,
 				F42119B6230AD71C001481CE /* KDNewAddressVC.h */,
 				F42119B7230AD71C001481CE /* KDNewAddressVC.m */,
 			);
@@ -1103,6 +1109,16 @@
 			path = "个人中心";
 			sourceTree = "<group>";
 		};
+		F4B9A26B2311729D00614EB4 /* CityChooseVeiw */ = {
+			isa = PBXGroup;
+			children = (
+				F4B9A26C2311729D00614EB4 /* CityChoose.h */,
+				F4B9A26D2311729D00614EB4 /* city.plist */,
+				F4B9A26E2311729D00614EB4 /* CityChoose.m */,
+			);
+			path = CityChooseVeiw;
+			sourceTree = "<group>";
+		};
 		F4C30839230934A100CF65CA /* 地址管理 */ = {
 			isa = PBXGroup;
 			children = (
@@ -1252,6 +1268,7 @@
 				F465DE21230454B9002DFD4C /* 我的-图标-京东@2x.png in Resources */,
 				F465DE19230454B9002DFD4C /* 我的-图标-积分@3x.png in Resources */,
 				F41C800123081BDA00DA1C2F /* 注册-图标-后退@2x.png in Resources */,
+				F4B9A26F2311729D00614EB4 /* city.plist in Resources */,
 				F465DE29230454B9002DFD4C /* 我的-图标-二维码@2x.png in Resources */,
 				F465DE11230454B9002DFD4C /* 图标-微博@2x.png in Resources */,
 				F465DE26230454B9002DFD4C /* 我的-图标-京东@3x.png in Resources */,
@@ -1422,6 +1439,7 @@
 				F419CD5E2308610800553E29 /* KDResetLoginPwdVC.m in Sources */,
 				F419CD5B2308603600553E29 /* KDCodeForPwdVC.m in Sources */,
 				F465DE4B230454FF002DFD4C /* KDLoginVC.m in Sources */,
+				F4B9A2702311729D00614EB4 /* CityChoose.m in Sources */,
 				F424E6B423098026002D340E /* KDExpressCell.m in Sources */,
 				F422E956230C4E8000F10B21 /* KDUserModel.m in Sources */,
 				3D65BFBF230115D000B12F3D /* UIView+Toast.m in Sources */,
