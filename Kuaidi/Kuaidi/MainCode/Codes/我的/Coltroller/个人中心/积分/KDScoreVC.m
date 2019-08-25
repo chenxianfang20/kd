@@ -26,7 +26,7 @@
     
     [self.view addSubview:self.noticeView];
     
-    
+    self.noticeView.hidden = NO;
 }
 -(void)getScoreData{
     KDUserModel* model = [KDUserModelTool userModel];
