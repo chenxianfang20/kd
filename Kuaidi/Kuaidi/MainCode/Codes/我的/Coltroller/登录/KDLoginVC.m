@@ -226,6 +226,8 @@
                 weakSelf.loginBlock();
             }
             [weakSelf.navigationController popViewControllerAnimated:YES];
+        }else{
+            [weakSelf.view  showToastWithText:obj[@"msg"] time:1];
         }
     } FailureBlock:^(id obj) {
         

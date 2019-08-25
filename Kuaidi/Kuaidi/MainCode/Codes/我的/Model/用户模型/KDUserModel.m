@@ -39,7 +39,7 @@
     [encoder encodeObject:_user_status forKey:@"user_status"];
     [encoder encodeObject:_sex forKey:@"sex"];
     [encoder encodeObject:_avatar forKey:@"avatar"];
-  
+    [encoder encodeObject:_userId forKey:@"userId"];
 }
 
 -(instancetype)initWithCoder:(NSCoder *)decoder
@@ -56,6 +56,7 @@
         
         _sex=[decoder decodeObjectForKey:@"sex"];
         _avatar=[decoder decodeObjectForKey:@"avatar"];
+        _userId=[decoder decodeObjectForKey:@"userId"];
     }
     return self;
 }

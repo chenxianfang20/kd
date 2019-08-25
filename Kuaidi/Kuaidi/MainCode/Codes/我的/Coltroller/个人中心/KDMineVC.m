@@ -77,15 +77,7 @@
     _nameLabel.userInteractionEnabled=YES;
     [_nameLabel addGestureRecognizer:clickTap];
     
-     KDUserModel* model = [KDUserModelTool userModel];
-    if(model.token){
-        _nameLabel.text = model.mobile;
-        _nameLabel.userInteractionEnabled=NO;
-    }else{
-        _nameLabel.text=@"登录/注册";
-        _nameLabel.userInteractionEnabled=YES;
-    }
-    
+    [self isLoginState];
     
     //欢迎使用快递么
     UILabel* desLabel=[[UILabel alloc]initWithFrame:CGRectMake(kAdaptationWidth(96),_nameLabel.bottom+ kAdaptationWidth(7), kAdaptationWidth(260), kAdaptationWidth(15))];
@@ -352,6 +344,22 @@
         }
     };
     [self.navigationController pushViewController:loginVC animated:YES];
+}
+
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    //防止用户被挤下去
+    [self isLoginState];
+}
+-(void)isLoginState{
+    KDUserModel* model = [KDUserModelTool userModel];
+    if(model.token){
+        _nameLabel.text = model.mobile;
+        _nameLabel.userInteractionEnabled=NO;
+    }else{
+        _nameLabel.text=@"登录/注册";
+        _nameLabel.userInteractionEnabled=YES;
+    }
 }
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView{
     if(scrollView.contentOffset.y<0){
