@@ -8,6 +8,7 @@
 
 #import "KDExpressRecordListController.h"
 #import "KDExpressRecordCell.h"
+#import "KDOrderListModel.h"
 
 @interface KDExpressRecordListController ()< UITableViewDelegate, UITableViewDataSource>
 
@@ -59,11 +60,13 @@
     [self.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.equalTo(self.view);
     }];
+    
+    [self getDataFromNet];
 }
 
 #pragma mark - UITableViewDataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 30;
+    return self.dataArr.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -77,26 +80,28 @@
 
 - (void)getDataFromNet{
     
+    KDUserModel* model = [KDUserModelTool userModel];
+    NSDictionary * dic = @{@"XX-Token":model.token,@"XX-Device-Type":kDeviceType};
     NSDictionary *params = @{
                              @"status":@(self.status),
                              @"page" : @(self.page),
+                             @"limit" : @(10)
                              };
     
     __weak typeof(self) weakSelf =self;
     
-    [KDNetWorkManager GetHttpDataWithUrlStr:kWuliuList Dic:nil headDic:nil SuccessBlock:^(id obj) {
+    [KDNetWorkManager GetHttpDataWithUrlStr:kOrderList Dic:params headDic:dic SuccessBlock:^(id obj) {
         if([obj[@"code"] integerValue] == 1){
             
             NSArray *data = obj[@"data"];
             for (NSDictionary *dic in data) {
                 
-                KDWuliuListModel *model = [KDWuliuListModel mj_objectWithKeyValues:dic];
-                [weakSelf.wuliuArr addObject:model];
+                KDOrderListModel *model = [KDOrderListModel mj_objectWithKeyValues:dic];
+                [weakSelf.dataArr addObject:model];
                 
             }
-            
-            KDWuliuListModel *model = weakSelf.wuliuArr[weakSelf.wuliuIndex + 1];
-            weakSelf.goodsInfoView.expressTypeTF.text = model.logistics_name;
+        
+            [self.tableView reloadData];
             
         }else{
             
