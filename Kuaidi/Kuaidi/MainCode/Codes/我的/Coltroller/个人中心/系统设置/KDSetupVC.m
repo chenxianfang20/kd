@@ -8,7 +8,9 @@
 
 #import "KDSetupVC.h"
 #import "SDImageCache.h"
-@interface KDSetupVC()
+@interface KDSetupVC(){
+    UILabel* cacheLabel;
+}
 
 @end
 
@@ -69,6 +71,10 @@
     cacheBgView.layer.cornerRadius=8.0f;
     cacheBgView.layer.masksToBounds=YES;
     [self.view addSubview:cacheBgView];
+    cacheBgView.userInteractionEnabled=YES;
+    UITapGestureRecognizer* cacheBgViewTap  = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(cacheBgViewTapClick)];
+    [cacheBgView addGestureRecognizer:cacheBgViewTap];
+    
     
     UILabel* cacheDesLabel=[[UILabel alloc]initWithFrame:CGRectMake(kLeftX, kAdaptationWidth(19), kAdaptationWidth(150), kAdaptationWidth(18))];
     cacheDesLabel.font=PingFangRegular(15);
@@ -77,13 +83,17 @@
     [cacheBgView addSubview:cacheDesLabel];
     cacheDesLabel.centerY=cacheBgView.height/2.0;
     
-    UILabel* cacheLabel=[[UILabel alloc]initWithFrame:CGRectMake(kLeftX, cacheDesLabel.top, kAdaptationWidth(100), kAdaptationWidth(18))];
+    cacheLabel=[[UILabel alloc]initWithFrame:CGRectMake(kLeftX, cacheDesLabel.top, kAdaptationWidth(100), kAdaptationWidth(18))];
     cacheLabel.font=PingFangRegular(15);
     cacheLabel.textColor=[UIColor colorWithHex:@"#A9A9A9"];
-    cacheLabel.text=@"0.71M";
+    
     [cacheBgView addSubview:cacheLabel];
     cacheLabel.textAlignment=NSTextAlignmentRight;
     cacheLabel.right =cacheBgView.width- kAdaptationWidth(50);
+        CGFloat size = [self folderSizeAtPath:NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES).lastObject] + [self folderSizeAtPath:NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES).lastObject] + [self folderSizeAtPath:NSTemporaryDirectory()];
+    cacheLabel.text=[NSString stringWithFormat:@"%.1fM",size];
+    
+    
     
     //退出登录
     UIView* quitBgView =[[UIView alloc]initWithFrame:CGRectMake(kLeftX,cacheBgView.bottom+kAdaptationWidth(12), kAdaptationWidth(339), kAdaptationWidth(51))];
@@ -108,5 +118,45 @@
     [self.backButton setImage:[UIImage imageNamed:@"注册-图标-后退"] forState:UIControlStateNormal];
     self.backgroungImgView.image=[UIImage imageWithColor:rgb(245, 245, 245, 1)];
 }
+//清除缓存按钮的点击事件
+- (void)cacheBgViewTapClick{
+    [self cleanCaches:NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES).lastObject];
+    [self cleanCaches:NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES).lastObject];
+    [self cleanCaches:NSTemporaryDirectory()];
+    
+    cacheLabel.text=@"0.0M";
+}
 
+// 计算目录大小
+- (CGFloat)folderSizeAtPath:(NSString *)path{
+    // 利用NSFileManager实现对文件的管理
+    NSFileManager *manager = [NSFileManager defaultManager];
+    CGFloat size = 0;
+    if ([manager fileExistsAtPath:path]) {
+        // 获取该目录下的文件，计算其大小
+        NSArray *childrenFile = [manager subpathsAtPath:path];
+        for (NSString *fileName in childrenFile) {
+            NSString *absolutePath = [path stringByAppendingPathComponent:fileName];
+            size += [manager attributesOfItemAtPath:absolutePath error:nil].fileSize;
+        }
+        // 将大小转化为M
+        return size / 1024.0 / 1024.0;
+    }
+    return 0;
+}
+// 根据路径删除文件
+- (void)cleanCaches:(NSString *)path{
+    // 利用NSFileManager实现对文件的管理
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    if ([fileManager fileExistsAtPath:path]) {
+        // 获取该路径下面的文件名
+        NSArray *childrenFiles = [fileManager subpathsAtPath:path];
+        for (NSString *fileName in childrenFiles) {
+            // 拼接路径
+            NSString *absolutePath = [path stringByAppendingPathComponent:fileName];
+            // 将文件删除
+            [fileManager removeItemAtPath:absolutePath error:nil];
+        }
+    }
+}
 @end

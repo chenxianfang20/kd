@@ -14,6 +14,7 @@
 
 @property (nonatomic,strong) NSString *token;
 
+@property (nonatomic,strong) NSString *userId;
 //手机
 @property (nonatomic,strong) NSString *mobile;
 //昵称

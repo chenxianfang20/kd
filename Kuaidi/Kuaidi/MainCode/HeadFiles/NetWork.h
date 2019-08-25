@@ -50,6 +50,9 @@
 //物流详情
 #define kDetailwuliu @"/api/logistics/wuliu/detail"
 
+//积分
+#define kScoreIndex @"/api/user/score/index"
+
 //关于我们
 #define kArticles @"/api/portal/articles/2"
 

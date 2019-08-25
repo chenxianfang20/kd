@@ -22,7 +22,7 @@
     model.user_status=dict[@"user_status"];
     model.sex=dict[@"sex"];
     model.avatar=dict[@"avatar"];
-    
+    model.userId=dict[@"id"];
     return model;
 }
 
