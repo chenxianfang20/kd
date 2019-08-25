@@ -36,6 +36,7 @@
 @property (nonatomic,strong) NSString *avatar;
 
 +(instancetype)ModelWithDict:(NSDictionary*)dict;
+
 @end
 
 

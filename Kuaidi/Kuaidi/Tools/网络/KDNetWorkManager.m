@@ -60,7 +60,15 @@
             NSString *string = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
             NSDictionary* dict= [KDNetWorkManager dictionaryWithJsonString:string];
             NSLog(@"url:%@\n%@  %@",url, headDic,dict);
-            successBlock(dict);
+            
+            if([dict[@"code"] integerValue ] ==10001){
+                [KDUserModelTool deleteUserModel];
+                [ZJCustomHud showWithText:dict[@"msg"] WithDurations:1];
+            }else{
+                successBlock(dict);
+            }
+            
+            
         }
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         /** 这里是处理事件的回调 */
