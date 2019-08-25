@@ -15,12 +15,14 @@
 #import "KDExpressSelectView.h"
 #import "KDTimeSelectView.h"
 #import "KDMessageBoardView.h"
+#import "KDAddressAdminVC.h"
 
 @interface KDMailingVC ()
 <UITableViewDelegate,
 UITableViewDataSource,
 KDGoodsInfoViewDelegate,
-KDTitleViewDelegate>
+KDTitleViewDelegate,
+KDAddressInfoViewDelegate>
 
 @property(nonatomic, strong)UITableView *tableView;
 
@@ -40,6 +42,7 @@ KDTitleViewDelegate>
     if (!_addressView) {
         _addressView = [KDAddressInfoView addressInfoView];
         _addressView.center = CGPointMake(self.view.width/2.0, _addressView.center.y + 12);
+        _addressView.delegate = self;
     }
     return _addressView;
 }
@@ -91,6 +94,7 @@ KDTitleViewDelegate>
     
     UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.width, self.addressView.height + self.goodsInfoView.height)];
     headerView.backgroundColor = [UIColor clearColor];
+    
     [headerView addSubview:self.addressView];
     
     [headerView addSubview:self.goodsInfoView];
@@ -107,6 +111,10 @@ KDTitleViewDelegate>
     [self setNav];
     
     [self createSubViews];
+    
+    self.tableView.tableHeaderView.height = self.addressView.height;
+    self.goodsInfoView.hidden = YES;
+    self.addressView.bottomView.hidden = YES;
 }
 
 -(void)setNav{
@@ -192,6 +200,22 @@ KDTitleViewDelegate>
     vc.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:vc animated:YES];
     
+}
+
+#pragma mark -- KDAddressInfoViewDelegate
+-(void)selectSendExpressAddress{
+    
+    KDAddressAdminVC *vc = [[KDAddressAdminVC alloc] init];
+    vc.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:vc animated:YES];
+    
+}
+
+-(void)selectReceiveExpressAddress{
+    
+    KDAddressAdminVC *vc = [[KDAddressAdminVC alloc] init];
+    vc.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 @end

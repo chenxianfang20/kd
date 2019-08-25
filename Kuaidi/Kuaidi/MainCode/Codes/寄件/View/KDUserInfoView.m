@@ -29,6 +29,23 @@
     
 }
 
+- (void)hiddenAddress{
+    
+    self.holderLabel.hidden = NO;
+    self.nameLabel.hidden = YES;
+    self.phoneLabel.hidden = YES;
+    self.addressLabel.hidden = YES;
+}
+
+- (void)showAddress{
+    
+    self.holderLabel.hidden = YES;
+    self.nameLabel.hidden = NO;
+    self.phoneLabel.hidden = NO;
+    self.addressLabel.hidden = NO;
+    
+}
+
 -(instancetype)init{
     self = [super init];
     if (self) {

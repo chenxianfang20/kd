@@ -21,6 +21,11 @@ typedef enum : NSUInteger {
 
 +(KDUserInfoView *)userInfoView;
 
+
+- (void)hiddenAddress;
+
+- (void)showAddress;
+
 @end
 
 NS_ASSUME_NONNULL_END
