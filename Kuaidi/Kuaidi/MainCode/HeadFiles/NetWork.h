@@ -12,13 +12,23 @@
 
 #define kDeviceType  @"iphone"
 
-
 #define kBaseUrl @"https://kuaidi.foldbook.net"
+
+//用户下单
+#define kCreateOrder @"/api/logistics/kdniao/createOrder"
+
+//物流列表
+#define kWuliuList @"/api/logistics/wuliu/index"
+
+//商品列表
+#define kGoodsList @"/api/logistics/goods/index"
 
 //发送验证码
 #define kSendCode @"/api/user/public/sendCode"
+
 //注册
 #define kRegister @"/api/user/public/register"
+
 //登录
 #define kLogin @"/api/user/public/login"
 

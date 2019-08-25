@@ -10,7 +10,11 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+@class KDAddressAdminModel;
+
 @interface KDAddressAdminVC : RootViewController
+
+@property(nonatomic, copy)void(^selectAddressBlock)(KDAddressAdminModel *model);
 
 @end
 

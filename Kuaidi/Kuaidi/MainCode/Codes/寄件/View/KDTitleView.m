@@ -42,6 +42,7 @@
     
     self = [super initWithFrame:frame];
     if (self) {
+        self.index = 0;
         [self createSubViews];
     }
     return self;

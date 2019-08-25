@@ -8,6 +8,7 @@
 
 #import "KDExpressSelectView.h"
 #import "KDExpressSelectCell.h"
+#import "KDWuliuListModel.h"
 
 @interface KDExpressSelectView()<UITableViewDelegate,UITableViewDataSource>
 
@@ -17,15 +18,26 @@
 
 @property(nonatomic, strong)UIView *footerView;
 
+@property(nonatomic, strong)UITableView *tableView;
+
+@property(nonatomic, strong)NSArray *wuliuArr;
+
+@property(nonatomic, assign)NSInteger index;
+
+@property(nonatomic, strong)UIButton *selectButton;
+
+@property(nonatomic, copy)void(^confirmBlock)(NSInteger index);
+
 @end
 
 @implementation KDExpressSelectView
 
-+(void)showSelectViewWithConfirmBlock:(void(^)(NSString *expressType))confirmBlock{
++(void)showSelectViewWithWuliuArr:(NSArray *)wuliuArr select:(NSInteger)index ConfirmBlock:(void(^)(NSInteger index))confirmBlock{
     
-    KDExpressSelectView *view = [[KDExpressSelectView alloc] initWithFrame:CGRectMake(18, 0, kScreenWidth - 36, 459) style:UITableViewStylePlain];
+    KDExpressSelectView *view = [[KDExpressSelectView alloc] initWithFrame:CGRectMake(18, 0, kScreenWidth - 36, 459) WuliuArr:wuliuArr select:index];
     view.center = CGPointMake(kScreenWidth/2.0, kScreenHeight/2.0);
     view.alpha = 0;
+    view.confirmBlock = confirmBlock;
     
     UIView *bgView = [[UIView alloc] initWithFrame:[UIScreen mainScreen].bounds];
     bgView.backgroundColor = rgb(11, 11, 11, 0.72);
@@ -51,7 +63,10 @@
     
     if (!_headerView) {
         _headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth - 36, 159)];
-        _headerView.backgroundColor = rgb(255, 255, 255, 1);
+        _headerView.backgroundColor = [UIColor clearColor];//rgb(255, 255, 255, 1);
+        
+        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapClick)];
+        [_headerView addGestureRecognizer:tap];
         
         UILabel *titleLabel = [[UILabel alloc] init];
         titleLabel.text = @"快递选择";
@@ -89,6 +104,8 @@
             make.top.equalTo(self->_headerView).offset(60);
             make.size.mas_equalTo(CGSizeMake(48, 48));
         }];
+        KDWuliuListModel *model = self.wuliuArr.firstObject;
+        [iconImageV sd_setImageWithURL:[NSURL URLWithString:model.logistics_icon]];
         
         UILabel *topTipLabel = [[UILabel alloc] init];
         topTipLabel.text = @"快递么优选上门取件";
@@ -113,6 +130,7 @@
         }];
         
         UIButton *selectButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        self.selectButton = selectButton;
         [selectButton setImage:[UIImage imageNamed:@"图标-未选"] forState:UIControlStateNormal];
         [selectButton setImage:[UIImage imageNamed:@"图标-选定"] forState:UIControlStateSelected];
         [_headerView addSubview:selectButton];
@@ -121,6 +139,9 @@
             make.centerY.equalTo(iconImageV.mas_centerY).offset(0);
             make.size.mas_equalTo(CGSizeMake(24, 24));
         }];
+        selectButton.selected = self.index == -1;
+//        [selectButton addTarget:self action:@selector(selectButtonClick:) forControlEvents:UIControlEventTouchUpInside];
+        selectButton.userInteractionEnabled = NO;
         
         UILabel *label = [[UILabel alloc] init];
         label.text = @"其他快递服务";
@@ -140,8 +161,9 @@
     
     if (!_footerView) {
         
-        _footerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth - 36, 104)];
-        _footerView.backgroundColor = rgb(255, 255, 255, 1.0);
+        _footerView = [[UIView alloc] initWithFrame:CGRectMake(0, 459 - 104, kScreenWidth - 36, 104)];
+        _footerView.backgroundColor = [UIColor clearColor];
+        //rgb(255, 255, 255, 1.0);
         
         UIView *shadowView = [[UIView alloc] init];
         shadowView.backgroundColor = rgb(255, 255, 255, 1.0);
@@ -154,6 +176,14 @@
         [shadowView mas_makeConstraints:^(MASConstraintMaker *make) {
             make.top.equalTo(self->_footerView).offset(20);
             make.left.right.bottom.equalTo(self->_footerView).offset(0);
+        }];
+        
+        UIView *maskView = [[UIView alloc] init];
+        maskView.backgroundColor =rgb(255, 255, 255, 1.0);
+        [shadowView addSubview:maskView];
+        [maskView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.top.right.equalTo(shadowView).offset(0);
+            make.height.mas_equalTo(12);
         }];
         
         UIButton *confirmButton = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -169,14 +199,25 @@
             make.right.equalTo(shadowView).offset(-18);
             make.height.mas_equalTo(48);
         }];
+        [confirmButton addTarget:self action:@selector(confirmButtonClick:) forControlEvents:UIControlEventTouchUpInside];
     }
     return _footerView;
 }
 
--(instancetype)initWithFrame:(CGRect)frame style:(UITableViewStyle)style{
+-(UITableView *)tableView{
     
-    self = [super initWithFrame:frame style:style];
+    if (!_tableView) {
+        _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, self.headerView.height, kScreenWidth - 36, 459 - 104 - 159) style:UITableViewStylePlain];
+    }
+    return _tableView;
+}
+
+-(instancetype)initWithFrame:(CGRect)frame WuliuArr:(NSArray *)wuliuArr select:(NSInteger)index{
+    
+    self = [super initWithFrame:frame];
     if (self) {
+        self.wuliuArr = wuliuArr;
+        self.index = index;
         [self createSubViews];
     }
     return self;
@@ -190,14 +231,18 @@
     self.layer.shadowOffset = CGSizeMake(0,0);
     self.layer.shadowOpacity = 1;
     self.layer.shadowRadius = 24;
-    self.separatorStyle = UITableViewCellSeparatorStyleNone;
     
-    self.delegate = self;
-    self.dataSource = self;
-    self.showsVerticalScrollIndicator = NO;
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     
-    self.tableHeaderView = self.headerView;
-    self.tableFooterView = self.footerView;
+    self.tableView.delegate = self;
+    self.tableView.dataSource = self;
+    self.tableView.showsVerticalScrollIndicator = NO;
+    self.tableView.backgroundColor = [UIColor clearColor];
+    self.tableView.layer.cornerRadius = 12;
+    self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth - 36, 0)];
+    [self addSubview:self.headerView];
+    [self addSubview:self.tableView];
+    [self addSubview:self.footerView];
 }
 
 - (void)hidden{
@@ -224,11 +269,18 @@
         cell = [[KDExpressSelectCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellId];
     }
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    KDWuliuListModel *model = self.wuliuArr[indexPath.row + 1];
+    [cell.icoImageV sd_setImageWithURL:[NSURL URLWithString:model.logistics_icon]];
+    cell.titleLabel.text = model.logistics_name;
+    if (self.index == indexPath.row) {
+        [tableView selectRowAtIndexPath:indexPath animated:NO scrollPosition:UITableViewScrollPositionNone];
+    }
+    
     return cell;
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return 3;
+    return self.wuliuArr.count - 1;
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -236,4 +288,27 @@
     return 68;
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    self.selectButton.selected = NO;
+    self.index = indexPath.row;
+    
+}
+
+- (void)tapClick{
+    
+    self.index = -1;
+    self.selectButton.selected = YES;
+    [self.tableView reloadData];
+}
+
+
+- (void)confirmButtonClick:(UIButton *)button{
+    
+    [self hidden];
+    
+    if (self.confirmBlock) {
+        self.confirmBlock(self.index);
+    }
+}
 @end

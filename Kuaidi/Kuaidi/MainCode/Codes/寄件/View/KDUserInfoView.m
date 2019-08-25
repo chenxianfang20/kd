@@ -12,12 +12,6 @@
 
 @property(nonatomic, strong)UILabel *holderLabel;
 
-@property(nonatomic, strong)UILabel *nameLabel;
-
-@property(nonatomic, strong)UILabel *phoneLabel;
-
-@property(nonatomic, strong)UILabel *addressLabel;
-
 @end
 
 @implementation KDUserInfoView

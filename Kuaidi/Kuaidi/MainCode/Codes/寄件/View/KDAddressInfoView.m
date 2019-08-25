@@ -8,6 +8,7 @@
 
 #import "KDAddressInfoView.h"
 #import "KDUserInfoView.h"
+#import "KDAddressAdminModel.h"
 
 @interface KDAddressInfoView()
 
@@ -136,6 +137,24 @@
         [self.delegate selectReceiveExpressAddress];
     }
     
+}
+
+-(void)setSendAddressModel:(KDAddressAdminModel *)sendAddressModel{
+    
+    _sendAddressModel = sendAddressModel;
+    self.sendUserInfoView.nameLabel.text = sendAddressModel.name;
+    self.sendUserInfoView.addressLabel.text = [NSString stringWithFormat:@"%@ %@ %@ %@",sendAddressModel.province_name,sendAddressModel.city_name,sendAddressModel.district_name,sendAddressModel.address];
+    self.sendUserInfoView.phoneLabel.text = sendAddressModel.mobile;
+    [self.sendUserInfoView showAddress];
+}
+
+-(void)setReceiveAddressModel:(KDAddressAdminModel *)receiveAddressModel{
+    
+    _receiveAddressModel = receiveAddressModel;
+    self.receiveUserInfoView.nameLabel.text = receiveAddressModel.name;
+    self.receiveUserInfoView.addressLabel.text = [NSString stringWithFormat:@"%@ %@ %@ %@",receiveAddressModel.province_name,receiveAddressModel.city_name,receiveAddressModel.district_name,receiveAddressModel.address];
+    self.receiveUserInfoView.phoneLabel.text = receiveAddressModel.mobile;
+    [self.receiveUserInfoView showAddress];
 }
 
 @end

@@ -12,6 +12,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface KDExpressSelectCell : UITableViewCell
 
+@property(nonatomic, strong)UILabel *titleLabel;
+
+@property(nonatomic, strong)UIImageView *icoImageV;
+
 @end
 
 NS_ASSUME_NONNULL_END

@@ -19,6 +19,12 @@ typedef enum : NSUInteger {
 
 @property(nonatomic, assign)KDUserInfoType userInfoType;
 
+@property(nonatomic, strong)UILabel *nameLabel;
+
+@property(nonatomic, strong)UILabel *phoneLabel;
+
+@property(nonatomic, strong)UILabel *addressLabel;
+
 +(KDUserInfoView *)userInfoView;
 
 

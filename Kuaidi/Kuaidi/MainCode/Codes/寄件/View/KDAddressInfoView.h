@@ -9,6 +9,8 @@
 #import <UIKit/UIKit.h>
 
 NS_ASSUME_NONNULL_BEGIN
+@class KDAddressAdminModel;
+
 @protocol KDAddressInfoViewDelegate <NSObject>
 
 @optional
@@ -22,6 +24,12 @@ NS_ASSUME_NONNULL_BEGIN
 @property(nonatomic, assign)id<KDAddressInfoViewDelegate> delegate;
 
 @property(nonatomic, strong)UIView *bottomView;
+
+@property(nonatomic, strong)KDAddressAdminModel * sendAddressModel;
+
+@property(nonatomic, strong)KDAddressAdminModel * receiveAddressModel;
+
+
 
 + (KDAddressInfoView *)addressInfoView;
 

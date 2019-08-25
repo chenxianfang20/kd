@@ -7,24 +7,41 @@
 //
 
 #import "KDGoodsTypeInfoSelectView.h"
+#import "KDGoodsListModel.h"
 
 @interface KDGoodsTypeInfoSelectView()
 
 @property(nonatomic, strong)UIView *bgView;
 
-@property(nonatomic, strong)NSArray *titles;
-
 @property(nonatomic, strong)NSMutableArray *buttonArr;
+
+@property(nonatomic, strong)NSMutableArray *goodsArr;
+
+@property(nonatomic, assign)NSInteger index;
+
+@property(nonatomic, copy)NSString *imageUrl;
+
+@property(nonatomic, strong)UILabel *countLabel;
+
+@property(nonatomic, strong)UIButton *subtractButton;
+
+@property(nonatomic, strong)UIButton *addButton;
+
+@property(nonatomic, copy)void(^confirmBlock)(NSInteger index, NSString *imageUrl, NSString *count);
 
 @end
 
 @implementation KDGoodsTypeInfoSelectView
 
-+(void)showSelectViewWithConfirmBlock:(void(^)(NSString *goodsType, NSInteger weight, UIImage *image))confirmBlock{
++(void)showSelectViewWithGoodsArr:(NSMutableArray *)goodsArr
+                           select:(NSInteger)index
+                         imageUrl:(NSString *)imageUrl
+                     confirmBlock:(void(^)(NSInteger index, NSString *imageUrl, NSString *count))confirmBlock{
     
-    KDGoodsTypeInfoSelectView *view = [[KDGoodsTypeInfoSelectView alloc] initWithFrame:CGRectMake(18, 0, kScreenWidth - 36, 473)];
+    KDGoodsTypeInfoSelectView *view = [[KDGoodsTypeInfoSelectView alloc] initWithFrame:CGRectMake(18, 0, kScreenWidth - 36, 473) goodsArr:goodsArr select:index imageUrl:imageUrl];
     view.center = CGPointMake(kScreenWidth/2.0, kScreenHeight/2.0);
     view.alpha = 0;
+    view.confirmBlock = confirmBlock;
     
     UIView *bgView = [[UIView alloc] initWithFrame:[UIScreen mainScreen].bounds];
     bgView.backgroundColor = rgb(11, 11, 11, 0.72);
@@ -46,15 +63,15 @@
     
 }
 
--(NSArray *)titles{
-    
-    if (!_titles) {
-        _titles = @[@"文件",@"食品",@"蛋糕",@"药品",
-                    @"生鲜",@"鲜花",@"数码",@"服装鞋帽",
-                    @"汽车配件",@"证照",@"珠宝",@"其他"];
-    }
-    return _titles;
-}
+//-(NSArray *)titles{
+//
+//    if (!_titles) {
+//        _titles = @[@"文件",@"食品",@"蛋糕",@"药品",
+//                    @"生鲜",@"鲜花",@"数码",@"服装鞋帽",
+//                    @"汽车配件",@"证照",@"珠宝",@"其他"];
+//    }
+//    return _titles;
+//}
 
 -(NSMutableArray *)buttonArr{
     if (!_buttonArr) {
@@ -63,10 +80,21 @@
     return _buttonArr;
 }
 
--(instancetype)initWithFrame:(CGRect)frame{
+-(instancetype)initWithFrame:(CGRect)frame goodsArr:(NSMutableArray *)goodsArr select:(NSInteger)index imageUrl:(NSString *)imageUrl{
     
     self = [super initWithFrame:frame];
     if (self) {
+        
+        self.goodsArr = goodsArr;
+        
+        self.index = index;
+        
+        self.imageUrl = imageUrl;
+        
+        if (self.index < 0 ) {
+            self.index = 0;
+        }
+        
         [self createSubViews];
     }
     return self;
@@ -129,14 +157,15 @@
     CGFloat buttonH = 30;
     CGFloat matgintW = (self.width - 36 - row * buttonW)/(row - 1);
     CGFloat matgintH = 12;
-    for (NSInteger i = 0; i < self.titles.count; i ++) {
+    for (NSInteger i = 0; i < self.goodsArr.count; i ++) {
         
+        KDGoodsListModel *model = self.goodsArr[i];
         UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
-        [button setTitle:self.titles[i] forState:UIControlStateNormal];
+        [button setTitle:model.goods_name forState:UIControlStateNormal];
         button.titleLabel.font = PingFangMedium(13);
         button.layer.borderWidth = 1;
         button.layer.cornerRadius = 4;
-        button.selected = (i == 0);
+        button.selected = (i == self.index);
         [self selectButtonConvert:button];
         [self addSubview:button];
         [button mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -180,7 +209,11 @@
         make.centerY.equalTo(weightTitleLabel.mas_centerY).offset(0);
     }];
     
+    KDGoodsListModel *model = self.goodsArr[self.index];
+    
     UIButton *addButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    self.addButton = addButton;
+    addButton.selected = model.goods_weight.integerValue < 30;
     [addButton setImage:[UIImage imageNamed:@"图标-增加-不可点击"] forState:UIControlStateNormal];
     [addButton setImage:[UIImage imageNamed:@"图标-增加-可以点击"] forState:UIControlStateSelected];
     [self addSubview:addButton];
@@ -189,9 +222,12 @@
         make.centerY.equalTo(weightTitleLabel.mas_centerY).offset(0);
         make.size.mas_equalTo(CGSizeMake(24, 24));
     }];
+    [addButton addTarget:self action:@selector(addButtonClick:) forControlEvents:UIControlEventTouchUpInside];
+    
     
     UILabel *countLabel = [[UILabel alloc] init];
-    countLabel.text = @"30";
+    self.countLabel = countLabel;
+    countLabel.text = model.goods_weight.stringValue;
     countLabel.textAlignment = NSTextAlignmentCenter;
     countLabel.textColor = rgb(11, 11, 11, 1);
     countLabel.font = PingFangBold(20);
@@ -203,6 +239,8 @@
     }];
     
     UIButton *subtractButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    self.subtractButton = subtractButton;
+    subtractButton.selected = model.goods_weight.integerValue > 1;
     [subtractButton setImage:[UIImage imageNamed:@"图标-减少-不可点击"] forState:UIControlStateNormal];
     [subtractButton setImage:[UIImage imageNamed:@"图标-减少-可以点击"] forState:UIControlStateSelected];
     [self addSubview:subtractButton];
@@ -211,6 +249,7 @@
         make.centerY.equalTo(weightTitleLabel.mas_centerY).offset(0);
         make.size.mas_equalTo(CGSizeMake(24, 24));
     }];
+    [subtractButton addTarget:self action:@selector(subtractButtonClick:) forControlEvents:UIControlEventTouchUpInside];
     
     UIButton *addImageButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [addImageButton setImage:[UIImage imageNamed:@"图标-上传照片"] forState:UIControlStateNormal];
@@ -220,6 +259,9 @@
         make.top.equalTo(pictrueTitleLabel.mas_bottom).offset(18);
         make.size.mas_equalTo(CGSizeMake(60, 60));
     }];
+    if (self.imageUrl) {
+        [addImageButton.imageView sd_setImageWithURL:[NSURL URLWithString:self.imageUrl] placeholderImage:[UIImage imageNamed:@"图标-上传照片"]];
+    }
     
     UILabel *tipLabel = [[UILabel alloc] init];
     tipLabel.text = @"照片可以帮助快递小哥判断物品的大小以及选择合适的运输工具。";
@@ -263,6 +305,10 @@
     
     [self hidden];
     
+    if (self.confirmBlock) {
+        self.confirmBlock(self.index, self.imageUrl, self.countLabel.text);
+    }
+    
 }
 
 -(void)selectButtonConvert:(UIButton *)button{
@@ -291,5 +337,30 @@
         
     }];
 }
+
+- (void)addButtonClick:(UIButton *)button{
+    
+    NSInteger count = self.countLabel.text.integerValue;
+    if (count >= 30) {
+        return;
+    }
+    self.countLabel.text = [NSString stringWithFormat:@"%ld",count + 1];
+    button.selected = count + 1 < 30;
+    self.subtractButton.selected = count + 1 > 1;
+    
+}
+
+- (void)subtractButtonClick:(UIButton *)button{
+    
+    NSInteger count = self.countLabel.text.integerValue;
+    if (count <= 1) {
+        return;
+    }
+    self.countLabel.text = [NSString stringWithFormat:@"%ld",count - 1];
+    button.selected = count - 1 > 1;
+    self.addButton.selected = count - 1 < 30;
+}
+
+
 
 @end

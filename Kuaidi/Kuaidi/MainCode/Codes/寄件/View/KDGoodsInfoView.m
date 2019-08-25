@@ -14,9 +14,29 @@
 
 @property(nonatomic, strong)KDGoodsInfoFooterView *footerView;
 
+@property(nonatomic, strong)NSArray *titles;
+
+@property(nonatomic, strong)NSArray *holders;
+
 @end
 
 @implementation KDGoodsInfoView
+
+-(NSArray *)titles{
+    
+    if (!_titles) {
+        _titles = @[@"物品信息",@"快递选择",@"期待上门时间",@"给快递员留言"];
+    }
+    return _titles;
+}
+
+-(NSArray *)holders{
+    
+    if (!_holders) {
+        _holders = @[@"请选择类型、重量",@"必填",@"必填",@"必填"];
+    }
+    return _holders;
+}
 
 +(KDGoodsInfoView *)goodsInfoView{
     
@@ -65,6 +85,17 @@
         cell = [[KDGoodsInfoCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellId];
     }
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    cell.titleLabel.text = self.titles[indexPath.row];
+    cell.textField.placeholder = self.holders[indexPath.row];
+    if (indexPath.row == 0) {
+        self.goodsTypeTF = cell.textField;
+    }else if (indexPath.row == 1){
+        self.expressTypeTF = cell.textField;
+    }else if (indexPath.row == 2){
+        self.timeTF = cell.textField;
+    }else if (indexPath.row == 3){
+        self.messageTF = cell.textField;
+    }
     return cell;
 }
 
@@ -95,4 +126,11 @@
     
 }
 
+- (void)setIsOrderButtonSelect:(BOOL)isOrderButtonSelect{
+    self.footerView.isOrderButtonSelect = isOrderButtonSelect;
+}
+
+-(void)setMoney:(CGFloat)money{
+    self.footerView.money = money;
+}
 @end
