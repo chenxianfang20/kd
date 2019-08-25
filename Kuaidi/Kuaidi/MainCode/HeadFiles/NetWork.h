@@ -28,10 +28,13 @@
 #define kAddAddress @"/api/user/address/add"
 //删除地址
 #define kDeleteAddress @"/api/user/address/delete"
+//修改地址
+#define kUpdateAddress @"/api/user/address/update"
+//获取默认地址
+#define kDefaultAddress @"/api/user/address/getDefault"
 
 
-
-#define kWuLiu @"/logistics/wuliu/index"
+#define kWuLiu @"/api/logistics/wuliu/index"
 
 
 //关于我们

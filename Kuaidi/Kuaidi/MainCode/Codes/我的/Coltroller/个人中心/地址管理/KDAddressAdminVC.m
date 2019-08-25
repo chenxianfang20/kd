@@ -15,6 +15,8 @@
 
 @property(nonatomic,strong)UITableView* tableview;
 @property(nonatomic,strong)NSMutableArray* dataSource;
+@property (nonatomic,strong) UIView *noticeView;
+
 @end
 @implementation KDAddressAdminVC
 - (void)viewDidLoad {
@@ -31,6 +33,8 @@
 -(void)addChildViews{
     [self.view addSubview:self.tableview];
     
+    [self.view addSubview:self.noticeView];
+    
     //底部新增地址按钮
     UIView* addressBgView =[[UIView alloc]initWithFrame:CGRectMake(0, kScreenHeight-kAdaptationWidth(90), kScreenWidth, kAdaptationWidth(90))];
     addressBgView.backgroundColor=[UIColor whiteColor];
@@ -45,10 +49,7 @@
     addressBtn.layer.masksToBounds=YES;
     [addressBtn addTarget:self action:@selector(addressBtnClick) forControlEvents:UIControlEventTouchUpInside];
     [addressBgView addSubview:addressBtn];
-    
-    
-    
-    
+ 
 }
 #pragma mark- tableview delegate
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
@@ -70,6 +71,7 @@
     //编辑
     cell.editBtnBlock=^{
         
+        [weakSelf editAddress:model];
     };
     //删除
     cell.deleteBtnBlock=^{
@@ -97,7 +99,7 @@
     };
     [self.navigationController pushViewController:vc animated:YES];
 }
-
+//
 -(void)deleteAddressWithID:(KDAddressAdminModel*) addressAdminModel{
     KDUserModel* model = [KDUserModelTool userModel];
     NSDictionary* headData = @{@"XX-Token":model.token,@"XX-Device-Type":kDeviceType};
@@ -108,12 +110,29 @@
             [weakSelf.dataSource removeObject:addressAdminModel];
             [weakSelf.tableview reloadData];
             [ZJCustomHud showWithSuccess:@"删除成功"];
+            if(weakSelf.dataSource.count == 0){
+                weakSelf.noticeView.hidden=NO;
+            }else{
+                weakSelf.noticeView.hidden=YES;
+            }
         }
     } FailureBlock:^(id obj) {
         
     }];
 }
-
+-(void)editAddress:(KDAddressAdminModel*) addressAdminModel{
+    KDNewAddressVC *vc=[[KDNewAddressVC alloc]init];
+    vc.addressModel=addressAdminModel;
+    //[vc getAddressModel:addressAdminModel andTitle:@"编辑地址"];
+    __weak typeof(self) weakSelf = self;
+    vc.myBlock=^{
+        if(weakSelf.dataSource.count>0){
+            [weakSelf.dataSource removeAllObjects];
+        }
+        [weakSelf getAddressList];
+    };
+    [self.navigationController pushViewController:vc animated:YES];
+}
 -(void)getAddressList{
     KDUserModel* model = [KDUserModelTool userModel];
     NSDictionary* dic = @{@"XX-Token":model.token,@"XX-Device-Type":kDeviceType};
@@ -128,7 +147,13 @@
                 }
                 [weakSelf.tableview reloadData];
             }
+            if(weakSelf.dataSource.count == 0){
+                weakSelf.noticeView.hidden=NO;
+            }else{
+                weakSelf.noticeView.hidden=YES;
+            }
         }
+        
     } FailureBlock:^(id obj) {
         
     }];
@@ -159,7 +184,24 @@
     }
     return _tableview;
 }
-
+-(UIView*)noticeView{
+    if(!_noticeView){
+        _noticeView=[[UIView alloc]initWithFrame:CGRectMake(0,NavibarH+ kAdaptationWidth(110), kScreenWidth, kAdaptationWidth(250))];
+        UIImageView* bgImgView=[[UIImageView alloc]initWithFrame:CGRectMake(0, 0,  kAdaptationWidth(180), kAdaptationWidth(180))];
+        bgImgView.image=[UIImage imageNamed:@"图标-没有地址"];
+        [_noticeView addSubview:bgImgView];
+        bgImgView.centerX=kScreenWidth/2.0;
+        
+        UILabel* noNoticeLabel=[[UILabel alloc]initWithFrame:CGRectMake(0, bgImgView.bottom+kAdaptationWidth(10), kScreenWidth, kAdaptationWidth(25))];
+        noNoticeLabel.text=@"还没有添加过地址，点击新增地址添加吧～！";
+        noNoticeLabel.font=PingFangBold(13);
+        noNoticeLabel.textAlignment=NSTextAlignmentCenter;
+        noNoticeLabel.textColor=rgb(136, 136, 136, 1);
+        [_noticeView addSubview:noNoticeLabel];
+        _noticeView.hidden=YES;
+    }
+    return _noticeView;
+}
 -(void)setNav{
     self.titleView.type = TitleViewType_title;
     self.titleView.titleLable.textColor=[UIColor colorWithHex:@"#0B0B0B"];

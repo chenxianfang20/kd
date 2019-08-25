@@ -84,8 +84,17 @@
 
 -(void)setModel:(KDAddressAdminModel *)model{
     _nameLabel.text=model.name;
-    _phoneLabel.text=model.mobile;
-    _addressLabel.text=[NSString stringWithFormat:@"%@ %@ %@",model.province_name,model.city_name,model.address];
+    _addressLabel.text=[NSString stringWithFormat:@"%@ %@ %@%@",model.province_name,model.city_name,model.district_name, model.address];
+    //添加间隔
+    NSMutableString * str = [[NSMutableString alloc ] init];
+    for(int  i =0; i < [model.mobile length]; i++)
+    {
+        [str appendString:[model.mobile substringWithRange:NSMakeRange(i, 1)]];
+        if (str.length == 4 || str.length == 9 ) {
+            [str insertString:@" " atIndex:(str.length-1)];
+        }
+    }
+    _phoneLabel.text = str;
 }
 -(void)editBtnClick{
     if(self.editBtnBlock){
@@ -97,4 +106,5 @@
         self.deleteBtnBlock();
     }
 }
+
 @end

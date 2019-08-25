@@ -7,11 +7,16 @@
 //
 
 #import "RootViewController.h"
-
+#import "KDAddressAdminModel.h"
 typedef void (^MyBlock)(void);
 
 @interface KDNewAddressVC : RootViewController
+
+@property (nonatomic,strong) NSString* myTitle;
+@property (nonatomic,strong) KDAddressAdminModel*  addressModel;
+
 @property (nonatomic,copy) MyBlock  myBlock;
+-(void)AddressModel:(KDAddressAdminModel *)addressModel andTitle:(NSString*)title;
 @end
 
 

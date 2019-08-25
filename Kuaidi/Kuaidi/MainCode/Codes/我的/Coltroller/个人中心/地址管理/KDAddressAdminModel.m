@@ -15,6 +15,7 @@
     model.mobile=dict[@"mobile"];
     model.province_name=dict[@"province_name"];
     model.city_name=dict[@"city_name"];
+    model.district_name=dict[@"district_name"];
     model.address=dict[@"address"];
     model.addressID=dict[@"id"];
     model.isDefault=dict[@"default"];

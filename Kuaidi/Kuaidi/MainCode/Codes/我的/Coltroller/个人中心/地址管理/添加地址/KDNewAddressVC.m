@@ -10,6 +10,7 @@
 #import "CityChoose.h"
 @interface KDNewAddressVC(){
     NSInteger i;
+    UIButton* addressLibBtn;
 }
 @property (nonatomic,strong) UITextField* nameTF;
 @property (nonatomic,strong) UITextField* phoneTF;
@@ -29,6 +30,9 @@
     
     [self setNav];
     [self addChildViews];
+    if(self.addressModel){
+        [self AddressModel:self.addressModel andTitle:@"编辑地址"];
+    }
 }
 
 
@@ -43,7 +47,7 @@
     UILabel* nameLabel=[[UILabel alloc]initWithFrame:CGRectMake(kLeftX, kAdaptationWidth(18), kAdaptationWidth(60), kAdaptationWidth(18))];
     nameLabel.font=PingFangRegular(14);
     nameLabel.textColor=[UIColor colorWithHex:@"#5C5C5C"];
-    nameLabel.text=@"姓名";
+    nameLabel.text=@"收件人";
     [topBgView addSubview:nameLabel];
     self.nameTF=[[UITextField alloc]initWithFrame:CGRectMake(kAdaptationWidth(90), kAdaptationWidth(5), kAdaptationWidth(170), kAdaptationWidth(45))];
     self.nameTF.textColor=[UIColor colorWithHex:@"#0B0B0B"];
@@ -124,6 +128,17 @@
     saveAddressLabel.text=@"保存到地址库";
     [topBgView addSubview:saveAddressLabel];
     
+    addressLibBtn = [[UIButton alloc]initWithFrame:CGRectMake(kAdaptationWidth(303), kAdaptationWidth(18), kAdaptationWidth(18), kAdaptationWidth(18))];
+    [addressLibBtn  setBackgroundImage:[UIImage imageNamed:@"图标-未选"] forState:UIControlStateNormal];
+    [topBgView addSubview:addressLibBtn];
+    addressLibBtn.selected = NO;
+    addressLibBtn.centerY=saveAddressLabel.centerY;
+    
+    UIButton* saveAddressBtn =[[UIButton alloc]initWithFrame:CGRectMake(kLeftX, kAdaptationWidth(188),kScreenWidth- kAdaptationWidth(18), kAdaptationWidth(25))];
+    [topBgView addSubview:saveAddressBtn];
+    [saveAddressBtn addTarget:self action:@selector(saveAddressBtnClick) forControlEvents:UIControlEventTouchUpInside];
+    saveAddressBtn.centerY=saveAddressLabel.centerY;
+    
     //
     UIView* midBgView =[[UIView alloc]initWithFrame:CGRectMake(kLeftX, topBgView.bottom+12, kAdaptationWidth(339), kAdaptationWidth(132))];
     midBgView.backgroundColor=[UIColor whiteColor];
@@ -203,14 +218,33 @@
     }
     KDUserModel* model = [KDUserModelTool userModel];
     NSDictionary* headData = @{@"XX-Token":model.token,@"XX-Device-Type":kDeviceType};
-    NSDictionary* dic = @{@"name":self.nameTF.text,@"mobile":phoneFieldStr,@"province_name":self.province_name,@"city_name":self.city_name,@"district_name":self.district_name,@"address":self.detailAddressTF.text,@"default":@"1"};
+   
     __weak typeof(self) weakSelf =self;
-    [KDNetWorkManager GetHttpDataWithUrlStr:kAddAddress Dic:dic headDic:headData SuccessBlock:^(id obj) {
+    NSString* defaultFlag ;
+    if( addressLibBtn.selected == NO){
+        defaultFlag=@"0";
+    }else if (addressLibBtn.selected == YES){
+        defaultFlag=@"1";
+    }
+    
+    NSString* url;
+    NSString* noticeStr;
+    NSDictionary* dic;
+    if([self.myTitle isEqualToString:@"编辑地址"]){
+        url=kUpdateAddress;
+        noticeStr=@"编辑地址成功";
+        dic= @{@"name":self.nameTF.text,@"mobile":phoneFieldStr,@"province_name":self.province_name,@"city_name":self.city_name,@"district_name":self.district_name,@"address":self.detailAddressTF.text,@"default":defaultFlag,@"id":self.addressModel.addressID};
+    }else{
+        url=kAddAddress;
+        noticeStr=@"新增地址成功";
+        dic= @{@"name":self.nameTF.text,@"mobile":phoneFieldStr,@"province_name":self.province_name,@"city_name":self.city_name,@"district_name":self.district_name,@"address":self.detailAddressTF.text,@"default":defaultFlag};
+    }
+    [KDNetWorkManager GetHttpDataWithUrlStr:url Dic:dic headDic:headData SuccessBlock:^(id obj) {
         if([obj[@"code"] integerValue] == 1){
             if(weakSelf.myBlock){
                 weakSelf.myBlock();
             }
-            [ZJCustomHud showWithSuccess:@"新增地址成功"];
+            [ZJCustomHud showWithSuccess:noticeStr];
             [weakSelf.navigationController popViewControllerAnimated:YES];
         }
     } FailureBlock:^(id obj) {
@@ -242,6 +276,33 @@
     }
 }
 
+-(void)saveAddressBtnClick{
+    if(addressLibBtn.selected == YES){
+        [addressLibBtn setBackgroundImage:[UIImage imageNamed:@"图标-未选"] forState:UIControlStateNormal];
+        addressLibBtn.selected = NO;
+    }else if(addressLibBtn.selected == NO){
+        [addressLibBtn setBackgroundImage:[UIImage imageNamed:@"图标-选定"] forState:UIControlStateNormal];
+         addressLibBtn.selected = YES;
+    }
+}
+-(void)AddressModel:(KDAddressAdminModel *)addressModel andTitle:(NSString*)title{
+    self.myTitle=title;
+    self.addressModel = addressModel;
+    self.nameTF.text=addressModel.name;
+    self.phoneTF.text=addressModel.mobile;
+    self.province_name=addressModel.province_name;
+    self.city_name=addressModel.city_name;
+    self.district_name=addressModel.district_name;
+    self.detailAddressTF.text=addressModel.address;
+    self.myAreaLabel.text = [NSString stringWithFormat:@"%@ %@ %@",addressModel.province_name,addressModel.city_name,addressModel.district_name];
+    [self.titleView setTitle:title];
+    self.myAreaLabel.textColor=[UIColor colorWithHex:@"#0B0B0B"];
+    if(addressModel.isDefault.integerValue == 1){
+        [addressLibBtn setBackgroundImage:[UIImage imageNamed:@"图标-选定"] forState:UIControlStateNormal];
+        addressLibBtn.selected = YES;
+    }
+}
+
 -(void)setNav{
     self.titleView.type = TitleViewType_title;
     self.titleView.titleLable.textColor=[UIColor colorWithHex:@"#0B0B0B"];
@@ -250,6 +311,7 @@
     self.backgroungImgView.image=[UIImage imageWithColor:rgb(245, 245, 245, 1)];
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault];
 }
+
 -(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
     [self.view endEditing:YES];
 }
