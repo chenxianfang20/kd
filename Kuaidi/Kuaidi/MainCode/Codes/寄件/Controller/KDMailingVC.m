@@ -19,6 +19,7 @@
 #import "KDWuliuListModel.h"
 #import "KDGoodsListModel.h"
 #import "KDAddressAdminModel.h"
+#import "KDLoginVC.h"
 
 @interface KDMailingVC ()
 <UITableViewDelegate,
@@ -263,11 +264,13 @@ KDAddressInfoViewDelegate>
 
 -(void)clickConfirmButton{
     //下单
-    
+    KDUserModel* model = [KDUserModelTool userModel];
+    KDWuliuListModel *wuliuModel = self.wuliuArr[self.wuliuIndex + 1];
+    KDGoodsListModel *goodsModel = self.goodsArr[self.goodsIndex];
     __weak typeof(self) weakSelf =self;
     NSDictionary *params = @{
-                             @"type":@"1",
-                             @"user_id":@"",
+                             @"type":@(self.sendTitleView.index),
+                             @"user_id":model.userId,
                              @"pay_money":@"0",
                              @"send_name":self.addressView.sendAddressModel.name,
                              @"send_mobile":self.addressView.sendAddressModel.mobile,
@@ -281,24 +284,24 @@ KDAddressInfoViewDelegate>
                              @"accept_city_name":self.addressView.receiveAddressModel.city_name,
                              @"accept_district_name":self.addressView.receiveAddressModel.district_name,
                              @"accept_address":self.addressView.receiveAddressModel.address,
-                             @"delivery_code" : @"",
-                             @"delivery_name" : @"",
-                             @"delivery_orderno" : @"",
+                             @"delivery_code" : wuliuModel.logistics_code,
+                             @"delivery_name" : wuliuModel.logistics_name,
+                             @"delivery_orderno" : wuliuModel.id,
                              @"deliver_want_time" : self.goodsInfoView.timeTF.text,
                              @"user_remark" : self.goodsInfoView.messageTF.text,
-                             @"goods_type" : @"",
-                             @"weight" : @"",
+                             @"goods_type" : goodsModel.goods_name,
+                             @"weight" : self.count,
                              @"goods_imgs" : @"",
-                             @"goods_price" : @""
+                             @"goods_price" : @(self.goodsInfoView.money)
                              };
-    [ZJCustomHud showWithStatus:@"下单中..."];
+//    [ZJCustomHud showWithStatus:@"下单中..."];
+    [SVProgressHUD showWithStatus:@"下单中..."];
     [KDNetWorkManager GetHttpDataWithUrlStr:kCreateOrder Dic:params headDic:nil SuccessBlock:^(id obj) {
         
-        [ZJCustomHud dismiss];
+        [SVProgressHUD dismiss];
         
         if([obj[@"code"] integerValue] == 1){
-            
-            [ZJCustomHud showWithSuccess:@"下单成功"];
+            [SVProgressHUD showSuccessWithStatus:@"下单成功"];
             KDExpressRecordController *vc = [[KDExpressRecordController alloc] init];
             vc.hidesBottomBarWhenPushed = YES;
             [weakSelf.navigationController pushViewController:vc animated:YES];
@@ -319,36 +322,59 @@ KDAddressInfoViewDelegate>
 #pragma mark -- KDTitleViewDelegate
 -(void)lookExpressRecord{
     
-    KDExpressRecordController *vc = [[KDExpressRecordController alloc] init];
-    vc.hidesBottomBarWhenPushed = YES;
-    [self.navigationController pushViewController:vc animated:YES];
+    KDUserModel* model = [KDUserModelTool userModel];
+    if (model) {
+        KDExpressRecordController *vc = [[KDExpressRecordController alloc] init];
+        vc.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:vc animated:YES];
+    }else{
+        KDLoginVC* loginVC= [[KDLoginVC alloc]init];
+        loginVC.hidesBottomBarWhenPushed=YES;
+        [self.navigationController pushViewController:loginVC animated:YES];
+    }
     
 }
 
 #pragma mark -- KDAddressInfoViewDelegate
 -(void)selectSendExpressAddress{
     
-    KDAddressAdminVC *vc = [[KDAddressAdminVC alloc] init]; 
-    vc.hidesBottomBarWhenPushed = YES;
-    __weak typeof(self) weakSelf =self;
-    vc.selectAddressBlock = ^(KDAddressAdminModel * _Nonnull model) {
-        weakSelf.addressView.sendAddressModel = model;
-        [weakSelf updateFrame];
-    };
-    [self.navigationController pushViewController:vc animated:YES];
-    
+    KDUserModel* model = [KDUserModelTool userModel];
+    if (model) {
+        KDAddressAdminVC *vc = [[KDAddressAdminVC alloc] init];
+        vc.hidesBottomBarWhenPushed = YES;
+        __weak typeof(self) weakSelf =self;
+        vc.selectAddressBlock = ^(KDAddressAdminModel * _Nonnull model) {
+            weakSelf.addressView.sendAddressModel = model;
+            [weakSelf updateFrame];
+        };
+        [self.navigationController pushViewController:vc animated:YES];
+    }else{
+        KDLoginVC* loginVC= [[KDLoginVC alloc]init];
+        loginVC.hidesBottomBarWhenPushed=YES;
+        [self.navigationController pushViewController:loginVC animated:YES];
+    }
 }
 
 -(void)selectReceiveExpressAddress{
     
-    KDAddressAdminVC *vc = [[KDAddressAdminVC alloc] init];
-    vc.hidesBottomBarWhenPushed = YES;
-    __weak typeof(self) weakSelf =self;
-    vc.selectAddressBlock = ^(KDAddressAdminModel * _Nonnull model) {
-        weakSelf.addressView.receiveAddressModel = model;
-        [weakSelf updateFrame];
-    };
-    [self.navigationController pushViewController:vc animated:YES];
+    KDUserModel* model = [KDUserModelTool userModel];
+    if (model) {
+        
+        KDAddressAdminVC *vc = [[KDAddressAdminVC alloc] init];
+        vc.hidesBottomBarWhenPushed = YES;
+        __weak typeof(self) weakSelf =self;
+        vc.selectAddressBlock = ^(KDAddressAdminModel * _Nonnull model) {
+            weakSelf.addressView.receiveAddressModel = model;
+            [weakSelf updateFrame];
+        };
+        [self.navigationController pushViewController:vc animated:YES];
+        
+    }else{
+    
+        KDLoginVC* loginVC= [[KDLoginVC alloc]init];
+        loginVC.hidesBottomBarWhenPushed=YES;
+        [self.navigationController pushViewController:loginVC animated:YES];
+    }
 }
 
 - (void)updateFrame{
@@ -461,6 +487,5 @@ KDAddressInfoViewDelegate>
         
     }];
 }
-
 
 @end

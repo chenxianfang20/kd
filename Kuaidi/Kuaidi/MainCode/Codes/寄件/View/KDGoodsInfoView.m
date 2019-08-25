@@ -131,6 +131,7 @@
 }
 
 -(void)setMoney:(CGFloat)money{
+    _money = money;
     self.footerView.money = money;
 }
 @end

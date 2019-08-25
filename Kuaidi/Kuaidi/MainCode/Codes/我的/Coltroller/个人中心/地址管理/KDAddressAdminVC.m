@@ -157,6 +157,7 @@
         
     }];
 }
+
 -(void)getAddressList{
     KDUserModel* model = [KDUserModelTool userModel];
     NSDictionary* dic = @{@"XX-Token":model.token,@"XX-Device-Type":kDeviceType};

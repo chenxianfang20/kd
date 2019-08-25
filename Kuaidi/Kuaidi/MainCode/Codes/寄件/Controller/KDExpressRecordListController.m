@@ -13,11 +13,24 @@
 
 @property(nonatomic, strong)UITableView *tableView;
 
+@property(nonatomic, assign)NSInteger page;
+
+@property(nonatomic, strong)NSMutableArray *dataArr;
+
 @end
 
 @implementation KDExpressRecordListController
 
 #pragma mark - Getters
+
+-(NSMutableArray *)dataArr{
+    
+    if (!_dataArr) {
+        _dataArr = [NSMutableArray array];
+    }
+    return _dataArr;
+}
+
 - (UITableView *)tableView {
     if (!_tableView) {
         _tableView = [[UITableView alloc] init];
@@ -41,7 +54,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    
+    self.page = 1;
     [self.view addSubview:self.tableView];
     [self.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.equalTo(self.view);
@@ -61,4 +74,40 @@
     }
     return cell;
 }
+
+- (void)getDataFromNet{
+    
+    NSDictionary *params = @{
+                             @"status":@(self.status),
+                             @"page" : @(self.page),
+                             };
+    
+    __weak typeof(self) weakSelf =self;
+    
+    [KDNetWorkManager GetHttpDataWithUrlStr:kWuliuList Dic:nil headDic:nil SuccessBlock:^(id obj) {
+        if([obj[@"code"] integerValue] == 1){
+            
+            NSArray *data = obj[@"data"];
+            for (NSDictionary *dic in data) {
+                
+                KDWuliuListModel *model = [KDWuliuListModel mj_objectWithKeyValues:dic];
+                [weakSelf.wuliuArr addObject:model];
+                
+            }
+            
+            KDWuliuListModel *model = weakSelf.wuliuArr[weakSelf.wuliuIndex + 1];
+            weakSelf.goodsInfoView.expressTypeTF.text = model.logistics_name;
+            
+        }else{
+            
+            NSString *msg = obj[@"msg"];
+            [ZJCustomHud showWithText:msg WithDurations:2.0];
+        }
+        
+    } FailureBlock:^(id obj) {
+        
+    }];
+    
+}
+
 @end

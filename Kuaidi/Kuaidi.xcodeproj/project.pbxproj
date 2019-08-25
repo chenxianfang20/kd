@@ -33,9 +33,9 @@
 		164097062309B2CE0055C0FB /* KDMessageBoardView.m in Sources */ = {isa = PBXBuildFile; fileRef = 164097042309B2CD0055C0FB /* KDMessageBoardView.m */; };
 		1658A2742309B53800439FC3 /* KDExpressSelectCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1658A2722309B53700439FC3 /* KDExpressSelectCell.m */; };
 		1661B01D230AE5DD0028801C /* DKExpressSendInfoHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1661B01C230AE5DD0028801C /* DKExpressSendInfoHeaderView.m */; };
-		167B6DDF2309BABF001C0D15 /* KDExpressModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 167B6DDE2309BABF001C0D15 /* KDExpressModel.m */; };
 		169A445B23125E8D00F001D0 /* KDWuliuListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 169A445A23125E8D00F001D0 /* KDWuliuListModel.m */; };
 		169A445E23128FD700F001D0 /* KDGoodsListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 169A445D23128FD700F001D0 /* KDGoodsListModel.m */; };
+		169A44612312DFC500F001D0 /* KDOrderListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 169A44602312DFC500F001D0 /* KDOrderListModel.m */; };
 		3D65BF40230102F400B12F3D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D65BF3F230102F400B12F3D /* AppDelegate.m */; };
 		3D65BF46230102F400B12F3D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3D65BF44230102F400B12F3D /* Main.storyboard */; };
 		3D65BF48230102F700B12F3D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3D65BF47230102F700B12F3D /* Assets.xcassets */; };
@@ -279,12 +279,12 @@
 		1658A2732309B53700439FC3 /* KDExpressSelectCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KDExpressSelectCell.h; sourceTree = "<group>"; };
 		1661B01B230AE5DD0028801C /* DKExpressSendInfoHeaderView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DKExpressSendInfoHeaderView.h; sourceTree = "<group>"; };
 		1661B01C230AE5DD0028801C /* DKExpressSendInfoHeaderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DKExpressSendInfoHeaderView.m; sourceTree = "<group>"; };
-		167B6DDD2309BABF001C0D15 /* KDExpressModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KDExpressModel.h; sourceTree = "<group>"; };
-		167B6DDE2309BABF001C0D15 /* KDExpressModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KDExpressModel.m; sourceTree = "<group>"; };
 		169A445923125E8D00F001D0 /* KDWuliuListModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KDWuliuListModel.h; sourceTree = "<group>"; };
 		169A445A23125E8D00F001D0 /* KDWuliuListModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KDWuliuListModel.m; sourceTree = "<group>"; };
 		169A445C23128FD700F001D0 /* KDGoodsListModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KDGoodsListModel.h; sourceTree = "<group>"; };
 		169A445D23128FD700F001D0 /* KDGoodsListModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KDGoodsListModel.m; sourceTree = "<group>"; };
+		169A445F2312DFC500F001D0 /* KDOrderListModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KDOrderListModel.h; sourceTree = "<group>"; };
+		169A44602312DFC500F001D0 /* KDOrderListModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KDOrderListModel.m; sourceTree = "<group>"; };
 		310B9CC0F78DB0FB65918064 /* Pods-Kuaidi.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Kuaidi.debug.xcconfig"; path = "Target Support Files/Pods-Kuaidi/Pods-Kuaidi.debug.xcconfig"; sourceTree = "<group>"; };
 		3D65BF3B230102F400B12F3D /* Kuaidi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Kuaidi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3D65BF3E230102F400B12F3D /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -620,6 +620,8 @@
 				169A445A23125E8D00F001D0 /* KDWuliuListModel.m */,
 				169A445C23128FD700F001D0 /* KDGoodsListModel.h */,
 				169A445D23128FD700F001D0 /* KDGoodsListModel.m */,
+				169A445F2312DFC500F001D0 /* KDOrderListModel.h */,
+				169A44602312DFC500F001D0 /* KDOrderListModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1627,6 +1629,7 @@
 				F465DE4C230454FF002DFD4C /* KDInfoModel.m in Sources */,
 				3D696F8E230A797F00593437 /* KDSessionManager.m in Sources */,
 				3D65BF9A2301086A00B12F3D /* HCTTabbarController.m in Sources */,
+				169A44612312DFC500F001D0 /* KDOrderListModel.m in Sources */,
 				F4C3083C2309351E00CF65CA /* KDAddressAdminVC.m in Sources */,
 				3D65BF952301086A00B12F3D /* RootCustomView.m in Sources */,
 				164096E52309B0930055C0FB /* UITextView+Placeholder.m in Sources */,

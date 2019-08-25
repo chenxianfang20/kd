@@ -159,10 +159,12 @@
             
             NSMutableString *msg = [NSMutableString string];
             NSArray *array = valueArr.firstObject;
-            for (NSString *str in array) {
-                NSArray *strArr = [str componentsSeparatedByString:@"/"];
-                [msg appendString:strArr.lastObject];
-                [msg appendString:@","];
+            if ([array isKindOfClass:[NSArray class]]) {
+                for (NSString *str in array) {
+                    NSArray *strArr = [str componentsSeparatedByString:@"/"];
+                    [msg appendString:strArr.lastObject];
+                    [msg appendString:@","];
+                }
             }
             self.confirmBlock(self.textView.text, msg);
         }
