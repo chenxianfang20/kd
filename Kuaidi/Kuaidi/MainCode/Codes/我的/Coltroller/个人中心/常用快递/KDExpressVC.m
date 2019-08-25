@@ -46,14 +46,15 @@
     [addMailingBgView addSubview:addMailingBtn];
     
     
-    //临时数据
-    KDExpressModel* model = [[KDExpressModel alloc]init];
-    model.mailingName=@"顺风快递";
-    model.phone=@"4008-890-008";
-    model.headImgDddress=@"我的-图标-顺丰";
-    [self.dataSource addObject:model];
-    [self.dataSource addObject:model];
-    [self.tableview reloadData];
+    [self getWuLiuList];
+//    //临时数据
+//    KDExpressModel* model = [[KDExpressModel alloc]init];
+//    model.mailingName=@"顺风快递";
+//    model.phone=@"4008-890-008";
+//    model.headImgDddress=@"我的-图标-顺丰";
+//    [self.dataSource addObject:model];
+//    [self.dataSource addObject:model];
+//    [self.tableview reloadData];
 }
 #pragma mark- tableview delegate
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
@@ -86,6 +87,26 @@
 //新增地址
 -(void)addMailingBtnClick{
     
+}
+
+-(void)getWuLiuList{
+    KDUserModel* model = [KDUserModelTool userModel];
+    NSDictionary* dic = @{@"XX-Token":model.token,@"XX-Device-Type":@"iphone"};
+    __weak typeof(self) weakSelf =self;
+    [KDNetWorkManager GetHttpDataWithUrlStr:kWuLiu Dic:nil headDic:dic SuccessBlock:^(id obj) {
+        if([obj[@"code"] integerValue] == 1){
+//            NSArray*  resArr = obj[@"data"];
+//            if(resArr.count>0){
+//                for(NSDictionary * modelDic in  resArr){
+//                    KDAddressAdminModel* model = [KDAddressAdminModel ModelWithDict:modelDic];
+//                    [weakSelf.dataSource addObject:model];
+//                }
+//                [weakSelf.tableview reloadData];
+//            }
+        }
+    } FailureBlock:^(id obj) {
+        
+    }];
 }
 /**
  *  懒加载

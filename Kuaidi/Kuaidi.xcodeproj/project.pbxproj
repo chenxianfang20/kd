@@ -56,6 +56,12 @@
 		3D696F87230A784C00593437 /* KDExpressRecordListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D696F86230A784C00593437 /* KDExpressRecordListController.m */; };
 		3D696F8D230A797F00593437 /* KDNetWorkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D696F8A230A797F00593437 /* KDNetWorkManager.m */; };
 		3D696F8E230A797F00593437 /* KDSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D696F8B230A797F00593437 /* KDSessionManager.m */; };
+		F4195EB22312128900F3EF10 /* NSString+PinYin4Cocoa.m in Sources */ = {isa = PBXBuildFile; fileRef = F4195EA72312128900F3EF10 /* NSString+PinYin4Cocoa.m */; };
+		F4195EB32312128900F3EF10 /* PinyinHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = F4195EAA2312128900F3EF10 /* PinyinHelper.m */; };
+		F4195EB42312128900F3EF10 /* HanyuPinyinOutputFormat.m in Sources */ = {isa = PBXBuildFile; fileRef = F4195EAC2312128900F3EF10 /* HanyuPinyinOutputFormat.m */; };
+		F4195EB52312128900F3EF10 /* ChineseToPinyinResource.m in Sources */ = {isa = PBXBuildFile; fileRef = F4195EAD2312128900F3EF10 /* ChineseToPinyinResource.m */; };
+		F4195EB62312128900F3EF10 /* PinyinFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = F4195EAE2312128900F3EF10 /* PinyinFormatter.m */; };
+		F4195EB72312128900F3EF10 /* unicode_to_hanyu_pinyin.txt in Resources */ = {isa = PBXBuildFile; fileRef = F4195EB12312128900F3EF10 /* unicode_to_hanyu_pinyin.txt */; };
 		F419CD5B2308603600553E29 /* KDCodeForPwdVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F419CD5A2308603600553E29 /* KDCodeForPwdVC.m */; };
 		F419CD5E2308610800553E29 /* KDResetLoginPwdVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F419CD5D2308610800553E29 /* KDResetLoginPwdVC.m */; };
 		F419CD62230865B700553E29 /* KDAboutAsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F419CD61230865B700553E29 /* KDAboutAsVC.m */; };
@@ -87,6 +93,10 @@
 		F424E6B92309857C002D340E /* 图标-收藏 @2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F424E6B72309857C002D340E /* 图标-收藏 @2x.png */; };
 		F424E6BD23098716002D340E /* KDSetupVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F424E6BC23098716002D340E /* KDSetupVC.m */; };
 		F427C4EA2308590E0023D48B /* KDPhoneForPwdVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F427C4E92308590E0023D48B /* KDPhoneForPwdVC.m */; };
+		F429347E231228FD0071BDCA /* 图标-没有地址@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F429347C231228FB0071BDCA /* 图标-没有地址@2x.png */; };
+		F429347F231228FD0071BDCA /* 图标-没有地址@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F429347D231228FC0071BDCA /* 图标-没有地址@3x.png */; };
+		F4293482231229080071BDCA /* 图标-暂无快递@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F4293480231229070071BDCA /* 图标-暂无快递@2x.png */; };
+		F4293483231229080071BDCA /* 图标-暂无快递@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F4293481231229070071BDCA /* 图标-暂无快递@3x.png */; };
 		F4646C082308F05600ADDBE9 /* KDMailingScanVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F4646C072308F05600ADDBE9 /* KDMailingScanVC.m */; };
 		F465DE05230454B9002DFD4C /* 图标-后退@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F465DDC7230454B9002DFD4C /* 图标-后退@2x.png */; };
 		F465DE06230454B9002DFD4C /* 登录-背景@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F465DDC8230454B9002DFD4C /* 登录-背景@3x.png */; };
@@ -158,6 +168,8 @@
 		F481FF67230AE99000761A3A /* 地址-图标-语音@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F481FF61230AE98F00761A3A /* 地址-图标-语音@3x.png */; };
 		F481FF68230AE99000761A3A /* 地址-图标-照片@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F481FF62230AE98F00761A3A /* 地址-图标-照片@2x.png */; };
 		F481FF69230AE99000761A3A /* 地址-图标-照片@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F481FF63230AE99000761A3A /* 地址-图标-照片@3x.png */; };
+		F4B9A26F2311729D00614EB4 /* city.plist in Resources */ = {isa = PBXBuildFile; fileRef = F4B9A26D2311729D00614EB4 /* city.plist */; };
+		F4B9A2702311729D00614EB4 /* CityChoose.m in Sources */ = {isa = PBXBuildFile; fileRef = F4B9A26E2311729D00614EB4 /* CityChoose.m */; };
 		F4C3083C2309351E00CF65CA /* KDAddressAdminVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F4C3083B2309351E00CF65CA /* KDAddressAdminVC.m */; };
 		F4C3083F230935F400CF65CA /* KDAddressAdminModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F4C3083E230935F400CF65CA /* KDAddressAdminModel.m */; };
 		F4C30842230936CC00CF65CA /* KDAddressAdminCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F4C30841230936CC00CF65CA /* KDAddressAdminCell.m */; };
@@ -299,6 +311,18 @@
 		3D696F8F230A80A300593437 /* NetWork.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NetWork.h; sourceTree = "<group>"; };
 		6A402E0BE0DC5701A3D49873 /* Pods-Kuaidi.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Kuaidi.release.xcconfig"; path = "Target Support Files/Pods-Kuaidi/Pods-Kuaidi.release.xcconfig"; sourceTree = "<group>"; };
 		A26641192201A6307C867746 /* libPods-Kuaidi.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Kuaidi.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F4195EA52312128900F3EF10 /* PinyinHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PinyinHelper.h; sourceTree = "<group>"; };
+		F4195EA62312128900F3EF10 /* HanyuPinyinOutputFormat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HanyuPinyinOutputFormat.h; sourceTree = "<group>"; };
+		F4195EA72312128900F3EF10 /* NSString+PinYin4Cocoa.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+PinYin4Cocoa.m"; sourceTree = "<group>"; };
+		F4195EA82312128900F3EF10 /* ChineseToPinyinResource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChineseToPinyinResource.h; sourceTree = "<group>"; };
+		F4195EA92312128900F3EF10 /* PinyinFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PinyinFormatter.h; sourceTree = "<group>"; };
+		F4195EAA2312128900F3EF10 /* PinyinHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PinyinHelper.m; sourceTree = "<group>"; };
+		F4195EAB2312128900F3EF10 /* NSString+PinYin4Cocoa.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+PinYin4Cocoa.h"; sourceTree = "<group>"; };
+		F4195EAC2312128900F3EF10 /* HanyuPinyinOutputFormat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HanyuPinyinOutputFormat.m; sourceTree = "<group>"; };
+		F4195EAD2312128900F3EF10 /* ChineseToPinyinResource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChineseToPinyinResource.m; sourceTree = "<group>"; };
+		F4195EAE2312128900F3EF10 /* PinyinFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PinyinFormatter.m; sourceTree = "<group>"; };
+		F4195EAF2312128900F3EF10 /* PinYin4Objc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PinYin4Objc.h; sourceTree = "<group>"; };
+		F4195EB12312128900F3EF10 /* unicode_to_hanyu_pinyin.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = unicode_to_hanyu_pinyin.txt; sourceTree = "<group>"; };
 		F419CD592308603600553E29 /* KDCodeForPwdVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KDCodeForPwdVC.h; sourceTree = "<group>"; };
 		F419CD5A2308603600553E29 /* KDCodeForPwdVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KDCodeForPwdVC.m; sourceTree = "<group>"; };
 		F419CD5C2308610800553E29 /* KDResetLoginPwdVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KDResetLoginPwdVC.h; sourceTree = "<group>"; };
@@ -347,6 +371,10 @@
 		F424E6BC23098716002D340E /* KDSetupVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KDSetupVC.m; sourceTree = "<group>"; };
 		F427C4E82308590E0023D48B /* KDPhoneForPwdVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KDPhoneForPwdVC.h; sourceTree = "<group>"; };
 		F427C4E92308590E0023D48B /* KDPhoneForPwdVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KDPhoneForPwdVC.m; sourceTree = "<group>"; };
+		F429347C231228FB0071BDCA /* 图标-没有地址@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "图标-没有地址@2x.png"; sourceTree = "<group>"; };
+		F429347D231228FC0071BDCA /* 图标-没有地址@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "图标-没有地址@3x.png"; sourceTree = "<group>"; };
+		F4293480231229070071BDCA /* 图标-暂无快递@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "图标-暂无快递@2x.png"; sourceTree = "<group>"; };
+		F4293481231229070071BDCA /* 图标-暂无快递@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "图标-暂无快递@3x.png"; sourceTree = "<group>"; };
 		F4646C062308F05600ADDBE9 /* KDMailingScanVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KDMailingScanVC.h; sourceTree = "<group>"; };
 		F4646C072308F05600ADDBE9 /* KDMailingScanVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KDMailingScanVC.m; sourceTree = "<group>"; };
 		F465DDC7230454B9002DFD4C /* 图标-后退@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "图标-后退@2x.png"; sourceTree = "<group>"; };
@@ -423,6 +451,9 @@
 		F481FF61230AE98F00761A3A /* 地址-图标-语音@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "地址-图标-语音@3x.png"; sourceTree = "<group>"; };
 		F481FF62230AE98F00761A3A /* 地址-图标-照片@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "地址-图标-照片@2x.png"; sourceTree = "<group>"; };
 		F481FF63230AE99000761A3A /* 地址-图标-照片@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "地址-图标-照片@3x.png"; sourceTree = "<group>"; };
+		F4B9A26C2311729D00614EB4 /* CityChoose.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CityChoose.h; sourceTree = "<group>"; };
+		F4B9A26D2311729D00614EB4 /* city.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = city.plist; sourceTree = "<group>"; };
+		F4B9A26E2311729D00614EB4 /* CityChoose.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CityChoose.m; sourceTree = "<group>"; };
 		F4C3083A2309351E00CF65CA /* KDAddressAdminVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KDAddressAdminVC.h; sourceTree = "<group>"; };
 		F4C3083B2309351E00CF65CA /* KDAddressAdminVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KDAddressAdminVC.m; sourceTree = "<group>"; };
 		F4C3083D230935F400CF65CA /* KDAddressAdminModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KDAddressAdminModel.h; sourceTree = "<group>"; };
@@ -867,6 +898,41 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		F4195EA32312128900F3EF10 /* PinYin4Objc */ = {
+			isa = PBXGroup;
+			children = (
+				F4195EA42312128900F3EF10 /* Classes */,
+				F4195EB02312128900F3EF10 /* Resources */,
+			);
+			path = PinYin4Objc;
+			sourceTree = "<group>";
+		};
+		F4195EA42312128900F3EF10 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				F4195EA52312128900F3EF10 /* PinyinHelper.h */,
+				F4195EA62312128900F3EF10 /* HanyuPinyinOutputFormat.h */,
+				F4195EA72312128900F3EF10 /* NSString+PinYin4Cocoa.m */,
+				F4195EA82312128900F3EF10 /* ChineseToPinyinResource.h */,
+				F4195EA92312128900F3EF10 /* PinyinFormatter.h */,
+				F4195EAA2312128900F3EF10 /* PinyinHelper.m */,
+				F4195EAB2312128900F3EF10 /* NSString+PinYin4Cocoa.h */,
+				F4195EAC2312128900F3EF10 /* HanyuPinyinOutputFormat.m */,
+				F4195EAD2312128900F3EF10 /* ChineseToPinyinResource.m */,
+				F4195EAE2312128900F3EF10 /* PinyinFormatter.m */,
+				F4195EAF2312128900F3EF10 /* PinYin4Objc.h */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		F4195EB02312128900F3EF10 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				F4195EB12312128900F3EF10 /* unicode_to_hanyu_pinyin.txt */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 		F419CD5F2308658100553E29 /* 关于我们 */ = {
 			isa = PBXGroup;
 			children = (
@@ -920,6 +986,7 @@
 		F42119B5230AD6EC001481CE /* 添加地址 */ = {
 			isa = PBXGroup;
 			children = (
+				F4B9A26B2311729D00614EB4 /* CityChooseVeiw */,
 				F42119B6230AD71C001481CE /* KDNewAddressVC.h */,
 				F42119B7230AD71C001481CE /* KDNewAddressVC.m */,
 			);
@@ -940,6 +1007,10 @@
 		F424E6B523098568002D340E /* 个人中心 */ = {
 			isa = PBXGroup;
 			children = (
+				F4293480231229070071BDCA /* 图标-暂无快递@2x.png */,
+				F4293481231229070071BDCA /* 图标-暂无快递@3x.png */,
+				F429347C231228FB0071BDCA /* 图标-没有地址@2x.png */,
+				F429347D231228FC0071BDCA /* 图标-没有地址@3x.png */,
 				F481FF5E230AE98E00761A3A /* 地址-图标-地址@2x.png */,
 				F481FF60230AE98E00761A3A /* 地址-图标-地址@3x.png */,
 				F481FF5F230AE98E00761A3A /* 地址-图标-语音@2x.png */,
@@ -1103,6 +1174,16 @@
 			path = "个人中心";
 			sourceTree = "<group>";
 		};
+		F4B9A26B2311729D00614EB4 /* CityChooseVeiw */ = {
+			isa = PBXGroup;
+			children = (
+				F4B9A26C2311729D00614EB4 /* CityChoose.h */,
+				F4B9A26D2311729D00614EB4 /* city.plist */,
+				F4B9A26E2311729D00614EB4 /* CityChoose.m */,
+			);
+			path = CityChooseVeiw;
+			sourceTree = "<group>";
+		};
 		F4C30839230934A100CF65CA /* 地址管理 */ = {
 			isa = PBXGroup;
 			children = (
@@ -1120,6 +1201,7 @@
 		F4C308432309429E00CF65CA /* 常用快递 */ = {
 			isa = PBXGroup;
 			children = (
+				F4195EA32312128900F3EF10 /* PinYin4Objc */,
 				F4C30844230942F900CF65CA /* KDExpressVC.h */,
 				F4C30845230942F900CF65CA /* KDExpressVC.m */,
 				F424E6B223098026002D340E /* KDExpressCell.h */,
@@ -1244,7 +1326,9 @@
 				F465DE1F230454B9002DFD4C /* 我的-图标-地址管理@3x.png in Resources */,
 				F465DE3B230454BA002DFD4C /* 图标-寄件-选中@3x.png in Resources */,
 				F465DE12230454B9002DFD4C /* 图标-密码@2x.png in Resources */,
+				F4195EB72312128900F3EF10 /* unicode_to_hanyu_pinyin.txt in Resources */,
 				F465DE15230454B9002DFD4C /* 图片-头像@2x.png in Resources */,
+				F429347F231228FD0071BDCA /* 图标-没有地址@3x.png in Resources */,
 				F465DE0F230454B9002DFD4C /* Logo@2x.png in Resources */,
 				F465DE09230454B9002DFD4C /* 登录-背景@2x.png in Resources */,
 				F465DE2C230454B9002DFD4C /* 我的-图-系统设置@2x.png in Resources */,
@@ -1252,9 +1336,11 @@
 				F465DE21230454B9002DFD4C /* 我的-图标-京东@2x.png in Resources */,
 				F465DE19230454B9002DFD4C /* 我的-图标-积分@3x.png in Resources */,
 				F41C800123081BDA00DA1C2F /* 注册-图标-后退@2x.png in Resources */,
+				F4B9A26F2311729D00614EB4 /* city.plist in Resources */,
 				F465DE29230454B9002DFD4C /* 我的-图标-二维码@2x.png in Resources */,
 				F465DE11230454B9002DFD4C /* 图标-微博@2x.png in Resources */,
 				F465DE26230454B9002DFD4C /* 我的-图标-京东@3x.png in Resources */,
+				F4293483231229080071BDCA /* 图标-暂无快递@3x.png in Resources */,
 				F465DE36230454B9002DFD4C /* 图标-我的-未选@2x.png in Resources */,
 				F465DE22230454B9002DFD4C /* 我的-图标-前往@2x.png in Resources */,
 				F465DE35230454B9002DFD4C /* 图标-我的-未选@3x.png in Resources */,
@@ -1296,6 +1382,8 @@
 				F465DE2E230454B9002DFD4C /* 我的-图标-个人@3x.png in Resources */,
 				F465DE2F230454B9002DFD4C /* 我的-图标-关于我们@2x.png in Resources */,
 				F465DE06230454B9002DFD4C /* 登录-背景@3x.png in Resources */,
+				F4293482231229080071BDCA /* 图标-暂无快递@2x.png in Resources */,
+				F429347E231228FD0071BDCA /* 图标-没有地址@2x.png in Resources */,
 				F465DE20230454B9002DFD4C /* 我的-图标-顺丰@3x.png in Resources */,
 				F424E6B82309857C002D340E /* 图标-收藏 @3x.png in Resources */,
 				F481FF64230AE99000761A3A /* 地址-图标-地址@2x.png in Resources */,
@@ -1399,9 +1487,12 @@
 				3D65BF972301086A00B12F3D /* HCTTitleView.m in Sources */,
 				1619AC5923084897003463C7 /* KDExpressRecordController.m in Sources */,
 				162DEB86230C46220099F44E /* KDExpressTitleView.m in Sources */,
+				F4195EB22312128900F3EF10 /* NSString+PinYin4Cocoa.m in Sources */,
 				F465DE4E230454FF002DFD4C /* KDInfoCell.m in Sources */,
+				F4195EB42312128900F3EF10 /* HanyuPinyinOutputFormat.m in Sources */,
 				3D65BF9E23010BBB00B12F3D /* UIImage+Image.m in Sources */,
 				3D65BF992301086A00B12F3D /* HCTNavigationController.m in Sources */,
+				F4195EB32312128900F3EF10 /* PinyinHelper.m in Sources */,
 				162AB3FF230968C400EF8225 /* KDExpressRecordCell.m in Sources */,
 				F4C30846230942F900CF65CA /* KDExpressVC.m in Sources */,
 				F41C800E23081C1300DA1C2F /* ZJCustomHud.m in Sources */,
@@ -1419,9 +1510,11 @@
 				164096E52309B0930055C0FB /* UITextView+Placeholder.m in Sources */,
 				163588032307A3340017F510 /* KDAddressInfoView.m in Sources */,
 				3D696F8D230A797F00593437 /* KDNetWorkManager.m in Sources */,
+				F4195EB52312128900F3EF10 /* ChineseToPinyinResource.m in Sources */,
 				F419CD5E2308610800553E29 /* KDResetLoginPwdVC.m in Sources */,
 				F419CD5B2308603600553E29 /* KDCodeForPwdVC.m in Sources */,
 				F465DE4B230454FF002DFD4C /* KDLoginVC.m in Sources */,
+				F4B9A2702311729D00614EB4 /* CityChoose.m in Sources */,
 				F424E6B423098026002D340E /* KDExpressCell.m in Sources */,
 				F422E956230C4E8000F10B21 /* KDUserModel.m in Sources */,
 				3D65BFBF230115D000B12F3D /* UIView+Toast.m in Sources */,
@@ -1429,6 +1522,7 @@
 				F41C801523081D2F00DA1C2F /* KDPhoneVC.m in Sources */,
 				16310F6F2306F9D80054311A /* UIView+Extension.m in Sources */,
 				F465DE4D230454FF002DFD4C /* KDMineVC.m in Sources */,
+				F4195EB62312128900F3EF10 /* PinyinFormatter.m in Sources */,
 				3D65BF962301086A00B12F3D /* RootCustomCell.m in Sources */,
 				F41BCCA32308249900BCD691 /* KDLoginPwdVC.m in Sources */,
 				163AE1862305A62A00B16015 /* KDTitleView.m in Sources */,

@@ -15,6 +15,8 @@
 
 @property(nonatomic,strong)UITableView* tableview;
 @property(nonatomic,strong)NSMutableArray* dataSource;
+@property (nonatomic,strong) UIView *noticeView;
+
 @end
 @implementation KDAddressAdminVC
 - (void)viewDidLoad {
@@ -24,21 +26,14 @@
     [self setNav];
     [self addChildViews];
     
-    KDUserModel* model = [KDUserModelTool userModel];
-    NSDictionary* dic = @{@"XX-Token":model.token,@"XX-Device-Type":@"iOS"};
-    __weak typeof(self) weakSelf =self;
-    [KDNetWorkManager GetHttpDataWithUrlStr:kAddressList Dic:nil headDic:dic SuccessBlock:^(id obj) {
-        if([obj[@"code"] integerValue] == 1){
-           
-        }
-    } FailureBlock:^(id obj) {
-        
-    }];
+    [self getAddressList];
 }
 
 
 -(void)addChildViews{
     [self.view addSubview:self.tableview];
+    
+    [self.view addSubview:self.noticeView];
     
     //底部新增地址按钮
     UIView* addressBgView =[[UIView alloc]initWithFrame:CGRectMake(0, kScreenHeight-kAdaptationWidth(90), kScreenWidth, kAdaptationWidth(90))];
@@ -54,17 +49,7 @@
     addressBtn.layer.masksToBounds=YES;
     [addressBtn addTarget:self action:@selector(addressBtnClick) forControlEvents:UIControlEventTouchUpInside];
     [addressBgView addSubview:addressBtn];
-    
-    
-    //临时数据
-    KDAddressAdminModel* model = [[KDAddressAdminModel alloc]init];
-    model.name=@"刘德华";
-    model.phone=@"150 1358 1358";
-    model.address=@"广东省 深圳市 龙岗区横岗街道大运软件小镇大运 软件小镇01栋";
-    [self.dataSource addObject:model];
-    [self.dataSource addObject:model];
-    [self.tableview reloadData];
-    
+ 
 }
 #pragma mark- tableview delegate
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
@@ -82,14 +67,15 @@
     }
     KDAddressAdminModel* model=self.dataSource[indexPath.row];
     cell.model=model;
-    
+    __weak typeof(self)weakSelf = self;
     //编辑
     cell.editBtnBlock=^{
         
+        [weakSelf editAddress:model];
     };
     //删除
     cell.deleteBtnBlock=^{
-        
+        [weakSelf deleteAddressWithID:model];
     };
     return cell;
 }
@@ -104,8 +90,75 @@
 //新增地址
 -(void)addressBtnClick{
     KDNewAddressVC *vc=[[KDNewAddressVC alloc]init];
+    __weak typeof(self) weakSelf = self;
+    vc.myBlock=^{
+        if(weakSelf.dataSource.count>0){
+            [weakSelf.dataSource removeAllObjects];
+        }
+        [weakSelf getAddressList];
+    };
     [self.navigationController pushViewController:vc animated:YES];
 }
+//
+-(void)deleteAddressWithID:(KDAddressAdminModel*) addressAdminModel{
+    KDUserModel* model = [KDUserModelTool userModel];
+    NSDictionary* headData = @{@"XX-Token":model.token,@"XX-Device-Type":kDeviceType};
+    NSDictionary* dic = @{@"id":addressAdminModel.addressID};
+    __weak typeof(self) weakSelf =self;
+    [KDNetWorkManager GetHttpDataWithUrlStr:kDeleteAddress Dic:dic headDic:headData SuccessBlock:^(id obj) {
+        if([obj[@"code"] integerValue] == 1){
+            [weakSelf.dataSource removeObject:addressAdminModel];
+            [weakSelf.tableview reloadData];
+            [ZJCustomHud showWithSuccess:@"删除成功"];
+            if(weakSelf.dataSource.count == 0){
+                weakSelf.noticeView.hidden=NO;
+            }else{
+                weakSelf.noticeView.hidden=YES;
+            }
+        }
+    } FailureBlock:^(id obj) {
+        
+    }];
+}
+-(void)editAddress:(KDAddressAdminModel*) addressAdminModel{
+    KDNewAddressVC *vc=[[KDNewAddressVC alloc]init];
+    vc.addressModel=addressAdminModel;
+    //[vc getAddressModel:addressAdminModel andTitle:@"编辑地址"];
+    __weak typeof(self) weakSelf = self;
+    vc.myBlock=^{
+        if(weakSelf.dataSource.count>0){
+            [weakSelf.dataSource removeAllObjects];
+        }
+        [weakSelf getAddressList];
+    };
+    [self.navigationController pushViewController:vc animated:YES];
+}
+-(void)getAddressList{
+    KDUserModel* model = [KDUserModelTool userModel];
+    NSDictionary* dic = @{@"XX-Token":model.token,@"XX-Device-Type":kDeviceType};
+    __weak typeof(self) weakSelf =self;
+    [KDNetWorkManager GetHttpDataWithUrlStr:kAddressList Dic:nil headDic:dic SuccessBlock:^(id obj) {
+        if([obj[@"code"] integerValue] == 1){
+            NSArray*  resArr = obj[@"data"];
+            if(resArr.count>0){
+                for(NSDictionary * modelDic in  resArr){
+                    KDAddressAdminModel* model = [KDAddressAdminModel ModelWithDict:modelDic];
+                    [weakSelf.dataSource addObject:model];
+                }
+                [weakSelf.tableview reloadData];
+            }
+            if(weakSelf.dataSource.count == 0){
+                weakSelf.noticeView.hidden=NO;
+            }else{
+                weakSelf.noticeView.hidden=YES;
+            }
+        }
+        
+    } FailureBlock:^(id obj) {
+        
+    }];
+}
+
 /**
  *  懒加载
  */
@@ -130,6 +183,24 @@
         }
     }
     return _tableview;
+}
+-(UIView*)noticeView{
+    if(!_noticeView){
+        _noticeView=[[UIView alloc]initWithFrame:CGRectMake(0,NavibarH+ kAdaptationWidth(110), kScreenWidth, kAdaptationWidth(250))];
+        UIImageView* bgImgView=[[UIImageView alloc]initWithFrame:CGRectMake(0, 0,  kAdaptationWidth(180), kAdaptationWidth(180))];
+        bgImgView.image=[UIImage imageNamed:@"图标-没有地址"];
+        [_noticeView addSubview:bgImgView];
+        bgImgView.centerX=kScreenWidth/2.0;
+        
+        UILabel* noNoticeLabel=[[UILabel alloc]initWithFrame:CGRectMake(0, bgImgView.bottom+kAdaptationWidth(10), kScreenWidth, kAdaptationWidth(25))];
+        noNoticeLabel.text=@"还没有添加过地址，点击新增地址添加吧～！";
+        noNoticeLabel.font=PingFangBold(13);
+        noNoticeLabel.textAlignment=NSTextAlignmentCenter;
+        noNoticeLabel.textColor=rgb(136, 136, 136, 1);
+        [_noticeView addSubview:noNoticeLabel];
+        _noticeView.hidden=YES;
+    }
+    return _noticeView;
 }
 -(void)setNav{
     self.titleView.type = TitleViewType_title;

@@ -40,16 +40,14 @@
 }
 
 
-/** Post 请求 */
+/** get 请求 */
 +(void)GetHttpDataWithUrlStr:(NSString *)url Dic:(NSDictionary *)dic headDic:(NSDictionary*)headDic SuccessBlock:(success)successBlock FailureBlock:(failure)failureBlock
 {
-    
     NSString* urlStr = [NSString stringWithFormat:@"%@%@",kBaseUrl,url];
-    NSLog(@"allUrl:%@ dic:\n%@",urlStr,dic);
+    NSLog(@"allUrl:%@ dic:\n%@ %@",urlStr, headDic,dic);
     
     AFHTTPSessionManager *manager = [KDSessionManager sharedHttpSessionManager];
     manager.responseSerializer.acceptableContentTypes =[NSSet setWithObjects:@"application/json", @"text/json", @"text/javascript",@"text/html",@"text/plain",nil];
-    
     NSArray* keys=[headDic allKeys];
     for (NSString * key in keys) {
         [manager.requestSerializer setValue:headDic[key] forHTTPHeaderField:key];
@@ -61,13 +59,14 @@
             
             NSString *string = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
             NSDictionary* dict= [KDNetWorkManager dictionaryWithJsonString:string];
-            NSLog(@"url:%@\n%@",url,dict);
+            NSLog(@"url:%@\n%@  %@",url, headDic,dict);
             successBlock(dict);
         }
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         /** 这里是处理事件的回调 */
         if (failureBlock) {
             failureBlock(error);
+            NSLog(@"fail:  %@",error);
         }
     }];
 }

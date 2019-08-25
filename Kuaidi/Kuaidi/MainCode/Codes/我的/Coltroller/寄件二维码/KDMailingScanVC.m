@@ -7,7 +7,11 @@
 //
 
 #import "KDMailingScanVC.h"
-@interface KDMailingScanVC()
+#import "KDAddressAdminModel.h"
+@interface KDMailingScanVC(){
+    UIScrollView* scrollowView;
+    UIButton*  saveScanImgBtn;
+}
 
 @end
 @implementation KDMailingScanVC
@@ -22,7 +26,7 @@
 
 -(void)addChildViews{
     
-    UIScrollView* scrollowView=[[UIScrollView alloc]initWithFrame:CGRectMake(0, NavibarH, kScreenWidth, kScreenHeight-kAdaptationWidth(90)-NavibarH )];
+    scrollowView=[[UIScrollView alloc]initWithFrame:CGRectMake(0, NavibarH, kScreenWidth, kScreenHeight-kAdaptationWidth(90)-NavibarH )];
     scrollowView.scrollEnabled=YES;
     scrollowView.backgroundColor=rgb(245, 245, 245, 1);
     [self.view addSubview:scrollowView];
@@ -70,12 +74,48 @@
     bottomDesLabel.textAlignment=NSTextAlignmentCenter;
     [topBgView addSubview:bottomDesLabel];
     
-    UIButton*  saveScanImgBtn = [[UIButton alloc]initWithFrame:CGRectMake(topBgView.left, topBgView.bottom+4, topBgView.width, kAdaptationWidth(45))];
+    saveScanImgBtn= [[UIButton alloc]initWithFrame:CGRectMake(topBgView.left, topBgView.bottom+4, topBgView.width, kAdaptationWidth(45))];
     [saveScanImgBtn setTitle:@"保存二维码" forState:UIControlStateNormal];
     [saveScanImgBtn setTitleColor:[UIColor colorWithHex:kMainRedColor]  forState:UIControlStateNormal];
     saveScanImgBtn.titleLabel.font = PingFangBold(18);
     [scrollowView addSubview:saveScanImgBtn];
     
+    [self getDefaultAddress];
+    
+    //底部分享按钮
+    UIView* shareBgView =[[UIView alloc]initWithFrame:CGRectMake(0, kScreenHeight-kAdaptationWidth(90), kScreenWidth, kAdaptationWidth(90))];
+    shareBgView.backgroundColor=[UIColor whiteColor];
+    [self.view addSubview:shareBgView];
+    
+    
+    UIButton*  shareBtn=[[UIButton alloc]initWithFrame:CGRectMake(kAdaptationWidth(18), kAdaptationWidth(18), kAdaptationWidth(339), kAdaptationWidth(54))];
+    [shareBtn setTitle:@"分享给微信好友" forState:UIControlStateNormal];
+    [shareBtn setTitleColor:[UIColor whiteColor]  forState:UIControlStateNormal];
+    [shareBtn setBackgroundImage:[UIImage imageWithColor:[UIColor colorWithHex:@"#DF2F31"]] forState:UIControlStateNormal];
+    shareBtn.layer.cornerRadius=kAdaptationWidth(10);
+    shareBtn.layer.masksToBounds=YES;
+    [shareBtn addTarget:self action:@selector(shareBtnClick) forControlEvents:UIControlEventTouchUpInside];
+    [shareBgView addSubview:shareBtn];
+    
+}
+-(void)getDefaultAddress{
+    KDUserModel* model = [KDUserModelTool userModel];
+    
+    NSDictionary* headData=@{@"XX-Token":model.token,@"XX-Device-Type":kDeviceType};
+    __weak typeof(self) weakSelf =self;
+    [KDNetWorkManager GetHttpDataWithUrlStr:kDefaultAddress Dic:nil headDic:headData SuccessBlock:^(id obj) {
+        if([obj[@"code"] integerValue] == 1){
+            if ([obj[@"data"] isKindOfClass:[NSNull class]] || [obj[@"data"] isEqual:[NSNull null]] || obj[@"data"] == nil) {
+                return ;
+            }
+            KDAddressAdminModel* model = [KDAddressAdminModel ModelWithDict:obj[@"data"]];
+            [weakSelf setUpDefault:model];
+        }
+    } FailureBlock:^(id obj) {
+        
+    }];
+}
+-(void)setUpDefault:(KDAddressAdminModel*)model{
     //底部寄件地址
     UILabel* addressTitleLabel=[[UILabel alloc]initWithFrame:CGRectMake(kAdaptationWidth(54), saveScanImgBtn.bottom+ kAdaptationWidth(22), kAdaptationWidth(180), 15)];
     addressTitleLabel.text=@"默认寄件地址：";
@@ -100,32 +140,17 @@
     
     
     UILabel* infoLabel=[[UILabel alloc]initWithFrame:CGRectMake(kAdaptationWidth(54), kAdaptationWidth(18), kAdaptationWidth(220), 15)];
-    infoLabel.text=@"刘德华  15089754936";
+    infoLabel.text=[NSString stringWithFormat:@"%@ %@",model.name,model.mobile];
     infoLabel.textColor=[UIColor colorWithHex:@"#0B0B0B"];
     infoLabel.font =PingFangMedium(15);
     [adressBgView addSubview:infoLabel];
     
     UILabel* addressLabel=[[UILabel alloc]initWithFrame:CGRectMake(kAdaptationWidth(54),infoLabel.bottom+ kAdaptationWidth(8), kAdaptationWidth(160), 40)];
-    addressLabel.text=@"广东省深圳市龙岗区横岗街道大运软件小镇大运中心";
+    addressLabel.text=[NSString stringWithFormat:@"%@%@%@%@",model.province_name,model.city_name,model.district_name,model.address];
     addressLabel.textColor=[UIColor colorWithHex:@"#A9A9A9"];
     addressLabel.font =PingFangMedium(13);
     [adressBgView addSubview:addressLabel];
     addressLabel.numberOfLines=0;
-    
-    //底部分享按钮
-    UIView* shareBgView =[[UIView alloc]initWithFrame:CGRectMake(0, kScreenHeight-kAdaptationWidth(90), kScreenWidth, kAdaptationWidth(90))];
-    shareBgView.backgroundColor=[UIColor whiteColor];
-    [self.view addSubview:shareBgView];
-    
-    //下一步
-    UIButton*  shareBtn=[[UIButton alloc]initWithFrame:CGRectMake(kAdaptationWidth(18), kAdaptationWidth(18), kAdaptationWidth(339), kAdaptationWidth(54))];
-    [shareBtn setTitle:@"分享给微信好友" forState:UIControlStateNormal];
-    [shareBtn setTitleColor:[UIColor whiteColor]  forState:UIControlStateNormal];
-    [shareBtn setBackgroundImage:[UIImage imageWithColor:[UIColor colorWithHex:@"#DF2F31"]] forState:UIControlStateNormal];
-    shareBtn.layer.cornerRadius=kAdaptationWidth(10);
-    shareBtn.layer.masksToBounds=YES;
-    [shareBtn addTarget:self action:@selector(shareBtnClick) forControlEvents:UIControlEventTouchUpInside];
-    [shareBgView addSubview:shareBtn];
     
 }
 
