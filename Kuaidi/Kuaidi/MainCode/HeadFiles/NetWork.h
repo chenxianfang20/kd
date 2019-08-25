@@ -32,10 +32,23 @@
 #define kUpdateAddress @"/api/user/address/update"
 //获取默认地址
 #define kDefaultAddress @"/api/user/address/getDefault"
+//设置默认地址
+#define kSetDefaultAddress @"/api/user/address/setDefautAddr"
 
 
+//物流列表
 #define kWuLiu @"/api/logistics/wuliu/index"
+//常用物流列表
+#define kShowwuliulist @"/api/user/favorites/showwuliulist"
+//我的常用物流列表
+#define kShowmywuliu @"/api/user/favorites/showmywuliu"
 
+//删除物流
+#define kDelmywuliu @"/api/user/favorites/delmywuliu"
+//添加物流
+#define kAddmywuliu @"/api/user/favorites/addmywuliu"
+//物流详情
+#define kDetailwuliu @"/api/logistics/wuliu/detail"
 
 //关于我们
 #define kArticles @"/api/portal/articles/2"

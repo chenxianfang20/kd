@@ -53,7 +53,6 @@
     scrollowView.delegate=self;
     [self.view addSubview:scrollowView];
     
-    
     CGFloat heightX= 0;
     if(is_iPhoneX){
         heightX=6;
@@ -68,10 +67,7 @@
     _headImgVIew.image = [UIImage imageNamed:@"图片-头像"];
     [scrollowView addSubview:_headImgVIew];
     
-    
-   
     _nameLabel=[[UILabel alloc]initWithFrame:CGRectMake(kAdaptationWidth(96), kAdaptationWidth(53)+heightX, kAdaptationWidth(260), kAdaptationWidth(22))];
-    
     _nameLabel.textColor=[UIColor whiteColor];
     _nameLabel.font = [UIFont fontWithName:@"PingFang-SC-Medium" size: 22];
     [scrollowView addSubview:_nameLabel];
@@ -236,7 +232,7 @@
 -(NSMutableArray*)dataSource{
     if(!_dataSource){
         _dataSource = [[NSMutableArray alloc]init];
-        NSArray* headImgArr= @[@"我的-图标-积分",@"我的-图标-地址管理",@"我的-图标-常用快递",@"我的-图-系统设置",@"我的-图标-帮助中心",@"我的-图标-关于我们"];
+        NSArray* headImgArr= @[@"我的-图标-积分",@"我的-图标-地址管理",@"我的-图标-常用快递",@"我的-图-系统设置",@"我的-图标-帮助中心",@"我的-图标-我们"];
         NSArray* titleArr= @[@"积分:12",@"地址管理",@"常用快递",@"系统设置",@"帮助中心",@"关于我们"];
         NSArray* desArr= @[@"玩转任务,挣取积分",@"",@"关联平台,管理快递",@"",@"",@""];
         for (NSInteger i=0;i<headImgArr.count;i++){
@@ -278,9 +274,12 @@
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    
+    KDUserModel* usermodel = [KDUserModelTool userModel];
     //地址管理
     if(indexPath.row == 1){
+        if(!usermodel.token){
+            [self.view showToastWithText:@"请先登录" time:1];
+        }
         KDAddressAdminVC* vc= [[KDAddressAdminVC alloc]init];
         vc.hidesBottomBarWhenPushed=YES;
         [self.navigationController pushViewController:vc animated:YES];
