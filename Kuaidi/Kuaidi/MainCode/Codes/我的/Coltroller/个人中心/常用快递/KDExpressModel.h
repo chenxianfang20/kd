@@ -8,12 +8,14 @@
 
 #import <Foundation/Foundation.h>
 
-
-
 @interface KDExpressModel : NSObject
-@property (nonatomic,strong) NSString *mailingName;
-@property (nonatomic,strong) NSString *phone;
-@property (nonatomic,strong) NSString *headImgDddress;
+@property (nonatomic,strong) NSString *logistics_icon;
+@property (nonatomic,strong) NSString *logistics_mobile;
+@property (nonatomic,strong) NSString *logistics_name;
+@property (nonatomic,strong) NSString *logistics_id;
+@property (nonatomic,strong) NSString *status;
+
+
 +(instancetype)ModelWithDict:(NSDictionary*)dict;
 @end
 

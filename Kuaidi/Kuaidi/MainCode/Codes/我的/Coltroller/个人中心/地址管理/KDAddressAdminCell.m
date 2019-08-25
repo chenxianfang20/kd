@@ -11,6 +11,9 @@
 @property (nonatomic,strong) UILabel *nameLabel;
 @property (nonatomic,strong) UILabel *phoneLabel;
 @property (nonatomic,strong) UILabel *addressLabel;
+
+@property (nonatomic,strong) UIButton *defaultBtn;
+
 @end
 @implementation KDAddressAdminCell
 -(instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
@@ -80,11 +83,28 @@
     [deleteBtn addTarget:self action:@selector(deleteBtnClick) forControlEvents:UIControlEventTouchUpInside];
     [bgView addSubview:deleteBtn];
     [deleteBtn setBackgroundImage:[UIImage imageWithColor:[UIColor whiteColor]] forState:UIControlStateNormal];
+    
+    _defaultBtn =[[UIButton alloc]initWithFrame:CGRectMake(kLeftX, kAdaptationWidth(108), kAdaptationWidth(120), kAdaptationWidth(30))];
+    [_defaultBtn setImage:[UIImage imageNamed:@"图标-未选"] forState:UIControlStateNormal];
+    [_defaultBtn setTitle:@"设为默认地址" forState:UIControlStateNormal];
+    [_defaultBtn setTitleColor:[UIColor colorWithHex:@"#5C5C5C"]  forState:UIControlStateNormal];
+    _defaultBtn.titleLabel.font = PingFangBold(14);
+    [_defaultBtn addTarget:self action:@selector(defaultBtnClick:) forControlEvents:UIControlEventTouchUpInside];
+    [bgView addSubview:_defaultBtn];
+    [_defaultBtn setBackgroundImage:[UIImage imageWithColor:[UIColor whiteColor]] forState:UIControlStateNormal];
+    _defaultBtn.imageEdgeInsets = UIEdgeInsetsMake(kAdaptationWidth(6), kAdaptationWidth(0), kAdaptationWidth(6), kAdaptationWidth(100));
+    _defaultBtn.titleEdgeInsets = UIEdgeInsetsMake(kAdaptationWidth(6), kAdaptationWidth(10), kAdaptationWidth(6), 0);
+    _defaultBtn.centerY =deleteBtn.centerY;
 }
 
 -(void)setModel:(KDAddressAdminModel *)model{
     _nameLabel.text=model.name;
     _addressLabel.text=[NSString stringWithFormat:@"%@ %@ %@%@",model.province_name,model.city_name,model.district_name, model.address];
+    if(model.isDefault.integerValue == 1){
+        [_defaultBtn setImage:[UIImage imageNamed:@"图标-选定"] forState:UIControlStateNormal];
+    }else{
+        [_defaultBtn setImage:[UIImage imageNamed:@"图标-未选"] forState:UIControlStateNormal];
+    }
     //添加间隔
     NSMutableString * str = [[NSMutableString alloc ] init];
     for(int  i =0; i < [model.mobile length]; i++)
@@ -106,5 +126,9 @@
         self.deleteBtnBlock();
     }
 }
-
+-(void)defaultBtnClick:(UIButton*)btn{
+    if(self.defaultBtnBlock){
+        self.defaultBtnBlock();
+    }
+}
 @end

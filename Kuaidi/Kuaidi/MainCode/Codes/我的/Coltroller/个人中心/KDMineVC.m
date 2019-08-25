@@ -15,6 +15,7 @@
 #import "KDAddressAdminVC.h"
 #import "KDExpressVC.h"
 #import "KDMailingScanVC.h"
+#import "KDScoreVC.h"
 @interface KDMineVC ()<UITableViewDelegate,UITableViewDataSource>{
     UIScrollView* scrollowView;
 }
@@ -53,7 +54,6 @@
     scrollowView.delegate=self;
     [self.view addSubview:scrollowView];
     
-    
     CGFloat heightX= 0;
     if(is_iPhoneX){
         heightX=6;
@@ -68,10 +68,7 @@
     _headImgVIew.image = [UIImage imageNamed:@"图片-头像"];
     [scrollowView addSubview:_headImgVIew];
     
-    
-   
     _nameLabel=[[UILabel alloc]initWithFrame:CGRectMake(kAdaptationWidth(96), kAdaptationWidth(53)+heightX, kAdaptationWidth(260), kAdaptationWidth(22))];
-    
     _nameLabel.textColor=[UIColor whiteColor];
     _nameLabel.font = [UIFont fontWithName:@"PingFang-SC-Medium" size: 22];
     [scrollowView addSubview:_nameLabel];
@@ -194,6 +191,11 @@
 }
 //寄件二维码扫描
 -(void)scanViewTapClick{
+    KDUserModel* model = [KDUserModelTool userModel];
+    if(!model.token){
+        [self.view showToastWithText:@"请先登录" time:1];
+        return;
+    }
     KDMailingScanVC* vc = [[KDMailingScanVC alloc]init];
     vc.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:vc animated:YES];
@@ -236,8 +238,15 @@
 -(NSMutableArray*)dataSource{
     if(!_dataSource){
         _dataSource = [[NSMutableArray alloc]init];
-        NSArray* headImgArr= @[@"我的-图标-积分",@"我的-图标-地址管理",@"我的-图标-常用快递",@"我的-图-系统设置",@"我的-图标-帮助中心",@"我的-图标-关于我们"];
-        NSArray* titleArr= @[@"积分:12",@"地址管理",@"常用快递",@"系统设置",@"帮助中心",@"关于我们"];
+        NSArray* headImgArr= @[@"我的-图标-积分",@"我的-图标-地址管理",@"我的-图标-常用快递",@"我的-图-系统设置",@"我的-图标-帮助中心",@"我的-图标-我们"];
+        KDUserModel* model = [KDUserModelTool userModel];
+        NSString* score;
+        if(model.score.integerValue > 0){
+            score= [NSString stringWithFormat:@"积分:%@",model.score];
+        }else{
+            score=@"积分:0";
+        }
+        NSArray* titleArr= @[score,@"地址管理",@"常用快递",@"系统设置",@"帮助中心",@"关于我们"];
         NSArray* desArr= @[@"玩转任务,挣取积分",@"",@"关联平台,管理快递",@"",@"",@""];
         for (NSInteger i=0;i<headImgArr.count;i++){
             KDInfoModel* model = [[KDInfoModel alloc]init];
@@ -278,15 +287,34 @@
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
+    KDUserModel* usermodel = [KDUserModelTool userModel];
     
+    //积分
+    if(indexPath.row == 0){
+        if(!usermodel.token){
+            [self.view showToastWithText:@"请先登录" time:1];
+            return;
+        }
+        KDScoreVC* vc= [[KDScoreVC alloc]init];
+        vc.hidesBottomBarWhenPushed=YES;
+        [self.navigationController pushViewController:vc animated:YES];
+    }
     //地址管理
     if(indexPath.row == 1){
+        if(!usermodel.token){
+            [self.view showToastWithText:@"请先登录" time:1];
+            return;
+        }
         KDAddressAdminVC* vc= [[KDAddressAdminVC alloc]init];
         vc.hidesBottomBarWhenPushed=YES;
         [self.navigationController pushViewController:vc animated:YES];
     }
     //常用快递
     if(indexPath.row == 2){
+        if(!usermodel.token){
+            [self.view showToastWithText:@"请先登录" time:1];
+            return;
+        }
         KDExpressVC* vc= [[KDExpressVC alloc]init];
         vc.hidesBottomBarWhenPushed=YES;
         [self.navigationController pushViewController:vc animated:YES];
@@ -300,6 +328,10 @@
     
     //关于我们
     if(indexPath.row == 5){
+        if(!usermodel.token){
+            [self.view showToastWithText:@"请先登录" time:1];
+            return;
+        }
         KDAboutAsVC* vc= [[KDAboutAsVC alloc]init];
         vc.hidesBottomBarWhenPushed=YES;
         [self.navigationController pushViewController:vc animated:YES];

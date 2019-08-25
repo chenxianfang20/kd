@@ -53,8 +53,13 @@
 }
 
 -(void)setModel:(KDExpressModel *)model{
-    _headImgView.image=[UIImage  imageNamed:model.headImgDddress];
-    _mailingMameLabel.text=model.mailingName;
-    _phoneLabel.text=model.phone;
+    __weak typeof(self)weakSelf = self;
+    dispatch_async(dispatch_get_global_queue(0, 0), ^{
+        NSURL *imageUrl = [NSURL URLWithString:model.logistics_icon];
+        weakSelf.headImgView.image = [UIImage imageWithData:[NSData dataWithContentsOfURL:imageUrl]];
+    });
+   
+    _mailingMameLabel.text=model.logistics_name;
+    _phoneLabel.text=model.logistics_mobile;
 }
 @end

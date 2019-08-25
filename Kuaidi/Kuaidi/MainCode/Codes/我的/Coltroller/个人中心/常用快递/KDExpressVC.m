@@ -9,11 +9,14 @@
 #import "KDExpressVC.h"
 #import "KDExpressCell.h"
 #import "KDExpressModel.h"
+#import "KDAddExpressVC.h"
 @interface KDExpressVC()<UITableViewDelegate,UITableViewDataSource>
 
 
 @property(nonatomic,strong)UITableView* tableview;
 @property(nonatomic,strong)NSMutableArray* dataSource;
+
+@property (nonatomic,strong) UIView *noticeView;
 
 @end
 @implementation KDExpressVC
@@ -29,6 +32,8 @@
 
 -(void)addChildViews{
     [self.view addSubview:self.tableview];
+    
+    [self.view addSubview:self.noticeView];
     
     //底部新增快递按钮
     UIView* addMailingBgView =[[UIView alloc]initWithFrame:CGRectMake(0, kScreenHeight-kAdaptationWidth(90), kScreenWidth, kAdaptationWidth(90))];
@@ -46,15 +51,8 @@
     [addMailingBgView addSubview:addMailingBtn];
     
     
-    [self getWuLiuList];
-//    //临时数据
-//    KDExpressModel* model = [[KDExpressModel alloc]init];
-//    model.mailingName=@"顺风快递";
-//    model.phone=@"4008-890-008";
-//    model.headImgDddress=@"我的-图标-顺丰";
-//    [self.dataSource addObject:model];
-//    [self.dataSource addObject:model];
-//    [self.tableview reloadData];
+    
+
 }
 #pragma mark- tableview delegate
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
@@ -84,29 +82,43 @@
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     return kAdaptationWidth(102);
 }
-//新增地址
+//新增快递
 -(void)addMailingBtnClick{
     
+    KDAddExpressVC* vc= [[KDAddExpressVC alloc]init];
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 -(void)getWuLiuList{
     KDUserModel* model = [KDUserModelTool userModel];
     NSDictionary* dic = @{@"XX-Token":model.token,@"XX-Device-Type":@"iphone"};
     __weak typeof(self) weakSelf =self;
-    [KDNetWorkManager GetHttpDataWithUrlStr:kWuLiu Dic:nil headDic:dic SuccessBlock:^(id obj) {
+    [KDNetWorkManager GetHttpDataWithUrlStr:kShowmywuliu Dic:nil headDic:dic SuccessBlock:^(id obj) {
         if([obj[@"code"] integerValue] == 1){
-//            NSArray*  resArr = obj[@"data"];
-//            if(resArr.count>0){
-//                for(NSDictionary * modelDic in  resArr){
-//                    KDAddressAdminModel* model = [KDAddressAdminModel ModelWithDict:modelDic];
-//                    [weakSelf.dataSource addObject:model];
-//                }
-//                [weakSelf.tableview reloadData];
-//            }
+            if(weakSelf.dataSource.count>0){
+                [weakSelf.dataSource removeAllObjects];
+            }
+            NSArray*  resArr = obj[@"data"];
+            if(resArr.count>0){
+                for(NSDictionary * modelDic in  resArr){
+                    KDExpressModel* model = [KDExpressModel ModelWithDict:modelDic];
+                    [weakSelf.dataSource addObject:model];
+                }
+            }
+            [weakSelf.tableview reloadData];
+            if(weakSelf.dataSource.count == 0){
+                weakSelf.noticeView.hidden=NO;
+            }else{
+                weakSelf.noticeView.hidden=YES;
+            }
         }
     } FailureBlock:^(id obj) {
         
     }];
+}
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    [self getWuLiuList];
 }
 /**
  *  懒加载
@@ -132,6 +144,24 @@
         }
     }
     return _tableview;
+}
+-(UIView*)noticeView{
+    if(!_noticeView){
+        _noticeView=[[UIView alloc]initWithFrame:CGRectMake(0,NavibarH+ kAdaptationWidth(110), kScreenWidth, kAdaptationWidth(250))];
+        UIImageView* bgImgView=[[UIImageView alloc]initWithFrame:CGRectMake(0, 0,  kAdaptationWidth(180), kAdaptationWidth(180))];
+        bgImgView.image=[UIImage imageNamed:@"图标-暂无快递"];
+        [_noticeView addSubview:bgImgView];
+        bgImgView.centerX=kScreenWidth/2.0;
+        
+        UILabel* noNoticeLabel=[[UILabel alloc]initWithFrame:CGRectMake(0, bgImgView.bottom+kAdaptationWidth(10), kScreenWidth, kAdaptationWidth(25))];
+        noNoticeLabel.text=@"暂无任何常用快递呢，去添加试试看吧～！";
+        noNoticeLabel.font=PingFangBold(13);
+        noNoticeLabel.textAlignment=NSTextAlignmentCenter;
+        noNoticeLabel.textColor=rgb(136, 136, 136, 1);
+        [_noticeView addSubview:noNoticeLabel];
+        _noticeView.hidden=YES;
+    }
+    return _noticeView;
 }
 -(void)setNav{
     self.titleView.type = TitleViewType_title;

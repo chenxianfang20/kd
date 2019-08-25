@@ -11,9 +11,11 @@
 @implementation KDExpressModel
 +(instancetype)ModelWithDict:(NSDictionary*)dict{
     KDExpressModel* model=[[self alloc]init];
-    model.mailingName=dict[@"mailingName"];
-    model.phone=dict[@"phone"];
-    model.headImgDddress=dict[@"headImgDddress"];
+    model.logistics_icon=dict[@"logistics_icon"];
+    model.logistics_mobile=dict[@"logistics_mobile"];
+    model.logistics_name=dict[@"logistics_name"];
+    model.logistics_id=dict[@"id"];
+    model.status=dict[@"status"];
     return model;
 }
 @end

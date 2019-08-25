@@ -77,6 +77,10 @@
     cell.deleteBtnBlock=^{
         [weakSelf deleteAddressWithID:model];
     };
+    //设置为默认地址
+    cell.defaultBtnBlock=^{
+        [weakSelf defaultAddressWithID:model];
+    };
     return cell;
 }
 
@@ -136,6 +140,22 @@
         [weakSelf getAddressList];
     };
     [self.navigationController pushViewController:vc animated:YES];
+}
+
+-(void)defaultAddressWithID:(KDAddressAdminModel*) addressAdminModel{
+    KDUserModel* model = [KDUserModelTool userModel];
+    NSDictionary* headData = @{@"XX-Token":model.token,@"XX-Device-Type":kDeviceType};
+    NSDictionary* dic = @{@"id":addressAdminModel.addressID};
+    __weak typeof(self) weakSelf =self;
+    [KDNetWorkManager GetHttpDataWithUrlStr:kSetDefaultAddress Dic:dic headDic:headData SuccessBlock:^(id obj) {
+        if([obj[@"code"] integerValue] == 1){
+            [weakSelf.dataSource removeAllObjects];
+            [weakSelf getAddressList];
+            [weakSelf.view  showToastWithText:@"设置为默认地址" time:1];
+        }
+    } FailureBlock:^(id obj) {
+        
+    }];
 }
 -(void)getAddressList{
     KDUserModel* model = [KDUserModelTool userModel];
