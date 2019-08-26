@@ -19,11 +19,41 @@
 
 @property(nonatomic, strong)NSMutableArray *dataArr;
 
+@property(nonatomic, strong)UIView *noDataView;
+
 @end
 
 @implementation KDExpressRecordListController
 
 #pragma mark - Getters
+-(UIView *)noDataView{
+    
+    if (!_noDataView) {
+        
+        _noDataView = [[UIView alloc] init];
+        _noDataView.hidden = YES;
+        
+        UIImageView *imageView = [[UIImageView alloc] init];
+        imageView.image = [UIImage imageNamed:@"图标-暂无寄件"];
+        [_noDataView addSubview:imageView];
+        [imageView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.centerX.equalTo(self->_noDataView.mas_centerX).offset(0);
+            make.centerY.equalTo(self->_noDataView.mas_centerY).offset(-100);
+            make.size.mas_equalTo(CGSizeMake(180, 180));
+        }];
+        
+        UILabel *tipLabel = [[UILabel alloc] init];
+        tipLabel.text = @"暂无任何寄件订单呢，去寄件试试看吧～！";
+        tipLabel.textColor = rgb(166, 166, 166, 1.0);
+        tipLabel.font = PingFangMedium(15);
+        [_noDataView addSubview:tipLabel];
+        [tipLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.top.equalTo(imageView.mas_bottom).offset(20);
+            make.centerX.equalTo(self->_noDataView.mas_centerX).offset(0);
+        }];
+    }
+    return _noDataView;
+}
 
 -(NSMutableArray *)dataArr{
     
@@ -59,6 +89,11 @@
     self.page = 1;
     [self.view addSubview:self.tableView];
     [self.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.edges.equalTo(self.view);
+    }];
+    
+    [self.view addSubview:self.noDataView];
+    [self.noDataView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.equalTo(self.view);
     }];
     
@@ -102,8 +137,9 @@
                 [weakSelf.dataArr addObject:model];
                 
             }
-        
             [self.tableView reloadData];
+            
+            self.noDataView.hidden = weakSelf.dataArr.count > 0;
             
         }else{
             
