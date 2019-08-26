@@ -60,7 +60,6 @@
             NSString *string = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
             NSDictionary* dict= [KDNetWorkManager dictionaryWithJsonString:string];
             NSLog(@"url:%@\n%@  %@",url, headDic,dict);
-            
             if([dict[@"code"] integerValue ] ==10001){
                 [KDUserModelTool deleteUserModel];
                 [ZJCustomHud showWithText:dict[@"msg"] WithDurations:1];

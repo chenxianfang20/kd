@@ -183,6 +183,7 @@
 }
 
 -(void)areaBtnClick{
+    [self.view endEditing:YES];
     self.cityChoose = [[CityChoose alloc] init];
     __weak typeof(self) weakSelf = self;
     self.cityChoose.config = ^(NSString *province, NSString *city, NSString *town){

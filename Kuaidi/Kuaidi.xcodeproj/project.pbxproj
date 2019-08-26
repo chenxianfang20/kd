@@ -104,6 +104,7 @@
 		F41C801523081D2F00DA1C2F /* KDPhoneVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F41C801223081D2F00DA1C2F /* KDPhoneVC.m */; };
 		F41C801623081D2F00DA1C2F /* KDCodeVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F41C801323081D2F00DA1C2F /* KDCodeVC.m */; };
 		F41CCC942312AE1B0018B5A8 /* KDExpressDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F41CCC932312AE1B0018B5A8 /* KDExpressDetailModel.m */; };
+		F41FD250231431D9006F9ECA /* KDOrderDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F41FD24F231431D9006F9ECA /* KDOrderDetailVC.m */; };
 		F42119B8230AD71C001481CE /* KDNewAddressVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F42119B7230AD71C001481CE /* KDNewAddressVC.m */; };
 		F42233522312CD1300912F26 /* 图标-暂无积分@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F42233502312CD1200912F26 /* 图标-暂无积分@3x.png */; };
 		F42233532312CD1300912F26 /* 图标-暂无积分@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F42233512312CD1300912F26 /* 图标-暂无积分@2x.png */; };
@@ -402,6 +403,8 @@
 		F41C801423081D2F00DA1C2F /* KDPhoneVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KDPhoneVC.h; sourceTree = "<group>"; };
 		F41CCC922312AE1B0018B5A8 /* KDExpressDetailModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KDExpressDetailModel.h; sourceTree = "<group>"; };
 		F41CCC932312AE1B0018B5A8 /* KDExpressDetailModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KDExpressDetailModel.m; sourceTree = "<group>"; };
+		F41FD24E231431D9006F9ECA /* KDOrderDetailVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KDOrderDetailVC.h; sourceTree = "<group>"; };
+		F41FD24F231431D9006F9ECA /* KDOrderDetailVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KDOrderDetailVC.m; sourceTree = "<group>"; };
 		F42119B6230AD71C001481CE /* KDNewAddressVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KDNewAddressVC.h; sourceTree = "<group>"; };
 		F42119B7230AD71C001481CE /* KDNewAddressVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KDNewAddressVC.m; sourceTree = "<group>"; };
 		F42233502312CD1200912F26 /* 图标-暂无积分@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "图标-暂无积分@3x.png"; sourceTree = "<group>"; };
@@ -901,6 +904,7 @@
 		3D65BFC4230116FE00B12F3D /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				F41FD24D231430BE006F9ECA /* 订单详情 */,
 				162AB3E3230967AB00EF8225 /* HGSegmentedPageViewController */,
 				3D65BFC72301173E00B12F3D /* KDMailingVC.h */,
 				3D65BFC82301173E00B12F3D /* KDMailingVC.m */,
@@ -1049,6 +1053,15 @@
 				F41CCC932312AE1B0018B5A8 /* KDExpressDetailModel.m */,
 			);
 			path = "快递详情";
+			sourceTree = "<group>";
+		};
+		F41FD24D231430BE006F9ECA /* 订单详情 */ = {
+			isa = PBXGroup;
+			children = (
+				F41FD24E231431D9006F9ECA /* KDOrderDetailVC.h */,
+				F41FD24F231431D9006F9ECA /* KDOrderDetailVC.m */,
+			);
+			path = "订单详情";
 			sourceTree = "<group>";
 		};
 		F42119B5230AD6EC001481CE /* 添加地址 */ = {
@@ -1638,6 +1651,7 @@
 				3D696F8D230A797F00593437 /* KDNetWorkManager.m in Sources */,
 				F4195EB52312128900F3EF10 /* ChineseToPinyinResource.m in Sources */,
 				F419CD5E2308610800553E29 /* KDResetLoginPwdVC.m in Sources */,
+				F41FD250231431D9006F9ECA /* KDOrderDetailVC.m in Sources */,
 				F419CD5B2308603600553E29 /* KDCodeForPwdVC.m in Sources */,
 				F465DE4B230454FF002DFD4C /* KDLoginVC.m in Sources */,
 				F42233562312CD7C00912F26 /* KDScoreVC.m in Sources */,
