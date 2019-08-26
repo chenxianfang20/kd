@@ -34,7 +34,7 @@
     self.backgroundColor = rgb(255, 255, 255, 1);
     
     UILabel *titleLabel = [[UILabel alloc] init];
-    titleLabel.text = @"物品信息";
+    self.titleLabel = titleLabel;
     titleLabel.textColor = rgb(92, 92, 92, 1);
     titleLabel.font = PingFangMedium(15);
     [self addSubview:titleLabel];
@@ -44,8 +44,8 @@
     }];
     
     UITextField *textField = [[UITextField alloc] init];
+    self.textField = textField;
     textField.userInteractionEnabled = NO;
-    textField.placeholder = @"请选择类型、重量";
     textField.textColor = rgb(11, 11, 11, 1);
     textField.font = PingFangBold(15);
     textField.textAlignment = NSTextAlignmentRight;

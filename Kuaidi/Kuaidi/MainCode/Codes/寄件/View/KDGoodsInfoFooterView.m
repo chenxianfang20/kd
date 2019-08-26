@@ -8,6 +8,14 @@
 
 #import "KDGoodsInfoFooterView.h"
 
+@interface KDGoodsInfoFooterView()
+
+@property(nonatomic, strong)UIButton *orderButton;
+
+@property(nonatomic, strong)UILabel *feeValueLabel;
+
+@end
+
 @implementation KDGoodsInfoFooterView
 
 +(KDGoodsInfoFooterView *)goodsInfoFooterView{
@@ -51,7 +59,8 @@
     }];
     
     UILabel *feeValueLabel = [[UILabel alloc] init];
-    feeValueLabel.text = @"¥8.0";
+    self.feeValueLabel = feeValueLabel;
+    feeValueLabel.text = @"¥0.0";
     feeValueLabel.textColor = rgb(223, 47, 49, 1);
     feeValueLabel.font = [UIFont fontWithName:@"PingFangSC-Heavy" size: 15];
     [self addSubview:feeValueLabel];
@@ -62,6 +71,7 @@
     }];
 
     UIButton *orderButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    self.orderButton = orderButton;
     [orderButton setTitle:@"立即下单" forState:UIControlStateNormal];
     orderButton.titleLabel.font = PingFangBold(15);
     [self selectButtonConvert:orderButton];
@@ -89,10 +99,31 @@
 
 - (void)orderButtonClick:(UIButton *)button{
     
+    if (!button.selected) {
+        return;
+    }
+    
     if ([self.delegate respondsToSelector:@selector(clickConfirmButton)]) {
         [self.delegate clickConfirmButton];
     }
     
+}
+
+-(void)setIsOrderButtonSelect:(BOOL)isOrderButtonSelect{
+    
+    _isOrderButtonSelect = isOrderButtonSelect;
+    
+    self.orderButton.selected = isOrderButtonSelect;
+    
+    [self selectButtonConvert:self.orderButton];
+    
+}
+
+-(void)setMoney:(CGFloat)money{
+    
+    _money = money;
+    
+    self.feeValueLabel.text = [NSString stringWithFormat:@"¥%.2f",money];
 }
 
 @end

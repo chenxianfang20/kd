@@ -10,7 +10,11 @@
 
 
 
+@class KDAddressAdminModel;
+
 @interface KDAddressAdminVC : RootViewController
+
+@property(nonatomic, copy)void(^selectAddressBlock)(KDAddressAdminModel *model);
 
 @end
 

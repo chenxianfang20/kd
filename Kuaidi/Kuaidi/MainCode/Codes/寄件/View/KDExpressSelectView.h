@@ -10,10 +10,10 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface KDExpressSelectView : UITableView
+@interface KDExpressSelectView : UIView
 
 
-+(void)showSelectViewWithConfirmBlock:(void(^)(NSString *expressType))confirmBlock;
++(void)showSelectViewWithWuliuArr:(NSArray *)wuliuArr select:(NSInteger)index ConfirmBlock:(void(^)(NSInteger index))confirmBlock;
 
 @end
 

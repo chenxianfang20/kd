@@ -14,9 +14,20 @@
 
 @property(nonatomic, strong)UIView *dotView;
 
+@property(nonatomic, strong)NSMutableArray *buttonArr;
+
 @end
 
 @implementation KDTitleView
+
+-(NSMutableArray *)buttonArr{
+    
+    if (!_buttonArr) {
+        
+        _buttonArr = [NSMutableArray array];
+    }
+    return _buttonArr;
+}
 
 -(NSArray *)titleArr{
     
@@ -42,6 +53,7 @@
     
     self = [super initWithFrame:frame];
     if (self) {
+        self.index = 0;
         [self createSubViews];
     }
     return self;
@@ -68,6 +80,9 @@
             self.dotView.center = CGPointMake(button.center.x, self.height-self.dotView.height/2.0);
             button.titleLabel.font =  PingFangBold(18);
         }
+        button.tag = i;
+        [button addTarget:self action:@selector(buttonClick:) forControlEvents:UIControlEventTouchUpInside];
+        [self.buttonArr addObject:button];
     }
     
     UIView *lineView = [[UIView alloc] initWithFrame:CGRectMake(margint + (margint + buttonW)*self.titleArr.count, 0, 1, 16)];
@@ -95,6 +110,31 @@
     if ([self.delegate respondsToSelector:@selector(lookExpressRecord)]) {
         [self.delegate lookExpressRecord];
     }
+}
+
+- (void)buttonClick:(UIButton *)button{
+    
+    for (UIButton *button in self.buttonArr) {
+        
+        button.selected = NO;
+        
+        [self covertButtonType:button];
+    }
+    
+    button.selected = YES;
+    [self covertButtonType:button];
+    self.index = button.tag;
+    self.dotView.center = CGPointMake(button.center.x, self.height-self.dotView.height/2.0);
+}
+
+- (void)covertButtonType:(UIButton *)button{
+    
+    if (button.selected) {
+        button.titleLabel.font =  PingFangBold(18);
+    }else{
+        button.titleLabel.font = PingFangMedium(18);
+    }
+    
 }
 
 @end

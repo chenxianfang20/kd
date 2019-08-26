@@ -12,7 +12,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface KDGoodsTypeInfoSelectView : UIView
 
-+(void)showSelectViewWithConfirmBlock:(void(^)(NSString *goodsType, NSInteger weight, UIImage *image))confirmBlock;
++(void)showSelectViewWithGoodsArr:(NSMutableArray *)goodsArr
+                           select:(NSInteger)index
+                         imageUrl:(NSString *)imageUrl
+                     confirmBlock:(void(^)(NSInteger index, NSString *imageUrl, NSString *count))confirmBlock;
 
 @end
 

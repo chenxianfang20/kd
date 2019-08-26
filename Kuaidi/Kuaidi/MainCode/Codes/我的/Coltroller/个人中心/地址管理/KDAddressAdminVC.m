@@ -86,7 +86,11 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
 
-//    [self.navigationController pushViewController:vc animated:YES];
+    if (self.selectAddressBlock) {
+        KDAddressAdminModel* model=self.dataSource[indexPath.row];
+        self.selectAddressBlock(model);
+        [self.navigationController popViewControllerAnimated:YES];
+    }
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     return kAdaptationWidth(168);
@@ -153,6 +157,7 @@
         
     }];
 }
+
 -(void)getAddressList{
     KDUserModel* model = [KDUserModelTool userModel];
     NSDictionary* dic = @{@"XX-Token":model.token,@"XX-Device-Type":kDeviceType};

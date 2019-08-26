@@ -12,6 +12,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface KDGoodsInfoCell : UITableViewCell
 
+@property(nonatomic, strong)UILabel *titleLabel;
+
+@property(nonatomic, strong)UITextField *textField;
+
 @end
 
 NS_ASSUME_NONNULL_END

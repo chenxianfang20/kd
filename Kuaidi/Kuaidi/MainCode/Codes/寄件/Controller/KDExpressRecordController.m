@@ -51,6 +51,7 @@
         for (int i = 0; i < titles.count; i++) {
             
             KDExpressRecordListController *controller = [[KDExpressRecordListController alloc] init];
+            controller.status = i;
             [controllers addObject:controller];
         }
         
@@ -83,5 +84,4 @@
     [super viewWillAppear:animated];
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault];
 }
-
 @end

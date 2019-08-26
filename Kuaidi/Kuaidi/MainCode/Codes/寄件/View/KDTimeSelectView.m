@@ -16,6 +16,12 @@
 
 @property(nonatomic, strong)NSArray *times;
 
+@property(nonatomic, copy)void(^confirmBlock)(NSString *day, NSString *time);
+
+@property(nonatomic, copy)NSString *day;
+
+@property(nonatomic, copy)NSString *time;
+
 @end
 
 @implementation KDTimeSelectView
@@ -25,6 +31,7 @@
     KDTimeSelectView *view = [[KDTimeSelectView alloc] initWithFrame:CGRectMake(18, 0, kScreenWidth - 36, 344)];
     view.center = CGPointMake(kScreenWidth/2.0, kScreenHeight/2.0);
     view.alpha = 0;
+    view.confirmBlock = confirmBlock;
     
     UIView *bgView = [[UIView alloc] initWithFrame:[UIScreen mainScreen].bounds];
     bgView.backgroundColor = rgb(11, 11, 11, 0.72);
@@ -64,6 +71,8 @@
 -(instancetype)initWithFrame:(CGRect)frame{
     self = [super initWithFrame:frame];
     if (self) {
+        self.day = self.dayTitles.firstObject;
+        self.time = self.times.firstObject;
         [self createSubViews];
     }
     return self;
@@ -125,6 +134,7 @@
         make.right.equalTo(self).offset(-18);
         make.height.mas_equalTo(48);
     }];
+    [confirmButton addTarget:self action:@selector(confirmButtonClick:) forControlEvents:UIControlEventTouchUpInside];
     
     PGPickerView *pickerView = [[PGPickerView alloc] init];
     pickerView.delegate = self;
@@ -222,7 +232,21 @@
 
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
 {
+    if (component == 0) {
+        self.day = self.dayTitles[row];
+    }else{
+        self.time = self.times[row];
+    }
     
+}
+
+- (void)confirmButtonClick:(UIButton *)button{
+    
+    [self hidden];
+    
+    if (self.confirmBlock) {
+        self.confirmBlock(self.day, self.time);
+    }
 }
 
 @end

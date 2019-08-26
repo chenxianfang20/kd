@@ -12,12 +12,6 @@
 
 @property(nonatomic, strong)UILabel *holderLabel;
 
-@property(nonatomic, strong)UILabel *nameLabel;
-
-@property(nonatomic, strong)UILabel *phoneLabel;
-
-@property(nonatomic, strong)UILabel *addressLabel;
-
 @end
 
 @implementation KDUserInfoView
@@ -26,6 +20,23 @@
     
     KDUserInfoView *view = [[KDUserInfoView alloc] init];
     return view;
+    
+}
+
+- (void)hiddenAddress{
+    
+    self.holderLabel.hidden = NO;
+    self.nameLabel.hidden = YES;
+    self.phoneLabel.hidden = YES;
+    self.addressLabel.hidden = YES;
+}
+
+- (void)showAddress{
+    
+    self.holderLabel.hidden = YES;
+    self.nameLabel.hidden = NO;
+    self.phoneLabel.hidden = NO;
+    self.addressLabel.hidden = NO;
     
 }
 

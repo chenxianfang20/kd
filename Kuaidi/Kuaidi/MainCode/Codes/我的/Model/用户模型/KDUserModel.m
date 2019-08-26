@@ -11,7 +11,7 @@
 @implementation KDUserModel
 +(instancetype)ModelWithDict:(NSDictionary *)dict
 {
-    KDUserModel *model=[[self alloc]init];
+    KDUserModel *model=[[self alloc] init];
     
     model.mobile=dict[@"mobile"];
     model.user_nickname=dict[@"user_nickname"];

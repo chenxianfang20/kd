@@ -8,6 +8,7 @@
 
 #import "KDAddressInfoView.h"
 #import "KDUserInfoView.h"
+#import "KDAddressAdminModel.h"
 
 @interface KDAddressInfoView()
 
@@ -104,12 +105,56 @@
     }];
     
     UIView *bottomView = [[UIView alloc] init];
+    self.bottomView = bottomView;
     bottomView.backgroundColor = rgb(255, 255, 255, 1);
     [self addSubview:bottomView];
     [bottomView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.right.bottom.equalTo(self).offset(0);
         make.height.mas_equalTo(12);
     }];
+    
+    [self.sendUserInfoView hiddenAddress];
+    [self.receiveUserInfoView hiddenAddress];
+    
+    UITapGestureRecognizer *sendTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(sendTap:)];
+    [self.sendUserInfoView addGestureRecognizer:sendTap];
+    
+    UITapGestureRecognizer *receiveTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(receiveTap:)];
+    [self.receiveUserInfoView addGestureRecognizer:receiveTap];
+}
+
+-(void)sendTap:(UITapGestureRecognizer *)tap{
+    
+    if ([self.delegate respondsToSelector:@selector(selectSendExpressAddress)]) {
+        [self.delegate selectSendExpressAddress];
+    }
+    
+}
+
+-(void)receiveTap:(UITapGestureRecognizer *)tap{
+    
+    if ([self.delegate respondsToSelector:@selector(selectReceiveExpressAddress)]) {
+        [self.delegate selectReceiveExpressAddress];
+    }
+    
+}
+
+-(void)setSendAddressModel:(KDAddressAdminModel *)sendAddressModel{
+    
+    _sendAddressModel = sendAddressModel;
+    self.sendUserInfoView.nameLabel.text = sendAddressModel.name;
+    self.sendUserInfoView.addressLabel.text = [NSString stringWithFormat:@"%@ %@ %@ %@",sendAddressModel.province_name,sendAddressModel.city_name,sendAddressModel.district_name,sendAddressModel.address];
+    self.sendUserInfoView.phoneLabel.text = sendAddressModel.mobile;
+    [self.sendUserInfoView showAddress];
+}
+
+-(void)setReceiveAddressModel:(KDAddressAdminModel *)receiveAddressModel{
+    
+    _receiveAddressModel = receiveAddressModel;
+    self.receiveUserInfoView.nameLabel.text = receiveAddressModel.name;
+    self.receiveUserInfoView.addressLabel.text = [NSString stringWithFormat:@"%@ %@ %@ %@",receiveAddressModel.province_name,receiveAddressModel.city_name,receiveAddressModel.district_name,receiveAddressModel.address];
+    self.receiveUserInfoView.phoneLabel.text = receiveAddressModel.mobile;
+    [self.receiveUserInfoView showAddress];
 }
 
 @end

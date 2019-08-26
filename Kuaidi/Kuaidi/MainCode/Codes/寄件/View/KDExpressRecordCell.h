@@ -10,7 +10,11 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+@class KDOrderListModel;
+
 @interface KDExpressRecordCell : UITableViewCell
+
+@property(nonatomic, strong)KDOrderListModel *model;
 
 @end
 

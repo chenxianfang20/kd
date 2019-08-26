@@ -15,6 +15,10 @@
 
 @property(nonatomic, strong)CBGroupAndStreamView *silde;
 
+@property(nonatomic, strong)UITextView *textView;
+
+@property(nonatomic, copy)void(^confirmBlock)(NSString *customerMsg, NSString *traditionMsg);
+
 @end
 
 @implementation KDMessageBoardView
@@ -24,6 +28,7 @@
     KDMessageBoardView *view = [[KDMessageBoardView alloc] initWithFrame:CGRectMake(18, 0, kScreenWidth - 36, 328)];
     view.center = CGPointMake(kScreenWidth/2.0, kScreenHeight/2.0);
     view.alpha = 0;
+    view.confirmBlock = confirmBlock;
     
     UIView *bgView = [[UIView alloc] initWithFrame:[UIScreen mainScreen].bounds];
     bgView.backgroundColor = rgb(11, 11, 11, 0.72);
@@ -95,6 +100,7 @@
         make.right.equalTo(self).offset(-18);
         make.height.mas_equalTo(48);
     }];
+    [confirmButton addTarget:self action:@selector(confirmButtonClick:) forControlEvents:UIControlEventTouchUpInside];
     
     UIView *messageView = [[UIView  alloc] init];
     messageView.layer.cornerRadius = 2;
@@ -109,6 +115,7 @@
     }];
     
     UITextView *textView = [[UITextView alloc] init];
+    self.textView = textView;
     textView.textColor = rgb(11, 11, 11, 1.0);
     textView.font = PingFangBold(14);
     textView.placeholder = @"例如：取件地址信息、什么时候来取件、如何联系等信息";
@@ -147,17 +154,30 @@
     self.silde = silde;
     silde.cb_confirmReturnValueBlock = ^(NSArray *valueArr, NSArray *groupIdArr) {
         NSLog(@"valueArr = %@ \ngroupIdArr = %@",valueArr,groupIdArr);
+        
+        if (self.confirmBlock) {
+            
+            NSMutableString *msg = [NSMutableString string];
+            NSArray *array = valueArr.firstObject;
+            if ([array isKindOfClass:[NSArray class]]) {
+                for (NSString *str in array) {
+                    NSArray *strArr = [str componentsSeparatedByString:@"/"];
+                    [msg appendString:strArr.lastObject];
+                    [msg appendString:@","];
+                }
+            }
+            self.confirmBlock(self.textView.text, msg);
+        }
+        
+        
     };
     silde.cb_selectCurrentValueBlock = ^(NSString *value, NSInteger index, NSInteger groupId) {
         NSLog(@"value = %@----index = %ld------groupId = %ld",value,index,groupId);
     };
-//    [silde mas_makeConstraints:^(MASConstraintMaker *make) {
-//        make.left.equalTo(self).offset(18);
-//        make.right.equalTo(self).offset(-18);
-//        make.top.equalTo(messageView.mas_bottom).offset(18);
-//        make.bottom.equalTo(confirmButton.mas_top).offset(-18);
-//    }];
+
 }
+
+
 
 -(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
     
@@ -181,4 +201,12 @@
         
     }];
 }
+
+- (void)confirmButtonClick:(UIButton *)button{
+    
+    [self hidden];
+    
+    [self.silde confirm];
+}
+
 @end

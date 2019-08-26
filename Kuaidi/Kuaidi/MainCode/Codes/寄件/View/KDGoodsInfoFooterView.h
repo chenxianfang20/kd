@@ -21,6 +21,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property(nonatomic, assign)id<KDGoodsInfoFooterViewDelegate> delegate;
 
+@property(nonatomic, assign)BOOL isOrderButtonSelect;
+
+@property(nonatomic, assign)CGFloat money;
+
 +(KDGoodsInfoFooterView *)goodsInfoFooterView;
 
 @end

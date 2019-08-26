@@ -8,16 +8,31 @@
 
 #import "KDExpressRecordListController.h"
 #import "KDExpressRecordCell.h"
+#import "KDOrderListModel.h"
+#import "KDWuliuListModel.h"
 
 @interface KDExpressRecordListController ()< UITableViewDelegate, UITableViewDataSource>
 
 @property(nonatomic, strong)UITableView *tableView;
+
+@property(nonatomic, assign)NSInteger page;
+
+@property(nonatomic, strong)NSMutableArray *dataArr;
 
 @end
 
 @implementation KDExpressRecordListController
 
 #pragma mark - Getters
+
+-(NSMutableArray *)dataArr{
+    
+    if (!_dataArr) {
+        _dataArr = [NSMutableArray array];
+    }
+    return _dataArr;
+}
+
 - (UITableView *)tableView {
     if (!_tableView) {
         _tableView = [[UITableView alloc] init];
@@ -41,16 +56,18 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    
+    self.page = 1;
     [self.view addSubview:self.tableView];
     [self.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.equalTo(self.view);
     }];
+    
+    [self getDataFromNet];
 }
 
 #pragma mark - UITableViewDataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 30;
+    return self.dataArr.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -59,6 +76,45 @@
     if (cell == nil) {
         cell = [[KDExpressRecordCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
     }
+    cell.model = self.dataArr[indexPath.row];
     return cell;
 }
+
+- (void)getDataFromNet{
+    
+    KDUserModel* model = [KDUserModelTool userModel];
+    NSDictionary * dic = @{@"XX-Token":model.token,@"XX-Device-Type":kDeviceType};
+    NSDictionary *params = @{
+                             @"status":@(self.status),
+                             @"page" : @(self.page),
+                             @"limit" : @(10)
+                             };
+    
+    __weak typeof(self) weakSelf =self;
+    
+    [KDNetWorkManager GetHttpDataWithUrlStr:kOrderList Dic:params headDic:dic SuccessBlock:^(id obj) {
+        if([obj[@"code"] integerValue] == 1){
+            
+            NSArray *data = obj[@"data"];
+            for (NSDictionary *dic in data) {
+                
+                KDOrderListModel *model = [KDOrderListModel mj_objectWithKeyValues:dic];
+                [weakSelf.dataArr addObject:model];
+                
+            }
+        
+            [self.tableView reloadData];
+            
+        }else{
+            
+            NSString *msg = obj[@"msg"];
+            [ZJCustomHud showWithText:msg WithDurations:2.0];
+        }
+        
+    } FailureBlock:^(id obj) {
+        
+    }];
+    
+}
+
 @end

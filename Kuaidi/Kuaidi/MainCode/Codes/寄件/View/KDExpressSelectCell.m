@@ -8,6 +8,12 @@
 
 #import "KDExpressSelectCell.h"
 
+@interface KDExpressSelectCell()
+
+@property(nonatomic, strong)UIButton *selectButton;
+
+@end
+
 @implementation KDExpressSelectCell
 
 - (void)awakeFromNib {
@@ -19,6 +25,7 @@
     [super setSelected:selected animated:animated];
 
     // Configure the view for the selected state
+    self.selectButton.selected = selected;
 }
 
 -(instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
@@ -33,9 +40,11 @@
 - (void)createSubViews{
     
     UIImageView *icoImageV = [[UIImageView alloc] init];
+    self.icoImageV = icoImageV;
     icoImageV.layer.borderColor = rgb(237, 237, 237, 1.0).CGColor;
     icoImageV.layer.borderWidth = 1;
     icoImageV.layer.cornerRadius = 24;
+    icoImageV.layer.masksToBounds = YES;
     [self addSubview:icoImageV];
     [icoImageV mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self).offset(20);
@@ -44,7 +53,8 @@
     }];
     
     UILabel *titleLabel = [[UILabel alloc] init];
-    titleLabel.text = @"顺丰快递";
+    self.titleLabel = titleLabel;
+//    titleLabel.text = @"顺丰快递";
     titleLabel.textColor = rgb(92, 92, 92, 1.0);
     titleLabel.font = PingFangBold(15);
     [self addSubview:titleLabel];
@@ -55,6 +65,8 @@
     }];
     
     UIButton *selectButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    self.selectButton = selectButton;
+    selectButton.userInteractionEnabled = NO;
     [selectButton setImage:[UIImage imageNamed:@"图标-未选"] forState:UIControlStateNormal];
     [selectButton setImage:[UIImage imageNamed:@"图标-选定"] forState:UIControlStateSelected];
     [self addSubview:selectButton];

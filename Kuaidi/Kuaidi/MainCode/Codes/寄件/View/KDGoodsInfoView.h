@@ -20,6 +20,18 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property(nonatomic,assign)id<KDGoodsInfoViewDelegate> goodsInfoViewDelegate;
 
+@property(nonatomic, strong)UITextField *goodsTypeTF;
+
+@property(nonatomic, strong)UITextField *expressTypeTF;
+
+@property(nonatomic, strong)UITextField *timeTF;
+
+@property(nonatomic, strong)UITextField *messageTF;
+
+@property(nonatomic, assign)BOOL isOrderButtonSelect;
+
+@property(nonatomic, assign)CGFloat money;
+
 +(KDGoodsInfoView *)goodsInfoView;
 
 @end

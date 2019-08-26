@@ -19,6 +19,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface KDTitleView : UIView
 
+@property(nonatomic, assign)NSInteger index;
+
 @property(nonatomic,assign)id<KDTitleViewDelegate> delegate;
 
 @end
