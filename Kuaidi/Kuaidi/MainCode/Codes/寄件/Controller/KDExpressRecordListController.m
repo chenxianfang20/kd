@@ -9,6 +9,7 @@
 #import "KDExpressRecordListController.h"
 #import "KDExpressRecordCell.h"
 #import "KDOrderListModel.h"
+#import "KDWuliuListModel.h"
 
 @interface KDExpressRecordListController ()< UITableViewDelegate, UITableViewDataSource>
 
@@ -75,6 +76,7 @@
     if (cell == nil) {
         cell = [[KDExpressRecordCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
     }
+    cell.model = self.dataArr[indexPath.row];
     return cell;
 }
 

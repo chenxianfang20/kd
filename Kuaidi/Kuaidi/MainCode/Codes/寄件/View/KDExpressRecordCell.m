@@ -7,6 +7,28 @@
 //
 
 #import "KDExpressRecordCell.h"
+#import "KDOrderListModel.h"
+#import "KDWuliuListModel.h"
+
+@interface KDExpressRecordCell()
+
+@property(nonatomic, strong)UIImageView *iconImageV;
+
+@property(nonatomic, strong)UILabel *expressTitleLabel;
+
+@property(nonatomic, strong)UILabel *timeLabel;
+
+@property(nonatomic, strong)UILabel *sendCityLabel;
+
+@property(nonatomic, strong)UILabel *receiveCityLabel;
+
+@property(nonatomic, strong)UILabel *sendNameLabel;
+
+@property(nonatomic, strong)UILabel *receiveNameLabel;
+
+@property(nonatomic, strong)UILabel *statusLabel;
+
+@end
 
 @implementation KDExpressRecordCell
 
@@ -49,7 +71,8 @@
     }];
     
     UIImageView *iconImageV = [[UIImageView alloc] init];
-    iconImageV.image = [UIImage imageNamed:@"Logo"];
+    self.iconImageV = iconImageV;
+//    iconImageV.image = [UIImage imageNamed:@"Logo"];
     iconImageV.layer.cornerRadius = 15;
     iconImageV.layer.borderWidth = 1;
     iconImageV.layer.borderColor = rgb(237, 237, 237, 1.0).CGColor;
@@ -61,7 +84,8 @@
     }];
     
     UILabel *expressTitleLabel = [[UILabel alloc] init];
-    expressTitleLabel.text = @"快递么优选上门取件";
+    self.expressTitleLabel = expressTitleLabel;
+//    expressTitleLabel.text = @"快递么优选上门取件";
     expressTitleLabel.textColor = rgb(92, 92, 92, 1.0);
     expressTitleLabel.font = PingFangBold(15);
     [self.contentView addSubview:expressTitleLabel];
@@ -72,7 +96,8 @@
     }];
     
     UILabel *timeLabel = [[UILabel alloc] init];
-    timeLabel.text = @"19/08/08 14:00";
+    self.timeLabel = timeLabel;
+//    timeLabel.text = @"19/08/08 14:00";
     timeLabel.textColor = rgb(169, 169, 169, 1.0);
     timeLabel.font = PingFangBold(14);
     timeLabel.textAlignment = NSTextAlignmentRight;
@@ -80,7 +105,7 @@
     [timeLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.right.equalTo(self.contentView).offset(-18);
         make.centerY.equalTo(iconImageV.mas_centerY).offset(0);
-        make.size.mas_equalTo(CGSizeMake(120, 13));
+        make.size.mas_equalTo(CGSizeMake(130, 13));
     }];
     
     UIImageView *sendImageV = [[UIImageView alloc] init];
@@ -93,8 +118,9 @@
     }];
     
     UILabel *sendCityLabel = [[UILabel alloc] init];
-    sendCityLabel.text = @"巴音郭楞蒙古自治";
-    sendCityLabel.textAlignment = NSTextAlignmentRight;
+    self.sendCityLabel = sendCityLabel;
+//    sendCityLabel.text = @"巴音郭楞蒙古自治";
+    sendCityLabel.textAlignment = NSTextAlignmentCenter;
     sendCityLabel.textColor = rgb(11, 11, 11, 1.0);
     sendCityLabel.font = PingFangBold(15);
     [self.contentView addSubview:sendCityLabel];
@@ -105,7 +131,9 @@
     }];
     
     UILabel *receiveCityLabel = [[UILabel alloc] init];
-    receiveCityLabel.text = @"巴音郭楞蒙古自治";
+    self.receiveCityLabel = receiveCityLabel;
+//    receiveCityLabel.text = @"巴音郭楞蒙古自治";
+    receiveCityLabel.textAlignment = NSTextAlignmentCenter;
     receiveCityLabel.textColor = rgb(11, 11, 11, 1.0);
     receiveCityLabel.font = PingFangBold(15);
     [self.contentView addSubview:receiveCityLabel];
@@ -116,7 +144,8 @@
     }];
     
     UILabel *sendNameLabel = [[UILabel alloc] init];
-    sendNameLabel.text = @"刘德华";
+    self.sendNameLabel = sendNameLabel;
+//    sendNameLabel.text = @"刘德华";
     sendNameLabel.textAlignment = NSTextAlignmentCenter;
     sendNameLabel.textColor = rgb(169, 169, 169, 1.0);
     sendNameLabel.font = PingFangMedium(14);
@@ -128,7 +157,8 @@
     }];
     
     UILabel *receiveNameLabel = [[UILabel alloc] init];
-    receiveNameLabel.text = @"郭富城";
+    self.receiveNameLabel = receiveNameLabel;
+//    receiveNameLabel.text = @"郭富城";
     receiveNameLabel.textAlignment = NSTextAlignmentCenter;
     receiveNameLabel.textColor = rgb(169, 169, 169, 1.0);
     receiveNameLabel.font = PingFangMedium(14);
@@ -140,7 +170,8 @@
     }];
     
     UILabel *statusLabel = [[UILabel alloc] init];
-    statusLabel.text = @"待付款";
+    self.statusLabel = statusLabel;
+//    statusLabel.text = @"待付款";
     statusLabel.textAlignment = NSTextAlignmentCenter;
     statusLabel.textColor = rgb(223, 47, 49, 1.0);
     statusLabel.font = PingFangMedium(14);
@@ -174,6 +205,33 @@
         make.top.equalTo(line.mas_bottom).offset(12);
         make.size.mas_equalTo(CGSizeMake(78, 36));
     }];
+    
+    UIButton *detailButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [detailButton setTitle:@"订单详情" forState:UIControlStateNormal];
+    [detailButton setTitleColor:rgb(92, 92, 92, 1.0) forState:UIControlStateNormal];
+    detailButton.titleLabel.font = PingFangMedium(14);
+    detailButton.layer.cornerRadius = 18;
+    detailButton.layer.borderColor = rgb(92, 92, 92, 1.0).CGColor;
+    detailButton.layer.borderWidth = 1;
+    [self.contentView addSubview:detailButton];
+    [detailButton mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.right.equalTo(button.mas_left).offset(-18);
+        make.top.equalTo(line.mas_bottom).offset(12);
+        make.size.mas_equalTo(CGSizeMake(78, 36));
+    }];
+}
+
+-(void)setModel:(KDOrderListModel *)model{
+    
+    _model = model;
+    
+    [self.iconImageV sd_setImageWithURL:[NSURL URLWithString:model.kuaidi.logistics_icon] placeholderImage:[UIImage imageNamed:@"Logo"]];
+    self.expressTitleLabel.text = model.kuaidi.logistics_name;
+    self.timeLabel.text = model.create_time;
+    self.sendCityLabel.text = model.send_province_name;
+    self.receiveCityLabel.text = model.accept_province_name;
+    self.sendNameLabel.text = model.send_name;
+    self.receiveNameLabel.text = model.accept_name;
 }
 
 @end

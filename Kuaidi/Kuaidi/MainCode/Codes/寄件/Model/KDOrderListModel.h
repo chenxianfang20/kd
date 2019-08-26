@@ -10,6 +10,8 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+@class KDWuliuListModel;
+
 @interface KDOrderListModel : NSObject
 
 @property(nonatomic, strong)NSNumber *id;
@@ -71,6 +73,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property(nonatomic, strong)NSNumber *update_time;
 
 @property(nonatomic, copy)NSString *status_name;
+
+@property(nonatomic, strong)KDWuliuListModel *kuaidi;
 
 @end
 
