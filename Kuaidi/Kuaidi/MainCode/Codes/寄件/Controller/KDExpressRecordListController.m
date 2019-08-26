@@ -97,6 +97,33 @@
         make.edges.equalTo(self.view);
     }];
     
+    [self tableViewRefresh];
+    
+    [SVProgressHUD showWithStatus:@"加载中..."];
+    
+    [self getDataFromNet];
+    
+}
+
+//上下拉刷新
+- (void)tableViewRefresh{
+    
+    //下拉
+    self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingTarget:self refreshingAction:@selector(downRefresh)];
+    
+    //上拉
+    self.tableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(upRefresh)];
+    self.tableView.mj_footer.hidden = YES;
+}
+
+- (void)downRefresh{
+    
+    self.page = 1;
+    [self getDataFromNet];
+}
+
+- (void)upRefresh {
+    
     [self getDataFromNet];
 }
 
@@ -128,7 +155,17 @@
     __weak typeof(self) weakSelf =self;
     
     [KDNetWorkManager GetHttpDataWithUrlStr:kOrderList Dic:params headDic:dic SuccessBlock:^(id obj) {
+        
+        [SVProgressHUD dismiss];
+        
+        [self.tableView.mj_header endRefreshing];
+        [self.tableView.mj_footer endRefreshing];
+        
         if([obj[@"code"] integerValue] == 1){
+            
+            if (weakSelf.page == 1) {
+                [weakSelf.dataArr removeAllObjects];
+            }
             
             NSArray *data = obj[@"data"];
             for (NSDictionary *dic in data) {
