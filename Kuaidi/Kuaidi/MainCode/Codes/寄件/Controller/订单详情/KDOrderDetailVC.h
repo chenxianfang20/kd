@@ -8,10 +8,12 @@
 
 #import "RootViewController.h"
 
-NS_ASSUME_NONNULL_BEGIN
+
 
 @interface KDOrderDetailVC : RootViewController
 
+// 0 待联系  1 已接单 2 已取件 3 已签收  4 已取消
+@property (nonatomic,assign) NSInteger  type;
 @end
 
-NS_ASSUME_NONNULL_END
+

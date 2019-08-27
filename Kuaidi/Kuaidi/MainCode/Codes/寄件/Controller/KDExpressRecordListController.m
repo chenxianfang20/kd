@@ -10,7 +10,7 @@
 #import "KDExpressRecordCell.h"
 #import "KDOrderListModel.h"
 #import "KDWuliuListModel.h"
-
+#import "KDOrderDetailVC.h"
 @interface KDExpressRecordListController ()< UITableViewDelegate, UITableViewDataSource>
 
 @property(nonatomic, strong)UITableView *tableView;
@@ -79,7 +79,10 @@
     cell.model = self.dataArr[indexPath.row];
     return cell;
 }
-
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    KDOrderDetailVC* detailVC =[[KDOrderDetailVC alloc]init];
+    [self.navigationController pushViewController:detailVC animated:YES];
+}
 - (void)getDataFromNet{
     
     KDUserModel* model = [KDUserModelTool userModel];
