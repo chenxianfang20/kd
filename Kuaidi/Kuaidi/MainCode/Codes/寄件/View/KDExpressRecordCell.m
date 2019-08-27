@@ -232,6 +232,15 @@
     self.receiveCityLabel.text = model.accept_province_name;
     self.sendNameLabel.text = model.send_name;
     self.receiveNameLabel.text = model.accept_name;
+    
+    if (model.status.integerValue == 0) {
+        self.statusLabel.text = @"待联系";
+    }else if (model.status.integerValue == 1) {
+        self.statusLabel.text = @"";
+    }else if (model.status.integerValue == 2) {
+        self.statusLabel.text = @"";
+    }
+    
 }
 
 @end
