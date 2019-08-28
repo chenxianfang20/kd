@@ -16,7 +16,7 @@ PODS:
     - AFNetworking/NSURLSession
   - CRBoxInputView (1.1.2):
     - Masonry
-  - Masonry (0.6.4)
+  - Masonry (1.1.0)
   - MBProgressHUD (1.0.0)
   - MJExtension (3.0.17)
   - MJRefresh (3.1.17)
@@ -32,7 +32,6 @@ PODS:
 DEPENDENCIES:
   - AFNetworking (~> 3.2.1)
   - CRBoxInputView (= 1.1.2)
-  - Masonry (~> 0.6.3)
   - MBProgressHUD (~> 1.0.0)
   - MJExtension (~> 3.0.13)
   - MJRefresh (~> 3.1.12)
@@ -59,7 +58,7 @@ SPEC REPOS:
 SPEC CHECKSUMS:
   AFNetworking: b6f891fdfaed196b46c7a83cf209e09697b94057
   CRBoxInputView: d30722aae74237ee07fc8b79c6a9c22604acf8e6
-  Masonry: 281802d04d787ea2973179ee8bcb50500579ede2
+  Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
   MBProgressHUD: 4890f671c94e8a0f3cf959aa731e9de2f036d71a
   MJExtension: 74ec83124a68891619fb7ba9c5c811bbf1691076
   MJRefresh: ee5b68f639775462faba4db0fd243baf4d42c2cf
@@ -69,6 +68,6 @@ SPEC CHECKSUMS:
   SVProgressHUD: bfde85ed6c573ea802b9cb37894ed9b629034f1b
   ZBarSDK: 4c1b5daeb7d6cc67dc9355e690af0230a661f6ec
 
-PODFILE CHECKSUM: 7cc4c534d6db76b74eb75068eeb8731f6fcba6aa
+PODFILE CHECKSUM: a0ef53259eaf8b2e0602697006d27e3ace3e8687
 
 COCOAPODS: 1.6.1
