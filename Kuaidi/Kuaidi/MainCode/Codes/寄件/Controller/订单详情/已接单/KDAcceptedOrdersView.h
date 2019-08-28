@@ -7,13 +7,16 @@
 //
 
 #import "RootCustomView.h"
-
+#import "KDOrderListModel.h"
 typedef void(^MyIsShowInfoBlock)(NSInteger);
 
 @interface KDAcceptedOrdersView : RootCustomView
 @property (nonatomic,strong) UIButton *showInfoBtn;
 @property (nonatomic,strong) UIView *bottomBgView;
 @property (nonatomic,strong) MyIsShowInfoBlock myIsShowInfoBlock;
+
+
+@property (nonatomic,strong) KDOrderListModel *model;
 @end
 
 

@@ -60,6 +60,7 @@
         case 0:{
             //待联系
             _toContactedView=[[KDToContactedView alloc]initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight-NavibarH)];
+            _toContactedView.model=self.model;
             _toContactedView.myIsShowInfoBlock=^(NSInteger isShow){
                 if(isShow == 1){
                     weakSelf.scrollowView.scrollEnabled=YES;
@@ -86,6 +87,7 @@
                 }
             
             };
+           
             [_scrollowView addSubview:_acceptedOrdersView];
         }
         break;
@@ -104,6 +106,11 @@
                 }
             
             };
+            
+            //再下一单
+            _receivedView.myOrderAginBlock=^{
+                
+            };
             [_scrollowView addSubview:_receivedView];
         }
         break;
@@ -119,6 +126,10 @@
                     weakSelf.scrollowView.scrollEnabled=NO;
                     [weakSelf.scrollowView setContentOffset:CGPointMake(0, 0) animated:YES];
                 }
+            };
+            //重新下单
+            _quitOrderView.myReOrderBlock=^{
+                
             };
             [_scrollowView addSubview:_quitOrderView];
         }

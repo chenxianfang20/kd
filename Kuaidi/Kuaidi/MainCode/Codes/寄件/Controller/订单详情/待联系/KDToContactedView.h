@@ -7,7 +7,7 @@
 //
 
 #import "RootCustomView.h"
-
+#import "KDOrderListModel.h"
 typedef void(^MyIsShowInfoBlock)(NSInteger);
 
 @interface KDToContactedView : RootCustomView
@@ -15,6 +15,8 @@ typedef void(^MyIsShowInfoBlock)(NSInteger);
 @property (nonatomic,strong) UIView *bottomBgView;
 @property (nonatomic,strong) MyIsShowInfoBlock myIsShowInfoBlock;
 
+
+@property (nonatomic,strong) KDOrderListModel *model;
 @end
 
 

@@ -84,7 +84,7 @@
     [self addSubview:_midBgView];
     
     _fromCityLabel =[[UILabel alloc]initWithFrame:CGRectMake(0, kAdaptationWidth(24), kAdaptationWidth(139), kAdaptationWidth(18))];
-    _fromCityLabel.text=@"深圳市";
+    
     _fromCityLabel.textColor=[UIColor colorWithHex:@"#0B0B0B"];
     _fromCityLabel.textAlignment=NSTextAlignmentCenter;
     _fromCityLabel.font = PingFangBold(15);
@@ -96,7 +96,6 @@
     [_midBgView addSubview:toImgView];
     
     _toCityLabel =[[UILabel alloc]initWithFrame:CGRectMake(kAdaptationWidth(200), kAdaptationWidth(24), kAdaptationWidth(149), kAdaptationWidth(18))];
-    _toCityLabel.text=@"北京市";
     _toCityLabel.textColor=[UIColor colorWithHex:@"#0B0B0B"];
     _toCityLabel.textAlignment=NSTextAlignmentCenter;
     _toCityLabel.font = PingFangBold(15);
@@ -104,7 +103,6 @@
     [_midBgView addSubview:_toCityLabel];
     
     _fromNameLabel =[[UILabel alloc]initWithFrame:CGRectMake(0, _fromCityLabel.bottom+8, kAdaptationWidth(139), kAdaptationWidth(18))];
-    _fromNameLabel.text=@"刘德华";
     _fromNameLabel.textColor=[UIColor colorWithHex:@"#A9A9A9"];
     _fromNameLabel.textAlignment=NSTextAlignmentCenter;
     _fromNameLabel.font = PingFangRegular(13);
@@ -112,7 +110,6 @@
     [_midBgView addSubview:_fromNameLabel];
     
     _toNameLabel =[[UILabel alloc]initWithFrame:CGRectMake(kAdaptationWidth(200), _toCityLabel.bottom+8, kAdaptationWidth(139), kAdaptationWidth(18))];
-    _toNameLabel.text=@"郭富城";
     _toNameLabel.textColor=[UIColor colorWithHex:@"#A9A9A9"];
     _toNameLabel.textAlignment=NSTextAlignmentCenter;
     _toNameLabel.font = PingFangRegular(13);
@@ -120,7 +117,7 @@
     _toNameLabel.centerX=_toCityLabel.centerX;
     
     _moneyLabel =[[UILabel alloc]initWithFrame:CGRectMake(kAdaptationWidth(200), _toCityLabel.bottom, kAdaptationWidth(120), kAdaptationWidth(18))];
-    _moneyLabel.text=@"已支付￥800元";
+    
     _moneyLabel.textColor=[UIColor colorWithHex:@"#DF2F31"];
     _moneyLabel.textAlignment=NSTextAlignmentCenter;
     _moneyLabel.font = PingFangRegular(13);
@@ -158,8 +155,7 @@
     [_contactBtn addTarget:self action:@selector(contactBtnClick) forControlEvents:UIControlEventTouchUpInside];
     [_contactBgView addSubview:_contactBtn];
  
-    [self setInfoDetail];
-    _bottomBgView.hidden = YES;
+    
     
 }
 
@@ -185,7 +181,16 @@
 -(void)contactBtnClick{
     
 }
--(void)setInfoDetail{
+-(void)setModel:(KDOrderListModel *)model{
+     _model=model;
+    _fromCityLabel.text= model.send_city_name;
+    _fromNameLabel.text=model.send_name;
+    _toCityLabel.text=model.accept_city_name;
+    _toNameLabel.text=model.accept_name;
+    _moneyLabel.text=[NSString stringWithFormat:@"已支付￥%@元",model.pay_money] ;
+    [self setInfoDetail:model];
+}
+-(void)setInfoDetail:(KDOrderListModel *)model{
     
     //****底部具体信息
     _bottomBgView = [[UIView alloc]initWithFrame:CGRectMake(kLeftX, _midBgView.bottom+12, kAdaptationWidth(339), kAdaptationWidth(460))];
@@ -201,13 +206,13 @@
     [_bottomBgView addSubview:sendInfoLabel];
     
     UILabel* sendNameLabel =[[UILabel alloc]initWithFrame:CGRectMake(kAdaptationWidth(98), 18, kAdaptationWidth(120), kAdaptationWidth(18))];
-    sendNameLabel.text=@"刘德华";
+    sendNameLabel.text=model.send_name;
     sendNameLabel.textColor=[UIColor colorWithHex:@"#0B0B0B"];
     sendNameLabel.font = PingFangMedium(14);
     [_bottomBgView addSubview:sendNameLabel];
     
     UILabel* sendPhoneLabel =[[UILabel alloc]initWithFrame:CGRectMake(120, 18, kAdaptationWidth(90), kAdaptationWidth(18))];
-    sendPhoneLabel.text=@"13987867564";
+    sendPhoneLabel.text=model.send_mobile;
     sendPhoneLabel.textColor=[UIColor colorWithHex:@"#0B0B0B"];
     sendPhoneLabel.font = PingFangMedium(14);
     sendPhoneLabel.textAlignment=NSTextAlignmentRight;
@@ -215,7 +220,7 @@
     sendPhoneLabel.right=_bottomBgView.width- kAdaptationWidth(18);
     
     UILabel* sendaddressLabel =[[UILabel alloc]initWithFrame:CGRectMake(kAdaptationWidth(98), sendPhoneLabel.bottom+8, kAdaptationWidth(224), kAdaptationWidth(34))];
-    sendaddressLabel.text=@" 广东省 深圳市 龙岗区 横岗街道大运软件小镇大运软件小镇01栋";
+    sendaddressLabel.text=[NSString stringWithFormat:@"%@ %@ %@ %@",model.send_province_name,model.send_city_name,model.send_district_name,model.send_address];
     sendaddressLabel.textColor=[UIColor colorWithHex:@"#A9A9A9"];
     sendaddressLabel.font = PingFangMedium(14);
     sendaddressLabel.numberOfLines=0;
@@ -230,13 +235,13 @@
     [_bottomBgView addSubview:receiveInfoLabel];
     
     UILabel* receiveNameLabel =[[UILabel alloc]initWithFrame:CGRectMake(kAdaptationWidth(98), receiveInfoLabel.top, kAdaptationWidth(120), kAdaptationWidth(18))];
-    receiveNameLabel.text=@"郭富城";
+    receiveNameLabel.text=model.accept_name;
     receiveNameLabel.textColor=[UIColor colorWithHex:@"#0B0B0B"];
     receiveNameLabel.font = PingFangMedium(14);
     [_bottomBgView addSubview:receiveNameLabel];
     
     UILabel* receivePhoneLabel =[[UILabel alloc]initWithFrame:CGRectMake(120, receiveInfoLabel.top, kAdaptationWidth(90), kAdaptationWidth(18))];
-    receivePhoneLabel.text=@"13987867566";
+    receivePhoneLabel.text=model.accept_mobile;
     receivePhoneLabel.textColor=[UIColor colorWithHex:@"#0B0B0B"];
     receivePhoneLabel.font = PingFangMedium(14);
     receivePhoneLabel.textAlignment=NSTextAlignmentRight;
@@ -245,7 +250,7 @@
     
     
     UILabel* receivedaddressLabel =[[UILabel alloc]initWithFrame:CGRectMake(kAdaptationWidth(98), receivePhoneLabel.bottom+8, kAdaptationWidth(224), kAdaptationWidth(34))];
-    receivedaddressLabel.text=@" 广东省 深圳市 龙岗区 横岗街道大运软件小镇大运软件小镇01栋";
+    receivedaddressLabel.text=[NSString localizedStringWithFormat:@"%@ %@ %@ %@",model.accept_province_name,model.accept_city_name,model.accept_district_name,model.accept_address];
     receivedaddressLabel.textColor=[UIColor colorWithHex:@"#A9A9A9"];
     receivedaddressLabel.font = PingFangMedium(14);
     receivedaddressLabel.numberOfLines=0;
@@ -272,8 +277,8 @@
     messageLabel.font = PingFangMedium(14);
     [_bottomBgView addSubview:messageLabel];
     
-    UILabel* messageDetailLabel =[[UILabel alloc]initWithFrame:CGRectMake(kAdaptationWidth(98), messageLabel.top, kAdaptationWidth(200), kAdaptationWidth(18))];
-    messageDetailLabel.text=@"这里是留言备注测文字，这里是留言备注测文字。 ";
+    UILabel* messageDetailLabel =[[UILabel alloc]initWithFrame:CGRectMake(kAdaptationWidth(98), messageLabel.top, kAdaptationWidth(224), kAdaptationWidth(18))];
+    messageDetailLabel.text=model.user_remark;
     messageDetailLabel.textColor=[UIColor colorWithHex:@"#0B0B0B"];
     messageDetailLabel.font = PingFangMedium(14);
     messageDetailLabel.numberOfLines=0;
@@ -288,7 +293,7 @@
     [_bottomBgView addSubview:moneyInfoLabel];
     
     UILabel* moneyDetailLabel =[[UILabel alloc]initWithFrame:CGRectMake(kAdaptationWidth(98), moneyInfoLabel.top, kAdaptationWidth(120), kAdaptationWidth(18))];
-    moneyDetailLabel.text=@"¥8.0";
+    moneyDetailLabel.text=[NSString stringWithFormat:@"￥ %@",model.pay_money];
     moneyDetailLabel.textColor=[UIColor colorWithHex:@"#0B0B0B"];
     moneyDetailLabel.font = PingFangMedium(14);
     [_bottomBgView addSubview:moneyDetailLabel];
@@ -313,12 +318,14 @@
     orderLabel.font = PingFangMedium(14);
     [_bottomBgView addSubview:orderLabel];
     
-    UILabel* orderDetailLabel =[[UILabel alloc]initWithFrame:CGRectMake(kAdaptationWidth(98), orderLabel.top, kAdaptationWidth(120), kAdaptationWidth(18))];
-    orderDetailLabel.text=@"201808071400";
+    UILabel* orderDetailLabel =[[UILabel alloc]initWithFrame:CGRectMake(kAdaptationWidth(98), orderLabel.top, kAdaptationWidth(200), kAdaptationWidth(18))];
+    orderDetailLabel.text=model.pay_orderno;
     orderDetailLabel.textColor=[UIColor colorWithHex:@"#0B0B0B"];
     orderDetailLabel.font = PingFangMedium(14);
     [_bottomBgView addSubview:orderDetailLabel];
-    UIButton*  copyBtn = [[UIButton alloc]initWithFrame:CGRectMake(orderDetailLabel.right+20, orderDetailLabel.top, 80, 20)];
+    [orderDetailLabel sizeToFit];
+    orderDetailLabel.centerY=orderLabel.centerY;
+    UIButton*  copyBtn = [[UIButton alloc]initWithFrame:CGRectMake(orderDetailLabel.right, orderDetailLabel.top, 80, 20)];
     [copyBtn setTitleColor:[UIColor colorWithHex:@"#DF2F31"] forState:UIControlStateNormal];
     [copyBtn setTitle:@"复制" forState:UIControlStateNormal];
     copyBtn.titleLabel.font = PingFangMedium(14);
@@ -333,7 +340,7 @@
     [_bottomBgView addSubview:timeLabel];
     
     UILabel* timeDetailLabel =[[UILabel alloc]initWithFrame:CGRectMake(kAdaptationWidth(98), timeLabel.top, kAdaptationWidth(180), kAdaptationWidth(18))];
-    timeDetailLabel.text=@"2019/09/09 14:00:00";
+    timeDetailLabel.text=model.create_time;
     timeDetailLabel.textColor=[UIColor colorWithHex:@"#0B0B0B"];
     timeDetailLabel.font = PingFangMedium(14);
     [_bottomBgView addSubview:timeDetailLabel];
@@ -354,5 +361,7 @@
     
     _bottomBgView.height=orderFromDetailLabel.bottom+15;
     self.height=_bottomBgView.bottom+45;
+    
+    _bottomBgView.hidden = YES;
 }
 @end

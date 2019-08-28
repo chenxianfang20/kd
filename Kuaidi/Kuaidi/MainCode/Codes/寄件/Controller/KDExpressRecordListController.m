@@ -142,9 +142,12 @@
     return cell;
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    KDOrderListModel*  model = self.dataArr[indexPath.row];
     KDOrderDetailVC* detailVC =[[KDOrderDetailVC alloc]init];
+    detailVC.model=model;
     // 0 待联系  1 已接单 2 已取件 3 已签收  4 已取消
-    detailVC.type=2;
+    detailVC.type=model.status.integerValue;
     [self.navigationController pushViewController:detailVC animated:YES];
 }
 - (void)getDataFromNet{

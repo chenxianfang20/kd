@@ -28,7 +28,7 @@
 }
 -(void)addChildViews{
     i=0;
-    self.view.backgroundColor=[UIColor colorWithHex:@"#FAF8F8"];
+    self.view.backgroundColor=rgb(230, 230, 230, 1);
     UIImageView* topBgImgView = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, kScreenWidth, kAdaptationWidth(274))];
     topBgImgView.image = [UIImage imageNamed:@"登录-背景"];
     [self.view addSubview:topBgImgView];
@@ -84,12 +84,12 @@
     self.pwdTF.centerY =pwdImgView.centerY;
     
     UIView* longinBgView = [[UIView alloc]initWithFrame:CGRectMake(0, kAdaptationWidth(132) , kAdaptationWidth(339), kAdaptationWidth(84))];
-    longinBgView.backgroundColor=[UIColor colorWithHex:@"#FAF8F8"];
+    longinBgView.backgroundColor=rgb(245, 245, 245, 1);
     [infoBgView addSubview:longinBgView];
     
     loginBtn = [[UIButton alloc]initWithFrame:CGRectMake(kAdaptationWidth(18), kAdaptationWidth(150), kAdaptationWidth(303), kAdaptationWidth(48))];
     [loginBtn setTitle:@"确定" forState:UIControlStateNormal];
-    [loginBtn setBackgroundImage:[UIImage imageWithColor:[UIColor colorWithHex:@"#ECECEC"]] forState:UIControlStateNormal];
+    [loginBtn setBackgroundImage:[UIImage imageWithColor:rgb(230, 230, 230, 1)] forState:UIControlStateNormal];
     loginBtn.titleLabel.font = [UIFont fontWithName:@"PingFang-SC-Bold" size: 15];
     [loginBtn setTitleColor:[UIColor colorWithHex:@"#5C5C5C"] forState:UIControlStateNormal];
     [loginBtn addTarget:self action:@selector(loginBtnClick) forControlEvents:UIControlEventTouchUpInside];
@@ -193,8 +193,8 @@
             [loginBtn setBackgroundImage:[UIImage imageWithColor:rgb(247, 70, 74,1)] forState:UIControlStateNormal];
         }else{
             loginBtn.userInteractionEnabled=NO;
-            [loginBtn setTitleColor:[UIColor colorWithHex:@"#A9A9A9"]  forState:UIControlStateNormal];
-            [loginBtn setBackgroundImage:[UIImage imageWithColor:[UIColor colorWithHex:@"#F1F1F1"]] forState:UIControlStateNormal];
+            [loginBtn setTitleColor:[UIColor colorWithHex:@"#5C5C5C"] forState:UIControlStateNormal];
+            [loginBtn setBackgroundImage:[UIImage imageWithColor:rgb(230, 230, 230, 1)] forState:UIControlStateNormal];
         }
     }
 }
@@ -208,8 +208,8 @@
         [loginBtn setBackgroundImage:[UIImage imageWithColor:rgb(247, 70, 74,1)] forState:UIControlStateNormal];
     }else{
         loginBtn.userInteractionEnabled=NO;
-        [loginBtn setTitleColor:[UIColor colorWithHex:@"#A9A9A9"]  forState:UIControlStateNormal];
-        [loginBtn setBackgroundImage:[UIImage imageWithColor:[UIColor colorWithHex:@"#F1F1F1"]] forState:UIControlStateNormal];
+        [loginBtn setTitleColor:[UIColor colorWithHex:@"#5C5C5C"] forState:UIControlStateNormal];
+         [loginBtn setBackgroundImage:[UIImage imageWithColor:rgb(230, 230, 230, 1)] forState:UIControlStateNormal];
     }
 }
 
