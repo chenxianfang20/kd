@@ -10,7 +10,7 @@
 #import "KDExpressRecordCell.h"
 #import "KDOrderListModel.h"
 #import "KDWuliuListModel.h"
-
+#import "KDOrderDetailVC.h"
 @interface KDExpressRecordListController ()< UITableViewDelegate, UITableViewDataSource>
 
 @property(nonatomic, strong)UITableView *tableView;
@@ -142,7 +142,12 @@
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
 }
-
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    KDOrderDetailVC* detailVC =[[KDOrderDetailVC alloc]init];
+    // 0 待联系  1 已接单 2 已取件 3 已签收  4 已取消
+    detailVC.type=2;
+    [self.navigationController pushViewController:detailVC animated:YES];
+}
 - (void)getDataFromNet{
     
     KDUserModel* model = [KDUserModelTool userModel];

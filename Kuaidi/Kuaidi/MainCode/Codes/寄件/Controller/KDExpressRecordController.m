@@ -9,7 +9,7 @@
 #import "KDExpressRecordController.h"
 #import "HGSegmentedPageViewController.h"
 #import "KDExpressRecordListController.h"
-
+#import "KDOrderDetailVC.h"
 @interface KDExpressRecordController ()
 
 @property (nonatomic, strong) HGSegmentedPageViewController *segmentedPageViewController;

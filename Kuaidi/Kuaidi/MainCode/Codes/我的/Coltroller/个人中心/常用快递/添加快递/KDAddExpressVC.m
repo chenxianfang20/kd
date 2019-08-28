@@ -163,12 +163,12 @@ static CGFloat const kSearchBarHeight = 40.f;
     cell.model = model;
     __weak typeof(self) weakSelf = self;
     cell.favitBtnBlock=^{
-        [weakSelf favitorSet:model];
+        [weakSelf favitorSet:model  with:indexPath];
     };
     return cell;
 }
 
--(void)favitorSet:(KDAddExpressModel *)model{
+-(void)favitorSet:(KDAddExpressModel *)model  with:(NSIndexPath *)indexPath{
     
     NSString* url;
     if(model.heart.integerValue == 0 ){
@@ -190,6 +190,8 @@ static CGFloat const kSearchBarHeight = 40.f;
         }
     }
     [weakSelf.tableView reloadData];
+    //[weakSelf.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObjects:indexPath,nil] withRowAnimation:UITableViewRowAnimationNone];
+        
 } FailureBlock:^(id obj) {
     
 }];
