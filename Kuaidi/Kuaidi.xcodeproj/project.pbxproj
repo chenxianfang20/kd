@@ -199,6 +199,9 @@
 		F4C6D2A3231272610053F145 /* KDAddExpressVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F4C6D2A2231272610053F145 /* KDAddExpressVC.m */; };
 		F4C6D2A6231272A50053F145 /* KDAddExpressModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F4C6D2A5231272A50053F145 /* KDAddExpressModel.m */; };
 		F4C6D2A9231272C00053F145 /* KDAddExpressCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F4C6D2A8231272C00053F145 /* KDAddExpressCell.m */; };
+		F4E524CF2316A718008F5724 /* KDAcceptedOrdersView.m in Sources */ = {isa = PBXBuildFile; fileRef = F4E524CE2316A718008F5724 /* KDAcceptedOrdersView.m */; };
+		F4E524D32316B219008F5724 /* KDReceivedView.m in Sources */ = {isa = PBXBuildFile; fileRef = F4E524D22316B219008F5724 /* KDReceivedView.m */; };
+		F4E524D72316C014008F5724 /* KDQuitOrderView.m in Sources */ = {isa = PBXBuildFile; fileRef = F4E524D62316C014008F5724 /* KDQuitOrderView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -521,6 +524,12 @@
 		F4C6D2A5231272A50053F145 /* KDAddExpressModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KDAddExpressModel.m; sourceTree = "<group>"; };
 		F4C6D2A7231272C00053F145 /* KDAddExpressCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KDAddExpressCell.h; sourceTree = "<group>"; };
 		F4C6D2A8231272C00053F145 /* KDAddExpressCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KDAddExpressCell.m; sourceTree = "<group>"; };
+		F4E524CD2316A718008F5724 /* KDAcceptedOrdersView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KDAcceptedOrdersView.h; sourceTree = "<group>"; };
+		F4E524CE2316A718008F5724 /* KDAcceptedOrdersView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KDAcceptedOrdersView.m; sourceTree = "<group>"; };
+		F4E524D12316B219008F5724 /* KDReceivedView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KDReceivedView.h; sourceTree = "<group>"; };
+		F4E524D22316B219008F5724 /* KDReceivedView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KDReceivedView.m; sourceTree = "<group>"; };
+		F4E524D52316C014008F5724 /* KDQuitOrderView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KDQuitOrderView.h; sourceTree = "<group>"; };
+		F4E524D62316C014008F5724 /* KDQuitOrderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KDQuitOrderView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1061,6 +1070,9 @@
 		F41FD24D231430BE006F9ECA /* 订单详情 */ = {
 			isa = PBXGroup;
 			children = (
+				F4E524D42316BF8E008F5724 /* 已取消 */,
+				F4E524D02316B1E9008F5724 /* 已取件、已签收 */,
+				F4E524CC2316A667008F5724 /* 已接单 */,
 				F4294BF023156B7900ACED30 /* 待联系 */,
 				F41FD24E231431D9006F9ECA /* KDOrderDetailVC.h */,
 				F41FD24F231431D9006F9ECA /* KDOrderDetailVC.m */,
@@ -1343,6 +1355,33 @@
 				F4C6D2A8231272C00053F145 /* KDAddExpressCell.m */,
 			);
 			path = "添加快递";
+			sourceTree = "<group>";
+		};
+		F4E524CC2316A667008F5724 /* 已接单 */ = {
+			isa = PBXGroup;
+			children = (
+				F4E524CD2316A718008F5724 /* KDAcceptedOrdersView.h */,
+				F4E524CE2316A718008F5724 /* KDAcceptedOrdersView.m */,
+			);
+			path = "已接单";
+			sourceTree = "<group>";
+		};
+		F4E524D02316B1E9008F5724 /* 已取件、已签收 */ = {
+			isa = PBXGroup;
+			children = (
+				F4E524D12316B219008F5724 /* KDReceivedView.h */,
+				F4E524D22316B219008F5724 /* KDReceivedView.m */,
+			);
+			path = "已取件、已签收";
+			sourceTree = "<group>";
+		};
+		F4E524D42316BF8E008F5724 /* 已取消 */ = {
+			isa = PBXGroup;
+			children = (
+				F4E524D52316C014008F5724 /* KDQuitOrderView.h */,
+				F4E524D62316C014008F5724 /* KDQuitOrderView.m */,
+			);
+			path = "已取消";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1631,6 +1670,7 @@
 				164096EA2309B1160055C0FB /* KDExpressSendInfoController.m in Sources */,
 				164096FC2309B2420055C0FB /* UIView+CBExtension.m in Sources */,
 				1619AC56230804D4003463C7 /* KDGoodsTypeInfoSelectView.m in Sources */,
+				F4E524CF2316A718008F5724 /* KDAcceptedOrdersView.m in Sources */,
 				3D65BF972301086A00B12F3D /* HCTTitleView.m in Sources */,
 				1619AC5923084897003463C7 /* KDExpressRecordController.m in Sources */,
 				162DEB86230C46220099F44E /* KDExpressTitleView.m in Sources */,
@@ -1667,6 +1707,7 @@
 				F419CD5E2308610800553E29 /* KDResetLoginPwdVC.m in Sources */,
 				F41FD250231431D9006F9ECA /* KDOrderDetailVC.m in Sources */,
 				F419CD5B2308603600553E29 /* KDCodeForPwdVC.m in Sources */,
+				F4E524D32316B219008F5724 /* KDReceivedView.m in Sources */,
 				F465DE4B230454FF002DFD4C /* KDLoginVC.m in Sources */,
 				F42233562312CD7C00912F26 /* KDScoreVC.m in Sources */,
 				F4B9A2702311729D00614EB4 /* CityChoose.m in Sources */,
@@ -1684,6 +1725,7 @@
 				F4C6D2A6231272A50053F145 /* KDAddExpressModel.m in Sources */,
 				164096FD2309B2420055C0FB /* CBGroupAndStreamView.m in Sources */,
 				164096F62309B1620055C0FB /* HGSegmentedPageViewController.m in Sources */,
+				F4E524D72316C014008F5724 /* KDQuitOrderView.m in Sources */,
 				F419CD62230865B700553E29 /* KDAboutAsVC.m in Sources */,
 				1661B01D230AE5DD0028801C /* DKExpressSendInfoHeaderView.m in Sources */,
 				162DEB89230C4AE60099F44E /* DKExpressSendInfoCell.m in Sources */,

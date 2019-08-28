@@ -8,6 +8,9 @@
 
 #import "KDOrderDetailVC.h"
 #import "KDToContactedView.h"
+#import "KDAcceptedOrdersView.h"
+#import "KDReceivedView.h"
+#import "KDQuitOrderView.h"
 @interface KDOrderDetailVC ()
 //取件码背景
 @property (nonatomic,strong) UIView *scanView;
@@ -20,7 +23,12 @@
 
 //待联系
 @property (nonatomic,strong) KDToContactedView *toContactedView;
-
+//已接单
+@property (nonatomic,strong) KDAcceptedOrdersView *acceptedOrdersView;
+//已接单
+@property (nonatomic,strong) KDReceivedView *receivedView;
+//已取消
+@property (nonatomic,strong) KDQuitOrderView *quitOrderView;
 @end
 
 @implementation KDOrderDetailVC
@@ -37,26 +45,87 @@
     UIView* topRedBgView = [[UIView alloc]initWithFrame:CGRectMake(0, NavibarH, kScreenWidth, 60)];
     topRedBgView.backgroundColor =[UIColor colorWithHex:@"#DF2F31"];
     [self.view addSubview:topRedBgView];
-    __weak typeof(self)weakSelf=self;
+    
     _scrollowView=[[UIScrollView alloc]initWithFrame:CGRectMake(0, NavibarH, kScreenWidth, kScreenHeight-NavibarH )];
      //weakSelf.scrollowView.delegate=self;
     _scrollowView.scrollEnabled=YES;
     [self.view addSubview:_scrollowView];
     
-    //待联系
-    _toContactedView=[[KDToContactedView alloc]initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight-NavibarH)];
-    
-    _toContactedView.myIsShowInfoBlock=^(NSInteger isShow){
-        if(isShow == 1){
-           weakSelf.scrollowView.scrollEnabled=YES;
-           weakSelf.scrollowView.contentSize=CGSizeMake(kScreenWidth, weakSelf.toContactedView.height);
-        }else{
-            weakSelf.scrollowView.scrollEnabled=NO;
-            [weakSelf.scrollowView setContentOffset:CGPointMake(0, 0) animated:YES];
+    [self addOrderUI];
+}
+
+-(void)addOrderUI{
+    __weak typeof(self)weakSelf=self;
+    switch (self.type) {
+        case 0:{
+            //待联系
+            _toContactedView=[[KDToContactedView alloc]initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight-NavibarH)];
+            _toContactedView.myIsShowInfoBlock=^(NSInteger isShow){
+                if(isShow == 1){
+                    weakSelf.scrollowView.scrollEnabled=YES;
+                    weakSelf.scrollowView.contentSize=CGSizeMake(kScreenWidth, weakSelf.toContactedView.height);
+                }else{
+                    weakSelf.scrollowView.scrollEnabled=NO;
+                    [weakSelf.scrollowView setContentOffset:CGPointMake(0, 0) animated:YES];
+                }
+            
+            };
+            [_scrollowView addSubview:_toContactedView];
         }
-        
-    };
-    [_scrollowView addSubview:_toContactedView];
+        break;
+        case 1:{
+            //已接单
+            _acceptedOrdersView=[[KDAcceptedOrdersView alloc]initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight-NavibarH)];
+            _acceptedOrdersView.myIsShowInfoBlock=^(NSInteger isShow){
+                if(isShow == 1){
+                    weakSelf.scrollowView.scrollEnabled=YES;
+                    weakSelf.scrollowView.contentSize=CGSizeMake(kScreenWidth, weakSelf.acceptedOrdersView.height);
+                }else{
+                    weakSelf.scrollowView.scrollEnabled=NO;
+                    [weakSelf.scrollowView setContentOffset:CGPointMake(0, 0) animated:YES];
+                }
+            
+            };
+            [_scrollowView addSubview:_acceptedOrdersView];
+        }
+        break;
+        case 2:
+        case 3:
+        {
+            //已取件、已签收
+            _receivedView=[[KDReceivedView alloc]initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight-NavibarH)];
+            _receivedView.myIsShowInfoBlock=^(NSInteger isShow){
+                if(isShow == 1){
+                    weakSelf.scrollowView.scrollEnabled=YES;
+                    weakSelf.scrollowView.contentSize=CGSizeMake(kScreenWidth, weakSelf.receivedView.height);
+                }else{
+                    weakSelf.scrollowView.scrollEnabled=NO;
+                    [weakSelf.scrollowView setContentOffset:CGPointMake(0, 0) animated:YES];
+                }
+            
+            };
+            [_scrollowView addSubview:_receivedView];
+        }
+        break;
+        case 4:
+        {
+            //已取消
+            _quitOrderView=[[KDQuitOrderView alloc]initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight-NavibarH)];
+            _quitOrderView.myIsShowInfoBlock=^(NSInteger isShow){
+                if(isShow == 1){
+                    weakSelf.scrollowView.scrollEnabled=YES;
+                    weakSelf.scrollowView.contentSize=CGSizeMake(kScreenWidth, weakSelf.quitOrderView.height);
+                }else{
+                    weakSelf.scrollowView.scrollEnabled=NO;
+                    [weakSelf.scrollowView setContentOffset:CGPointMake(0, 0) animated:YES];
+                }
+            };
+            [_scrollowView addSubview:_quitOrderView];
+        }
+            break;
+        default:
+            break;
+    }
 }
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView{
     if(scrollView.contentOffset.y<0){

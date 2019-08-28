@@ -1,18 +1,29 @@
 //
-//  KDToContactedView.m
+//  KDAcceptedOrdersView.m
 //  Kuaidi
 //
-//  Created by cxf on 2019/8/27.
+//  Created by cxf on 2019/8/28.
 //  Copyright © 2019年 ios01. All rights reserved.
 //
 
-#import "KDToContactedView.h"
+#import "KDAcceptedOrdersView.h"
+#import "UIButton+EnlargeTouchArea.h"
+@interface KDAcceptedOrdersView()
+//取件码
+@property (nonatomic,strong) UIView *qjmBgView;
+@property (nonatomic,strong) UILabel* qjmLabel;
+@property (nonatomic,strong) UIImageView* qjmImgView;
 
-@interface KDToContactedView()
 
 @property (nonatomic,strong) UIView *topBgView;
+@property (nonatomic,strong) UILabel* smTimeLabel;
+
+
 @property (nonatomic,strong) UIView *midBgView;
 @property (nonatomic,strong) UIImageView* iconImgView;
+@property (nonatomic,strong) UILabel* nameExpressLabel;
+
+
 @property (nonatomic,strong) UILabel* fromCityLabel;
 @property (nonatomic,strong) UILabel* toCityLabel;
 @property (nonatomic,strong) UILabel* fromNameLabel;
@@ -23,11 +34,8 @@
 @property (nonatomic,strong)  UIButton*  contactBtn;
 @property (nonatomic,strong)  UIView* contactBgView;
 
-//订单详情
-
 @end
-
-@implementation KDToContactedView
+@implementation KDAcceptedOrdersView
 
 - (instancetype)initWithFrame:(CGRect)frame
 {
@@ -39,26 +47,50 @@
 }
 
 -(void)addChildViews{
-  
+    //取件码
+    _qjmBgView = [[UIView alloc]initWithFrame:CGRectMake(kLeftX, 8, kAdaptationWidth(339), kAdaptationWidth(117))];
+    _qjmBgView.backgroundColor=[UIColor whiteColor];
+    _qjmBgView.layer.cornerRadius=10.0f;
+    _qjmBgView.layer.masksToBounds=YES;
+    [self addSubview:_qjmBgView];
+    
+    UILabel* qjmTitleLabel =[[UILabel alloc]initWithFrame:CGRectMake(0, kAdaptationWidth(20), kAdaptationWidth(80), kAdaptationWidth(20))];
+    qjmTitleLabel.text=@"取件码";
+    qjmTitleLabel.textColor=[UIColor colorWithHex:@"#5C5C5C"];
+    qjmTitleLabel.textAlignment=NSTextAlignmentCenter;
+    qjmTitleLabel.font =PingFangRegular(15);
+    [_qjmBgView addSubview:qjmTitleLabel];
+    
+    _qjmLabel =[[UILabel alloc]initWithFrame:CGRectMake(80, kAdaptationWidth(20), kAdaptationWidth(180), kAdaptationWidth(20))];
+    _qjmLabel.text=@"4 7 7 6";
+    _qjmLabel.textColor=[UIColor colorWithHex:@"#0B0B0B"];
+    _qjmLabel.textAlignment=NSTextAlignmentCenter;
+    _qjmLabel.font =PingFangBold(15);
+    [_qjmBgView addSubview:_qjmLabel];
+    _qjmLabel.centerX= _qjmBgView.width/2.0;
+    
+    _qjmImgView=[[UIImageView alloc]initWithFrame:CGRectMake(kAdaptationWidth(62), kAdaptationWidth(51), kAdaptationWidth(216), kAdaptationWidth(42))];
+    _qjmImgView.backgroundColor = rgb(230, 230, 230, 1);
+    [_qjmBgView addSubview:_qjmImgView];
+    
     //****顶部快递员相关
-    _topBgView = [[UIView alloc]initWithFrame:CGRectMake(kLeftX, 8, kAdaptationWidth(339), kAdaptationWidth(192))];
+    _topBgView = [[UIView alloc]initWithFrame:CGRectMake(kLeftX,_qjmBgView.bottom+ 8, kAdaptationWidth(339), kAdaptationWidth(192))];
     _topBgView.backgroundColor=[UIColor whiteColor];
     _topBgView.layer.cornerRadius=10.0f;
     _topBgView.layer.masksToBounds=YES;
     [self addSubview:_topBgView];
-    
     UILabel* topTitleLabel =[[UILabel alloc]initWithFrame:CGRectMake(0, kAdaptationWidth(36), kAdaptationWidth(339), kAdaptationWidth(20))];
-    topTitleLabel.text=@"快递员已接单，请您等待联系";
+    topTitleLabel.text=@"快递员已接单";
     topTitleLabel.textColor=[UIColor colorWithHex:@"#0B0B0B"];
     topTitleLabel.textAlignment=NSTextAlignmentCenter;
     topTitleLabel.font =PingFangBold(18);
     [_topBgView addSubview:topTitleLabel];
-    UILabel* desTitleLabel =[[UILabel alloc]initWithFrame:CGRectMake(0, topTitleLabel.bottom+10, kAdaptationWidth(339), kAdaptationWidth(18))];
-    desTitleLabel.text=@"预计在2小时内与您联系";
-    desTitleLabel.textColor=[UIColor colorWithHex:@"#5C5C5C"];
-    desTitleLabel.textAlignment=NSTextAlignmentCenter;
-    desTitleLabel.font = PingFangMedium(14);
-    [_topBgView addSubview:desTitleLabel];
+    _smTimeLabel=[[UILabel alloc]initWithFrame:CGRectMake(0, topTitleLabel.bottom+10, kAdaptationWidth(339), kAdaptationWidth(18))];
+    _smTimeLabel.text=@"预约上门时间：今天 12:00-12:59";
+    _smTimeLabel.textColor=[UIColor colorWithHex:@"#5C5C5C"];
+    _smTimeLabel.textAlignment=NSTextAlignmentCenter;
+    _smTimeLabel.font = PingFangMedium(14);
+    [_topBgView addSubview:_smTimeLabel];
     
     UIView* expressBgView =[[UIView alloc]initWithFrame:CGRectMake(0, kAdaptationWidth(120), kAdaptationWidth(339), kAdaptationWidth(78))];
     expressBgView.backgroundColor=rgb(245, 245, 245, 1);
@@ -68,13 +100,25 @@
     _iconImgView.image=[UIImage imageNamed:@"Logo"];
     _iconImgView.layer.cornerRadius =kAdaptationWidth(21);
     _iconImgView.layer.masksToBounds=YES;
+    _iconImgView.image = [UIImage imageNamed:@"图片-头像"];
     [expressBgView addSubview:_iconImgView];
-    UILabel* desExpressLabel =[[UILabel alloc]initWithFrame:CGRectMake(73, topTitleLabel.bottom, kAdaptationWidth(239), kAdaptationWidth(18))];
-    desExpressLabel.text=@"快递么优选快递员";
-    desExpressLabel.textColor=[UIColor colorWithHex:@"5C5C5C"];
-    desExpressLabel.font = PingFangMedium(15);
-    [expressBgView addSubview:desExpressLabel];
-    desExpressLabel.centerY =_iconImgView.centerY;
+    _nameExpressLabel =[[UILabel alloc]initWithFrame:CGRectMake(73, topTitleLabel.bottom, kAdaptationWidth(239), kAdaptationWidth(18))];
+    _nameExpressLabel.text=@"周杰伦";
+    _nameExpressLabel.textColor=[UIColor colorWithHex:@"5C5C5C"];
+    _nameExpressLabel.font = PingFangMedium(15);
+    [expressBgView addSubview:_nameExpressLabel];
+    _nameExpressLabel.centerY =_iconImgView.centerY;
+    
+    UIButton*  phoneBtn = [[UIButton alloc]initWithFrame:CGRectMake(297, 18, kAdaptationWidth(24), kAdaptationWidth(24))];
+    [phoneBtn setImage:[UIImage imageNamed:@"图标-电话1"] forState:UIControlStateNormal];
+    phoneBtn.layer.cornerRadius = kAdaptationWidth(12);
+    phoneBtn.layer.borderColor=[UIColor colorWithHex:@"#DF2F31"].CGColor;
+    phoneBtn.layer.borderWidth=1;
+    phoneBtn.layer.masksToBounds=YES;
+    [phoneBtn setEnlargeEdge:20];
+    [phoneBtn addTarget:self action:@selector(phoneBtnClick) forControlEvents:UIControlEventTouchUpInside];
+    phoneBtn.centerY=_iconImgView.centerY;
+    [expressBgView addSubview:phoneBtn];
     
     //城市到往
     _midBgView=[[UIView alloc]initWithFrame:CGRectMake(kLeftX,_topBgView.bottom+ 12, kAdaptationWidth(339), kAdaptationWidth(118))];
@@ -157,13 +201,10 @@
     _contactBtn.layer.masksToBounds=YES;
     [_contactBtn addTarget:self action:@selector(contactBtnClick) forControlEvents:UIControlEventTouchUpInside];
     [_contactBgView addSubview:_contactBtn];
- 
+    
     [self setInfoDetail];
     _bottomBgView.hidden = YES;
-    
 }
-
-
 -(void)showInfoBtnClick:(UIButton*)btn{
     if(btn.tag == 0){
         btn.top=_bottomBgView.bottom+15;
@@ -175,7 +216,7 @@
         btn.top=_midBgView.bottom+15;
         _contactBgView.hidden=NO;
         _bottomBgView.hidden = YES;
-         btn.tag=0;
+        btn.tag=0;
         [_showInfoBtn setTitle:@"点击展开订单详情" forState:UIControlStateNormal];
     }
     if(self.myIsShowInfoBlock){
@@ -354,5 +395,9 @@
     
     _bottomBgView.height=orderFromDetailLabel.bottom+15;
     self.height=_bottomBgView.bottom+45;
+}
+
+-(void)phoneBtnClick{
+    
 }
 @end
