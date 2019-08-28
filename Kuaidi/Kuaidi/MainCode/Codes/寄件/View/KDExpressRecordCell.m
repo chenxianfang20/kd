@@ -28,6 +28,8 @@
 
 @property(nonatomic, strong)UILabel *statusLabel;
 
+@property(nonatomic, strong)UIButton *operateButton;
+
 @end
 
 @implementation KDExpressRecordCell
@@ -193,7 +195,7 @@
     }];
     
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
-    [button setTitle:@"取消订单" forState:UIControlStateNormal];
+    self.operateButton = button;
     [button setTitleColor:rgb(92, 92, 92, 1.0) forState:UIControlStateNormal];
     button.titleLabel.font = PingFangMedium(14);
     button.layer.cornerRadius = 18;
@@ -235,10 +237,16 @@
     
     if (model.status.integerValue == 0) {
         self.statusLabel.text = @"待联系";
-    }else if (model.status.integerValue == 1) {
-        self.statusLabel.text = @"";
-    }else if (model.status.integerValue == 2) {
-        self.statusLabel.text = @"";
+        [self.operateButton setTitle:@"取消订单" forState:UIControlStateNormal];
+    }else if (model.status.integerValue == 1 || model.status.integerValue == 2) {
+        self.statusLabel.text = @"已取件";
+        [self.operateButton setTitle:@"再下一单" forState:UIControlStateNormal];
+    }else if (model.status.integerValue == 3) {
+        self.statusLabel.text = @"已签收";
+        [self.operateButton setTitle:@"再下一单" forState:UIControlStateNormal];
+    }else if (model.status.integerValue == 4) {
+        self.statusLabel.text = @"已取消";
+        [self.operateButton setTitle:@"重新下单" forState:UIControlStateNormal];
     }
     
 }

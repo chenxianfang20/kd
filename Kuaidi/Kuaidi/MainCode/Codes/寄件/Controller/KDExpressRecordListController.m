@@ -139,6 +139,7 @@
         cell = [[KDExpressRecordCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
     }
     cell.model = self.dataArr[indexPath.row];
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -186,6 +187,14 @@
             
             self.noDataView.hidden = weakSelf.dataArr.count > 0;
             
+            self.tableView.mj_footer.hidden = self.dataArr.count < 10;
+            
+            if (data.count < 10) {
+                [self.tableView.mj_footer endRefreshingWithNoMoreData];
+            }else{
+                self.page ++;
+            }
+            
         }else{
             
             NSString *msg = obj[@"msg"];
@@ -196,6 +205,11 @@
         
     }];
     
+}
+
+- (void)viewDidDisappear:(BOOL)animated{
+    [super viewDidDisappear:animated];
+    [SVProgressHUD dismiss];
 }
 
 @end
