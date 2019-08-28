@@ -11,4 +11,5 @@ target 'Kuaidi' do
  pod 'SDWebImage'
  pod 'CRBoxInputView', '1.1.2'
  pod 'PGPickerView'
+ pod 'ZBarSDK'
 end
