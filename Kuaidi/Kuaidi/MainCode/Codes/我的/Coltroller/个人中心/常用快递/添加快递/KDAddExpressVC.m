@@ -154,7 +154,7 @@ static CGFloat const kSearchBarHeight = 40.f;
     static NSString *const kCellId = @"KDAddExpressCell_ID";
     KDAddExpressCell *cell = [tableView dequeueReusableCellWithIdentifier:kCellId];
     
-    if (cell == nil) {
+    if (!cell ) {
         cell = [[KDAddExpressCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:kCellId];
     }
     NSInteger index = [_sectionIndexs[indexPath.section] integerValue];

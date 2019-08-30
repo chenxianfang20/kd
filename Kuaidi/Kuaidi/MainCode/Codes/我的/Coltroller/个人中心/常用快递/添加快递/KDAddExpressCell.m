@@ -49,11 +49,7 @@
 
 -(void)setModel:(KDAddExpressModel *)model{
     _nameLabel.text=model.name;
-    __weak typeof(self)weakSelf = self;
-    dispatch_async(dispatch_get_global_queue(0, 0), ^{
-        NSURL *imageUrl = [NSURL URLWithString:model.src];
-        weakSelf.iconImgView.image = [UIImage imageWithData:[NSData dataWithContentsOfURL:imageUrl]];
-    });
+    [self.iconImgView sd_setImageWithURL:[NSURL URLWithString:model.src] placeholderImage:nil];
     if(model.heart.integerValue == 0){
         [_favitBtn setBackgroundImage:[UIImage imageNamed:@"图标-未选"] forState:UIControlStateNormal];
     }else if (model.heart.integerValue == 1){
