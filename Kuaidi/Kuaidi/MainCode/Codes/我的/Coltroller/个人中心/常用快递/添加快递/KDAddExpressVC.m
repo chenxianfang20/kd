@@ -184,8 +184,10 @@ static CGFloat const kSearchBarHeight = 40.f;
     if([obj[@"code"] integerValue] == 1){
         weakSelf.currModel = model;
         if(model.heart.integerValue == 0 ){
+            [ZJCustomHud showWithSuccess:@"收藏成功"];
             weakSelf.currModel.heart=@"1";
         }else if (model.heart.integerValue == 1){
+            [ZJCustomHud showWithSuccess:@"取消成功"];
             weakSelf.currModel.heart=@"0";
         }
     }

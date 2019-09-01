@@ -8,6 +8,8 @@
 
 #import "RootCustomView.h"
 #import "KDOrderListModel.h"
+#import "KDOrderGoodsModel.h"
+#import "KDWuliuListModel.h"
 typedef void(^MyReOrderBlock)(void);
 typedef void(^MyIsShowInfoBlock)(NSInteger);
 @interface KDQuitOrderView : RootCustomView

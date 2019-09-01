@@ -47,34 +47,34 @@
 }
 
 -(void)addChildViews{
-    //取件码
-    _qjmBgView = [[UIView alloc]initWithFrame:CGRectMake(kLeftX, 8, kAdaptationWidth(339), kAdaptationWidth(117))];
-    _qjmBgView.backgroundColor=[UIColor whiteColor];
-    _qjmBgView.layer.cornerRadius=10.0f;
-    _qjmBgView.layer.masksToBounds=YES;
-    [self addSubview:_qjmBgView];
-    
-    UILabel* qjmTitleLabel =[[UILabel alloc]initWithFrame:CGRectMake(0, kAdaptationWidth(20), kAdaptationWidth(80), kAdaptationWidth(20))];
-    qjmTitleLabel.text=@"取件码";
-    qjmTitleLabel.textColor=[UIColor colorWithHex:@"#5C5C5C"];
-    qjmTitleLabel.textAlignment=NSTextAlignmentCenter;
-    qjmTitleLabel.font =PingFangRegular(15);
-    [_qjmBgView addSubview:qjmTitleLabel];
-    
-    _qjmLabel =[[UILabel alloc]initWithFrame:CGRectMake(80, kAdaptationWidth(20), kAdaptationWidth(180), kAdaptationWidth(20))];
-    _qjmLabel.text=@"4 7 7 6";
-    _qjmLabel.textColor=[UIColor colorWithHex:@"#0B0B0B"];
-    _qjmLabel.textAlignment=NSTextAlignmentCenter;
-    _qjmLabel.font =PingFangBold(15);
-    [_qjmBgView addSubview:_qjmLabel];
-    _qjmLabel.centerX= _qjmBgView.width/2.0;
-    
-    _qjmImgView=[[UIImageView alloc]initWithFrame:CGRectMake(kAdaptationWidth(62), kAdaptationWidth(51), kAdaptationWidth(216), kAdaptationWidth(42))];
-    _qjmImgView.backgroundColor = rgb(230, 230, 230, 1);
-    [_qjmBgView addSubview:_qjmImgView];
-    
+//    //取件码
+//    _qjmBgView = [[UIView alloc]initWithFrame:CGRectMake(kLeftX, 8, kAdaptationWidth(339), kAdaptationWidth(117))];
+//    _qjmBgView.backgroundColor=[UIColor whiteColor];
+//    _qjmBgView.layer.cornerRadius=10.0f;
+//    _qjmBgView.layer.masksToBounds=YES;
+//    [self addSubview:_qjmBgView];
+//
+//    UILabel* qjmTitleLabel =[[UILabel alloc]initWithFrame:CGRectMake(0, kAdaptationWidth(20), kAdaptationWidth(80), kAdaptationWidth(20))];
+//    qjmTitleLabel.text=@"取件码";
+//    qjmTitleLabel.textColor=[UIColor colorWithHex:@"#5C5C5C"];
+//    qjmTitleLabel.textAlignment=NSTextAlignmentCenter;
+//    qjmTitleLabel.font =PingFangRegular(15);
+//    [_qjmBgView addSubview:qjmTitleLabel];
+//
+//    _qjmLabel =[[UILabel alloc]initWithFrame:CGRectMake(80, kAdaptationWidth(20), kAdaptationWidth(180), kAdaptationWidth(20))];
+//    _qjmLabel.text=@"4 7 7 6";
+//    _qjmLabel.textColor=[UIColor colorWithHex:@"#0B0B0B"];
+//    _qjmLabel.textAlignment=NSTextAlignmentCenter;
+//    _qjmLabel.font =PingFangBold(15);
+//    [_qjmBgView addSubview:_qjmLabel];
+//    _qjmLabel.centerX= _qjmBgView.width/2.0;
+//
+//    _qjmImgView=[[UIImageView alloc]initWithFrame:CGRectMake(kAdaptationWidth(62), kAdaptationWidth(51), kAdaptationWidth(216), kAdaptationWidth(42))];
+//    _qjmImgView.backgroundColor = rgb(230, 230, 230, 1);
+//    [_qjmBgView addSubview:_qjmImgView];
+//
     //****顶部快递员相关
-    _topBgView = [[UIView alloc]initWithFrame:CGRectMake(kLeftX,_qjmBgView.bottom+ 8, kAdaptationWidth(339), kAdaptationWidth(192))];
+    _topBgView = [[UIView alloc]initWithFrame:CGRectMake(kLeftX, 8, kAdaptationWidth(339), kAdaptationWidth(192))];
     _topBgView.backgroundColor=[UIColor whiteColor];
     _topBgView.layer.cornerRadius=10.0f;
     _topBgView.layer.masksToBounds=YES;
@@ -179,9 +179,12 @@
     [_midBgView addSubview:_kgLabel];
     
     _showInfoBtn=[[UIButton alloc]initWithFrame:CGRectMake(kAdaptationWidth(95), _midBgView.bottom+15, kAdaptationWidth(149), kAdaptationWidth(18))];
-    [_showInfoBtn setTitle:@"点击展开订单详情" forState:UIControlStateNormal];
     _showInfoBtn.titleLabel.font = PingFangRegular(14);
     [_showInfoBtn setTitleColor:[UIColor colorWithHex:@"#5C5C5C"] forState:UIControlStateNormal];
+    [_showInfoBtn setTitle:@"点击展开订单详情" forState:UIControlStateNormal];
+    [_showInfoBtn setImage:[UIImage imageNamed:@"图标-下"] forState:UIControlStateNormal];
+    [_showInfoBtn setTitleEdgeInsets:UIEdgeInsetsMake(0, - _showInfoBtn.imageView.image.size.width, 0, _showInfoBtn.imageView.image.size.width)];
+    [_showInfoBtn setImageEdgeInsets:UIEdgeInsetsMake(0, _showInfoBtn.titleLabel.bounds.size.width, 0, -_showInfoBtn.titleLabel.bounds.size.width-10)];
     [_showInfoBtn addTarget:self action:@selector(showInfoBtnClick:) forControlEvents:UIControlEventTouchUpInside];
     _showInfoBtn.tag=0;
     [self addSubview:_showInfoBtn];
@@ -210,12 +213,14 @@
         _bottomBgView.hidden = NO;
         btn.tag=1;
         [_showInfoBtn setTitle:@"点击收起订单详情" forState:UIControlStateNormal];
+        [_showInfoBtn setImage:[UIImage imageNamed:@"图标-上"] forState:UIControlStateNormal];
     }else{
         btn.top=_midBgView.bottom+15;
         _contactBgView.hidden=NO;
         _bottomBgView.hidden = YES;
         btn.tag=0;
         [_showInfoBtn setTitle:@"点击展开订单详情" forState:UIControlStateNormal];
+        [_showInfoBtn setImage:[UIImage imageNamed:@"图标-下"] forState:UIControlStateNormal];
     }
     if(self.myIsShowInfoBlock){
         self.myIsShowInfoBlock(btn.tag);
@@ -232,6 +237,8 @@
     _toNameLabel.text=model.accept_name;
     _smTimeLabel.text=[NSString stringWithFormat:@"预约上门时间：%@",model.deliver_want_time];
     _moneyLabel.text=[NSString stringWithFormat:@"已支付￥%@元",model.pay_money] ;
+    [_iconImgView sd_setImageWithURL:[NSURL URLWithString:model.kuaidi.logistics_icon] placeholderImage:nil];
+    _nameExpressLabel.text=model.kuaidi.logistics_name;
     [self setInfoDetail:model];
 }
 -(void)setInfoDetail:(KDOrderListModel *)model{
@@ -309,7 +316,7 @@
     [_bottomBgView addSubview:wpInfoLabel];
     
     UILabel* wpDetailLabel =[[UILabel alloc]initWithFrame:CGRectMake(kAdaptationWidth(98), wpInfoLabel.top, kAdaptationWidth(120), kAdaptationWidth(18))];
-    wpDetailLabel.text=@"文件/1.0公交";
+    wpDetailLabel.text=[NSString stringWithFormat:@"%@/%@公斤",model.ordergoods.goods_type,model.ordergoods.goods_weight] ;
     wpDetailLabel.textColor=[UIColor colorWithHex:@"#0B0B0B"];
     wpDetailLabel.font = PingFangMedium(14);
     [_bottomBgView addSubview:wpDetailLabel];
@@ -322,7 +329,11 @@
     [_bottomBgView addSubview:messageLabel];
     
     UILabel* messageDetailLabel =[[UILabel alloc]initWithFrame:CGRectMake(kAdaptationWidth(98), messageLabel.top, kAdaptationWidth(224), kAdaptationWidth(18))];
-    messageDetailLabel.text=model.user_remark;
+    if(model.user_remark.length == 0){
+        messageDetailLabel.text=@"(无)";
+    }else{
+        messageDetailLabel.text=model.user_remark;
+    }
     messageDetailLabel.textColor=[UIColor colorWithHex:@"#0B0B0B"];
     messageDetailLabel.font = PingFangMedium(14);
     messageDetailLabel.numberOfLines=0;
@@ -342,21 +353,10 @@
     moneyDetailLabel.font = PingFangMedium(14);
     [_bottomBgView addSubview:moneyDetailLabel];
     
-    //***运费方式
-    UILabel* moneyStyleLabel =[[UILabel alloc]initWithFrame:CGRectMake(kLeftX,moneyDetailLabel.bottom+20, kAdaptationWidth(65), kAdaptationWidth(18))];
-    moneyStyleLabel.text=@"付费方式";
-    moneyStyleLabel.textColor=[UIColor colorWithHex:@"#5C5C5C"];
-    moneyStyleLabel.font = PingFangMedium(14);
-    [_bottomBgView addSubview:moneyStyleLabel];
     
-    UILabel* moneyStyleDetailLabel =[[UILabel alloc]initWithFrame:CGRectMake(kAdaptationWidth(98), moneyStyleLabel.top, kAdaptationWidth(120), kAdaptationWidth(18))];
-    moneyStyleDetailLabel.text=@"在线支付";
-    moneyStyleDetailLabel.textColor=[UIColor colorWithHex:@"#0B0B0B"];
-    moneyStyleDetailLabel.font = PingFangMedium(14);
-    [_bottomBgView addSubview:moneyStyleDetailLabel];
     
     //***订单编号
-    UILabel* orderLabel =[[UILabel alloc]initWithFrame:CGRectMake(kLeftX,moneyStyleDetailLabel.bottom+20, kAdaptationWidth(60), kAdaptationWidth(18))];
+    UILabel* orderLabel =[[UILabel alloc]initWithFrame:CGRectMake(kLeftX,moneyDetailLabel.bottom+20, kAdaptationWidth(60), kAdaptationWidth(18))];
     orderLabel.text=@"订单编号";
     orderLabel.textColor=[UIColor colorWithHex:@"#5C5C5C"];
     orderLabel.font = PingFangMedium(14);
@@ -373,7 +373,7 @@
     [copyBtn setTitleColor:[UIColor colorWithHex:@"#DF2F31"] forState:UIControlStateNormal];
     [copyBtn setTitle:@"复制" forState:UIControlStateNormal];
     copyBtn.titleLabel.font = PingFangMedium(14);
-    [_bottomBgView addSubview:copyBtn];
+    //[_bottomBgView addSubview:copyBtn];
     copyBtn.centerY= orderDetailLabel.centerY;
     
     //***下单时间
@@ -389,27 +389,14 @@
     timeDetailLabel.font = PingFangMedium(14);
     [_bottomBgView addSubview:timeDetailLabel];
     
-    //***下单来源
-    UILabel* orderFromLabel =[[UILabel alloc]initWithFrame:CGRectMake(kLeftX,timeDetailLabel.bottom+20, kAdaptationWidth(65), kAdaptationWidth(18))];
-    orderFromLabel.text=@"下单来源";
-    orderFromLabel.textColor=[UIColor colorWithHex:@"#5C5C5C"];
-    orderFromLabel.font = PingFangMedium(14);
-    [_bottomBgView addSubview:orderFromLabel];
-    
-    UILabel* orderFromDetailLabel =[[UILabel alloc]initWithFrame:CGRectMake(kAdaptationWidth(98), orderFromLabel.top, kAdaptationWidth(120), kAdaptationWidth(18))];
-    orderFromDetailLabel.text=@"APP";
-    orderFromDetailLabel.textColor=[UIColor colorWithHex:@"#0B0B0B"];
-    orderFromDetailLabel.font = PingFangMedium(14);
-    
-    [_bottomBgView addSubview:orderFromDetailLabel];
-    
-    _bottomBgView.height=orderFromDetailLabel.bottom+15;
+    _bottomBgView.height=timeDetailLabel.bottom+15;
     self.height=_bottomBgView.bottom+45;
     
     _bottomBgView.hidden = YES;
 }
 
 -(void)phoneBtnClick{
-    
+    NSMutableString *str=[[NSMutableString alloc] initWithFormat:@"telprompt://%@",_model.kuaidi.logistics_mobile];
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:str]];
 }
 @end

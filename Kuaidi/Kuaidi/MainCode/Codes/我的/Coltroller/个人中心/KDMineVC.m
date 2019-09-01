@@ -16,6 +16,7 @@
 #import "KDExpressVC.h"
 #import "KDMailingScanVC.h"
 #import "KDScoreVC.h"
+#import "KDHelpVC.h"
 @interface KDMineVC ()<UITableViewDelegate,UITableViewDataSource>{
     UIScrollView* scrollowView;
 }
@@ -313,7 +314,21 @@
     }
     //系统设置
     if(indexPath.row == 3){
+        if(!usermodel.token){
+            [self.view showToastWithText:@"请先登录" time:1];
+            return;
+        }
         KDSetupVC* vc= [[KDSetupVC alloc]init];
+        vc.hidesBottomBarWhenPushed=YES;
+        [self.navigationController pushViewController:vc animated:YES];
+    }
+    //帮助中心
+    if(indexPath.row == 4){
+//        if(!usermodel.token){
+//            [self.view showToastWithText:@"请先登录" time:1];
+//            return;
+//        }
+        KDHelpVC* vc= [[KDHelpVC alloc]init];
         vc.hidesBottomBarWhenPushed=YES;
         [self.navigationController pushViewController:vc animated:YES];
     }

@@ -11,7 +11,7 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @class KDWuliuListModel;
-
+@class KDOrderGoodsModel;
 @interface KDOrderListModel : NSObject
 
 @property(nonatomic, strong)NSNumber *id;
@@ -75,6 +75,9 @@ NS_ASSUME_NONNULL_BEGIN
 @property(nonatomic, copy)NSString *status_name;
 
 @property(nonatomic, strong)KDWuliuListModel *kuaidi;
+
+@property(nonatomic, strong)KDOrderGoodsModel *ordergoods;
+
 
 @end
 

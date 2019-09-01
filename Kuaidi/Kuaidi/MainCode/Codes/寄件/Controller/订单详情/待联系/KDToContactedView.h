@@ -7,7 +7,9 @@
 //
 
 #import "RootCustomView.h"
+#import "KDWuliuListModel.h"
 #import "KDOrderListModel.h"
+#import "KDOrderGoodsModel.h"
 typedef void(^MyIsShowInfoBlock)(NSInteger);
 
 @interface KDToContactedView : RootCustomView

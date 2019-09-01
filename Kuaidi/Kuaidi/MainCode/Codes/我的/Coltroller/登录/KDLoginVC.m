@@ -202,7 +202,7 @@
 -(void)pwdTFChanged:(UITextField*)text{
     
     NSString *phoneFieldStr =[self.phoneTF.text stringByReplacingOccurrencesOfString:@" "withString:@""];
-    if (self.phoneTF.text.length >= 13 && [NSString isValidatePhoneNum:phoneFieldStr]&&text.text.length>=5) {//输入完成
+    if (self.phoneTF.text.length >= 13 && [NSString isValidatePhoneNum:phoneFieldStr]&&text.text.length>=6) {//输入完成
         loginBtn.userInteractionEnabled=YES;
         [loginBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         [loginBtn setBackgroundImage:[UIImage imageWithColor:rgb(247, 70, 74,1)] forState:UIControlStateNormal];

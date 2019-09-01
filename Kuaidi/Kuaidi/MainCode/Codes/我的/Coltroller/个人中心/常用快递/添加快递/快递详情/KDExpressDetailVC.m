@@ -143,8 +143,7 @@
        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:str]];
         
      }];
-                          
-                                // Add the actions.
+    // Add the actions.
     [alertController addAction:cancelAction];
     [alertController addAction:otherAction];
     [self presentViewController:alertController animated:YES completion:nil];

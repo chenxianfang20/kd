@@ -8,6 +8,8 @@
 
 #import "RootCustomView.h"
 #import "KDOrderListModel.h"
+#import "KDWuliuListModel.h"
+#import "KDOrderGoodsModel.h"
 typedef void(^MyIsShowInfoBlock)(NSInteger);
 
 @interface KDAcceptedOrdersView : RootCustomView

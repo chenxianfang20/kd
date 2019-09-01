@@ -13,6 +13,8 @@
     UIButton*  saveScanImgBtn;
 }
 
+//二维码图片
+@property (nonatomic,strong) UIImageView *scanImgView;
 @end
 @implementation KDMailingScanVC
 - (void)viewDidLoad {
@@ -51,7 +53,10 @@
     UIView* whiteScanBgView =[[UIView alloc]initWithFrame:CGRectMake(kAdaptationWidth(41), titleLabel.bottom+kAdaptationWidth(14), kAdaptationWidth(186), kAdaptationWidth(186))];
     whiteScanBgView.backgroundColor=[UIColor whiteColor];
     [topBgView addSubview:whiteScanBgView];
-    
+    _scanImgView=[[UIImageView alloc]initWithFrame:CGRectMake(16, 16, kAdaptationWidth(154), kAdaptationWidth(154))];
+    //二维码图片
+    _scanImgView.image = [UIImage imageWithColor:[UIColor grayColor]];
+    [whiteScanBgView addSubview:_scanImgView];
     //描述文字
     UILabel* desLabel=[[UILabel alloc]initWithFrame:CGRectMake(0, redBgView.bottom+ kAdaptationWidth(8), kAdaptationWidth(267), 43)];
     desLabel.text=@"扫码后填写你的收件地址，我就\n可以给你寄快递了！";

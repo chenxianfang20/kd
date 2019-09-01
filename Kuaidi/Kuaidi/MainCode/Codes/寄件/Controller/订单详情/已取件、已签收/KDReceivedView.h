@@ -8,6 +8,8 @@
 
 #import "RootCustomView.h"
 #import "KDOrderListModel.h"
+#import "KDWuliuListModel.h"
+#import "KDOrderGoodsModel.h"
 typedef void(^MyOrderAginBlock)(void);
 typedef void(^MyIsShowInfoBlock)(NSInteger);
 @interface KDReceivedView : RootCustomView
@@ -16,6 +18,9 @@ typedef void(^MyIsShowInfoBlock)(NSInteger);
 @property (nonatomic,strong) MyIsShowInfoBlock myIsShowInfoBlock;
 @property (nonatomic,strong) KDOrderListModel *model;
 @property (nonatomic,strong) MyOrderAginBlock myOrderAginBlock;
+
+// 0 待联系  1 已接单 2 已取件 3 已签收  4 已取消
+@property (nonatomic,assign) NSInteger  type;
 @end
 
 
