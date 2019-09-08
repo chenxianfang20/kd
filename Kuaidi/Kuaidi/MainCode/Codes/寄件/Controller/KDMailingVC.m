@@ -294,7 +294,6 @@ KDAddressInfoViewDelegate>
                              @"goods_imgs" : @"",
                              @"goods_price" : @(self.goodsInfoView.money)
                              };
-//    [ZJCustomHud showWithStatus:@"下单中..."];
     [SVProgressHUD showWithStatus:@"下单中..."];
     [KDNetWorkManager GetHttpDataWithUrlStr:kCreateOrder Dic:params headDic:nil SuccessBlock:^(id obj) {
         

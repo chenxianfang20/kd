@@ -6,10 +6,9 @@ target 'Kuaidi' do
  pod 'MJRefresh', '~> 3.1.12'
  pod 'MJExtension', '~> 3.0.13'
  pod 'SVProgressHUD', '~> 2.0.3'
-# pod 'Masonry','~> 0.6.3'
  pod 'MBProgressHUD', '~> 1.0.0'
  pod 'SDWebImage'
  pod 'CRBoxInputView', '1.1.2'
  pod 'PGPickerView'
- pod 'ZBarSDK'
+
 end

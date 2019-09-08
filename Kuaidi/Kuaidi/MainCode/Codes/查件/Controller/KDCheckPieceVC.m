@@ -11,7 +11,7 @@
 #import "KDExpressSendInfoController.h"
 #import "KDScanQRViewController.h"
 
-@interface KDCheckPieceVC ()<DKScanViewDelegate,ZBarReaderDelegate>
+@interface KDCheckPieceVC ()<DKScanViewDelegate>
 
 @property(nonatomic, strong)DKScanView *scanView;
 
@@ -86,27 +86,11 @@
 }
 -(void)clickScanQrCodeButton{
     
-//    KDExpressSendInfoController *vc = [[KDExpressSendInfoController alloc] init];
-//    vc.hidesBottomBarWhenPushed = YES;
-//    [self.navigationController pushViewController:vc animated:YES];
     KDScanQRViewController *vc = [[KDScanQRViewController alloc] init];
-    vc.readerDelegate = self;
+    
     vc.hidesBottomBarWhenPushed = YES;
     
     [self.navigationController pushViewController:vc animated:YES];
-//    [self presentViewController:vc animated:YES completion:nil];
-}
 
-#pragma mark -- ZBarReaderDelegate
--(void)imagePickerController:(UIImagePickerController*)reader didFinishPickingMediaWithInfo:(NSDictionary*)info {
-    id<NSFastEnumeration> results =[info objectForKey:ZBarReaderControllerResults];
-    ZBarSymbol *symbol =nil;
-    for(symbol in results)
-        break;
-    NSLog(@"%@",symbol.data);//打印识别的数据
-    [reader dismissViewControllerAnimated:YES completion:^{
-        
-    }];
-    
 }
 @end

@@ -12,6 +12,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface KDExpressSendInfoController : RootViewController
 
+@property(nonatomic, copy)NSString *scanString;
+
 @end
 
 NS_ASSUME_NONNULL_END

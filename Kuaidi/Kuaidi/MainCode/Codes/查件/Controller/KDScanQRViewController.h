@@ -2,15 +2,12 @@
 //  KDScanQRViewController.h
 //  Kuaidi
 //
-//  Created by ljp on 2019/8/27.
+//  Created by ljp on 2019/9/1.
 //  Copyright © 2019 ios01. All rights reserved.
 //
-#import "ZBarSDK.h"
 
-NS_ASSUME_NONNULL_BEGIN
+#import "RootViewController.h"
 
-@interface KDScanQRViewController : ZBarReaderViewController
+@interface KDScanQRViewController : RootViewController
 
 @end
-
-NS_ASSUME_NONNULL_END

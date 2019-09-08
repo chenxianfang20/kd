@@ -9,6 +9,7 @@
 #import "KDExpressSendInfoController.h"
 #import "DKExpressSendInfoCell.h"
 #import "DKExpressSendInfoHeaderView.h"
+#import "KDWuliuGuijiModel.h"
 
 @interface KDExpressSendInfoController ()<UITableViewDelegate,UITableViewDataSource>
 
@@ -17,6 +18,10 @@
 @property(nonatomic, strong)DKExpressSendInfoHeaderView *headerView;
 
 @property(nonatomic, strong)UIView *footerView;
+
+@property(nonatomic, strong)UIView *phoneFooterView;
+
+@property(nonatomic, strong)KDWuliuGuijiModel *model;
 
 @end
 
@@ -61,6 +66,31 @@
     return _footerView;
 }
 
+- (UIView *)phoneFooterView{
+    
+    if (!_footerView) {
+        _footerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 120)];
+        _footerView.backgroundColor = [UIColor clearColor];
+        
+        UIView *shadowView = [[UIView alloc] init];
+        shadowView.backgroundColor = rgb(255, 255, 255, 1.0);
+        shadowView.layer.shadowColor = rgb(11, 11, 11, 0.1).CGColor;
+        shadowView.layer.shadowOffset = CGSizeMake(0,3);
+        shadowView.layer.shadowOpacity = 0.7;
+        shadowView.layer.shadowRadius = 3;
+        shadowView.layer.cornerRadius = 12;
+        [_footerView addSubview:shadowView];
+        [shadowView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.top.equalTo(self->_footerView).offset(18);
+            make.bottom.equalTo(self->_footerView).offset(-18);
+            make.left.equalTo(self->_footerView).offset(18);
+            make.right.equalTo(self->_footerView).offset(-18);
+        }];
+    }
+    return _footerView;
+    
+}
+
 -(UITableView *)tableView{
     
     if (!_tableView) {
@@ -69,7 +99,7 @@
         _tableView.dataSource = self;
         _tableView.backgroundColor = [UIColor clearColor];
         _tableView.tableHeaderView = self.headerView;
-        _tableView.tableFooterView = self.footerView;
+        _tableView.tableFooterView = self.phoneFooterView;
         _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     }
     return _tableView;
@@ -82,6 +112,8 @@
     [self setNav];
     
     [self createSubViews];
+    
+    [self getDataFrom];
 }
 
 
@@ -92,6 +124,11 @@
     self.titleView.titleLable.textColor = rgb(255, 255, 255, 1.0);
     self.titleView.titleLable.text = @"查询结果";
     self.titleView.titleLable.hidden = NO;
+}
+
+-(void)back
+{
+    [self.navigationController popToRootViewControllerAnimated:YES];
 }
 
 - (void)createSubViews{
@@ -136,10 +173,54 @@
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return 10;
+    return 0;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     return 115;
+}
+
+#pragma mark -- 请求物流轨迹数据
+- (void)getDataFrom{
+    
+    if (!self.scanString) {
+        return;
+    }
+    
+    NSMutableDictionary *params = [@{
+                             @"code" : self.scanString
+                             } mutableCopy];
+    NSString *url = kWuliuGuiji;
+    
+    if ([self.scanString hasPrefix:@"SF"]) {
+        
+        params[@"num"] = @"7897";
+        url = kSFWuliu;
+    }
+        
+    
+    [SVProgressHUD showWithStatus:@"查询中..."];
+    [KDNetWorkManager GetHttpDataWithUrlStr:url Dic:params headDic:nil SuccessBlock:^(id obj) {
+        
+        [SVProgressHUD dismiss];
+        
+        NSLog(@"obj=======%@",obj);
+        
+        if([obj[@"code"] integerValue] == 1){
+            
+            NSDictionary *dic = obj[@"data"];
+            KDWuliuGuijiModel *model = [KDWuliuGuijiModel mj_objectWithKeyValues:dic];
+            self.model = model;
+            [self.tableView reloadData];
+            
+        }else{
+            
+            NSString *msg = obj[@"msg"];
+            [ZJCustomHud showWithText:msg WithDurations:2.0];
+        }
+        
+    } FailureBlock:^(id obj) {
+        
+    }];
 }
 
 @end

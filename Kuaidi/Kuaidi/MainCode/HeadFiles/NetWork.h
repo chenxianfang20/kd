@@ -23,6 +23,12 @@
 //物流列表
 #define kWuliuList @"/api/logistics/wuliu/index"
 
+//物流轨迹
+#define kWuliuGuiji @"/api/logistics/kdniao/getWuliu"
+
+//顺丰物流
+#define kSFWuliu @"/api/logistics/kdniao/shunfeng"
+
 //商品列表
 #define kGoodsList @"/api/logistics/goods/index"
 

@@ -31,12 +31,15 @@
 		164097002309B26B0055C0FB /* KDExpressSelectView.m in Sources */ = {isa = PBXBuildFile; fileRef = 164096FF2309B26B0055C0FB /* KDExpressSelectView.m */; };
 		164097032309B29C0055C0FB /* KDTimeSelectView.m in Sources */ = {isa = PBXBuildFile; fileRef = 164097022309B29C0055C0FB /* KDTimeSelectView.m */; };
 		164097062309B2CE0055C0FB /* KDMessageBoardView.m in Sources */ = {isa = PBXBuildFile; fileRef = 164097042309B2CD0055C0FB /* KDMessageBoardView.m */; };
+		1645FF03231B954C00576A2C /* KDScanQRViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1645FF02231B954C00576A2C /* KDScanQRViewController.m */; };
 		1658A2742309B53800439FC3 /* KDExpressSelectCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1658A2722309B53700439FC3 /* KDExpressSelectCell.m */; };
 		1661B01D230AE5DD0028801C /* DKExpressSendInfoHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1661B01C230AE5DD0028801C /* DKExpressSendInfoHeaderView.m */; };
 		169A445B23125E8D00F001D0 /* KDWuliuListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 169A445A23125E8D00F001D0 /* KDWuliuListModel.m */; };
 		169A445E23128FD700F001D0 /* KDGoodsListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 169A445D23128FD700F001D0 /* KDGoodsListModel.m */; };
 		169A44612312DFC500F001D0 /* KDOrderListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 169A44602312DFC500F001D0 /* KDOrderListModel.m */; };
-		16C0AEF923157E1100BB6EF8 /* KDScanQRViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 16C0AEF823157E1100BB6EF8 /* KDScanQRViewController.m */; };
+		16BCC7BD231B9BF500AF583F /* WSLScanView.m in Sources */ = {isa = PBXBuildFile; fileRef = 16BCC7B9231B9BF400AF583F /* WSLScanView.m */; };
+		16BCC7BE231B9BF500AF583F /* WSLNativeScanTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 16BCC7BC231B9BF500AF583F /* WSLNativeScanTool.m */; };
+		16BCC7C1231BA12A00AF583F /* KDWuliuGuijiModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 16BCC7C0231BA12A00AF583F /* KDWuliuGuijiModel.m */; };
 		3D65BF40230102F400B12F3D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D65BF3F230102F400B12F3D /* AppDelegate.m */; };
 		3D65BF46230102F400B12F3D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3D65BF44230102F400B12F3D /* Main.storyboard */; };
 		3D65BF48230102F700B12F3D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3D65BF47230102F700B12F3D /* Assets.xcassets */; };
@@ -281,6 +284,8 @@
 		164097022309B29C0055C0FB /* KDTimeSelectView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KDTimeSelectView.m; sourceTree = "<group>"; };
 		164097042309B2CD0055C0FB /* KDMessageBoardView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KDMessageBoardView.m; sourceTree = "<group>"; };
 		164097052309B2CE0055C0FB /* KDMessageBoardView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KDMessageBoardView.h; sourceTree = "<group>"; };
+		1645FF01231B954C00576A2C /* KDScanQRViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KDScanQRViewController.h; sourceTree = "<group>"; };
+		1645FF02231B954C00576A2C /* KDScanQRViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KDScanQRViewController.m; sourceTree = "<group>"; };
 		1658A2722309B53700439FC3 /* KDExpressSelectCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KDExpressSelectCell.m; sourceTree = "<group>"; };
 		1658A2732309B53700439FC3 /* KDExpressSelectCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KDExpressSelectCell.h; sourceTree = "<group>"; };
 		1661B01B230AE5DD0028801C /* DKExpressSendInfoHeaderView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DKExpressSendInfoHeaderView.h; sourceTree = "<group>"; };
@@ -291,8 +296,12 @@
 		169A445D23128FD700F001D0 /* KDGoodsListModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KDGoodsListModel.m; sourceTree = "<group>"; };
 		169A445F2312DFC500F001D0 /* KDOrderListModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KDOrderListModel.h; sourceTree = "<group>"; };
 		169A44602312DFC500F001D0 /* KDOrderListModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KDOrderListModel.m; sourceTree = "<group>"; };
-		16C0AEF723157E1100BB6EF8 /* KDScanQRViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KDScanQRViewController.h; sourceTree = "<group>"; };
-		16C0AEF823157E1100BB6EF8 /* KDScanQRViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KDScanQRViewController.m; sourceTree = "<group>"; };
+		16BCC7B9231B9BF400AF583F /* WSLScanView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WSLScanView.m; sourceTree = "<group>"; };
+		16BCC7BA231B9BF500AF583F /* WSLScanView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WSLScanView.h; sourceTree = "<group>"; };
+		16BCC7BB231B9BF500AF583F /* WSLNativeScanTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WSLNativeScanTool.h; sourceTree = "<group>"; };
+		16BCC7BC231B9BF500AF583F /* WSLNativeScanTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WSLNativeScanTool.m; sourceTree = "<group>"; };
+		16BCC7BF231BA12A00AF583F /* KDWuliuGuijiModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KDWuliuGuijiModel.h; sourceTree = "<group>"; };
+		16BCC7C0231BA12A00AF583F /* KDWuliuGuijiModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KDWuliuGuijiModel.m; sourceTree = "<group>"; };
 		310B9CC0F78DB0FB65918064 /* Pods-Kuaidi.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Kuaidi.debug.xcconfig"; path = "Target Support Files/Pods-Kuaidi/Pods-Kuaidi.debug.xcconfig"; sourceTree = "<group>"; };
 		3D65BF3B230102F400B12F3D /* Kuaidi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Kuaidi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3D65BF3E230102F400B12F3D /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -595,6 +604,8 @@
 		162AB4072309776700EF8225 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				16BCC7BF231BA12A00AF583F /* KDWuliuGuijiModel.h */,
+				16BCC7C0231BA12A00AF583F /* KDWuliuGuijiModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -664,6 +675,7 @@
 		164096EB2309B1290055C0FB /* View */ = {
 			isa = PBXGroup;
 			children = (
+				16BCC7B8231B9BCB00AF583F /* 条形码扫描 */,
 				164096EC2309B1290055C0FB /* DKScanView.h */,
 				164096ED2309B1290055C0FB /* DKScanView.m */,
 				162DEB84230C46220099F44E /* KDExpressTitleView.h */,
@@ -689,6 +701,17 @@
 			children = (
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		16BCC7B8231B9BCB00AF583F /* 条形码扫描 */ = {
+			isa = PBXGroup;
+			children = (
+				16BCC7BB231B9BF500AF583F /* WSLNativeScanTool.h */,
+				16BCC7BC231B9BF500AF583F /* WSLNativeScanTool.m */,
+				16BCC7BA231B9BF500AF583F /* WSLScanView.h */,
+				16BCC7B9231B9BF400AF583F /* WSLScanView.m */,
+			);
+			path = "条形码扫描";
 			sourceTree = "<group>";
 		};
 		3D65BF32230102F400B12F3D = {
@@ -938,8 +961,8 @@
 				3D65BFCE2301179300B12F3D /* KDCheckPieceVC.m */,
 				164096E82309B1150055C0FB /* KDExpressSendInfoController.h */,
 				164096E92309B1160055C0FB /* KDExpressSendInfoController.m */,
-				16C0AEF723157E1100BB6EF8 /* KDScanQRViewController.h */,
-				16C0AEF823157E1100BB6EF8 /* KDScanQRViewController.m */,
+				1645FF01231B954C00576A2C /* KDScanQRViewController.h */,
+				1645FF02231B954C00576A2C /* KDScanQRViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -1458,6 +1481,7 @@
 				TargetAttributes = {
 					3D65BF3A230102F400B12F3D = {
 						CreatedOnToolsVersion = 10.1;
+						LastSwiftMigration = 1010;
 					};
 					3D65BF52230102F700B12F3D = {
 						CreatedOnToolsVersion = 10.1;
@@ -1624,27 +1648,15 @@
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputFileListPaths = (
-			);
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-Kuaidi/Pods-Kuaidi-resources.sh",
 				"${PODS_ROOT}/MJRefresh/MJRefresh/MJRefresh.bundle",
 				"${PODS_ROOT}/SVProgressHUD/SVProgressHUD/SVProgressHUD.bundle",
-				"${PODS_ROOT}/ZBarSDK/iphone/res/zbar-back.png",
-				"${PODS_ROOT}/ZBarSDK/iphone/res/zbar-help.html",
-				"${PODS_ROOT}/ZBarSDK/iphone/res/zbar-helpicons.png",
-				"${PODS_ROOT}/ZBarSDK/iphone/res/zbar-samples.png",
 			);
 			name = "[CP] Copy Pods Resources";
-			outputFileListPaths = (
-			);
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/MJRefresh.bundle",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/SVProgressHUD.bundle",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/zbar-back.png",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/zbar-help.html",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/zbar-helpicons.png",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/zbar-samples.png",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -1656,15 +1668,11 @@
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputFileListPaths = (
-			);
 			inputPaths = (
 				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
 				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
 			outputPaths = (
 				"$(DERIVED_FILE_DIR)/Pods-Kuaidi-checkManifestLockResult.txt",
 			);
@@ -1686,7 +1694,6 @@
 				F4E524CF2316A718008F5724 /* KDAcceptedOrdersView.m in Sources */,
 				3D65BF972301086A00B12F3D /* HCTTitleView.m in Sources */,
 				1619AC5923084897003463C7 /* KDExpressRecordController.m in Sources */,
-				16C0AEF923157E1100BB6EF8 /* KDScanQRViewController.m in Sources */,
 				162DEB86230C46220099F44E /* KDExpressTitleView.m in Sources */,
 				F4195EB22312128900F3EF10 /* NSString+PinYin4Cocoa.m in Sources */,
 				F465DE4E230454FF002DFD4C /* KDInfoCell.m in Sources */,
@@ -1710,6 +1717,7 @@
 				3D696F8E230A797F00593437 /* KDSessionManager.m in Sources */,
 				3D65BF9A2301086A00B12F3D /* HCTTabbarController.m in Sources */,
 				169A44612312DFC500F001D0 /* KDOrderListModel.m in Sources */,
+				16BCC7BD231B9BF500AF583F /* WSLScanView.m in Sources */,
 				F4294BF323156BEB00ACED30 /* KDToContactedView.m in Sources */,
 				F4C3083C2309351E00CF65CA /* KDAddressAdminVC.m in Sources */,
 				3D65BF952301086A00B12F3D /* RootCustomView.m in Sources */,
@@ -1722,6 +1730,7 @@
 				F41FD250231431D9006F9ECA /* KDOrderDetailVC.m in Sources */,
 				F419CD5B2308603600553E29 /* KDCodeForPwdVC.m in Sources */,
 				F4E524D32316B219008F5724 /* KDReceivedView.m in Sources */,
+				1645FF03231B954C00576A2C /* KDScanQRViewController.m in Sources */,
 				F465DE4B230454FF002DFD4C /* KDLoginVC.m in Sources */,
 				F42233562312CD7C00912F26 /* KDScoreVC.m in Sources */,
 				F4B9A2702311729D00614EB4 /* CityChoose.m in Sources */,
@@ -1729,6 +1738,7 @@
 				F422E956230C4E8000F10B21 /* KDUserModel.m in Sources */,
 				3D65BFBF230115D000B12F3D /* UIView+Toast.m in Sources */,
 				16310F722306F9F20054311A /* NSDictionary+Log.m in Sources */,
+				16BCC7BE231B9BF500AF583F /* WSLNativeScanTool.m in Sources */,
 				F41C801523081D2F00DA1C2F /* KDPhoneVC.m in Sources */,
 				16310F6F2306F9D80054311A /* UIView+Extension.m in Sources */,
 				F465DE4D230454FF002DFD4C /* KDMineVC.m in Sources */,
@@ -1741,6 +1751,7 @@
 				164096F62309B1620055C0FB /* HGSegmentedPageViewController.m in Sources */,
 				F4E524D72316C014008F5724 /* KDQuitOrderView.m in Sources */,
 				F419CD62230865B700553E29 /* KDAboutAsVC.m in Sources */,
+				16BCC7C1231BA12A00AF583F /* KDWuliuGuijiModel.m in Sources */,
 				1661B01D230AE5DD0028801C /* DKExpressSendInfoHeaderView.m in Sources */,
 				162DEB89230C4AE60099F44E /* DKExpressSendInfoCell.m in Sources */,
 				F422E95A230C51FE00F10B21 /* KDUserModelTool.m in Sources */,
@@ -1939,9 +1950,10 @@
 			baseConfigurationReference = 310B9CC0F78DB0FB65918064 /* Pods-Kuaidi.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = S5L4T8UQDC;
+				DEVELOPMENT_TEAM = Y534VL634J;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/Kuaidi/Other/PrefixHeader.pch";
 				INFOPLIST_FILE = Kuaidi/Other/Info.plist;
@@ -1953,6 +1965,9 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.kuaidi.Kuaidi000;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "Kuaidi/MainCode/Codes/查件/Controller/Kuaidi-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -1962,9 +1977,10 @@
 			baseConfigurationReference = 6A402E0BE0DC5701A3D49873 /* Pods-Kuaidi.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = S5L4T8UQDC;
+				DEVELOPMENT_TEAM = Y534VL634J;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/Kuaidi/Other/PrefixHeader.pch";
 				INFOPLIST_FILE = Kuaidi/Other/Info.plist;
@@ -1976,6 +1992,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.kuaidi.Kuaidi000;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "Kuaidi/MainCode/Codes/查件/Controller/Kuaidi-Bridging-Header.h";
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
