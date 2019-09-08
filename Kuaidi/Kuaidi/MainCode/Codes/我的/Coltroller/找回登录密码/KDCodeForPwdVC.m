@@ -30,7 +30,7 @@
     UILabel* titleLabel=[[UILabel alloc]initWithFrame:CGRectMake(0,NavibarH+ kAdaptationWidth(42), kScreenWidth, 30)];
     titleLabel.text=@"请输入短信验证";
     titleLabel.textColor=[UIColor colorWithHex:@"#0B0B0B"];
-    titleLabel.font =PingFangBold(30);
+    titleLabel.font =PingFangBold(28);
     titleLabel.textAlignment=NSTextAlignmentCenter;
     [self.view addSubview:titleLabel];
     
@@ -42,8 +42,8 @@
     desLabel.textAlignment=NSTextAlignmentCenter;
     [self.view addSubview:desLabel];
     
-    CRBoxInputView *boxInputView = [[CRBoxInputView alloc] initWithFrame:CGRectMake(kAdaptationWidth(36), desLabel.bottom+kAdaptationWidth(70), kAdaptationWidth(303), 50)];
-    boxInputView.codeLength = 6;// 不设置时，默认4
+     CRBoxInputView *boxInputView = [[CRBoxInputView alloc] initWithFrame:CGRectMake(kAdaptationWidth(60), desLabel.bottom+kAdaptationWidth(70), kAdaptationWidth(255), 50)];
+    boxInputView.codeLength = 4;// 不设置时，默认4
     boxInputView.keyBoardType = UIKeyboardTypeNumberPad;// 不设置时，默认UIKeyboardTypeNumberPad
     [boxInputView loadAndPrepareViewWithBeginEdit:YES]; // BeginEdit:是否自动启用编辑模式
     [self.view addSubview:boxInputView];

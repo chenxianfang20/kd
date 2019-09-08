@@ -28,15 +28,14 @@
 }
 -(void)addChildViews{
     
-    _headImgView = [[UIImageView alloc]initWithFrame:CGRectMake(kAdaptationWidth(10), is_iPhoneX?kAdaptationWidth(13):kAdaptationWidth(8), kAdaptationWidth(24), kAdaptationWidth(24))];
-    _headImgView = [[UIImageView alloc]initWithFrame:CGRectMake(kAdaptationWidth(10), kAdaptationWidth(10), kAdaptationWidth(25), kAdaptationWidth(25))];
+    _headImgView = [[UIImageView alloc]initWithFrame:CGRectMake(kAdaptationWidth(18), is_iPhoneX?kAdaptationWidth(18):kAdaptationWidth(13), kAdaptationWidth(22), kAdaptationWidth(22))];
     [self addSubview:_headImgView];
     
     _titleLabel=[[UILabel alloc]initWithFrame:CGRectMake(kAdaptationWidth(60), _headImgView.top, kAdaptationWidth(100), kAdaptationWidth(24))];
     _titleLabel.font=[UIFont fontWithName:@"PingFang-SC-Medium" size: 15];
     _titleLabel.textColor=[UIColor colorWithHex:@"#0B0B0B"];
     [self addSubview:_titleLabel];
-    
+    _titleLabel.centerY=_headImgView.centerY;
     
     //箭头图标
     UIImageView* jtImgView=[[UIImageView alloc]initWithFrame:CGRectMake(kAdaptationWidth(10), kAdaptationWidth(8), kAdaptationWidth(12), kAdaptationWidth(12))];

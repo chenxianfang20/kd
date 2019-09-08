@@ -41,6 +41,9 @@
 //登录
 #define kLogin @"/api/user/public/login"
 
+//退出登录
+#define kLogout @"/api/user/public/logout"
+
 //地址列表
 #define kAddressList @"/api/user/address/index"
 //新增地址

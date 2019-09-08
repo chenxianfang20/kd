@@ -77,6 +77,7 @@
         case 1:{
             //已接单
             _acceptedOrdersView=[[KDAcceptedOrdersView alloc]initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight-NavibarH)];
+            _acceptedOrdersView.model=self.model;
             _acceptedOrdersView.myIsShowInfoBlock=^(NSInteger isShow){
                 if(isShow == 1){
                     weakSelf.scrollowView.scrollEnabled=YES;
@@ -96,6 +97,8 @@
         {
             //已取件、已签收
             _receivedView=[[KDReceivedView alloc]initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight-NavibarH)];
+            _receivedView.type=self.type;
+            _receivedView.model=self.model;
             _receivedView.myIsShowInfoBlock=^(NSInteger isShow){
                 if(isShow == 1){
                     weakSelf.scrollowView.scrollEnabled=YES;
@@ -118,6 +121,7 @@
         {
             //已取消
             _quitOrderView=[[KDQuitOrderView alloc]initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight-NavibarH)];
+            _quitOrderView.model=self.model;
             _quitOrderView.myIsShowInfoBlock=^(NSInteger isShow){
                 if(isShow == 1){
                     weakSelf.scrollowView.scrollEnabled=YES;

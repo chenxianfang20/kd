@@ -116,9 +116,12 @@
     [_midBgView addSubview:_kgLabel];
     
     _showInfoBtn=[[UIButton alloc]initWithFrame:CGRectMake(kAdaptationWidth(95), _midBgView.bottom+15, kAdaptationWidth(149), kAdaptationWidth(18))];
-    [_showInfoBtn setTitle:@"点击展开订单详情" forState:UIControlStateNormal];
     _showInfoBtn.titleLabel.font = PingFangRegular(14);
     [_showInfoBtn setTitleColor:[UIColor colorWithHex:@"#5C5C5C"] forState:UIControlStateNormal];
+    [_showInfoBtn setTitle:@"点击展开订单详情" forState:UIControlStateNormal];
+    [_showInfoBtn setImage:[UIImage imageNamed:@"图标-下"] forState:UIControlStateNormal];
+    [_showInfoBtn setTitleEdgeInsets:UIEdgeInsetsMake(0, - _showInfoBtn.imageView.image.size.width, 0, _showInfoBtn.imageView.image.size.width)];
+    [_showInfoBtn setImageEdgeInsets:UIEdgeInsetsMake(0, _showInfoBtn.titleLabel.bounds.size.width, 0, -_showInfoBtn.titleLabel.bounds.size.width-10)];
     [_showInfoBtn addTarget:self action:@selector(showInfoBtnClick:) forControlEvents:UIControlEventTouchUpInside];
     _showInfoBtn.tag=0;
     [self addSubview:_showInfoBtn];
@@ -139,6 +142,7 @@
     [_contactBtn addTarget:self action:@selector(contactBtnClick) forControlEvents:UIControlEventTouchUpInside];
     [_contactBgView addSubview:_contactBtn];
     
+    
 }
 -(void)showInfoBtnClick:(UIButton*)btn{
     if(btn.tag == 0){
@@ -147,12 +151,14 @@
         _bottomBgView.hidden = NO;
         btn.tag=1;
         [_showInfoBtn setTitle:@"点击收起订单详情" forState:UIControlStateNormal];
+        [_showInfoBtn setImage:[UIImage imageNamed:@"图标-上"] forState:UIControlStateNormal];
     }else{
         btn.top=_midBgView.bottom+15;
         _contactBgView.hidden=NO;
         _bottomBgView.hidden = YES;
         btn.tag=0;
         [_showInfoBtn setTitle:@"点击展开订单详情" forState:UIControlStateNormal];
+        [_showInfoBtn setImage:[UIImage imageNamed:@"图标-下"] forState:UIControlStateNormal];
     }
     if(self.myIsShowInfoBlock){
         self.myIsShowInfoBlock(btn.tag);
@@ -247,7 +253,7 @@
     [_bottomBgView addSubview:wpInfoLabel];
     
     UILabel* wpDetailLabel =[[UILabel alloc]initWithFrame:CGRectMake(kAdaptationWidth(98), wpInfoLabel.top, kAdaptationWidth(120), kAdaptationWidth(18))];
-    wpDetailLabel.text=@"文件/1.0公交";
+    wpDetailLabel.text=[NSString stringWithFormat:@"%@/%@公斤",model.ordergoods.goods_type,model.ordergoods.goods_weight] ;
     wpDetailLabel.textColor=[UIColor colorWithHex:@"#0B0B0B"];
     wpDetailLabel.font = PingFangMedium(14);
     [_bottomBgView addSubview:wpDetailLabel];
@@ -260,7 +266,11 @@
     [_bottomBgView addSubview:messageLabel];
     
     UILabel* messageDetailLabel =[[UILabel alloc]initWithFrame:CGRectMake(kAdaptationWidth(98), messageLabel.top, kAdaptationWidth(224), kAdaptationWidth(18))];
-    messageDetailLabel.text=model.user_remark;
+    if(model.user_remark.length == 0){
+        messageDetailLabel.text=@"(无)";
+    }else{
+        messageDetailLabel.text=model.user_remark;
+    }
     messageDetailLabel.textColor=[UIColor colorWithHex:@"#0B0B0B"];
     messageDetailLabel.font = PingFangMedium(14);
     messageDetailLabel.numberOfLines=0;
@@ -281,20 +291,20 @@
     [_bottomBgView addSubview:moneyDetailLabel];
     
     //***运费方式
-    UILabel* moneyStyleLabel =[[UILabel alloc]initWithFrame:CGRectMake(kLeftX,moneyDetailLabel.bottom+20, kAdaptationWidth(65), kAdaptationWidth(18))];
-    moneyStyleLabel.text=@"付费方式";
-    moneyStyleLabel.textColor=[UIColor colorWithHex:@"#5C5C5C"];
-    moneyStyleLabel.font = PingFangMedium(14);
-    [_bottomBgView addSubview:moneyStyleLabel];
-    
-    UILabel* moneyStyleDetailLabel =[[UILabel alloc]initWithFrame:CGRectMake(kAdaptationWidth(98), moneyStyleLabel.top, kAdaptationWidth(120), kAdaptationWidth(18))];
-    moneyStyleDetailLabel.text=@"在线支付";
-    moneyStyleDetailLabel.textColor=[UIColor colorWithHex:@"#0B0B0B"];
-    moneyStyleDetailLabel.font = PingFangMedium(14);
-    [_bottomBgView addSubview:moneyStyleDetailLabel];
+//    UILabel* moneyStyleLabel =[[UILabel alloc]initWithFrame:CGRectMake(kLeftX,moneyDetailLabel.bottom+20, kAdaptationWidth(65), kAdaptationWidth(18))];
+//    moneyStyleLabel.text=@"付费方式";
+//    moneyStyleLabel.textColor=[UIColor colorWithHex:@"#5C5C5C"];
+//    moneyStyleLabel.font = PingFangMedium(14);
+//    [_bottomBgView addSubview:moneyStyleLabel];
+//
+//    UILabel* moneyStyleDetailLabel =[[UILabel alloc]initWithFrame:CGRectMake(kAdaptationWidth(98), moneyStyleLabel.top, kAdaptationWidth(120), kAdaptationWidth(18))];
+//    moneyStyleDetailLabel.text=@"在线支付";
+//    moneyStyleDetailLabel.textColor=[UIColor colorWithHex:@"#0B0B0B"];
+//    moneyStyleDetailLabel.font = PingFangMedium(14);
+//    [_bottomBgView addSubview:moneyStyleDetailLabel];
     
     //***订单编号
-    UILabel* orderLabel =[[UILabel alloc]initWithFrame:CGRectMake(kLeftX,moneyStyleDetailLabel.bottom+20, kAdaptationWidth(60), kAdaptationWidth(18))];
+    UILabel* orderLabel =[[UILabel alloc]initWithFrame:CGRectMake(kLeftX,moneyDetailLabel.bottom+20, kAdaptationWidth(60), kAdaptationWidth(18))];
     orderLabel.text=@"订单编号";
     orderLabel.textColor=[UIColor colorWithHex:@"#5C5C5C"];
     orderLabel.font = PingFangMedium(14);
@@ -311,7 +321,7 @@
     [copyBtn setTitleColor:[UIColor colorWithHex:@"#DF2F31"] forState:UIControlStateNormal];
     [copyBtn setTitle:@"复制" forState:UIControlStateNormal];
     copyBtn.titleLabel.font = PingFangMedium(14);
-    [_bottomBgView addSubview:copyBtn];
+    //[_bottomBgView addSubview:copyBtn];
     copyBtn.centerY= orderDetailLabel.centerY;
     
     //***下单时间
@@ -328,20 +338,20 @@
     [_bottomBgView addSubview:timeDetailLabel];
     
     //***下单来源
-    UILabel* orderFromLabel =[[UILabel alloc]initWithFrame:CGRectMake(kLeftX,timeDetailLabel.bottom+20, kAdaptationWidth(65), kAdaptationWidth(18))];
-    orderFromLabel.text=@"下单来源";
-    orderFromLabel.textColor=[UIColor colorWithHex:@"#5C5C5C"];
-    orderFromLabel.font = PingFangMedium(14);
-    [_bottomBgView addSubview:orderFromLabel];
+//    UILabel* orderFromLabel =[[UILabel alloc]initWithFrame:CGRectMake(kLeftX,timeDetailLabel.bottom+20, kAdaptationWidth(65), kAdaptationWidth(18))];
+//    orderFromLabel.text=@"下单来源";
+//    orderFromLabel.textColor=[UIColor colorWithHex:@"#5C5C5C"];
+//    orderFromLabel.font = PingFangMedium(14);
+//    [_bottomBgView addSubview:orderFromLabel];
+//
+//    UILabel* orderFromDetailLabel =[[UILabel alloc]initWithFrame:CGRectMake(kAdaptationWidth(98), orderFromLabel.top, kAdaptationWidth(120), kAdaptationWidth(18))];
+//    orderFromDetailLabel.text=@"APP";
+//    orderFromDetailLabel.textColor=[UIColor colorWithHex:@"#0B0B0B"];
+//    orderFromDetailLabel.font = PingFangMedium(14);
     
-    UILabel* orderFromDetailLabel =[[UILabel alloc]initWithFrame:CGRectMake(kAdaptationWidth(98), orderFromLabel.top, kAdaptationWidth(120), kAdaptationWidth(18))];
-    orderFromDetailLabel.text=@"APP";
-    orderFromDetailLabel.textColor=[UIColor colorWithHex:@"#0B0B0B"];
-    orderFromDetailLabel.font = PingFangMedium(14);
+//    [_bottomBgView addSubview:orderFromDetailLabel];
     
-    [_bottomBgView addSubview:orderFromDetailLabel];
-    
-    _bottomBgView.height=orderFromDetailLabel.bottom+15;
+    _bottomBgView.height=timeDetailLabel.bottom+15;
     self.height=_bottomBgView.bottom+45;
     
     _bottomBgView.hidden = YES;

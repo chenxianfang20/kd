@@ -108,7 +108,15 @@
 		F41C801523081D2F00DA1C2F /* KDPhoneVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F41C801223081D2F00DA1C2F /* KDPhoneVC.m */; };
 		F41C801623081D2F00DA1C2F /* KDCodeVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F41C801323081D2F00DA1C2F /* KDCodeVC.m */; };
 		F41CCC942312AE1B0018B5A8 /* KDExpressDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F41CCC932312AE1B0018B5A8 /* KDExpressDetailModel.m */; };
+		F41D4C7B231BF03900056F54 /* KDScoreModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F41D4C7A231BF03900056F54 /* KDScoreModel.m */; };
+		F41D4C7E231BF11700056F54 /* KDScoreCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F41D4C7D231BF11700056F54 /* KDScoreCell.m */; };
+		F41D4C83231BF70700056F54 /* 图标-上@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F41D4C7F231BF70600056F54 /* 图标-上@3x.png */; };
+		F41D4C84231BF70700056F54 /* 图标-下@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F41D4C80231BF70600056F54 /* 图标-下@2x.png */; };
+		F41D4C85231BF70700056F54 /* 图标-上@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F41D4C81231BF70700056F54 /* 图标-上@2x.png */; };
+		F41D4C86231BF70700056F54 /* 图标-下@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F41D4C82231BF70700056F54 /* 图标-下@3x.png */; };
+		F41F6A4C231BFBD600907C8E /* KDHelpVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F41F6A4B231BFBD600907C8E /* KDHelpVC.m */; };
 		F41FD250231431D9006F9ECA /* KDOrderDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F41FD24F231431D9006F9ECA /* KDOrderDetailVC.m */; };
+		F420D011231BBB650002EFC9 /* KDOrderGoodsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F420D010231BBB650002EFC9 /* KDOrderGoodsModel.m */; };
 		F42119B8230AD71C001481CE /* KDNewAddressVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F42119B7230AD71C001481CE /* KDNewAddressVC.m */; };
 		F42233522312CD1300912F26 /* 图标-暂无积分@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F42233502312CD1200912F26 /* 图标-暂无积分@3x.png */; };
 		F42233532312CD1300912F26 /* 图标-暂无积分@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F42233512312CD1300912F26 /* 图标-暂无积分@2x.png */; };
@@ -419,8 +427,20 @@
 		F41C801423081D2F00DA1C2F /* KDPhoneVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KDPhoneVC.h; sourceTree = "<group>"; };
 		F41CCC922312AE1B0018B5A8 /* KDExpressDetailModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KDExpressDetailModel.h; sourceTree = "<group>"; };
 		F41CCC932312AE1B0018B5A8 /* KDExpressDetailModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KDExpressDetailModel.m; sourceTree = "<group>"; };
+		F41D4C79231BF03900056F54 /* KDScoreModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KDScoreModel.h; sourceTree = "<group>"; };
+		F41D4C7A231BF03900056F54 /* KDScoreModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KDScoreModel.m; sourceTree = "<group>"; };
+		F41D4C7C231BF11700056F54 /* KDScoreCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KDScoreCell.h; sourceTree = "<group>"; };
+		F41D4C7D231BF11700056F54 /* KDScoreCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KDScoreCell.m; sourceTree = "<group>"; };
+		F41D4C7F231BF70600056F54 /* 图标-上@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "图标-上@3x.png"; sourceTree = "<group>"; };
+		F41D4C80231BF70600056F54 /* 图标-下@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "图标-下@2x.png"; sourceTree = "<group>"; };
+		F41D4C81231BF70700056F54 /* 图标-上@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "图标-上@2x.png"; sourceTree = "<group>"; };
+		F41D4C82231BF70700056F54 /* 图标-下@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "图标-下@3x.png"; sourceTree = "<group>"; };
+		F41F6A4A231BFBD600907C8E /* KDHelpVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KDHelpVC.h; sourceTree = "<group>"; };
+		F41F6A4B231BFBD600907C8E /* KDHelpVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KDHelpVC.m; sourceTree = "<group>"; };
 		F41FD24E231431D9006F9ECA /* KDOrderDetailVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KDOrderDetailVC.h; sourceTree = "<group>"; };
 		F41FD24F231431D9006F9ECA /* KDOrderDetailVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KDOrderDetailVC.m; sourceTree = "<group>"; };
+		F420D00F231BBB650002EFC9 /* KDOrderGoodsModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KDOrderGoodsModel.h; sourceTree = "<group>"; };
+		F420D010231BBB650002EFC9 /* KDOrderGoodsModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KDOrderGoodsModel.m; sourceTree = "<group>"; };
 		F42119B6230AD71C001481CE /* KDNewAddressVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KDNewAddressVC.h; sourceTree = "<group>"; };
 		F42119B7230AD71C001481CE /* KDNewAddressVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KDNewAddressVC.m; sourceTree = "<group>"; };
 		F42233502312CD1200912F26 /* 图标-暂无积分@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "图标-暂无积分@3x.png"; sourceTree = "<group>"; };
@@ -651,6 +671,8 @@
 				169A445D23128FD700F001D0 /* KDGoodsListModel.m */,
 				169A445F2312DFC500F001D0 /* KDOrderListModel.h */,
 				169A44602312DFC500F001D0 /* KDOrderListModel.m */,
+				F420D00F231BBB650002EFC9 /* KDOrderGoodsModel.h */,
+				F420D010231BBB650002EFC9 /* KDOrderGoodsModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1095,6 +1117,15 @@
 			path = "快递详情";
 			sourceTree = "<group>";
 		};
+		F41F6A49231BFBAC00907C8E /* 帮助中心 */ = {
+			isa = PBXGroup;
+			children = (
+				F41F6A4A231BFBD600907C8E /* KDHelpVC.h */,
+				F41F6A4B231BFBD600907C8E /* KDHelpVC.m */,
+			);
+			path = "帮助中心";
+			sourceTree = "<group>";
+		};
 		F41FD24D231430BE006F9ECA /* 订单详情 */ = {
 			isa = PBXGroup;
 			children = (
@@ -1123,6 +1154,10 @@
 			children = (
 				F42233542312CD7C00912F26 /* KDScoreVC.h */,
 				F42233552312CD7C00912F26 /* KDScoreVC.m */,
+				F41D4C79231BF03900056F54 /* KDScoreModel.h */,
+				F41D4C7A231BF03900056F54 /* KDScoreModel.m */,
+				F41D4C7C231BF11700056F54 /* KDScoreCell.h */,
+				F41D4C7D231BF11700056F54 /* KDScoreCell.m */,
 			);
 			path = "积分";
 			sourceTree = "<group>";
@@ -1141,6 +1176,10 @@
 		F424E6B523098568002D340E /* 个人中心 */ = {
 			isa = PBXGroup;
 			children = (
+				F41D4C81231BF70700056F54 /* 图标-上@2x.png */,
+				F41D4C7F231BF70600056F54 /* 图标-上@3x.png */,
+				F41D4C80231BF70600056F54 /* 图标-下@2x.png */,
+				F41D4C82231BF70700056F54 /* 图标-下@3x.png */,
 				F42233512312CD1300912F26 /* 图标-暂无积分@2x.png */,
 				F42233502312CD1200912F26 /* 图标-暂无积分@3x.png */,
 				F41B096F231298090094A5AC /* 快递背景@2x.png */,
@@ -1317,6 +1356,7 @@
 		F465DE44230454FE002DFD4C /* 个人中心 */ = {
 			isa = PBXGroup;
 			children = (
+				F41F6A49231BFBAC00907C8E /* 帮助中心 */,
 				F422334F2312CBEB00912F26 /* 积分 */,
 				F424E6BA230986B3002D340E /* 系统设置 */,
 				F4C308432309429E00CF65CA /* 常用快递 */,
@@ -1522,10 +1562,12 @@
 				F424E6B92309857C002D340E /* 图标-收藏 @2x.png in Resources */,
 				F41B09792312980D0094A5AC /* 快递背景@2x.png in Resources */,
 				F481FF67230AE99000761A3A /* 地址-图标-语音@3x.png in Resources */,
+				F41D4C86231BF70700056F54 /* 图标-下@3x.png in Resources */,
 				F465DE2D230454B9002DFD4C /* 我的-图-系统设置@3x.png in Resources */,
 				F465DE1B230454B9002DFD4C /* 我的-图标-常用快递@2x.png in Resources */,
 				F481FF68230AE99000761A3A /* 地址-图标-照片@2x.png in Resources */,
 				F41B098F231299F90094A5AC /* 我的-图标-我们@2x.png in Resources */,
+				F41D4C85231BF70700056F54 /* 图标-上@2x.png in Resources */,
 				F465DE1F230454B9002DFD4C /* 我的-图标-地址管理@3x.png in Resources */,
 				F41B098B231299B60094A5AC /* 我的-图标-关于我们@2x.png in Resources */,
 				F465DE3B230454BA002DFD4C /* 图标-寄件-选中@3x.png in Resources */,
@@ -1560,6 +1602,7 @@
 				F41BCCAE2308298400BCD691 /* 注册-图标-选中@2x.png in Resources */,
 				F465DE31230454B9002DFD4C /* 图标-淘宝@2x.png in Resources */,
 				F465DE2B230454B9002DFD4C /* 我的-图标-个人@2x.png in Resources */,
+				F41D4C84231BF70700056F54 /* 图标-下@2x.png in Resources */,
 				F41C800423081BDA00DA1C2F /* 图标-清除@3x.png in Resources */,
 				F41C800323081BDA00DA1C2F /* 图标-清除@2x.png in Resources */,
 				F41C800D23081C1300DA1C2F /* 成功图片@2x.png in Resources */,
@@ -1585,6 +1628,7 @@
 				F41BCCAD2308298400BCD691 /* 注册-图标-选中@3x.png in Resources */,
 				F465DE1E230454B9002DFD4C /* 我的-图标-帮助中心@2x.png in Resources */,
 				F419CD662308669700553E29 /* 关于-图片@3x.png in Resources */,
+				F41D4C83231BF70700056F54 /* 图标-上@3x.png in Resources */,
 				F465DE28230454B9002DFD4C /* 我的-图标-地址管理@2x.png in Resources */,
 				F465DE27230454B9002DFD4C /* 我的-图标-顺丰@2x.png in Resources */,
 				F419CD652308669700553E29 /* 关于-图片@2x.png in Resources */,
@@ -1690,6 +1734,7 @@
 			files = (
 				164096EA2309B1160055C0FB /* KDExpressSendInfoController.m in Sources */,
 				164096FC2309B2420055C0FB /* UIView+CBExtension.m in Sources */,
+				F41F6A4C231BFBD600907C8E /* KDHelpVC.m in Sources */,
 				1619AC56230804D4003463C7 /* KDGoodsTypeInfoSelectView.m in Sources */,
 				F4E524CF2316A718008F5724 /* KDAcceptedOrdersView.m in Sources */,
 				3D65BF972301086A00B12F3D /* HCTTitleView.m in Sources */,
@@ -1750,8 +1795,12 @@
 				164096FD2309B2420055C0FB /* CBGroupAndStreamView.m in Sources */,
 				164096F62309B1620055C0FB /* HGSegmentedPageViewController.m in Sources */,
 				F4E524D72316C014008F5724 /* KDQuitOrderView.m in Sources */,
+				F420D011231BBB650002EFC9 /* KDOrderGoodsModel.m in Sources */,
 				F419CD62230865B700553E29 /* KDAboutAsVC.m in Sources */,
+
 				16BCC7C1231BA12A00AF583F /* KDWuliuGuijiModel.m in Sources */,
+				F41D4C7E231BF11700056F54 /* KDScoreCell.m in Sources */,
+
 				1661B01D230AE5DD0028801C /* DKExpressSendInfoHeaderView.m in Sources */,
 				162DEB89230C4AE60099F44E /* DKExpressSendInfoCell.m in Sources */,
 				F422E95A230C51FE00F10B21 /* KDUserModelTool.m in Sources */,
@@ -1777,6 +1826,7 @@
 				163588092307DF370017F510 /* KDGoodsInfoView.m in Sources */,
 				F41C800723081C0300DA1C2F /* NSString+Valid.m in Sources */,
 				F41B0983231298700094A5AC /* KDExpressDetailVC.m in Sources */,
+				F41D4C7B231BF03900056F54 /* KDScoreModel.m in Sources */,
 				164097062309B2CE0055C0FB /* KDMessageBoardView.m in Sources */,
 				3D65BFEC23016F4400B12F3D /* UIColor+Tool.m in Sources */,
 			);

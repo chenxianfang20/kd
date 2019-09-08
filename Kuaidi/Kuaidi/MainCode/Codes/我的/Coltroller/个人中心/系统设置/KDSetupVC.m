@@ -102,6 +102,10 @@
     quitBgView.layer.masksToBounds=YES;
     [self.view addSubview:quitBgView];
     
+    quitBgView.userInteractionEnabled=YES;
+    UITapGestureRecognizer* quitBgViewTap  = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(quitBgViewTapClick)];
+    [quitBgView addGestureRecognizer:quitBgViewTap];
+    
     UILabel* quitLabel=[[UILabel alloc]initWithFrame:CGRectMake(kLeftX, kAdaptationWidth(19), kAdaptationWidth(150), kAdaptationWidth(18))];
     quitLabel.font=PingFangRegular(15);
     quitLabel.textColor=[UIColor colorWithHex:@"#0B0B0B"];
@@ -118,12 +122,29 @@
     [self.backButton setImage:[UIImage imageNamed:@"注册-图标-后退"] forState:UIControlStateNormal];
     self.backgroungImgView.image=[UIImage imageWithColor:rgb(245, 245, 245, 1)];
 }
+//退出登录
+-(void)quitBgViewTapClick{
+    __weak typeof(self)weakSelf = self;
+    KDUserModel * model = [KDUserModelTool userModel];
+    NSDictionary* headData= @{@"XX-Token":model.token,@"XX-Device-Type":kDeviceType};
+    [KDNetWorkManager GetHttpDataWithUrlStr:kLogout Dic:nil headDic:headData SuccessBlock:^(id obj) {
+        if([obj[@"code"] integerValue] == 1){
+            [KDUserModelTool deleteUserModel];
+            [weakSelf.view showToastWithText:@"已退出登录" time:1];
+            [weakSelf.navigationController popViewControllerAnimated:YES];
+        }
+    } FailureBlock:^(id obj) {
+        
+    }];
+}
 //清除缓存按钮的点击事件
 - (void)cacheBgViewTapClick{
-    [self cleanCaches:NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES).lastObject];
+    //[self cleanCaches:NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES).lastObject];
     [self cleanCaches:NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES).lastObject];
     [self cleanCaches:NSTemporaryDirectory()];
     
+    
+    [ZJCustomHud showWithSuccess:@"清除成功"];
     cacheLabel.text=@"0.0M";
 }
 

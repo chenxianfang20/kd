@@ -65,9 +65,7 @@
                 [ZJCustomHud showWithText:dict[@"msg"] WithDurations:1];
             }else{
                 successBlock(dict);
-            }
-            
-            
+            } 
         }
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         /** 这里是处理事件的回调 */
