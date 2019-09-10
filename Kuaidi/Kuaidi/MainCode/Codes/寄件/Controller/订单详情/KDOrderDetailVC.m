@@ -112,7 +112,7 @@
             
             //再下一单
             _receivedView.myOrderAginBlock=^{
-                
+                [weakSelf.navigationController popToRootViewControllerAnimated:YES ];
             };
             [_scrollowView addSubview:_receivedView];
         }
@@ -133,7 +133,7 @@
             };
             //重新下单
             _quitOrderView.myReOrderBlock=^{
-                
+                [weakSelf.navigationController popToRootViewControllerAnimated:YES];
             };
             [_scrollowView addSubview:_quitOrderView];
         }
