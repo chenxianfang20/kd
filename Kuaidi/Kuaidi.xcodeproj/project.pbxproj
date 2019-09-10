@@ -40,6 +40,8 @@
 		16BCC7BD231B9BF500AF583F /* WSLScanView.m in Sources */ = {isa = PBXBuildFile; fileRef = 16BCC7B9231B9BF400AF583F /* WSLScanView.m */; };
 		16BCC7BE231B9BF500AF583F /* WSLNativeScanTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 16BCC7BC231B9BF500AF583F /* WSLNativeScanTool.m */; };
 		16BCC7C1231BA12A00AF583F /* KDWuliuGuijiModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 16BCC7C0231BA12A00AF583F /* KDWuliuGuijiModel.m */; };
+		16E3D0B72324B29A00D4B831 /* DKExpressFindTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 16E3D0B62324B29A00D4B831 /* DKExpressFindTextView.m */; };
+		16E3D0BA23252AC200D4B831 /* KDCancellOrderController.m in Sources */ = {isa = PBXBuildFile; fileRef = 16E3D0B923252AC200D4B831 /* KDCancellOrderController.m */; };
 		3D65BF40230102F400B12F3D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D65BF3F230102F400B12F3D /* AppDelegate.m */; };
 		3D65BF46230102F400B12F3D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3D65BF44230102F400B12F3D /* Main.storyboard */; };
 		3D65BF48230102F700B12F3D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3D65BF47230102F700B12F3D /* Assets.xcassets */; };
@@ -310,6 +312,10 @@
 		16BCC7BC231B9BF500AF583F /* WSLNativeScanTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WSLNativeScanTool.m; sourceTree = "<group>"; };
 		16BCC7BF231BA12A00AF583F /* KDWuliuGuijiModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KDWuliuGuijiModel.h; sourceTree = "<group>"; };
 		16BCC7C0231BA12A00AF583F /* KDWuliuGuijiModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KDWuliuGuijiModel.m; sourceTree = "<group>"; };
+		16E3D0B52324B29A00D4B831 /* DKExpressFindTextView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DKExpressFindTextView.h; sourceTree = "<group>"; };
+		16E3D0B62324B29A00D4B831 /* DKExpressFindTextView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DKExpressFindTextView.m; sourceTree = "<group>"; };
+		16E3D0B823252AC200D4B831 /* KDCancellOrderController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KDCancellOrderController.h; sourceTree = "<group>"; };
+		16E3D0B923252AC200D4B831 /* KDCancellOrderController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KDCancellOrderController.m; sourceTree = "<group>"; };
 		310B9CC0F78DB0FB65918064 /* Pods-Kuaidi.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Kuaidi.debug.xcconfig"; path = "Target Support Files/Pods-Kuaidi/Pods-Kuaidi.debug.xcconfig"; sourceTree = "<group>"; };
 		3D65BF3B230102F400B12F3D /* Kuaidi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Kuaidi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3D65BF3E230102F400B12F3D /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -704,6 +710,8 @@
 				162DEB85230C46220099F44E /* KDExpressTitleView.m */,
 				1661B01B230AE5DD0028801C /* DKExpressSendInfoHeaderView.h */,
 				1661B01C230AE5DD0028801C /* DKExpressSendInfoHeaderView.m */,
+				16E3D0B52324B29A00D4B831 /* DKExpressFindTextView.h */,
+				16E3D0B62324B29A00D4B831 /* DKExpressFindTextView.m */,
 				162DEB87230C4AE60099F44E /* DKExpressSendInfoCell.h */,
 				162DEB88230C4AE60099F44E /* DKExpressSendInfoCell.m */,
 			);
@@ -970,6 +978,8 @@
 				3D65BFC82301173E00B12F3D /* KDMailingVC.m */,
 				1619AC5723084897003463C7 /* KDExpressRecordController.h */,
 				1619AC5823084897003463C7 /* KDExpressRecordController.m */,
+				16E3D0B823252AC200D4B831 /* KDCancellOrderController.h */,
+				16E3D0B923252AC200D4B831 /* KDCancellOrderController.m */,
 				3D696F85230A784C00593437 /* KDExpressRecordListController.h */,
 				3D696F86230A784C00593437 /* KDExpressRecordListController.m */,
 			);
@@ -1744,6 +1754,7 @@
 				F465DE4E230454FF002DFD4C /* KDInfoCell.m in Sources */,
 				F4195EB42312128900F3EF10 /* HanyuPinyinOutputFormat.m in Sources */,
 				169A445B23125E8D00F001D0 /* KDWuliuListModel.m in Sources */,
+				16E3D0B72324B29A00D4B831 /* DKExpressFindTextView.m in Sources */,
 				F41B3C9A231293C900C93AEF /* KDExpressModel.m in Sources */,
 				3D65BF9E23010BBB00B12F3D /* UIImage+Image.m in Sources */,
 				3D65BF992301086A00B12F3D /* HCTNavigationController.m in Sources */,
@@ -1797,10 +1808,9 @@
 				F4E524D72316C014008F5724 /* KDQuitOrderView.m in Sources */,
 				F420D011231BBB650002EFC9 /* KDOrderGoodsModel.m in Sources */,
 				F419CD62230865B700553E29 /* KDAboutAsVC.m in Sources */,
-
 				16BCC7C1231BA12A00AF583F /* KDWuliuGuijiModel.m in Sources */,
 				F41D4C7E231BF11700056F54 /* KDScoreCell.m in Sources */,
-
+				16E3D0BA23252AC200D4B831 /* KDCancellOrderController.m in Sources */,
 				1661B01D230AE5DD0028801C /* DKExpressSendInfoHeaderView.m in Sources */,
 				162DEB89230C4AE60099F44E /* DKExpressSendInfoCell.m in Sources */,
 				F422E95A230C51FE00F10B21 /* KDUserModelTool.m in Sources */,

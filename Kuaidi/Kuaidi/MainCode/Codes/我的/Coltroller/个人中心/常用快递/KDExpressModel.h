@@ -17,6 +17,7 @@
 
 
 +(instancetype)ModelWithDict:(NSDictionary*)dict;
+
 @end
 
 

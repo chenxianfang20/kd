@@ -79,8 +79,14 @@
 #pragma mark -- DKScanViewDelegate
 -(void)clickLookUpButton{
     
+    if (self.scanView.textField.text.length == 0) {
+        [ZJCustomHud showWithText:@"请输入快递单号" WithDurations:2.0];
+        return;
+    }
+    
     KDExpressSendInfoController *vc = [[KDExpressSendInfoController alloc] init];
     vc.hidesBottomBarWhenPushed = YES;
+    vc.scanString = self.scanView.textField.text;
     [self.navigationController pushViewController:vc animated:YES];
     
 }
@@ -92,5 +98,11 @@
     
     [self.navigationController pushViewController:vc animated:YES];
 
+}
+
+-(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
+    [super touchesBegan:touches withEvent:event];
+    [self.view endEditing:YES];
+    
 }
 @end

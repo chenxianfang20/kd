@@ -207,6 +207,7 @@
         make.top.equalTo(line.mas_bottom).offset(12);
         make.size.mas_equalTo(CGSizeMake(78, 36));
     }];
+    [button addTarget:self action:@selector(operateButtonClick:) forControlEvents:UIControlEventTouchUpInside];
     
     UIButton *detailButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [detailButton setTitle:@"订单详情" forState:UIControlStateNormal];
@@ -221,6 +222,7 @@
         make.top.equalTo(line.mas_bottom).offset(12);
         make.size.mas_equalTo(CGSizeMake(78, 36));
     }];
+    [detailButton addTarget:self action:@selector(detailButtonClick:) forControlEvents:UIControlEventTouchUpInside];
 }
 
 -(void)setModel:(KDOrderListModel *)model{
@@ -251,4 +253,19 @@
     
 }
 
+- (void)operateButtonClick:(UIButton *)button{
+    
+    if ([self.delegate respondsToSelector:@selector(clickOperateButtonWithModel:)]) {
+        [self.delegate clickOperateButtonWithModel:self.model];
+    }
+    
+}
+
+- (void)detailButtonClick:(UIButton *)button{
+    
+    if ([self.delegate respondsToSelector:@selector(clickDetailButtonWithModel:)]) {
+        [self.delegate clickDetailButtonWithModel:self.model];
+    }
+    
+}
 @end

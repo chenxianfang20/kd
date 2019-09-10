@@ -20,6 +20,9 @@
 //订单列表
 #define kOrderList @"/api/logistics/order/index"
 
+//取消订单
+#define kCancellOrder @"/api/logistics/kdniao/cancelyuyue"
+
 //物流列表
 #define kWuliuList @"/api/logistics/wuliu/index"
 

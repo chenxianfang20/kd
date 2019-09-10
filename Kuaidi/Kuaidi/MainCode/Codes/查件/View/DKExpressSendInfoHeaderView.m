@@ -8,10 +8,13 @@
 
 #import "DKExpressSendInfoHeaderView.h"
 #import "KDExpressTitleView.h"
+#import "KDWuliuGuijiModel.h"
 
 @interface DKExpressSendInfoHeaderView()
 
 @property(nonatomic, strong)KDExpressTitleView *expressTitleView;
+
+@property(nonatomic, strong)UILabel *statuLabel;
 
 @property(nonatomic, strong)NSArray *iconArr;
 
@@ -123,9 +126,9 @@
     }];
     
     UILabel *statuLabel = [[UILabel alloc] init];
+    self.statuLabel = statuLabel;
     statuLabel.textColor = rgb(223, 47, 49, 1.0);
     statuLabel.font = PingFangBold(15);
-    statuLabel.text = @"已签收";
     [statusView addSubview:statuLabel];
     [statuLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(statusView).offset(18);
@@ -143,6 +146,22 @@
     }];
     
     [self bringSubviewToFront:expressInfoView];
+}
+
+-(void)setModel:(KDWuliuGuijiModel *)model{
+    
+    _model = model;
+    
+    [self.expressTitleView.iconImageV sd_setImageWithURL:[NSURL URLWithString:model.logistic.logistics_icon]];
+    self.expressTitleView.expressTitleLabel.text = model.logistic.logistics_name;
+    self.expressTitleView.expressNoLabel.text = model.logistic.logistics_code;
+    
+    if (model.Traces.count > 0) {
+        KDWuliuTraces *trceModel = model.Traces.firstObject;
+        self.statuLabel.text = trceModel.remark;
+    }else{
+        self.statuLabel.text = @"未找到物流信息";
+    }
 }
 
 @end

@@ -8,9 +8,7 @@
 
 #import "DKScanView.h"
 
-@interface DKScanView()
-
-
+@interface DKScanView()<UITextFieldDelegate>
 
 @end
 
@@ -72,13 +70,16 @@
     }];
     
     UITextField *textField = [[UITextField alloc] init];
+    self.textField = textField;
     textField.textColor = rgb(11, 11, 11, 1.0);
     textField.font = PingFangBold(18);
     textField.placeholder = @"请输入快递单号查询信息";
     [textField setValue:rgb(206, 206, 206, 1.0) forKeyPath:@"_placeholderLabel.textColor"];
     [textField setValue:PingFangMedium(15) forKeyPath:@"_placeholderLabel.font"];
     textField.clearButtonMode = UITextFieldViewModeWhileEditing;
-    textField.keyboardType = UIKeyboardTypeNumberPad;
+    textField.keyboardType = UIKeyboardTypeDefault;
+    textField.returnKeyType = UIReturnKeyDone;
+    textField.delegate = self;
     [bgView addSubview:textField];
     [textField mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(bgView).offset(54);
@@ -135,6 +136,12 @@
     if ([self.delegate respondsToSelector:@selector(clickLookUpButton)]) {
         [self.delegate clickLookUpButton];
     }
+}
+
+-(BOOL)textFieldShouldReturn:(UITextField *)textField{
+    
+    [textField endEditing:YES];
+    return YES;
 }
 
 @end

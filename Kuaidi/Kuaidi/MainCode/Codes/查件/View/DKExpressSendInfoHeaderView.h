@@ -9,9 +9,11 @@
 #import <UIKit/UIKit.h>
 
 NS_ASSUME_NONNULL_BEGIN
+@class KDWuliuGuijiModel;
 
 @interface DKExpressSendInfoHeaderView : UIView
 
+@property(nonatomic, strong)KDWuliuGuijiModel *model;
 
 +(DKExpressSendInfoHeaderView *)expressSendInfoHeaderView;
 

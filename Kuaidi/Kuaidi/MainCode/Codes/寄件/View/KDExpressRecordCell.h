@@ -12,7 +12,17 @@ NS_ASSUME_NONNULL_BEGIN
 
 @class KDOrderListModel;
 
+@protocol KDExpressRecordCellDelegate <NSObject>
+
+@optional
+-(void)clickDetailButtonWithModel:(KDOrderListModel *)model;
+-(void)clickOperateButtonWithModel:(KDOrderListModel *)model;
+
+@end
+
 @interface KDExpressRecordCell : UITableViewCell
+
+@property(nonatomic, assign)id<KDExpressRecordCellDelegate> delegate;
 
 @property(nonatomic, strong)KDOrderListModel *model;
 

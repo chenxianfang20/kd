@@ -37,8 +37,7 @@
     self.layer.cornerRadius = 12;
     
     UIImageView *iconImageV = [[UIImageView alloc] init];
-    iconImageV.image = [UIImage imageNamed:@""];
-    iconImageV.backgroundColor = [UIColor redColor];
+    self.iconImageV = iconImageV;
     iconImageV.layer.cornerRadius = 27;
     iconImageV.layer.borderWidth = 1;
     iconImageV.layer.borderColor = rgb(253, 255, 254, 1.0).CGColor;
@@ -50,9 +49,9 @@
     }];
     
     UILabel *expressTitleLabel = [[UILabel alloc] init];
+    self.expressTitleLabel = expressTitleLabel;
     expressTitleLabel.textColor = rgb(11, 11, 11, 1.0);
     expressTitleLabel.font = PingFangBold(18);
-    expressTitleLabel.text = @"顺丰快递";
     [self addSubview:expressTitleLabel];
     [expressTitleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(iconImageV.mas_right).offset(18);
@@ -61,7 +60,7 @@
     }];
     
     UILabel *expressNoLabel = [[UILabel alloc] init];
-    expressNoLabel.text = @"73114959694127";
+    self.expressNoLabel = expressNoLabel;
     expressNoLabel.textColor = rgb(92, 92, 92, 1.0);
     expressNoLabel.font = PingFangMedium(16);
     [self addSubview:expressNoLabel];

@@ -20,6 +20,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface DKScanView : UIView
 
+@property(nonatomic, strong)UITextField *textField;
+
 @property(nonatomic, assign)id<DKScanViewDelegate> delegate;
 
 +(DKScanView *)scanView;

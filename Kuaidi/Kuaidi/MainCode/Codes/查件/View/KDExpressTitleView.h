@@ -12,6 +12,12 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface KDExpressTitleView : UIView
 
+@property(nonatomic, strong)UIImageView *iconImageV;
+
+@property(nonatomic, strong)UILabel *expressTitleLabel;
+
+@property(nonatomic, strong)UILabel *expressNoLabel;
+
 + (KDExpressTitleView *)expressTitleView;
 
 @end

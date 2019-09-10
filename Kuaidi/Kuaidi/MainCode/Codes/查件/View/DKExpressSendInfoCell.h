@@ -9,8 +9,12 @@
 #import <UIKit/UIKit.h>
 
 NS_ASSUME_NONNULL_BEGIN
-
+@class KDWuliuGuijiModel;
 @interface DKExpressSendInfoCell : UITableViewCell
+
+@property(nonatomic, assign)NSInteger row;
+@property(nonatomic, assign)NSInteger total;
+@property(nonatomic, strong)KDWuliuGuijiModel *model;
 
 @end
 

@@ -61,7 +61,7 @@
 
 -(void)createSubViews{
     
-    CGFloat margint = 18;
+    CGFloat margint = 15;
     CGFloat buttonW = 75;
     CGFloat buttonH = self.frame.size.height;
     for (NSInteger i = 0; i < self.titleArr.count; i++) {
@@ -85,7 +85,7 @@
         [self.buttonArr addObject:button];
     }
     
-    UIView *lineView = [[UIView alloc] initWithFrame:CGRectMake(margint + (margint + buttonW)*self.titleArr.count, 0, 1, 16)];
+    UIView *lineView = [[UIView alloc] initWithFrame:CGRectMake(margint/2 + (margint + buttonW)*self.titleArr.count, 0, 1, 16)];
     lineView.backgroundColor = rgb(255, 255, 255, 0.72);
     lineView.center = CGPointMake(lineView.center.x, self.height/2.0);
     [self addSubview:lineView];

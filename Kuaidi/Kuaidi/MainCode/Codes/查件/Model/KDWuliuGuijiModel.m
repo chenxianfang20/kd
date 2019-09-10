@@ -8,10 +8,14 @@
 
 #import "KDWuliuGuijiModel.h"
 
+@implementation KDWuliuTraces
+
+@end
+
 @implementation KDWuliuGuijiModel
 
 + (NSDictionary *)mj_objectClassInArray{
-    return @{@"stuarray" : @"KDWuliuTraces"};
+    return @{@"Traces" : @"KDWuliuTraces"};
 }
 
 @end

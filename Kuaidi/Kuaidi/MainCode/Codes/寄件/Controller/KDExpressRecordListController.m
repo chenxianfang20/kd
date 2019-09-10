@@ -11,7 +11,9 @@
 #import "KDOrderListModel.h"
 #import "KDWuliuListModel.h"
 #import "KDOrderDetailVC.h"
-@interface KDExpressRecordListController ()< UITableViewDelegate, UITableViewDataSource>
+#import "KDCancellOrderController.h"
+
+@interface KDExpressRecordListController ()< UITableViewDelegate, UITableViewDataSource,KDExpressRecordCellDelegate>
 
 @property(nonatomic, strong)UITableView *tableView;
 
@@ -139,6 +141,7 @@
         cell = [[KDExpressRecordCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
     }
     cell.model = self.dataArr[indexPath.row];
+    cell.delegate = self;
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
 }
@@ -151,6 +154,39 @@
     detailVC.type=model.status.integerValue;
     [self.navigationController pushViewController:detailVC animated:YES];
 }
+
+#pragma mark -- KDExpressRecordCellDelegate
+-(void)clickDetailButtonWithModel:(KDOrderListModel *)model{
+    
+    KDOrderDetailVC* detailVC =[[KDOrderDetailVC alloc]init];
+    detailVC.model=model;
+    // 0 待联系  1 已接单 2 已取件 3 已签收  4 已取消
+    detailVC.type=model.status.integerValue;
+    [self.navigationController pushViewController:detailVC animated:YES];
+    
+}
+
+-(void)clickOperateButtonWithModel:(KDOrderListModel *)model{
+    
+    if (model.status.integerValue == 0) {
+        //取消订单
+        KDCancellOrderController *vc = [[KDCancellOrderController alloc] init];
+        vc.model = model;
+        [self.navigationController pushViewController:vc animated:YES];
+        
+    }else if (model.status.integerValue == 1 || model.status.integerValue == 2) {
+        //再下一单
+        [self.navigationController popToRootViewControllerAnimated:YES];
+    }else if (model.status.integerValue == 3) {
+        //再下一单
+       [self.navigationController popToRootViewControllerAnimated:YES];
+    }else if (model.status.integerValue == 4) {
+        //重新下单
+        [self.navigationController popToRootViewControllerAnimated:YES];
+    }
+    
+}
+
 - (void)getDataFromNet{
     
     KDUserModel* model = [KDUserModelTool userModel];
@@ -202,7 +238,8 @@
         }
         
     } FailureBlock:^(id obj) {
-        
+        [SVProgressHUD dismiss];
+        [ZJCustomHud showWithText:@"网络错误" WithDurations:2.0];
     }];
     
 }

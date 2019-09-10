@@ -10,18 +10,21 @@
 #import "DKExpressSendInfoCell.h"
 #import "DKExpressSendInfoHeaderView.h"
 #import "KDWuliuGuijiModel.h"
+#import "DKExpressFindTextView.h"
 
-@interface KDExpressSendInfoController ()<UITableViewDelegate,UITableViewDataSource>
+@interface KDExpressSendInfoController ()<UITableViewDelegate,UITableViewDataSource,DKExpressFindTextViewDelegate>
 
 @property(nonatomic, strong)UITableView *tableView;
 
 @property(nonatomic, strong)DKExpressSendInfoHeaderView *headerView;
 
+@property(nonatomic, strong)DKExpressFindTextView *textfieldHeaderView;
+
 @property(nonatomic, strong)UIView *footerView;
 
-@property(nonatomic, strong)UIView *phoneFooterView;
-
 @property(nonatomic, strong)KDWuliuGuijiModel *model;
+
+@property(nonatomic, copy)NSString *phoneNum;
 
 @end
 
@@ -35,10 +38,19 @@
     return _headerView;
 }
 
+-(DKExpressFindTextView *)textfieldHeaderView{
+    
+    if (!_textfieldHeaderView) {
+        _textfieldHeaderView = [DKExpressFindTextView expressFindTextView];
+        _textfieldHeaderView.delegate = self;
+    }
+    return _textfieldHeaderView;
+}
+
 -(UIView *)footerView{
     
     if (!_footerView) {
-        _footerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 24)];
+        _footerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 36)];
         _footerView.backgroundColor = [UIColor clearColor];
         
         UIView *shadowView = [[UIView alloc] init];
@@ -50,9 +62,10 @@
         shadowView.layer.cornerRadius = 12;
         [_footerView addSubview:shadowView];
         [shadowView mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.top.bottom.equalTo(self->_footerView).offset(0);
+            make.top.equalTo(self->_footerView).offset(0);
             make.left.equalTo(self->_footerView).offset(18);
             make.right.equalTo(self->_footerView).offset(-18);
+            make.height.mas_equalTo(24);
         }];
         
         UIView *maskView = [[UIView alloc] init];
@@ -66,31 +79,6 @@
     return _footerView;
 }
 
-- (UIView *)phoneFooterView{
-    
-    if (!_footerView) {
-        _footerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 120)];
-        _footerView.backgroundColor = [UIColor clearColor];
-        
-        UIView *shadowView = [[UIView alloc] init];
-        shadowView.backgroundColor = rgb(255, 255, 255, 1.0);
-        shadowView.layer.shadowColor = rgb(11, 11, 11, 0.1).CGColor;
-        shadowView.layer.shadowOffset = CGSizeMake(0,3);
-        shadowView.layer.shadowOpacity = 0.7;
-        shadowView.layer.shadowRadius = 3;
-        shadowView.layer.cornerRadius = 12;
-        [_footerView addSubview:shadowView];
-        [shadowView mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.top.equalTo(self->_footerView).offset(18);
-            make.bottom.equalTo(self->_footerView).offset(-18);
-            make.left.equalTo(self->_footerView).offset(18);
-            make.right.equalTo(self->_footerView).offset(-18);
-        }];
-    }
-    return _footerView;
-    
-}
-
 -(UITableView *)tableView{
     
     if (!_tableView) {
@@ -98,8 +86,6 @@
         _tableView.delegate = self;
         _tableView.dataSource = self;
         _tableView.backgroundColor = [UIColor clearColor];
-        _tableView.tableHeaderView = self.headerView;
-        _tableView.tableFooterView = self.phoneFooterView;
         _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     }
     return _tableView;
@@ -108,6 +94,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    self.phoneNum = @"";
     
     [self setNav];
     
@@ -168,12 +156,14 @@
     if (!cell) {
         cell = [[DKExpressSendInfoCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellId];
     }
+    cell.row = indexPath.row;
+    cell.model = self.model;
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return 0;
+    return self.model.Traces.count;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     return 115;
@@ -186,14 +176,12 @@
         return;
     }
     
-    NSMutableDictionary *params = [@{
-                             @"code" : self.scanString
-                             } mutableCopy];
+    NSDictionary *params = @{
+                             @"code" : self.scanString,
+                             @"num" : self.phoneNum
+                             };
     NSString *url = kWuliuGuiji;
-    
     if ([self.scanString hasPrefix:@"SF"]) {
-        
-        params[@"num"] = @"7897";
         url = kSFWuliu;
     }
         
@@ -203,14 +191,26 @@
         
         [SVProgressHUD dismiss];
         
-        NSLog(@"obj=======%@",obj);
-        
         if([obj[@"code"] integerValue] == 1){
             
             NSDictionary *dic = obj[@"data"];
-            KDWuliuGuijiModel *model = [KDWuliuGuijiModel mj_objectWithKeyValues:dic];
-            self.model = model;
-            [self.tableView reloadData];
+            if (dic.count != 0) {
+                KDWuliuGuijiModel *model = [KDWuliuGuijiModel mj_objectWithKeyValues:dic];
+                model.logistic.logistics_code = self.scanString;
+                self.model = model;
+                if (self.phoneNum.length == 0 ) {//&& ![self.scanString hasPrefix:@"SF"]
+                    self.tableView.tableHeaderView = self.textfieldHeaderView;
+                    self.textfieldHeaderView.model = model;
+                }else{
+                    self.tableView.tableHeaderView = self.headerView;
+                    self.headerView.model = model;
+                    self.tableView.tableFooterView = self.footerView;
+                    [self.tableView reloadData];
+                }
+            }else{
+                NSString *msg = @"未查到物流信息";
+                [ZJCustomHud showWithText:msg WithDurations:2.0];
+            }
             
         }else{
             
@@ -221,6 +221,15 @@
     } FailureBlock:^(id obj) {
         
     }];
+}
+
+#pragma mark -- DKExpressFindTextViewDelegate
+- (void)searchExpressInfoWithNum:(NSString *)num{
+    
+    self.phoneNum = num;
+    
+    [self getDataFrom];
+    
 }
 
 @end
