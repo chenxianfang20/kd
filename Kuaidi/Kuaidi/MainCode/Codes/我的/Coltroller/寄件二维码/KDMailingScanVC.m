@@ -8,6 +8,7 @@
 
 #import "KDMailingScanVC.h"
 #import "KDAddressAdminModel.h"
+#import "QRCodeTool.h"
 @interface KDMailingScanVC(){
     UIScrollView* scrollowView;
     UIButton*  saveScanImgBtn;
@@ -55,7 +56,7 @@
     [topBgView addSubview:whiteScanBgView];
     _scanImgView=[[UIImageView alloc]initWithFrame:CGRectMake(16, 16, kAdaptationWidth(154), kAdaptationWidth(154))];
     //二维码图片
-    _scanImgView.image = [UIImage imageWithColor:[UIColor grayColor]];
+    _scanImgView.image = [QRCodeTool createScanImageForWX_Scan:@"https://itunes.apple.com/cn/app/快递么/id1479799971?mt=8"];
     [whiteScanBgView addSubview:_scanImgView];
     //描述文字
     UILabel* desLabel=[[UILabel alloc]initWithFrame:CGRectMake(0, redBgView.bottom+ kAdaptationWidth(8), kAdaptationWidth(267), 43)];

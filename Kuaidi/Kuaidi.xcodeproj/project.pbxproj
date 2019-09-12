@@ -42,6 +42,7 @@
 		16BCC7C1231BA12A00AF583F /* KDWuliuGuijiModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 16BCC7C0231BA12A00AF583F /* KDWuliuGuijiModel.m */; };
 		16E3D0B72324B29A00D4B831 /* DKExpressFindTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 16E3D0B62324B29A00D4B831 /* DKExpressFindTextView.m */; };
 		16E3D0BA23252AC200D4B831 /* KDCancellOrderController.m in Sources */ = {isa = PBXBuildFile; fileRef = 16E3D0B923252AC200D4B831 /* KDCancellOrderController.m */; };
+		3D434B9B232A355F00AD650D /* QRCodeTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D434B9A232A355F00AD650D /* QRCodeTool.m */; };
 		3D65BF40230102F400B12F3D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D65BF3F230102F400B12F3D /* AppDelegate.m */; };
 		3D65BF46230102F400B12F3D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3D65BF44230102F400B12F3D /* Main.storyboard */; };
 		3D65BF48230102F700B12F3D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3D65BF47230102F700B12F3D /* Assets.xcassets */; };
@@ -317,6 +318,8 @@
 		16E3D0B823252AC200D4B831 /* KDCancellOrderController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KDCancellOrderController.h; sourceTree = "<group>"; };
 		16E3D0B923252AC200D4B831 /* KDCancellOrderController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KDCancellOrderController.m; sourceTree = "<group>"; };
 		310B9CC0F78DB0FB65918064 /* Pods-Kuaidi.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Kuaidi.debug.xcconfig"; path = "Target Support Files/Pods-Kuaidi/Pods-Kuaidi.debug.xcconfig"; sourceTree = "<group>"; };
+		3D434B99232A355F00AD650D /* QRCodeTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QRCodeTool.h; sourceTree = "<group>"; };
+		3D434B9A232A355F00AD650D /* QRCodeTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QRCodeTool.m; sourceTree = "<group>"; };
 		3D65BF3B230102F400B12F3D /* Kuaidi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Kuaidi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3D65BF3E230102F400B12F3D /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		3D65BF3F230102F400B12F3D /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -744,6 +747,15 @@
 			path = "条形码扫描";
 			sourceTree = "<group>";
 		};
+		3D434B98232A355F00AD650D /* 二维码生成 */ = {
+			isa = PBXGroup;
+			children = (
+				3D434B99232A355F00AD650D /* QRCodeTool.h */,
+				3D434B9A232A355F00AD650D /* QRCodeTool.m */,
+			);
+			path = "二维码生成";
+			sourceTree = "<group>";
+		};
 		3D65BF32230102F400B12F3D = {
 			isa = PBXGroup;
 			children = (
@@ -833,6 +845,7 @@
 		3D65BF732301050C00B12F3D /* Tools */ = {
 			isa = PBXGroup;
 			children = (
+				3D434B98232A355F00AD650D /* 二维码生成 */,
 				3D696F88230A797400593437 /* 网络 */,
 				F41C800823081C1300DA1C2F /* ZJCustomHUD */,
 				3D65BF9B23010B8900B12F3D /* Category */,
@@ -1815,6 +1828,7 @@
 				162DEB89230C4AE60099F44E /* DKExpressSendInfoCell.m in Sources */,
 				F422E95A230C51FE00F10B21 /* KDUserModelTool.m in Sources */,
 				F4C3083F230935F400CF65CA /* KDAddressAdminModel.m in Sources */,
+				3D434B9B232A355F00AD650D /* QRCodeTool.m in Sources */,
 				3D65BFC32301169500B12F3D /* UIView+YYAdd.m in Sources */,
 				F424E6BD23098716002D340E /* KDSetupVC.m in Sources */,
 				F41BCCB223082A1200BCD691 /* UIButton+EnlargeTouchArea.m in Sources */,
