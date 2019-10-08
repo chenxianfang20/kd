@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "HCTTabbarController.h"
+#import "WXApiManager.h"
 
 @interface AppDelegate ()
 
@@ -21,6 +22,9 @@
     
     self.window=[[UIWindow alloc]initWithFrame:[UIScreen mainScreen].bounds];
     
+    //向微信注册
+    [WXApi registerApp:APP_ID];
+//    [WXApi registerApp:APP_ID universalLink:UNIVERSAL_LINK];
     
     [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
     
@@ -29,6 +33,15 @@
     return YES;
 }
 
+- (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url
+{
+    return  [WXApi handleOpenURL:url delegate:[WXApiManager sharedManager]];
+}
+
+- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation
+{
+    return  [WXApi handleOpenURL:url delegate:[WXApiManager sharedManager]];
+}
 
 - (void)applicationWillResignActive:(UIApplication *)application {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
@@ -56,5 +69,48 @@
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
 
-
+-(void) onReq:(BaseReq*)req
+    {
+        if([req isKindOfClass:[GetMessageFromWXReq class]])
+        {
+            // 微信请求App提供内容， 需要app提供内容后使用sendRsp返回
+            NSString *strTitle = [NSString stringWithFormat:@"微信请求App提供内容"];
+            NSString *strMsg = @"微信请求App提供内容，App要调用sendResp:GetMessageFromWXResp返回给微信";
+            
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:strTitle message:strMsg delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+            alert.tag = 1000;
+            [alert show];
+        }
+        else if([req isKindOfClass:[ShowMessageFromWXReq class]])
+        {
+            ShowMessageFromWXReq* temp = (ShowMessageFromWXReq*)req;
+            WXMediaMessage *msg = temp.message;
+            
+            //显示微信传过来的内容
+            WXAppExtendObject *obj = msg.mediaObject;
+            
+            NSString *strTitle = [NSString stringWithFormat:@"微信请求App显示内容"];
+            NSString *strMsg = [NSString stringWithFormat:@"标题：%@ \n内容：%@ \n附带信息：%@ \n缩略图:%u bytes\n\n", msg.title, msg.description, obj.extInfo, msg.thumbData.length];
+            
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:strTitle message:strMsg delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+            [alert show];
+        }
+        else if([req isKindOfClass:[LaunchFromWXReq class]])
+        {
+            //从微信启动App
+            NSString *strTitle = [NSString stringWithFormat:@"从微信启动"];
+            NSString *strMsg = @"这是从微信启动的消息";
+            
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:strTitle message:strMsg delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+            [alert show];
+        }
+}
+    
+-(void) onResp:(BaseResp*)resp
+    {
+        if ([SendAuthResp class]) {
+            
+        }
+    }
+    
 @end

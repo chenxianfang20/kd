@@ -43,7 +43,12 @@
 /** get 请求 */
 +(void)GetHttpDataWithUrlStr:(NSString *)url Dic:(NSDictionary *)dic headDic:(NSDictionary*)headDic SuccessBlock:(success)successBlock FailureBlock:(failure)failureBlock
 {
-    NSString* urlStr = [NSString stringWithFormat:@"%@%@",kBaseUrl,url];
+    NSString*urlStr = @"";
+    if ([url containsString:@"http"]) {
+        urlStr = url;
+    }else{
+        urlStr = [NSString stringWithFormat:@"%@%@",kBaseUrl,url];
+    }
     NSLog(@"allUrl:%@ dic:\n%@ %@",urlStr, headDic,dic);
     
     AFHTTPSessionManager *manager = [KDSessionManager sharedHttpSessionManager];

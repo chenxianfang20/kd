@@ -95,7 +95,7 @@
             self.scanFinishedBlock(feature.messageString);
         }
     }else{
-        NSLog(@"无法识别图中二维码");
+//        NSLog(@"无法识别图中二维码");
     }
 }
 

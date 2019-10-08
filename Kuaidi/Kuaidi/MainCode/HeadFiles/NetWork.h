@@ -81,4 +81,16 @@
 //关于我们
 #define kArticles @"/api/portal/articles/2"
 
+//第三方登录
+#define APP_ID @"wx822e0fdc66d89ea0"
+
+#define AppSecret @"887d3c1b6285e2621498f54439650d92"
+
+#define UNIVERSAL_LINK @"https://kuaidi.foldbook.net/"
+
+
+#define WXAccessTokenUrl @"https://api.weixin.qq.com/sns/oauth2/access_token"
+
+#define WXRefreshTokenUrl @"https://api.weixin.qq.com/sns/oauth2/refresh_token"
+
 #endif /* NetWork_h */

@@ -8,6 +8,18 @@
 
 /* Begin PBXBuildFile section */
 		11DFD2E1117B7E0825E346F0 /* libPods-Kuaidi.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A26641192201A6307C867746 /* libPods-Kuaidi.a */; };
+		160D8552233F19550081AE75 /* WXApiManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 160D8551233F19550081AE75 /* WXApiManager.m */; };
+		160D856E233F1D900081AE75 /* AlertTitleFont.m in Sources */ = {isa = PBXBuildFile; fileRef = 160D8558233F1D900081AE75 /* AlertTitleFont.m */; };
+		160D856F233F1D900081AE75 /* UITextView+Placeholder.m in Sources */ = {isa = PBXBuildFile; fileRef = 160D855B233F1D900081AE75 /* UITextView+Placeholder.m */; };
+		160D8570233F1D900081AE75 /* ButtonColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 160D855D233F1D900081AE75 /* ButtonColor.m */; };
+		160D8571233F1D900081AE75 /* ShakeDebug.m in Sources */ = {isa = PBXBuildFile; fileRef = 160D855E233F1D900081AE75 /* ShakeDebug.m */; };
+		160D8572233F1D900081AE75 /* LineColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 160D8564233F1D900081AE75 /* LineColor.m */; };
+		160D8573233F1D900081AE75 /* AES.m in Sources */ = {isa = PBXBuildFile; fileRef = 160D8566233F1D900081AE75 /* AES.m */; };
+		160D8574233F1D900081AE75 /* RSA.m in Sources */ = {isa = PBXBuildFile; fileRef = 160D8567233F1D900081AE75 /* RSA.m */; };
+		160D8575233F1D900081AE75 /* RandomKey.m in Sources */ = {isa = PBXBuildFile; fileRef = 160D8568233F1D900081AE75 /* RandomKey.m */; };
+		160D8576233F1D900081AE75 /* MD5.m in Sources */ = {isa = PBXBuildFile; fileRef = 160D856B233F1D900081AE75 /* MD5.m */; };
+		160D8579233F2A140081AE75 /* WXUserInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 160D8578233F2A140081AE75 /* WXUserInfoModel.m */; };
+		160D857E233F6EFF0081AE75 /* TencentOpenAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 160D857D233F6EFF0081AE75 /* TencentOpenAPI.framework */; };
 		1619AC532307FDD2003463C7 /* KDGoodsInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1619AC522307FDD2003463C7 /* KDGoodsInfoCell.m */; };
 		1619AC56230804D4003463C7 /* KDGoodsTypeInfoSelectView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1619AC55230804D4003463C7 /* KDGoodsTypeInfoSelectView.m */; };
 		1619AC5923084897003463C7 /* KDExpressRecordController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1619AC5823084897003463C7 /* KDExpressRecordController.m */; };
@@ -236,6 +248,31 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		160D8550233F19550081AE75 /* WXApiManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WXApiManager.h; sourceTree = "<group>"; };
+		160D8551233F19550081AE75 /* WXApiManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WXApiManager.m; sourceTree = "<group>"; };
+		160D8558233F1D900081AE75 /* AlertTitleFont.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlertTitleFont.m; sourceTree = "<group>"; };
+		160D8559233F1D900081AE75 /* ShakeDebug.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShakeDebug.h; sourceTree = "<group>"; };
+		160D855A233F1D900081AE75 /* ButtonColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ButtonColor.h; sourceTree = "<group>"; };
+		160D855B233F1D900081AE75 /* UITextView+Placeholder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITextView+Placeholder.m"; sourceTree = "<group>"; };
+		160D855C233F1D900081AE75 /* LineColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LineColor.h; sourceTree = "<group>"; };
+		160D855D233F1D900081AE75 /* ButtonColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ButtonColor.m; sourceTree = "<group>"; };
+		160D855E233F1D900081AE75 /* ShakeDebug.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShakeDebug.m; sourceTree = "<group>"; };
+		160D855F233F1D900081AE75 /* AlertTitleFont.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlertTitleFont.h; sourceTree = "<group>"; };
+		160D8561233F1D900081AE75 /* Definition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Definition.h; sourceTree = "<group>"; };
+		160D8562233F1D900081AE75 /* Constant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constant.h; sourceTree = "<group>"; };
+		160D8563233F1D900081AE75 /* UITextView+Placeholder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITextView+Placeholder.h"; sourceTree = "<group>"; };
+		160D8564233F1D900081AE75 /* LineColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LineColor.m; sourceTree = "<group>"; };
+		160D8566233F1D900081AE75 /* AES.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AES.m; sourceTree = "<group>"; };
+		160D8567233F1D900081AE75 /* RSA.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSA.m; sourceTree = "<group>"; };
+		160D8568233F1D900081AE75 /* RandomKey.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RandomKey.m; sourceTree = "<group>"; };
+		160D8569233F1D900081AE75 /* MD5.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MD5.h; sourceTree = "<group>"; };
+		160D856A233F1D900081AE75 /* AES.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AES.h; sourceTree = "<group>"; };
+		160D856B233F1D900081AE75 /* MD5.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MD5.m; sourceTree = "<group>"; };
+		160D856C233F1D900081AE75 /* RandomKey.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RandomKey.h; sourceTree = "<group>"; };
+		160D856D233F1D900081AE75 /* RSA.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSA.h; sourceTree = "<group>"; };
+		160D8577233F2A140081AE75 /* WXUserInfoModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WXUserInfoModel.h; sourceTree = "<group>"; };
+		160D8578233F2A140081AE75 /* WXUserInfoModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WXUserInfoModel.m; sourceTree = "<group>"; };
+		160D857D233F6EFF0081AE75 /* TencentOpenAPI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TencentOpenAPI.framework; sourceTree = "<group>"; };
 		1619AC512307FDD2003463C7 /* KDGoodsInfoCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KDGoodsInfoCell.h; sourceTree = "<group>"; };
 		1619AC522307FDD2003463C7 /* KDGoodsInfoCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KDGoodsInfoCell.m; sourceTree = "<group>"; };
 		1619AC54230804D4003463C7 /* KDGoodsTypeInfoSelectView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KDGoodsTypeInfoSelectView.h; sourceTree = "<group>"; };
@@ -306,6 +343,7 @@
 		169A445D23128FD700F001D0 /* KDGoodsListModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KDGoodsListModel.m; sourceTree = "<group>"; };
 		169A445F2312DFC500F001D0 /* KDOrderListModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KDOrderListModel.h; sourceTree = "<group>"; };
 		169A44602312DFC500F001D0 /* KDOrderListModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KDOrderListModel.m; sourceTree = "<group>"; };
+		16B7A70B2335FF1E00C4EEF7 /* Kuaidi.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Kuaidi.entitlements; sourceTree = "<group>"; };
 		16BCC7B9231B9BF400AF583F /* WSLScanView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WSLScanView.m; sourceTree = "<group>"; };
 		16BCC7BA231B9BF500AF583F /* WSLScanView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WSLScanView.h; sourceTree = "<group>"; };
 		16BCC7BB231B9BF500AF583F /* WSLNativeScanTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WSLNativeScanTool.h; sourceTree = "<group>"; };
@@ -576,6 +614,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				11DFD2E1117B7E0825E346F0 /* libPods-Kuaidi.a in Frameworks */,
+				160D857E233F6EFF0081AE75 /* TencentOpenAPI.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -602,6 +641,66 @@
 				A26641192201A6307C867746 /* libPods-Kuaidi.a */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		160D854F233F191E0081AE75 /* Tool */ = {
+			isa = PBXGroup;
+			children = (
+				160D8550233F19550081AE75 /* WXApiManager.h */,
+				160D8551233F19550081AE75 /* WXApiManager.m */,
+			);
+			path = Tool;
+			sourceTree = "<group>";
+		};
+		160D8557233F1D900081AE75 /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				160D8558233F1D900081AE75 /* AlertTitleFont.m */,
+				160D8559233F1D900081AE75 /* ShakeDebug.h */,
+				160D855A233F1D900081AE75 /* ButtonColor.h */,
+				160D855B233F1D900081AE75 /* UITextView+Placeholder.m */,
+				160D855C233F1D900081AE75 /* LineColor.h */,
+				160D855D233F1D900081AE75 /* ButtonColor.m */,
+				160D855E233F1D900081AE75 /* ShakeDebug.m */,
+				160D855F233F1D900081AE75 /* AlertTitleFont.h */,
+				160D8560233F1D900081AE75 /* Definition */,
+				160D8563233F1D900081AE75 /* UITextView+Placeholder.h */,
+				160D8564233F1D900081AE75 /* LineColor.m */,
+				160D8565233F1D900081AE75 /* Encrypt */,
+			);
+			path = Util;
+			sourceTree = "<group>";
+		};
+		160D8560233F1D900081AE75 /* Definition */ = {
+			isa = PBXGroup;
+			children = (
+				160D8561233F1D900081AE75 /* Definition.h */,
+				160D8562233F1D900081AE75 /* Constant.h */,
+			);
+			path = Definition;
+			sourceTree = "<group>";
+		};
+		160D8565233F1D900081AE75 /* Encrypt */ = {
+			isa = PBXGroup;
+			children = (
+				160D8566233F1D900081AE75 /* AES.m */,
+				160D8567233F1D900081AE75 /* RSA.m */,
+				160D8568233F1D900081AE75 /* RandomKey.m */,
+				160D8569233F1D900081AE75 /* MD5.h */,
+				160D856A233F1D900081AE75 /* AES.h */,
+				160D856B233F1D900081AE75 /* MD5.m */,
+				160D856C233F1D900081AE75 /* RandomKey.h */,
+				160D856D233F1D900081AE75 /* RSA.h */,
+			);
+			path = Encrypt;
+			sourceTree = "<group>";
+		};
+		160D857C233F6EED0081AE75 /* SDK */ = {
+			isa = PBXGroup;
+			children = (
+				160D857D233F6EFF0081AE75 /* TencentOpenAPI.framework */,
+			);
+			path = SDK;
 			sourceTree = "<group>";
 		};
 		162AB3E3230967AB00EF8225 /* HGSegmentedPageViewController */ = {
@@ -770,8 +869,11 @@
 		3D65BF3D230102F400B12F3D /* Kuaidi */ = {
 			isa = PBXGroup;
 			children = (
+				160D857C233F6EED0081AE75 /* SDK */,
+				16B7A70B2335FF1E00C4EEF7 /* Kuaidi.entitlements */,
 				3D65BF702301049E00B12F3D /* MainCode */,
 				3D65BF732301050C00B12F3D /* Tools */,
+				160D8557233F1D900081AE75 /* Util */,
 				3D65BF71230104BC00B12F3D /* Other */,
 				3D65BF72230104C800B12F3D /* Resource */,
 			);
@@ -962,6 +1064,7 @@
 		3D65BFBC2301151800B12F3D /* 我的 */ = {
 			isa = PBXGroup;
 			children = (
+				160D854F233F191E0081AE75 /* Tool */,
 				167B6DDB2309BA92001C0D15 /* Model */,
 				167B6DDC2309BA92001C0D15 /* View */,
 				3D65BFD2230117A900B12F3D /* Coltroller */,
@@ -1179,6 +1282,8 @@
 				F422E955230C4E8000F10B21 /* KDUserModel.m */,
 				F422E958230C51FE00F10B21 /* KDUserModelTool.h */,
 				F422E959230C51FE00F10B21 /* KDUserModelTool.m */,
+				160D8577233F2A140081AE75 /* WXUserInfoModel.h */,
+				160D8578233F2A140081AE75 /* WXUserInfoModel.m */,
 			);
 			path = "用户模型";
 			sourceTree = "<group>";
@@ -1532,6 +1637,11 @@
 					3D65BF3A230102F400B12F3D = {
 						CreatedOnToolsVersion = 10.1;
 						LastSwiftMigration = 1010;
+						SystemCapabilities = {
+							com.apple.SafariKeychain = {
+								enabled = 1;
+							};
+						};
 					};
 					3D65BF52230102F700B12F3D = {
 						CreatedOnToolsVersion = 10.1;
@@ -1743,6 +1853,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				164096EA2309B1160055C0FB /* KDExpressSendInfoController.m in Sources */,
+				160D8572233F1D900081AE75 /* LineColor.m in Sources */,
 				164096FC2309B2420055C0FB /* UIView+CBExtension.m in Sources */,
 				F41F6A4C231BFBD600907C8E /* KDHelpVC.m in Sources */,
 				1619AC56230804D4003463C7 /* KDGoodsTypeInfoSelectView.m in Sources */,
@@ -1762,9 +1873,12 @@
 				162AB3FF230968C400EF8225 /* KDExpressRecordCell.m in Sources */,
 				F4C30846230942F900CF65CA /* KDExpressVC.m in Sources */,
 				F41C800E23081C1300DA1C2F /* ZJCustomHud.m in Sources */,
+				160D8574233F1D900081AE75 /* RSA.m in Sources */,
 				F42119B8230AD71C001481CE /* KDNewAddressVC.m in Sources */,
+				160D8552233F19550081AE75 /* WXApiManager.m in Sources */,
 				3D65BFC92301173E00B12F3D /* KDMailingVC.m in Sources */,
 				1619AC532307FDD2003463C7 /* KDGoodsInfoCell.m in Sources */,
+				160D8573233F1D900081AE75 /* AES.m in Sources */,
 				164097032309B29C0055C0FB /* KDTimeSelectView.m in Sources */,
 				F41CCC942312AE1B0018B5A8 /* KDExpressDetailModel.m in Sources */,
 				F4C6D2A3231272610053F145 /* KDAddExpressVC.m in Sources */,
@@ -1779,17 +1893,20 @@
 				3D65BF952301086A00B12F3D /* RootCustomView.m in Sources */,
 				164096E52309B0930055C0FB /* UITextView+Placeholder.m in Sources */,
 				163588032307A3340017F510 /* KDAddressInfoView.m in Sources */,
+				160D8576233F1D900081AE75 /* MD5.m in Sources */,
 				169A445E23128FD700F001D0 /* KDGoodsListModel.m in Sources */,
 				3D696F8D230A797F00593437 /* KDNetWorkManager.m in Sources */,
 				F4195EB52312128900F3EF10 /* ChineseToPinyinResource.m in Sources */,
 				F419CD5E2308610800553E29 /* KDResetLoginPwdVC.m in Sources */,
 				F41FD250231431D9006F9ECA /* KDOrderDetailVC.m in Sources */,
 				F419CD5B2308603600553E29 /* KDCodeForPwdVC.m in Sources */,
+				160D8570233F1D900081AE75 /* ButtonColor.m in Sources */,
 				F4E524D32316B219008F5724 /* KDReceivedView.m in Sources */,
 				1645FF03231B954C00576A2C /* KDScanQRViewController.m in Sources */,
 				F465DE4B230454FF002DFD4C /* KDLoginVC.m in Sources */,
 				F42233562312CD7C00912F26 /* KDScoreVC.m in Sources */,
 				F4B9A2702311729D00614EB4 /* CityChoose.m in Sources */,
+				160D856E233F1D900081AE75 /* AlertTitleFont.m in Sources */,
 				F424E6B423098026002D340E /* KDExpressCell.m in Sources */,
 				F422E956230C4E8000F10B21 /* KDUserModel.m in Sources */,
 				3D65BFBF230115D000B12F3D /* UIView+Toast.m in Sources */,
@@ -1802,7 +1919,9 @@
 				3D65BF962301086A00B12F3D /* RootCustomCell.m in Sources */,
 				F41BCCA32308249900BCD691 /* KDLoginPwdVC.m in Sources */,
 				163AE1862305A62A00B16015 /* KDTitleView.m in Sources */,
+				160D8575233F1D900081AE75 /* RandomKey.m in Sources */,
 				F4C6D2A6231272A50053F145 /* KDAddExpressModel.m in Sources */,
+				160D856F233F1D900081AE75 /* UITextView+Placeholder.m in Sources */,
 				164096FD2309B2420055C0FB /* CBGroupAndStreamView.m in Sources */,
 				164096F62309B1620055C0FB /* HGSegmentedPageViewController.m in Sources */,
 				F4E524D72316C014008F5724 /* KDQuitOrderView.m in Sources */,
@@ -1820,6 +1939,7 @@
 				F41BCCB223082A1200BCD691 /* UIButton+EnlargeTouchArea.m in Sources */,
 				3D65BF4E230102F700B12F3D /* main.m in Sources */,
 				F4C30842230936CC00CF65CA /* KDAddressAdminCell.m in Sources */,
+				160D8579233F2A140081AE75 /* WXUserInfoModel.m in Sources */,
 				F4C6D2A9231272C00053F145 /* KDAddExpressCell.m in Sources */,
 				1658A2742309B53800439FC3 /* KDExpressSelectCell.m in Sources */,
 				1635880C2307E1960017F510 /* KDGoodsInfoFooterView.m in Sources */,
@@ -1834,6 +1954,7 @@
 				164096F52309B1620055C0FB /* HGCategoryView.m in Sources */,
 				164097002309B26B0055C0FB /* KDExpressSelectView.m in Sources */,
 				163588092307DF370017F510 /* KDGoodsInfoView.m in Sources */,
+				160D8571233F1D900081AE75 /* ShakeDebug.m in Sources */,
 				F41C800723081C0300DA1C2F /* NSString+Valid.m in Sources */,
 				F41B0983231298700094A5AC /* KDExpressDetailVC.m in Sources */,
 				F41D4C7B231BF03900056F54 /* KDScoreModel.m in Sources */,
@@ -2012,9 +2133,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = Kuaidi/Kuaidi.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = Y534VL634J;
+				DEVELOPMENT_TEAM = 7JYFLAQ8G2;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Kuaidi/SDK",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/Kuaidi/Other/PrefixHeader.pch";
 				INFOPLIST_FILE = Kuaidi/Other/Info.plist;
@@ -2040,9 +2166,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = Kuaidi/Kuaidi.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = Y534VL634J;
+				DEVELOPMENT_TEAM = 7JYFLAQ8G2;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Kuaidi/SDK",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/Kuaidi/Other/PrefixHeader.pch";
 				INFOPLIST_FILE = Kuaidi/Other/Info.plist;

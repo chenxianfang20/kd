@@ -9,12 +9,19 @@
 #import "KDLoginVC.h"
 #import "KDPhoneVC.h"
 #import "KDPhoneForPwdVC.h"
-@interface KDLoginVC (){
+#import "WXApiManager.h"
+#import "WXUserInfoModel.h"
+
+@interface KDLoginVC ()<WXAuthDelegate>
+    {
     UIButton* loginBtn;
     NSInteger i;
 }
 @property (nonatomic,strong) UITextField *phoneTF;
 @property (nonatomic,strong) UITextField *pwdTF;
+
+@property (nonatomic, strong) WXUserInfoModel *model;
+
 @end
 
 @implementation KDLoginVC
@@ -244,6 +251,8 @@
 }
 -(void)wxLoginBtnClick{
     
+    [[WXApiManager sharedManager] sendAuthRequestWithController:self
+                                                       delegate:self];
 }
 -(void)qqLoginBtnClick{
     
@@ -262,4 +271,62 @@
     self.backgroungImgView.hidden=YES;
 }
 
+
+#pragma mark - WXAuthDelegate
+- (void)wxAuthSucceed:(NSString *)code {
+    NSLog(@"授权成功");
+    NSDictionary *params = @{
+                             @"appid":APP_ID,
+                             @"secret":AppSecret,
+                             @"code":code,
+                             @"grant_type":@"authorization_code"
+                             };
+    [KDNetWorkManager GetHttpDataWithUrlStr:WXAccessTokenUrl Dic:params headDic:nil SuccessBlock:^(id obj) {
+        
+        NSLog(@"obj==%@",obj);
+        //获取token成功
+        if ([obj isKindOfClass:[NSDictionary class]]) {
+            NSDictionary *dic = (NSDictionary *)obj;
+            WXUserInfoModel *model = [WXUserInfoModel mj_objectWithKeyValues:dic];
+            self.model = model;
+            [self refreshAccessToken];
+        }else{
+            NSLog(@"数据错误");
+        }
+        
+    } FailureBlock:^(id obj) {
+        NSLog(@"shibai");
+    }];
+}
+
+- (void)wxAuthDenied {
+//    ADShowErrorAlert(kWXAuthDenyTitle);
+}
+
+//刷新accesstoken有效期
+- (void)refreshAccessToken{
+    
+    NSDictionary *params = @{
+                             @"appid":APP_ID,
+                             @"grant_type":@"refresh_token",
+                             @"refresh_token":self.model.refresh_token
+                             };
+    [KDNetWorkManager GetHttpDataWithUrlStr:WXRefreshTokenUrl Dic:params headDic:nil SuccessBlock:^(id obj) {
+        
+        NSLog(@"obj==%@",obj);
+        //获取token成功
+        if ([obj isKindOfClass:[NSDictionary class]]) {
+            NSDictionary *dic = (NSDictionary *)obj;
+            WXUserInfoModel *model = [WXUserInfoModel mj_objectWithKeyValues:dic];
+            self.model = model;
+            
+        }else{
+            NSLog(@"数据错误");
+        }
+        
+    } FailureBlock:^(id obj) {
+        NSLog(@"shibai");
+    }];
+}
+    
 @end

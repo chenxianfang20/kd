@@ -24,5 +24,6 @@
 #import <PGPickerView.h>
 #import "UITextView+Placeholder.h"
 #import "ZJCustomHud.h"
+#import "Definition.h"
 
 #endif /* PrefixHeader_pch */
