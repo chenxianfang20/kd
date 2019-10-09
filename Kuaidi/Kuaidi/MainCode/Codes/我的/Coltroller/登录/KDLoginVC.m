@@ -11,6 +11,7 @@
 #import "KDPhoneForPwdVC.h"
 #import "WXApiManager.h"
 #import "WXUserInfoModel.h"
+#import "WXLoginPhoneAlertView.h"
 
 @interface KDLoginVC ()<WXAuthDelegate>
     {
@@ -121,7 +122,7 @@
     
     
     //微信登录
-    UIButton* wxLoginBtn =  [[UIButton alloc]initWithFrame:CGRectMake(kAdaptationWidth(48), forgetPwdBtn.bottom+ kAdaptationWidth(90), kAdaptationWidth(54), kAdaptationWidth(54))];
+    UIButton* wxLoginBtn =  [[UIButton alloc]initWithFrame:CGRectMake(kAdaptationWidth(161), forgetPwdBtn.bottom+ kAdaptationWidth(90), kAdaptationWidth(54), kAdaptationWidth(54))];//48
     wxLoginBtn.backgroundColor=[UIColor whiteColor];
     [wxLoginBtn setImage:[UIImage imageNamed:@"图标-微信"] forState:UIControlStateNormal];
     wxLoginBtn.layer.cornerRadius = kAdaptationWidth(27);
@@ -137,39 +138,39 @@
     [self.view addSubview:wxLabel];
     wxLabel.centerX=wxLoginBtn.centerX;
     
-    //qq登录
-    UIButton* qqLoginBtn =  [[UIButton alloc]initWithFrame:CGRectMake(kAdaptationWidth(161), forgetPwdBtn.bottom+ kAdaptationWidth(90), kAdaptationWidth(54), kAdaptationWidth(54))];
-    qqLoginBtn.backgroundColor=[UIColor whiteColor];
-    [qqLoginBtn setImage:[UIImage imageNamed:@"图标-QQ"] forState:UIControlStateNormal];
-    qqLoginBtn.layer.cornerRadius = kAdaptationWidth(27);
-    qqLoginBtn.layer.masksToBounds=YES;
-    [qqLoginBtn addTarget:self action:@selector(qqLoginBtnClick) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:qqLoginBtn];
-    
-    UILabel* qqLabel=[[UILabel alloc]initWithFrame:CGRectMake(kAdaptationWidth(163),qqLoginBtn.bottom+ kAdaptationWidth(12), kAdaptationWidth(68), kAdaptationWidth(13))];
-    qqLabel.text=@"QQ登录";
-    qqLabel.textColor=[UIColor colorWithHex:@"#5C5C5C"];
-    qqLabel.font =[UIFont fontWithName:@"PingFang-SC-Medium" size: 14];
-    qqLabel.textAlignment=NSTextAlignmentCenter;
-    [self.view addSubview:qqLabel];
-    qqLabel.centerX=qqLoginBtn.centerX;
-    
-    //微博登录
-    UIButton* wbLoginBtn =  [[UIButton alloc]initWithFrame:CGRectMake(kAdaptationWidth(274), forgetPwdBtn.bottom+ kAdaptationWidth(90), kAdaptationWidth(54), kAdaptationWidth(54))];
-    wbLoginBtn.backgroundColor=[UIColor whiteColor];
-    [wbLoginBtn setImage:[UIImage imageNamed:@"图标-微博"] forState:UIControlStateNormal];
-    wbLoginBtn.layer.cornerRadius = kAdaptationWidth(27);
-    wbLoginBtn.layer.masksToBounds=YES;
-    [wbLoginBtn addTarget:self action:@selector(wbLoginBtnClick) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:wbLoginBtn];
-    
-    UILabel* wbLabel=[[UILabel alloc]initWithFrame:CGRectMake(kAdaptationWidth(274),wbLoginBtn.bottom+ kAdaptationWidth(12), kAdaptationWidth(68), kAdaptationWidth(13))];
-    wbLabel.text=@"微博登录";
-    wbLabel.textColor=[UIColor colorWithHex:@"#5C5C5C"];
-    wbLabel.font =[UIFont fontWithName:@"PingFang-SC-Medium" size: 14];
-    wbLabel.textAlignment=NSTextAlignmentCenter;
-    [self.view addSubview:wbLabel];
-    wbLabel.centerX=wbLoginBtn.centerX;
+//    //qq登录
+//    UIButton* qqLoginBtn =  [[UIButton alloc]initWithFrame:CGRectMake(kAdaptationWidth(161), forgetPwdBtn.bottom+ kAdaptationWidth(90), kAdaptationWidth(54), kAdaptationWidth(54))];
+//    qqLoginBtn.backgroundColor=[UIColor whiteColor];
+//    [qqLoginBtn setImage:[UIImage imageNamed:@"图标-QQ"] forState:UIControlStateNormal];
+//    qqLoginBtn.layer.cornerRadius = kAdaptationWidth(27);
+//    qqLoginBtn.layer.masksToBounds=YES;
+//    [qqLoginBtn addTarget:self action:@selector(qqLoginBtnClick) forControlEvents:UIControlEventTouchUpInside];
+//    [self.view addSubview:qqLoginBtn];
+//
+//    UILabel* qqLabel=[[UILabel alloc]initWithFrame:CGRectMake(kAdaptationWidth(163),qqLoginBtn.bottom+ kAdaptationWidth(12), kAdaptationWidth(68), kAdaptationWidth(13))];
+//    qqLabel.text=@"QQ登录";
+//    qqLabel.textColor=[UIColor colorWithHex:@"#5C5C5C"];
+//    qqLabel.font =[UIFont fontWithName:@"PingFang-SC-Medium" size: 14];
+//    qqLabel.textAlignment=NSTextAlignmentCenter;
+//    [self.view addSubview:qqLabel];
+//    qqLabel.centerX=qqLoginBtn.centerX;
+//
+//    //微博登录
+//    UIButton* wbLoginBtn =  [[UIButton alloc]initWithFrame:CGRectMake(kAdaptationWidth(274), forgetPwdBtn.bottom+ kAdaptationWidth(90), kAdaptationWidth(54), kAdaptationWidth(54))];
+//    wbLoginBtn.backgroundColor=[UIColor whiteColor];
+//    [wbLoginBtn setImage:[UIImage imageNamed:@"图标-微博"] forState:UIControlStateNormal];
+//    wbLoginBtn.layer.cornerRadius = kAdaptationWidth(27);
+//    wbLoginBtn.layer.masksToBounds=YES;
+//    [wbLoginBtn addTarget:self action:@selector(wbLoginBtnClick) forControlEvents:UIControlEventTouchUpInside];
+//    [self.view addSubview:wbLoginBtn];
+//
+//    UILabel* wbLabel=[[UILabel alloc]initWithFrame:CGRectMake(kAdaptationWidth(274),wbLoginBtn.bottom+ kAdaptationWidth(12), kAdaptationWidth(68), kAdaptationWidth(13))];
+//    wbLabel.text=@"微博登录";
+//    wbLabel.textColor=[UIColor colorWithHex:@"#5C5C5C"];
+//    wbLabel.font =[UIFont fontWithName:@"PingFang-SC-Medium" size: 14];
+//    wbLabel.textAlignment=NSTextAlignmentCenter;
+//    [self.view addSubview:wbLabel];
+//    wbLabel.centerX=wbLoginBtn.centerX;
 }
 
 -(void)phoneTFChanged:(UITextField*)textField{
@@ -289,7 +290,10 @@
             NSDictionary *dic = (NSDictionary *)obj;
             WXUserInfoModel *model = [WXUserInfoModel mj_objectWithKeyValues:dic];
             self.model = model;
-            [self refreshAccessToken];
+//            [self refreshAccessToken];
+            //调用微信登录接口1，返回token为空，调用登录接口2
+            [self loginNoPhoneNum];
+            
         }else{
             NSLog(@"数据错误");
         }
@@ -328,5 +332,63 @@
         NSLog(@"shibai");
     }];
 }
+
+//方式一登录，无手机号
+- (void)loginNoPhoneNum{
     
+    NSDictionary *dic = @{
+                          @"open_id" : self.model.openid
+                          };
+    [KDNetWorkManager GetHttpDataWithUrlStr:kWXLoginNoPhone Dic:dic headDic:nil SuccessBlock:^(id obj) {
+        if([obj[@"code"] integerValue] == 1){
+            
+            [self loginWithPhoneNum];
+//            KDUserModel* model = [KDUserModel  ModelWithDict:obj[@"data"][@"user"]];
+//            model.token =obj[@"data"][@"token"];
+//            [KDUserModelTool saveUserModel:model];
+//            if(weakSelf.loginBlock){
+//                weakSelf.loginBlock();
+//            }
+//            [weakSelf.navigationController popViewControllerAnimated:YES];
+        }else{
+//            [weakSelf.view  showToastWithText:obj[@"msg"] time:1];
+        }
+    } FailureBlock:^(id obj) {
+        [ZJCustomHud showWithText:@"网络连结错误" WithDurations:2.0];
+    }];
+    
+}
+//方式二登录，有手机号
+- (void)loginWithPhoneNum{
+    
+    [WXLoginPhoneAlertView wx_LoginPhoneAlertViewShowWithCompeleteBlock:^(NSString * _Nonnull phoneNum) {
+        
+            NSDictionary *dic = @{
+                                  @"open_id" : self.model.openid,
+                                  @"mobile" : phoneNum,
+                                  @"union_id" : self.model.unionid
+                                  };
+            [KDNetWorkManager GetHttpDataWithUrlStr:kWXLoginWithPhone Dic:dic headDic:nil SuccessBlock:^(id obj) {
+                if([obj[@"code"] integerValue] == 1){
+        
+                    //            KDUserModel* model = [KDUserModel  ModelWithDict:obj[@"data"][@"user"]];
+                    //            model.token =obj[@"data"][@"token"];
+                    //            [KDUserModelTool saveUserModel:model];
+                    //            if(weakSelf.loginBlock){
+                    //                weakSelf.loginBlock();
+                    //            }
+                    //            [weakSelf.navigationController popViewControllerAnimated:YES];
+                }else{
+                    //            [weakSelf.view  showToastWithText:obj[@"msg"] time:1];
+                }
+            } FailureBlock:^(id obj) {
+        
+            }];
+        
+        
+    }];
+    
+
+}
+
 @end

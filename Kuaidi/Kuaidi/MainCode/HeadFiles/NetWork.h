@@ -44,6 +44,12 @@
 //登录
 #define kLogin @"/api/user/public/login"
 
+//微信2登录
+#define kWXLoginWithPhone @"/api/user/public/saveUserInfo"
+
+//微信1登录
+#define kWXLoginNoPhone @"/api/user/public/check_weixin"
+
 //退出登录
 #define kLogout @"/api/user/public/logout"
 

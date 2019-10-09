@@ -19,10 +19,10 @@
 		160D8575233F1D900081AE75 /* RandomKey.m in Sources */ = {isa = PBXBuildFile; fileRef = 160D8568233F1D900081AE75 /* RandomKey.m */; };
 		160D8576233F1D900081AE75 /* MD5.m in Sources */ = {isa = PBXBuildFile; fileRef = 160D856B233F1D900081AE75 /* MD5.m */; };
 		160D8579233F2A140081AE75 /* WXUserInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 160D8578233F2A140081AE75 /* WXUserInfoModel.m */; };
-		160D857E233F6EFF0081AE75 /* TencentOpenAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 160D857D233F6EFF0081AE75 /* TencentOpenAPI.framework */; };
 		1619AC532307FDD2003463C7 /* KDGoodsInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1619AC522307FDD2003463C7 /* KDGoodsInfoCell.m */; };
 		1619AC56230804D4003463C7 /* KDGoodsTypeInfoSelectView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1619AC55230804D4003463C7 /* KDGoodsTypeInfoSelectView.m */; };
 		1619AC5923084897003463C7 /* KDExpressRecordController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1619AC5823084897003463C7 /* KDExpressRecordController.m */; };
+		161F0083234CD7D100D30619 /* WXLoginPhoneAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 161F0082234CD7D100D30619 /* WXLoginPhoneAlertView.m */; };
 		162AB3FF230968C400EF8225 /* KDExpressRecordCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 162AB3FE230968C400EF8225 /* KDExpressRecordCell.m */; };
 		162DEB86230C46220099F44E /* KDExpressTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 162DEB85230C46220099F44E /* KDExpressTitleView.m */; };
 		162DEB89230C4AE60099F44E /* DKExpressSendInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 162DEB88230C4AE60099F44E /* DKExpressSendInfoCell.m */; };
@@ -273,13 +273,14 @@
 		160D856D233F1D900081AE75 /* RSA.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSA.h; sourceTree = "<group>"; };
 		160D8577233F2A140081AE75 /* WXUserInfoModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WXUserInfoModel.h; sourceTree = "<group>"; };
 		160D8578233F2A140081AE75 /* WXUserInfoModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WXUserInfoModel.m; sourceTree = "<group>"; };
-		160D857D233F6EFF0081AE75 /* TencentOpenAPI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TencentOpenAPI.framework; sourceTree = "<group>"; };
 		1619AC512307FDD2003463C7 /* KDGoodsInfoCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KDGoodsInfoCell.h; sourceTree = "<group>"; };
 		1619AC522307FDD2003463C7 /* KDGoodsInfoCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KDGoodsInfoCell.m; sourceTree = "<group>"; };
 		1619AC54230804D4003463C7 /* KDGoodsTypeInfoSelectView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KDGoodsTypeInfoSelectView.h; sourceTree = "<group>"; };
 		1619AC55230804D4003463C7 /* KDGoodsTypeInfoSelectView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KDGoodsTypeInfoSelectView.m; sourceTree = "<group>"; };
 		1619AC5723084897003463C7 /* KDExpressRecordController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KDExpressRecordController.h; sourceTree = "<group>"; };
 		1619AC5823084897003463C7 /* KDExpressRecordController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KDExpressRecordController.m; sourceTree = "<group>"; };
+		161F0081234CD7D100D30619 /* WXLoginPhoneAlertView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WXLoginPhoneAlertView.h; sourceTree = "<group>"; };
+		161F0082234CD7D100D30619 /* WXLoginPhoneAlertView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WXLoginPhoneAlertView.m; sourceTree = "<group>"; };
 		162AB3B52309168D00EF8225 /* KDExpressSelectCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KDExpressSelectCell.m; sourceTree = "<group>"; };
 		162AB3B8230919A200EF8225 /* KDTimeSelectView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KDTimeSelectView.m; sourceTree = "<group>"; };
 		162AB3BE23092AE400EF8225 /* KDMessageBoardView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KDMessageBoardView.m; sourceTree = "<group>"; };
@@ -617,7 +618,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				11DFD2E1117B7E0825E346F0 /* libPods-Kuaidi.a in Frameworks */,
-				160D857E233F6EFF0081AE75 /* TencentOpenAPI.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -701,7 +701,6 @@
 		160D857C233F6EED0081AE75 /* SDK */ = {
 			isa = PBXGroup;
 			children = (
-				160D857D233F6EFF0081AE75 /* TencentOpenAPI.framework */,
 			);
 			path = SDK;
 			sourceTree = "<group>";
@@ -831,6 +830,8 @@
 		167B6DDC2309BA92001C0D15 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				161F0081234CD7D100D30619 /* WXLoginPhoneAlertView.h */,
+				161F0082234CD7D100D30619 /* WXLoginPhoneAlertView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1902,6 +1903,7 @@
 				169A44612312DFC500F001D0 /* KDOrderListModel.m in Sources */,
 				16BCC7BD231B9BF500AF583F /* WSLScanView.m in Sources */,
 				F4294BF323156BEB00ACED30 /* KDToContactedView.m in Sources */,
+				161F0083234CD7D100D30619 /* WXLoginPhoneAlertView.m in Sources */,
 				F4C3083C2309351E00CF65CA /* KDAddressAdminVC.m in Sources */,
 				3D65BF952301086A00B12F3D /* RootCustomView.m in Sources */,
 				164096E52309B0930055C0FB /* UITextView+Placeholder.m in Sources */,
