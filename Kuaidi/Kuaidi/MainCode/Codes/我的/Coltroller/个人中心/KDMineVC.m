@@ -110,10 +110,11 @@
     scanIconImgView.centerY=scanTitleLabel.centerY;
     
     //淘宝客  京东客
-    UIView*  platformView = [[UIView alloc]initWithFrame:CGRectMake(kAdaptationWidth(18), scanView.bottom+kAdaptationWidth(12), kAdaptationWidth(339), kAdaptationWidth(103))];
+    UIView*  platformView = [[UIView alloc]initWithFrame:CGRectMake(kAdaptationWidth(18), scanView.bottom+kAdaptationWidth(0), kAdaptationWidth(339), kAdaptationWidth(0))];// 12 / 103
     platformView.backgroundColor=[UIColor whiteColor];
     platformView.layer.cornerRadius=8.0f;
     platformView.layer.masksToBounds=YES;
+    platformView.hidden = YES;
     [scrollowView addSubview:platformView];
     
     //淘宝客Btn
@@ -144,10 +145,11 @@
     [platformView addSubview:jdLabel];
     
     //订单导入UIView*******
-    UIView*  orderBgView = [[UIView alloc]initWithFrame:CGRectMake(kAdaptationWidth(18), platformView.bottom+kAdaptationWidth(12), kAdaptationWidth(339), kAdaptationWidth(117))];
+    UIView*  orderBgView = [[UIView alloc]initWithFrame:CGRectMake(kAdaptationWidth(18), platformView.bottom+kAdaptationWidth(0), kAdaptationWidth(339), kAdaptationWidth(0))];// 12 / 117
     orderBgView.backgroundColor=[UIColor whiteColor];
     orderBgView.layer.cornerRadius=8.0f;
     orderBgView.layer.masksToBounds=YES;
+    orderBgView.hidden = YES;
     [scrollowView addSubview:orderBgView];
     
     UILabel* orderTitleLabel =[[UILabel alloc]initWithFrame:CGRectMake(kAdaptationWidth(18), kAdaptationWidth(16), kAdaptationWidth(120), kAdaptationWidth(15))];

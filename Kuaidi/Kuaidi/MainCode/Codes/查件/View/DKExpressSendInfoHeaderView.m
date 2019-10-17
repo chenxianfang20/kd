@@ -109,7 +109,8 @@
             make.centerY.equalTo(expressInfoView).offset(0);
             make.size.mas_equalTo(CGSizeMake(20, 20));
         }];
-        
+        button.tag = i;
+        [button addTarget:self action:@selector(buttonClick:) forControlEvents:UIControlEventTouchUpInside];
     }
     
     UIView *statusView = [[UIView alloc] init];
@@ -162,6 +163,17 @@
     }else{
         self.statuLabel.text = @"未找到物流信息";
     }
+}
+
+- (void)buttonClick:(UIButton *)button{
+    
+    if (button.tag == 2) {
+        
+        if ([self.delegate respondsToSelector:@selector(clickShareButton)]) {
+            [self.delegate clickShareButton];
+        }
+    }
+    
 }
 
 @end

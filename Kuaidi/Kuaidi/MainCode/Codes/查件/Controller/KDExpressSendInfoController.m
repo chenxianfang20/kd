@@ -11,8 +11,14 @@
 #import "DKExpressSendInfoHeaderView.h"
 #import "KDWuliuGuijiModel.h"
 #import "DKExpressFindTextView.h"
+#import "DKWXShareView.h"
+#import "WXApiManager.h"
 
-@interface KDExpressSendInfoController ()<UITableViewDelegate,UITableViewDataSource,DKExpressFindTextViewDelegate>
+@interface KDExpressSendInfoController ()
+<UITableViewDelegate,
+UITableViewDataSource,
+DKExpressFindTextViewDelegate,
+DKExpressSendInfoHeaderViewDelegate>
 
 @property(nonatomic, strong)UITableView *tableView;
 
@@ -34,6 +40,7 @@
     
     if (!_headerView) {
         _headerView = [DKExpressSendInfoHeaderView expressSendInfoHeaderView];
+        _headerView.delegate = self;
     }
     return _headerView;
 }
@@ -229,6 +236,25 @@
     self.phoneNum = num;
     
     [self getDataFrom];
+    
+}
+
+#pragma mark -- DKExpressSendInfoHeaderViewDelegate
+-(void)clickShareButton{
+    
+    [DKWXShareView shareViewShowWithHandleBlock:^(NSInteger type) {
+        
+        if (type == 0) {
+            //会话分享
+            [[WXApiManager sharedManager] WXShareWXScene:0 code:self.scanString phoneNum:self.phoneNum];
+            
+        }else if (type == 1) {
+            
+            //朋友圈分享
+            [[WXApiManager sharedManager] WXShareWXScene:1 code:self.scanString phoneNum:self.phoneNum];
+        }
+        
+    }];
     
 }
 

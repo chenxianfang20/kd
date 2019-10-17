@@ -248,5 +248,4 @@
     [super viewDidDisappear:animated];
     [SVProgressHUD dismiss];
 }
-
 @end

@@ -49,6 +49,7 @@
 		169A445B23125E8D00F001D0 /* KDWuliuListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 169A445A23125E8D00F001D0 /* KDWuliuListModel.m */; };
 		169A445E23128FD700F001D0 /* KDGoodsListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 169A445D23128FD700F001D0 /* KDGoodsListModel.m */; };
 		169A44612312DFC500F001D0 /* KDOrderListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 169A44602312DFC500F001D0 /* KDOrderListModel.m */; };
+		16BC30102358B8BF009C17CC /* DKWXShareView.m in Sources */ = {isa = PBXBuildFile; fileRef = 16BC300F2358B8BF009C17CC /* DKWXShareView.m */; };
 		16BCC7BD231B9BF500AF583F /* WSLScanView.m in Sources */ = {isa = PBXBuildFile; fileRef = 16BCC7B9231B9BF400AF583F /* WSLScanView.m */; };
 		16BCC7BE231B9BF500AF583F /* WSLNativeScanTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 16BCC7BC231B9BF500AF583F /* WSLNativeScanTool.m */; };
 		16BCC7C1231BA12A00AF583F /* KDWuliuGuijiModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 16BCC7C0231BA12A00AF583F /* KDWuliuGuijiModel.m */; };
@@ -346,6 +347,8 @@
 		169A445F2312DFC500F001D0 /* KDOrderListModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KDOrderListModel.h; sourceTree = "<group>"; };
 		169A44602312DFC500F001D0 /* KDOrderListModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KDOrderListModel.m; sourceTree = "<group>"; };
 		16B7A70B2335FF1E00C4EEF7 /* Kuaidi.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Kuaidi.entitlements; sourceTree = "<group>"; };
+		16BC300E2358B8BF009C17CC /* DKWXShareView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DKWXShareView.h; sourceTree = "<group>"; };
+		16BC300F2358B8BF009C17CC /* DKWXShareView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DKWXShareView.m; sourceTree = "<group>"; };
 		16BCC7B9231B9BF400AF583F /* WSLScanView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WSLScanView.m; sourceTree = "<group>"; };
 		16BCC7BA231B9BF500AF583F /* WSLScanView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WSLScanView.h; sourceTree = "<group>"; };
 		16BCC7BB231B9BF500AF583F /* WSLNativeScanTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WSLNativeScanTool.h; sourceTree = "<group>"; };
@@ -815,6 +818,8 @@
 				16E3D0B62324B29A00D4B831 /* DKExpressFindTextView.m */,
 				162DEB87230C4AE60099F44E /* DKExpressSendInfoCell.h */,
 				162DEB88230C4AE60099F44E /* DKExpressSendInfoCell.m */,
+				16BC300E2358B8BF009C17CC /* DKWXShareView.h */,
+				16BC300F2358B8BF009C17CC /* DKWXShareView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1952,6 +1957,7 @@
 				3D434B9B232A355F00AD650D /* QRCodeTool.m in Sources */,
 				3D65BFC32301169500B12F3D /* UIView+YYAdd.m in Sources */,
 				F424E6BD23098716002D340E /* KDSetupVC.m in Sources */,
+				16BC30102358B8BF009C17CC /* DKWXShareView.m in Sources */,
 				F41BCCB223082A1200BCD691 /* UIButton+EnlargeTouchArea.m in Sources */,
 				3D65BF4E230102F700B12F3D /* main.m in Sources */,
 				F4C30842230936CC00CF65CA /* KDAddressAdminCell.m in Sources */,

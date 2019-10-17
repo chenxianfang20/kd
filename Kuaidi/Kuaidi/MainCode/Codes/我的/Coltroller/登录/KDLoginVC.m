@@ -316,16 +316,15 @@
                              @"refresh_token":self.model.refresh_token
                              };
     [KDNetWorkManager GetHttpDataWithUrlStr:WXRefreshTokenUrl Dic:params headDic:nil SuccessBlock:^(id obj) {
-        
-        NSLog(@"obj==%@",obj);
         //获取token成功
         if ([obj isKindOfClass:[NSDictionary class]]) {
+            
             NSDictionary *dic = (NSDictionary *)obj;
             WXUserInfoModel *model = [WXUserInfoModel mj_objectWithKeyValues:dic];
             self.model = model;
             
         }else{
-            NSLog(@"数据错误");
+//            [self.view  showToastWithText:@"数据错误" time:1];
         }
         
     } FailureBlock:^(id obj) {
@@ -342,16 +341,17 @@
     [KDNetWorkManager GetHttpDataWithUrlStr:kWXLoginNoPhone Dic:dic headDic:nil SuccessBlock:^(id obj) {
         if([obj[@"code"] integerValue] == 1){
             
+            KDUserModel* model = [KDUserModel  ModelWithDict:obj[@"data"][@"user"]];
+            model.token =obj[@"data"][@"token"];
+            [KDUserModelTool saveUserModel:model];
+            if(self.loginBlock){
+                self.loginBlock();
+            }
+            [self.navigationController popViewControllerAnimated:YES];
+        }else if([obj[@"code"] integerValue] == 1){
             [self loginWithPhoneNum];
-//            KDUserModel* model = [KDUserModel  ModelWithDict:obj[@"data"][@"user"]];
-//            model.token =obj[@"data"][@"token"];
-//            [KDUserModelTool saveUserModel:model];
-//            if(weakSelf.loginBlock){
-//                weakSelf.loginBlock();
-//            }
-//            [weakSelf.navigationController popViewControllerAnimated:YES];
         }else{
-//            [weakSelf.view  showToastWithText:obj[@"msg"] time:1];
+            [self.view  showToastWithText:obj[@"msg"] time:1];
         }
     } FailureBlock:^(id obj) {
         [ZJCustomHud showWithText:@"网络连结错误" WithDurations:2.0];
@@ -371,24 +371,20 @@
             [KDNetWorkManager GetHttpDataWithUrlStr:kWXLoginWithPhone Dic:dic headDic:nil SuccessBlock:^(id obj) {
                 if([obj[@"code"] integerValue] == 1){
         
-                    //            KDUserModel* model = [KDUserModel  ModelWithDict:obj[@"data"][@"user"]];
-                    //            model.token =obj[@"data"][@"token"];
-                    //            [KDUserModelTool saveUserModel:model];
-                    //            if(weakSelf.loginBlock){
-                    //                weakSelf.loginBlock();
-                    //            }
-                    //            [weakSelf.navigationController popViewControllerAnimated:YES];
+                        KDUserModel* model = [KDUserModel  ModelWithDict:obj[@"data"][@"user"]];
+                        model.token =obj[@"data"][@"token"];
+                        [KDUserModelTool saveUserModel:model];
+                        if(self.loginBlock){
+                            self.loginBlock();
+                        }
+                        [self.navigationController popViewControllerAnimated:YES];
                 }else{
-                    //            [weakSelf.view  showToastWithText:obj[@"msg"] time:1];
+                    [self.view  showToastWithText:obj[@"msg"] time:1];
                 }
             } FailureBlock:^(id obj) {
         
             }];
-        
-        
     }];
-    
-
 }
 
 @end

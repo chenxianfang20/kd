@@ -11,9 +11,18 @@
 NS_ASSUME_NONNULL_BEGIN
 @class KDWuliuGuijiModel;
 
+@protocol DKExpressSendInfoHeaderViewDelegate <NSObject>
+
+@optional
+- (void)clickShareButton;
+
+@end
+
 @interface DKExpressSendInfoHeaderView : UIView
 
 @property(nonatomic, strong)KDWuliuGuijiModel *model;
+
+@property(nonatomic, assign)id<DKExpressSendInfoHeaderViewDelegate> delegate;
 
 +(DKExpressSendInfoHeaderView *)expressSendInfoHeaderView;
 

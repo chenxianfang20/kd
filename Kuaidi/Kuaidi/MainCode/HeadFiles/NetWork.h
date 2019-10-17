@@ -99,4 +99,6 @@
 
 #define WXRefreshTokenUrl @"https://api.weixin.qq.com/sns/oauth2/refresh_token"
 
+#define orderRecordUrl @"https://kuaidi.foldbook.net/portal/index/share"
+
 #endif /* NetWork_h */

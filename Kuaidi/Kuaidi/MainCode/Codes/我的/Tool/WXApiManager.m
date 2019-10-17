@@ -152,4 +152,58 @@ static NSString* const kWXNotInstallErrorTitle = @"您还没有安装微信，�
         }
     }
 }
+
+
+/**
+ 微信分享
+ 
+ @param WXSceneType   = 0,   聊天界面
+ = 1,   朋友圈
+ */
+- (void)WXShareWXScene:(int)WXSceneType code:(NSString *)code phoneNum:(NSString *)num
+{
+    
+    if (WXSceneType == 0) {
+        
+        WXMiniProgramObject *object = [WXMiniProgramObject object];
+        object.webpageUrl = orderRecordUrl;
+        object.userName = @"gh_17b3cba01821";
+        object.path = [NSString stringWithFormat:@"pages/result/result?code=%@&num=%@",code,num];
+        object.hdImageData = UIImagePNGRepresentation([UIImage imageNamed:@"kuaidime"]);
+        object.withShareTicket = YES;
+        object.miniProgramType = WXMiniProgramTypeRelease;
+        WXMediaMessage *message = [WXMediaMessage message];
+        message.title = @"快递神奇";
+        message.description = @"查快递 寄快递 就上快递么";
+        message.thumbData = nil;  //兼容旧版本节点的图片，小于32KB，新版本优先
+        //使用WXMiniProgramObject的hdImageData属性
+        message.mediaObject = object;
+        SendMessageToWXReq *req = [[SendMessageToWXReq alloc] init];
+        req.bText = NO;
+        req.message = message;
+        req.scene = WXSceneSession;  //目前只支持会话
+        [WXApi sendReq:req];
+        
+    }else if (WXSceneType == 1) {
+        
+        WXMediaMessage *message = [WXMediaMessage message];
+        message.title = @"快递神奇";
+        message.description = @"查快递 寄快递 就上快递么";
+        [message setThumbImage:[UIImage imageNamed:@"kuaidime"]];
+        
+        WXWebpageObject *web = [WXWebpageObject object];
+        web.webpageUrl = [NSString stringWithFormat:@"%@?code=%@&num=%@",orderRecordUrl,code,num];
+        message.mediaObject = web;
+        
+        SendMessageToWXReq *req = [[SendMessageToWXReq alloc] init];
+        req.bText = NO;
+        req.message = message;
+        req.scene = WXSceneType;
+        
+        [WXApi sendReq:req];
+    }
+    
+    
+}
+
 @end

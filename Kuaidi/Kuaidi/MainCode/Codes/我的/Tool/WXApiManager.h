@@ -26,8 +26,6 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, assign) id<WXAuthDelegate, NSObject> delegate;
 
-+(instancetype)sharedManager;
-
 
 /**
  *  严格单例，唯一获得实例的方法.
@@ -83,6 +81,14 @@ NS_ASSUME_NONNULL_BEGIN
          Description:(NSString *)desc
           ThumbImage:(UIImage *)thumbImage
              AtScene:(enum WXScene)scene;
+
+/**
+ 微信分享
+ 
+ @param WXSceneType   = 0,   聊天界面
+ = 1,   朋友圈
+ */
+- (void)WXShareWXScene:(int)WXSceneType code:(NSString *)code phoneNum:(NSString *)num;
 
 @end
 
