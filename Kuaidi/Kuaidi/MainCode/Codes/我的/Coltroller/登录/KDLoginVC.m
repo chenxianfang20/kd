@@ -348,7 +348,7 @@
                 self.loginBlock();
             }
             [self.navigationController popViewControllerAnimated:YES];
-        }else if([obj[@"code"] integerValue] == 1){
+        }else if([obj[@"code"] integerValue] == 0){
             [self loginWithPhoneNum];
         }else{
             [self.view  showToastWithText:obj[@"msg"] time:1];

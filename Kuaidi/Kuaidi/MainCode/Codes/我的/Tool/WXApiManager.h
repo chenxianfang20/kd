@@ -90,6 +90,14 @@ NS_ASSUME_NONNULL_BEGIN
  */
 - (void)WXShareWXScene:(int)WXSceneType code:(NSString *)code phoneNum:(NSString *)num;
 
+/**
+ 微信分享
+ 
+ @param WXSceneType   = 0,   聊天界面  = 1,   朋友圈
+ @param image 分享二维码图片
+ */
+- (void)WXShareWXScene:(int)WXSceneType image:(UIImage *)image;
+
 @end
 
 NS_ASSUME_NONNULL_END

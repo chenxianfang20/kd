@@ -9,6 +9,8 @@
 #import "KDMailingScanVC.h"
 #import "KDAddressAdminModel.h"
 #import "QRCodeTool.h"
+#import "WXApiManager.h"
+
 @interface KDMailingScanVC(){
     UIScrollView* scrollowView;
     UIButton*  saveScanImgBtn;
@@ -161,7 +163,7 @@
 }
 
 -(void)shareBtnClick{
-    
+    [[WXApiManager sharedManager] WXShareWXScene:0 image:_scanImgView.image];
 }
 -(void)setNav{
     self.titleView.type = TitleViewType_title;

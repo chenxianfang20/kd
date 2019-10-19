@@ -30,7 +30,7 @@
 #define kWuliuGuiji @"/api/logistics/kdniao/getWuliu"
 
 //顺丰物流
-#define kSFWuliu @"/api/logistics/kdniao/shunfeng"
+#define kSFWuliu @"/api/logistics/kdniao/zidong"
 
 //商品列表
 #define kGoodsList @"/api/logistics/goods/index"

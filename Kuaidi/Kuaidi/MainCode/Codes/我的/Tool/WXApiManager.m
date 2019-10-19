@@ -206,4 +206,25 @@ static NSString* const kWXNotInstallErrorTitle = @"您还没有安装微信，�
     
 }
 
+
+/**
+ 微信分享
+ 
+ @param WXSceneType   = 0,   聊天界面
+ = 1,   朋友圈
+ */
+- (void)WXShareWXScene:(int)WXSceneType image:(UIImage *)image
+{
+    WXMediaMessage *message = [WXMediaMessage message];
+    WXImageObject *imgObj = [WXImageObject object];
+    imgObj.imageData = UIImagePNGRepresentation(image);
+    message.mediaObject = imgObj;
+    
+    SendMessageToWXReq *req = [[SendMessageToWXReq alloc] init];
+    req.bText = NO;
+    req.message = message;
+    req.scene = WXSceneType;
+    
+    [WXApi sendReq:req];
+}
 @end
