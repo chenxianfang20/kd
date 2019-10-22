@@ -184,39 +184,56 @@ DKExpressSendInfoHeaderViewDelegate>
     }
     
     NSDictionary *params = @{
-                             @"code" : self.scanString,
-                             @"num" : self.phoneNum
+                             @"code" : self.scanString
                              };
     NSString *url = kWuliuGuiji;
-    if ([self.scanString hasPrefix:@"SF"]) {
-        url = kSFWuliu;
-    }
-        
-    
     [SVProgressHUD showWithStatus:@"查询中..."];
     [KDNetWorkManager GetHttpDataWithUrlStr:url Dic:params headDic:nil SuccessBlock:^(id obj) {
         
         [SVProgressHUD dismiss];
         
         if([obj[@"code"] integerValue] == 1){
-            
+            //查询成功
             NSDictionary *dic = obj[@"data"];
             if (dic.count != 0) {
+                
                 KDWuliuGuijiModel *model = [KDWuliuGuijiModel mj_objectWithKeyValues:dic];
                 model.logistic.logistics_code = self.scanString;
                 self.model = model;
-                if (self.phoneNum.length == 0 ) {//&& ![self.scanString hasPrefix:@"SF"]
-                    self.tableView.tableHeaderView = self.textfieldHeaderView;
-                    self.textfieldHeaderView.model = model;
-                }else{
-                    self.tableView.tableHeaderView = self.headerView;
-                    self.headerView.model = model;
-                    self.tableView.tableFooterView = self.footerView;
-                    [self.tableView reloadData];
-                }
+                self.tableView.tableHeaderView = self.headerView;
+                self.headerView.model = model;
+                self.tableView.tableFooterView = self.footerView;
+                [self.tableView reloadData];
+                
             }else{
                 NSString *msg = @"未查到物流信息";
                 [ZJCustomHud showWithText:msg WithDurations:2.0];
+            }
+            
+        }else if([obj[@"code"] integerValue] == 0){
+            
+            NSDictionary *dic = obj[@"data"];
+            if ([dic isKindOfClass:[NSDictionary class]]) {
+                
+                if (dic.count != 0) {
+                    
+                    KDWuliuGuijiModel *model = [KDWuliuGuijiModel mj_objectWithKeyValues:dic];
+                    model.logistic.logistics_code = self.scanString;
+                    self.model = model;
+                    self.tableView.tableHeaderView = self.textfieldHeaderView;
+                    self.textfieldHeaderView.model = model;
+                    
+                }else{
+                    NSString *msg = @"未查到物流信息";
+                    [ZJCustomHud showWithText:msg WithDurations:2.0];
+                }
+                
+            }else{
+                
+                //未查到单号
+                NSString *msg = @"未查到物流信息";
+                [ZJCustomHud showWithText:msg WithDurations:2.0];
+                
             }
             
         }else{
@@ -230,12 +247,63 @@ DKExpressSendInfoHeaderViewDelegate>
     }];
 }
 
+- (void)getSFDataFrom{
+    
+    if (!self.scanString) {
+        return;
+    }
+    
+    NSDictionary *params = @{
+                             @"code" : self.scanString,
+                             @"num" : self.phoneNum
+                             };
+    NSString *url = kSFWuliu;
+    
+    [SVProgressHUD showWithStatus:@"查询中..."];
+    [KDNetWorkManager GetHttpDataWithUrlStr:url Dic:params headDic:nil SuccessBlock:^(id obj) {
+        
+        [SVProgressHUD dismiss];
+        
+        if([obj[@"code"] integerValue] == 1){
+            
+            NSDictionary *dic = obj[@"data"];
+            if (dic.count != 0) {
+                
+                KDWuliuGuijiModel *model = [KDWuliuGuijiModel mj_objectWithKeyValues:dic];
+                model.logistic.logistics_code = self.scanString;
+                self.model = model;
+                self.tableView.tableHeaderView = self.headerView;
+                self.headerView.model = model;
+                self.tableView.tableFooterView = self.footerView;
+                [self.tableView reloadData];
+                
+            }else{
+                NSString *msg = @"未查到物流信息";
+                [ZJCustomHud showWithText:msg WithDurations:2.0];
+            }
+            
+        }else{
+            
+            NSString *msg = obj[@"msg"];
+            if (msg.length > 0) {
+                [ZJCustomHud showWithText:msg WithDurations:2.0];
+            }else{
+                [ZJCustomHud showWithText:@"快递单号已过期" WithDurations:2.0];
+            }
+            
+        }
+        
+    } FailureBlock:^(id obj) {
+        
+    }];
+}
+
 #pragma mark -- DKExpressFindTextViewDelegate
 - (void)searchExpressInfoWithNum:(NSString *)num{
     
     self.phoneNum = num;
     
-    [self getDataFrom];
+    [self getSFDataFrom];
     
 }
 
