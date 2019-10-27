@@ -180,6 +180,7 @@ DKExpressSendInfoHeaderViewDelegate>
 - (void)getDataFrom{
     
     if (!self.scanString) {
+        //单号为空就返回
         return;
     }
     
@@ -211,10 +212,10 @@ DKExpressSendInfoHeaderViewDelegate>
             }
             
         }else if([obj[@"code"] integerValue] == 0){
-            
+            //查件失败
             NSDictionary *dic = obj[@"data"];
             if ([dic isKindOfClass:[NSDictionary class]]) {
-                
+                //是顺丰单号
                 if (dic.count != 0) {
                     
                     KDWuliuGuijiModel *model = [KDWuliuGuijiModel mj_objectWithKeyValues:dic];
@@ -230,14 +231,14 @@ DKExpressSendInfoHeaderViewDelegate>
                 
             }else{
                 
-                //未查到单号
+                //过期的单号，或者有问题未查到单号
                 NSString *msg = @"未查到物流信息";
                 [ZJCustomHud showWithText:msg WithDurations:2.0];
                 
             }
             
         }else{
-            
+            //code是0，1以外的值（其他类型的错误）
             NSString *msg = obj[@"msg"];
             [ZJCustomHud showWithText:msg WithDurations:2.0];
         }
@@ -250,6 +251,7 @@ DKExpressSendInfoHeaderViewDelegate>
 - (void)getSFDataFrom{
     
     if (!self.scanString) {
+        //单号为空就返回
         return;
     }
     
@@ -265,7 +267,7 @@ DKExpressSendInfoHeaderViewDelegate>
         [SVProgressHUD dismiss];
         
         if([obj[@"code"] integerValue] == 1){
-            
+            //查件成功
             NSDictionary *dic = obj[@"data"];
             if (dic.count != 0) {
                 
@@ -278,12 +280,13 @@ DKExpressSendInfoHeaderViewDelegate>
                 [self.tableView reloadData];
                 
             }else{
+                
                 NSString *msg = @"未查到物流信息";
                 [ZJCustomHud showWithText:msg WithDurations:2.0];
             }
             
         }else{
-            
+            //查件失败
             NSString *msg = obj[@"msg"];
             if (msg.length > 0) {
                 [ZJCustomHud showWithText:msg WithDurations:2.0];

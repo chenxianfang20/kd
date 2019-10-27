@@ -10,7 +10,7 @@
 #import "RandomKey.h"
 
 static NSString* const kWXNotInstallErrorTitle = @"您还没有安装微信，不能使用微信分享功能";
-
+static NSString* const kWXLogNotInstallErrorTitle = @"您还没有安装微信，不能使用微信登录功能";
 @interface WXApiManager()<WXApiDelegate>
 
 @property(nonatomic, copy)NSString *authState;
@@ -50,6 +50,11 @@ static NSString* const kWXNotInstallErrorTitle = @"您还没有安装微信，�
 - (void)sendAuthRequestWithController:(UIViewController*)viewController
                              delegate:(id<WXAuthDelegate>)delegate {
     
+    if (![WXApi isWXAppInstalled]) {
+        ADShowErrorAlert(kWXLogNotInstallErrorTitle);
+        return;
+    }
+    
     SendAuthReq* req =[[SendAuthReq alloc] init];
     req.scope = @"snsapi_userinfo";
     self.authState = req.state = [NSString randomKey];
@@ -70,7 +75,7 @@ static NSString* const kWXNotInstallErrorTitle = @"您还没有安装微信，�
                 AtScene:(enum WXScene)scene {
     
     if (![WXApi isWXAppInstalled]) {
-        ADShowErrorAlert(kWXNotInstallErrorTitle);
+        ADShowErrorAlert(kWXLogNotInstallErrorTitle);
         return NO;
     }
     WXWebpageObject *ext = [WXWebpageObject object];
@@ -97,7 +102,7 @@ static NSString* const kWXNotInstallErrorTitle = @"您还没有安装微信，�
           ThumbImage:(UIImage *)thumbImage
              AtScene:(enum WXScene)scene {
     if (![WXApi isWXAppInstalled]) {
-        ADShowErrorAlert(kWXNotInstallErrorTitle);
+        ADShowErrorAlert(kWXLogNotInstallErrorTitle);
         return NO;
     }
     
@@ -162,6 +167,10 @@ static NSString* const kWXNotInstallErrorTitle = @"您还没有安装微信，�
  */
 - (void)WXShareWXScene:(int)WXSceneType code:(NSString *)code phoneNum:(NSString *)num
 {
+    if (![WXApi isWXAppInstalled]) {
+        ADShowErrorAlert(kWXNotInstallErrorTitle);
+        return;
+    }
     
     if (WXSceneType == 0) {
         
@@ -215,6 +224,11 @@ static NSString* const kWXNotInstallErrorTitle = @"您还没有安装微信，�
  */
 - (void)WXShareWXScene:(int)WXSceneType image:(UIImage *)image
 {
+    if (![WXApi isWXAppInstalled]) {
+        ADShowErrorAlert(kWXNotInstallErrorTitle);
+        return;
+    }
+    
     WXMediaMessage *message = [WXMediaMessage message];
     WXImageObject *imgObj = [WXImageObject object];
     imgObj.imageData = UIImagePNGRepresentation(image);
