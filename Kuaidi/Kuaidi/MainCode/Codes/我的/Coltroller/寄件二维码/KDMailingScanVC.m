@@ -104,7 +104,7 @@
     shareBtn.layer.masksToBounds=YES;
     [shareBtn addTarget:self action:@selector(shareBtnClick) forControlEvents:UIControlEventTouchUpInside];
     [shareBgView addSubview:shareBtn];
-    
+    shareBtn.hidden = ![[WXApiManager sharedManager] isInstallWX];
 }
 -(void)getDefaultAddress{
     KDUserModel* model = [KDUserModelTool userModel];

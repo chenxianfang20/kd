@@ -12,7 +12,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface WXLoginPhoneAlertView : UIView
 
-+(void)wx_LoginPhoneAlertViewShowWithCompeleteBlock:(void(^)(NSString *phoneNum))Block;
++(void)wx_LoginPhoneAlertViewShowWithCompeleteBlock:(void(^)(NSString *phoneNum,NSString *verifyCode))Block;
 
 @end
 

@@ -143,7 +143,7 @@ KDAddressInfoViewDelegate>
     
     self.goodsIndex = -1;
     
-    self.wuliuIndex = -1;
+    self.wuliuIndex = 0;
     
     [self setNav];
     
@@ -263,6 +263,7 @@ KDAddressInfoViewDelegate>
 }
 
 -(void)clickConfirmButton{
+    
     //下单
     KDUserModel* model = [KDUserModelTool userModel];
     KDWuliuListModel *wuliuModel = self.wuliuArr[self.wuliuIndex + 1];
@@ -296,23 +297,35 @@ KDAddressInfoViewDelegate>
                              };
     [SVProgressHUD showWithStatus:@"下单中..."];
     [KDNetWorkManager GetHttpDataWithUrlStr:kCreateOrder Dic:params headDic:nil SuccessBlock:^(id obj) {
-        
+
         [SVProgressHUD dismiss];
-        
+
         if([obj[@"code"] integerValue] == 1){
             [SVProgressHUD showSuccessWithStatus:@"下单成功"];
             KDExpressRecordController *vc = [[KDExpressRecordController alloc] init];
             vc.hidesBottomBarWhenPushed = YES;
             [weakSelf.navigationController pushViewController:vc animated:YES];
+
+            self.goodsIndex = -1;
             
+            self.wuliuIndex = 0;
+            
+            self.goodsInfoView.timeTF.text = @"";
+            
+            self.goodsInfoView.messageTF.text = @"";
+            
+            [self.addressView clearnAllInfo];
+            
+            [self updateFrame];
+
         }else{
-            
+
             NSString *msg = obj[@"msg"];
             [ZJCustomHud showWithText:msg WithDurations:2.0];
         }
-        
+
     } FailureBlock:^(id obj) {
-        
+
     }];
     
    

@@ -162,6 +162,7 @@
         KDGoodsListModel *model = self.goodsArr[i];
         UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
         [button setTitle:model.goods_name forState:UIControlStateNormal];
+        button.tag = i;
         button.titleLabel.font = PingFangMedium(13);
         button.layer.borderWidth = 1;
         button.layer.cornerRadius = 4;
@@ -292,7 +293,7 @@
 }
 
 - (void)buttonClick:(UIButton *)button{
-    
+    self.index = button.tag;
     for (UIButton *button in self.buttonArr) {
         button.selected = NO;
         [self selectButtonConvert:button];

@@ -15,15 +15,23 @@
 
 @property(nonatomic, strong)UITextField *phoneTextFiled;
 
-@property(nonatomic, copy)void(^Block)(NSString *phoneNum);
+@property(nonatomic, strong)UITextField *verifyTextFiled;
+
+@property(nonatomic, strong)UIButton *verifyButton;
+
+@property(nonatomic, strong)NSTimer *timer;
+
+@property(nonatomic, assign)NSInteger count;
+
+@property(nonatomic, copy)void(^Block)(NSString *phoneNum,NSString *verifyCode);
 
 @end
 
 @implementation WXLoginPhoneAlertView
 
-+(void)wx_LoginPhoneAlertViewShowWithCompeleteBlock:(void(^)(NSString *phoneNum))Block{
++(void)wx_LoginPhoneAlertViewShowWithCompeleteBlock:(void(^)(NSString *phoneNum,NSString *verifyCode))Block{
     
-    WXLoginPhoneAlertView *alertView = [[WXLoginPhoneAlertView alloc] initWithFrame:CGRectMake(0, 0, 300, 160)];
+    WXLoginPhoneAlertView *alertView = [[WXLoginPhoneAlertView alloc] initWithFrame:CGRectMake(0, 0, 300, 200)];
     alertView.center = CGPointMake(kScreenWidth/2.0, kScreenHeight/2.0);
     alertView.layer.cornerRadius = 5;
     alertView.backgroundColor = [UIColor whiteColor];
@@ -100,9 +108,10 @@
     
     UITextField *phoneTextFiled = [[UITextField alloc] init];
     self.phoneTextFiled = phoneTextFiled;
+    phoneTextFiled.placeholder = @"输入手机号码";
     phoneTextFiled.textColor = rgb(33, 33, 33, 1.0);
     phoneTextFiled.font = PingFangMedium(16);
-    phoneTextFiled.textAlignment = NSTextAlignmentCenter;
+    phoneTextFiled.textAlignment = NSTextAlignmentLeft;
     phoneTextFiled.keyboardType = UIKeyboardTypeNumberPad;
     phoneTextFiled.returnKeyType = UIReturnKeyDone;
     [phoneTextFiled becomeFirstResponder];
@@ -115,11 +124,59 @@
         make.height.mas_equalTo(36);
     }];
     
+    //验证码
+    UIView *verifyView = [[UIView alloc] init];
+    verifyView.layer.cornerRadius = 3;
+    verifyView.layer.borderWidth = 1.0;
+    verifyView.layer.borderColor = rgb(240, 240, 240, 1.0).CGColor;
+    [self addSubview:verifyView];
+    [verifyView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(phoneView.mas_bottom).offset(10);
+        make.left.equalTo(self).offset(20);
+        make.right.equalTo(self).offset(-120);
+        make.height.mas_equalTo(36);
+    }];
+    
+    UITextField *verifyTextFiled = [[UITextField alloc] init];
+    self.verifyTextFiled = verifyTextFiled;
+    verifyTextFiled.placeholder = @"输入验证码";
+    verifyTextFiled.textColor = rgb(33, 33, 33, 1.0);
+    verifyTextFiled.font = PingFangMedium(16);
+    verifyTextFiled.textAlignment = NSTextAlignmentLeft;
+    verifyTextFiled.keyboardType = UIKeyboardTypeNumberPad;
+    verifyTextFiled.returnKeyType = UIReturnKeyDone;
+    [verifyView addSubview:verifyTextFiled];
+    [verifyTextFiled mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(verifyView).offset(5);
+        make.bottom.equalTo(verifyView).offset(-5);
+        make.left.equalTo(verifyView).offset(20);
+        make.right.equalTo(verifyView).offset(-20);
+        make.height.mas_equalTo(36);
+    }];
+    
+    UIButton *verifyButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    self.verifyButton = verifyButton;
+    verifyButton.layer.cornerRadius = 3;
+    verifyButton.layer.borderWidth = 1.0;
+    verifyButton.layer.borderColor = rgb(240, 240, 240, 1.0).CGColor;
+    [verifyButton setTitle:@"获取验证码" forState:UIControlStateNormal];
+    [verifyButton setTitleColor:rgb(33, 33, 33, 1.0) forState:UIControlStateNormal];
+    verifyButton.titleLabel.font = PingFangMedium(14);
+    [self addSubview:verifyButton];
+    [verifyButton mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.right.equalTo(self).offset(-20);
+        make.height.mas_equalTo(36);
+        make.centerY.equalTo(verifyView.mas_centerY).offset(0);
+        make.left.equalTo(verifyView.mas_right).offset(20);
+    }];
+    
+    [verifyButton addTarget:self action:@selector(verifyButtonClick:) forControlEvents:UIControlEventTouchUpInside];
+    
     UIView *buttonView = [[UIView alloc] init];
     [self addSubview:buttonView];
     [buttonView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.right.equalTo(self).offset(0);
-        make.top.equalTo(phoneView.mas_bottom).offset(20);
+        make.top.equalTo(verifyView.mas_bottom).offset(15);
         make.bottom.equalTo(self).offset(0);
     }];
     
@@ -163,6 +220,83 @@
     [confirmButton addTarget:self action:@selector(confirmButtonClick:) forControlEvents:UIControlEventTouchUpInside];
 }
 
+
+- (void)verifyButtonClick:(UIButton *)button{
+    
+    [self.phoneTextFiled resignFirstResponder];
+    
+    [self getVerifyCode];
+    
+}
+
+
+- (void)getVerifyCode{
+    
+    if (![self valiMobile:self.phoneTextFiled.text]) {
+        
+        [ZJCustomHud showWithText:@"手机号输入错误" WithDurations:2.0];
+        return;
+    }
+    
+    NSDictionary *dic = @{
+                          @"phone" : self.phoneTextFiled.text
+                          };
+    [SVProgressHUD showWithStatus:@"发送中..."];
+    [KDNetWorkManager GetHttpDataWithUrlStr:kWXVerifyCode Dic:dic headDic:nil SuccessBlock:^(id obj) {
+        [SVProgressHUD dismiss];
+        if([obj[@"code"] integerValue] == 1){
+            
+            [self  showToastWithText:@"短信验证码发送成功" time:1];
+            [self startTimer];
+            [self.verifyTextFiled becomeFirstResponder];
+            
+        }else{
+            
+            [self  showToastWithText:obj[@"msg"] time:1];
+            [self stopTimer];
+        }
+    } FailureBlock:^(id obj) {
+        [self stopTimer];
+    }];
+    
+    
+}
+
+- (void)startTimer{
+    
+    self.verifyButton.enabled = NO;
+    [self.verifyButton setTitle:@"60" forState:UIControlStateNormal];
+    self.count = 60;
+    
+    if (self.timer == nil) {
+        self.timer = [NSTimer timerWithTimeInterval:1.0 target:self selector:@selector(countTime) userInfo:nil repeats:YES];
+        [[NSRunLoop currentRunLoop] addTimer:self.timer forMode:NSDefaultRunLoopMode];
+    }else{
+        [self.timer fire];
+    }
+}
+
+- (void)stopTimer{
+    
+    self.verifyButton.enabled = YES;
+    [self.verifyButton setTitle:@"获取验证码" forState:UIControlStateNormal];
+    if ([self.timer isValid]) {
+        [self.timer invalidate];
+    }
+    self.timer = nil;
+}
+
+- (void)countTime{
+    
+    self.count -- ;
+    if (self.count == 0) {
+        [self stopTimer];
+    }else{
+        [self.verifyButton setTitle:[NSString stringWithFormat:@"%ld",self.count] forState:UIControlStateNormal];
+        self.verifyButton.titleLabel.text = [NSString stringWithFormat:@"%ld",self.count];
+    }
+}
+
 - (void)confirmButtonClick:(UIButton *)button{
     
     if (![self valiMobile:self.phoneTextFiled.text]) {
@@ -171,10 +305,15 @@
         return;
     }
     
+    if (self.verifyTextFiled.text.length == 0) {
+        [ZJCustomHud showWithText:@"请输入验证码" WithDurations:2.0];
+        return;
+    }
+    
     [self hidden];
     
     if (self.Block) {
-        self.Block(self.phoneTextFiled.text);
+        self.Block(self.phoneTextFiled.text,self.verifyTextFiled.text);
     }
 }
 

@@ -98,6 +98,8 @@ NS_ASSUME_NONNULL_BEGIN
  */
 - (void)WXShareWXScene:(int)WXSceneType image:(UIImage *)image;
 
+- (BOOL)isInstallWX;
+
 @end
 
 NS_ASSUME_NONNULL_END

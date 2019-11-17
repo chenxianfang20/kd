@@ -46,6 +46,10 @@ static NSString* const kWXLogNotInstallErrorTitle = @"您还没有安装微信�
     return nil;
 }
 
+- (BOOL)isInstallWX{
+    return [WXApi isWXAppInstalled];
+}
+
 #pragma mark - Public Methods
 - (void)sendAuthRequestWithController:(UIViewController*)viewController
                              delegate:(id<WXAuthDelegate>)delegate {

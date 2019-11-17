@@ -44,6 +44,9 @@
 //登录
 #define kLogin @"/api/user/public/login"
 
+//微信登录验证码
+#define kWXVerifyCode @"/api/user/public/bindCode" 
+
 //微信2登录
 #define kWXLoginWithPhone @"/api/user/public/saveUserInfo"
 

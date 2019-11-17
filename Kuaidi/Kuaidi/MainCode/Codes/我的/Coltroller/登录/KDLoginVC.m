@@ -129,6 +129,7 @@
     wxLoginBtn.layer.masksToBounds=YES;
     [wxLoginBtn addTarget:self action:@selector(wxLoginBtnClick) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:wxLoginBtn];
+    wxLoginBtn.hidden = ![[WXApiManager sharedManager] isInstallWX];
     
     UILabel* wxLabel=[[UILabel alloc]initWithFrame:CGRectMake(kAdaptationWidth(47),wxLoginBtn.bottom+ kAdaptationWidth(12), kAdaptationWidth(68), kAdaptationWidth(13))];
     wxLabel.text=@"微信登录";
@@ -340,7 +341,7 @@
                           };
     [KDNetWorkManager GetHttpDataWithUrlStr:kWXLoginNoPhone Dic:dic headDic:nil SuccessBlock:^(id obj) {
         if([obj[@"code"] integerValue] == 1){
-            
+
             KDUserModel* model = [KDUserModel  ModelWithDict:obj[@"data"][@"user"]];
             model.token =obj[@"data"][@"token"];
             [KDUserModelTool saveUserModel:model];
@@ -361,11 +362,12 @@
 //方式二登录，有手机号
 - (void)loginWithPhoneNum{
     
-    [WXLoginPhoneAlertView wx_LoginPhoneAlertViewShowWithCompeleteBlock:^(NSString * _Nonnull phoneNum) {
+    [WXLoginPhoneAlertView wx_LoginPhoneAlertViewShowWithCompeleteBlock:^(NSString * _Nonnull phoneNum,NSString * _Nonnull verifyCode) {
         
             NSDictionary *dic = @{
                                   @"open_id" : self.model.openid,
                                   @"mobile" : phoneNum,
+                                  @"bind_code" : verifyCode,
                                   @"union_id" : self.model.unionid
                                   };
             [KDNetWorkManager GetHttpDataWithUrlStr:kWXLoginWithPhone Dic:dic headDic:nil SuccessBlock:^(id obj) {
@@ -379,7 +381,7 @@
                         }
                         [self.navigationController popViewControllerAnimated:YES];
                 }else{
-                    [self.view  showToastWithText:obj[@"msg"] time:1];
+                    [self.view  showToastWithText:obj[@"msg"] time:2];
                 }
             } FailureBlock:^(id obj) {
         

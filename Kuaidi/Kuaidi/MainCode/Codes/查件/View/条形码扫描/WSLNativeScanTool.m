@@ -95,7 +95,7 @@
             self.scanFinishedBlock(feature.messageString);
         }
     }else{
-//        NSLog(@"无法识别图中二维码");
+        [SVProgressHUD showErrorWithStatus:@"识别失败"];
     }
 }
 
@@ -165,6 +165,8 @@
         if(self.scanFinishedBlock != nil){
             self.scanFinishedBlock(metadataObject.stringValue);
         }
+    }else{
+        [SVProgressHUD showErrorWithStatus:@"识别失败"];
     }
 }
 #pragma mark- AVCaptureVideoDataOutputSampleBufferDelegate的方法

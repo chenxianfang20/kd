@@ -157,4 +157,15 @@
     [self.receiveUserInfoView showAddress];
 }
 
+
+- (void)clearnAllInfo{
+    
+    _receiveAddressModel = nil;
+    _sendAddressModel = nil;
+    
+    [self.sendUserInfoView hiddenAddress];
+    [self.receiveUserInfoView hiddenAddress];
+    
+}
+
 @end
