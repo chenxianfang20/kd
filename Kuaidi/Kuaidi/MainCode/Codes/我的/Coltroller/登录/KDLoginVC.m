@@ -137,8 +137,8 @@
     wxLabel.font =[UIFont fontWithName:@"PingFang-SC-Medium" size: 14];
     wxLabel.textAlignment=NSTextAlignmentCenter;
     [self.view addSubview:wxLabel];
-    wxLabel.centerX=wxLoginBtn.centerX;
-    
+    wxLabel.centerX = wxLoginBtn.centerX;
+    wxLabel.hidden = ![[WXApiManager sharedManager] isInstallWX];
 //    //qq登录
 //    UIButton* qqLoginBtn =  [[UIButton alloc]initWithFrame:CGRectMake(kAdaptationWidth(161), forgetPwdBtn.bottom+ kAdaptationWidth(90), kAdaptationWidth(54), kAdaptationWidth(54))];
 //    qqLoginBtn.backgroundColor=[UIColor whiteColor];

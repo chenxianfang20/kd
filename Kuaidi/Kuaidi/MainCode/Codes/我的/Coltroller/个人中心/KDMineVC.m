@@ -316,10 +316,10 @@
     }
     //系统设置
     if(indexPath.row == 3){
-        if(!usermodel.token){
-            [self.view showToastWithText:@"请先登录" time:1];
-            return;
-        }
+//        if(!usermodel.token){
+//            [self.view showToastWithText:@"请先登录" time:1];
+//            return;
+//        }
         KDSetupVC* vc= [[KDSetupVC alloc]init];
         vc.hidesBottomBarWhenPushed=YES;
         [self.navigationController pushViewController:vc animated:YES];
@@ -337,10 +337,10 @@
     
     //关于我们
     if(indexPath.row == 5){
-        if(!usermodel.token){
-            [self.view showToastWithText:@"请先登录" time:1];
-            return;
-        }
+//        if(!usermodel.token){
+//            [self.view showToastWithText:@"请先登录" time:1];
+//            return;
+//        }
         KDAboutAsVC* vc= [[KDAboutAsVC alloc]init];
         vc.hidesBottomBarWhenPushed=YES;
         [self.navigationController pushViewController:vc animated:YES];

@@ -113,6 +113,11 @@
     [quitBgView addSubview:quitLabel];
     quitLabel.centerY=quitBgView.height/2.0;
     
+    KDUserModel * model = [KDUserModelTool userModel];
+    if (model.token == nil) {
+        quitBgView.hidden = YES;
+    }
+    
 }
 
 -(void)setNav{
