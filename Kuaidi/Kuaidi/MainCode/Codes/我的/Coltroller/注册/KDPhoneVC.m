@@ -95,6 +95,10 @@
             }if (textField.text.length >= 13 ) {//输入完成
                 textField.text = [textField.text substringToIndex:13];
                 [textField resignFirstResponder];
+                NSString *phoneFieldStr =[self.phoneTF.text stringByReplacingOccurrencesOfString:@" "withString:@""];
+                if(![NSString isValidatePhoneNum:phoneFieldStr]){
+                    [self.view showToastWithText:@"手机号不合法" time:1];
+                }
             }
             i = textField.text.length;
             
@@ -106,13 +110,17 @@
             i = textField.text.length;
         }
         
-         NSString *phoneFieldStr =[self.phoneTF.text stringByReplacingOccurrencesOfString:@" "withString:@""];
+        NSString *phoneFieldStr =[self.phoneTF.text stringByReplacingOccurrencesOfString:@" "withString:@""];
         if (textField.text.length >= 13 && [NSString isValidatePhoneNum:phoneFieldStr]) {//输入完成
+            
+            if(![NSString isValidatePhoneNum:phoneFieldStr]){
+                [self.view showToastWithText:@"手机号不合法" time:1];
+            }
             nextBtn.userInteractionEnabled=YES;
             [nextBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
             [nextBtn setBackgroundImage:[UIImage imageWithColor:rgb(247, 70, 74, 1)] forState:UIControlStateNormal];
         }else{
-             nextBtn.userInteractionEnabled=NO;
+            nextBtn.userInteractionEnabled=NO;
             [nextBtn setTitleColor:[UIColor colorWithHex:@"#A9A9A9"]  forState:UIControlStateNormal];
             [nextBtn setBackgroundImage:[UIImage imageWithColor:[UIColor colorWithHex:@"#F1F1F1"]] forState:UIControlStateNormal];
         }

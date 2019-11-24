@@ -78,7 +78,7 @@
     [boxInputView loadAndPrepareViewWithBeginEdit:YES];
     
     //
-     _resendCodeBtn= [[UIButton alloc]initWithFrame:CGRectMake(30, boxInputView.bottom, kAdaptationWidth(105), kAdaptationWidth(40))];
+    _resendCodeBtn= [[UIButton alloc]initWithFrame:CGRectMake(30, boxInputView.bottom, kAdaptationWidth(105), kAdaptationWidth(40))];
     //[_resendCodeBtn setTitle:@"重新发送" forState:UIControlStateNormal];
     _resendCodeBtn.titleLabel.font = [UIFont fontWithName:@"PingFang SC" size: 15];
     [_resendCodeBtn setTitleColor:[UIColor colorWithHex:@"#5C5C5C"] forState:UIControlStateNormal];

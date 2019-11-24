@@ -13,7 +13,7 @@
     
     //    varpartten =  @"/^((\(\d{3}\))|(\d{3}\-))?1[3|4|5|6|7|8|9][0-9]\d{8}$/";
     //    NSString *phoneRegex = @"^[1][3578][0-9]{9}$";
-    NSString *phoneRegex = @"^[1][35789][0-9]{9}$";
+    NSString *phoneRegex = @"^[1][23456789][0-9]{9}$";
     NSPredicate *phoneTest = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", phoneRegex];
     return [phoneTest evaluateWithObject:phone];
 }

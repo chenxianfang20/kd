@@ -66,7 +66,7 @@
     
     
     //注册
-     registerBtn=[[UIButton alloc]initWithFrame:CGRectMake(kAdaptationWidth(36), sepLabel.bottom+kAdaptationWidth(62), kAdaptationWidth(303), kAdaptationWidth(54))];
+    registerBtn=[[UIButton alloc]initWithFrame:CGRectMake(kAdaptationWidth(36), sepLabel.bottom+kAdaptationWidth(62), kAdaptationWidth(303), kAdaptationWidth(54))];
     [registerBtn setTitle:@"注册" forState:UIControlStateNormal];
     registerBtn.userInteractionEnabled=NO;
     [registerBtn setTitleColor:[UIColor colorWithHex:@"#A9A9A9"]  forState:UIControlStateNormal];
@@ -109,7 +109,7 @@
 //是否同意条例
 -(void)agreeBtnClick:(UIButton*)btn{
     if(btn.tag == 1){
-         //[registerBtn setBackgroundImage:[UIImage imageWithColor:rgb(230, 230, 230, 1)] forState:UIControlStateNormal];
+        //[registerBtn setBackgroundImage:[UIImage imageWithColor:rgb(230, 230, 230, 1)] forState:UIControlStateNormal];
         [btn setBackgroundImage:[UIImage imageNamed:@"注册-图标-未选"] forState:UIControlStateNormal];
         registerBtn.enabled=NO;
         btn.tag = 0;
@@ -135,7 +135,7 @@
     __weak typeof(self) weakSelf =self;
     [KDNetWorkManager GetHttpDataWithUrlStr:kRegister Dic:dic headDic:nil SuccessBlock:^(id obj) {
         if([obj[@"code"] integerValue] == 1){
-           
+            
             [ZJCustomHud showWithSuccess:@"注册成功"];
             [weakSelf.navigationController popToRootViewControllerAnimated:YES];
         }else{
@@ -145,7 +145,7 @@
         
     }];
     
-   
+    
 }
 
 -(void)phoneTFChanged:(UITextField*)text{
