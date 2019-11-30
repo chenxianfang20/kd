@@ -78,6 +78,7 @@
 		3D696F87230A784C00593437 /* KDExpressRecordListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D696F86230A784C00593437 /* KDExpressRecordListController.m */; };
 		3D696F8D230A797F00593437 /* KDNetWorkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D696F8A230A797F00593437 /* KDNetWorkManager.m */; };
 		3D696F8E230A797F00593437 /* KDSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D696F8B230A797F00593437 /* KDSessionManager.m */; };
+		F416D0DF238AD953000146D5 /* KDCheckHisoryModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F416D0DE238AD953000146D5 /* KDCheckHisoryModel.m */; };
 		F4195EB22312128900F3EF10 /* NSString+PinYin4Cocoa.m in Sources */ = {isa = PBXBuildFile; fileRef = F4195EA72312128900F3EF10 /* NSString+PinYin4Cocoa.m */; };
 		F4195EB32312128900F3EF10 /* PinyinHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = F4195EAA2312128900F3EF10 /* PinyinHelper.m */; };
 		F4195EB42312128900F3EF10 /* HanyuPinyinOutputFormat.m in Sources */ = {isa = PBXBuildFile; fileRef = F4195EAC2312128900F3EF10 /* HanyuPinyinOutputFormat.m */; };
@@ -89,6 +90,7 @@
 		F419CD62230865B700553E29 /* KDAboutAsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F419CD61230865B700553E29 /* KDAboutAsVC.m */; };
 		F419CD652308669700553E29 /* 关于-图片@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F419CD632308669700553E29 /* 关于-图片@2x.png */; };
 		F419CD662308669700553E29 /* 关于-图片@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F419CD642308669700553E29 /* 关于-图片@3x.png */; };
+		F41A3B94238ADAA200B4B331 /* KDCheckHistoryView.m in Sources */ = {isa = PBXBuildFile; fileRef = F41A3B93238ADAA200B4B331 /* KDCheckHistoryView.m */; };
 		F41B09772312980D0094A5AC /* 图标-官方网站@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F41B096D231298080094A5AC /* 图标-官方网站@2x.png */; };
 		F41B09782312980D0094A5AC /* 图标-电话@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F41B096E231298080094A5AC /* 图标-电话@2x.png */; };
 		F41B09792312980D0094A5AC /* 快递背景@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F41B096F231298090094A5AC /* 快递背景@2x.png */; };
@@ -123,6 +125,10 @@
 		F41C800F23081C1300DA1C2F /* 失败图片@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F41C800C23081C1300DA1C2F /* 失败图片@2x.png */; };
 		F41C801523081D2F00DA1C2F /* KDPhoneVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F41C801223081D2F00DA1C2F /* KDPhoneVC.m */; };
 		F41C801623081D2F00DA1C2F /* KDCodeVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F41C801323081D2F00DA1C2F /* KDCodeVC.m */; };
+		F41C86372390167F00D8B161 /* 图标-更多@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F41C86352390167F00D8B161 /* 图标-更多@2x.png */; };
+		F41C86382390167F00D8B161 /* 图标-更多@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = F41C86362390167F00D8B161 /* 图标-更多@3x.png */; };
+		F41C863B2390223500D8B161 /* KDQueryHistoryVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F41C863A2390223500D8B161 /* KDQueryHistoryVC.m */; };
+		F41C863E2390233700D8B161 /* KDQueryHistoryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F41C863D2390233700D8B161 /* KDQueryHistoryCell.m */; };
 		F41CCC942312AE1B0018B5A8 /* KDExpressDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F41CCC932312AE1B0018B5A8 /* KDExpressDetailModel.m */; };
 		F41D4C7B231BF03900056F54 /* KDScoreModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F41D4C7A231BF03900056F54 /* KDScoreModel.m */; };
 		F41D4C7E231BF11700056F54 /* KDScoreCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F41D4C7D231BF11700056F54 /* KDScoreCell.m */; };
@@ -414,6 +420,8 @@
 		3D696F8F230A80A300593437 /* NetWork.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NetWork.h; sourceTree = "<group>"; };
 		6A402E0BE0DC5701A3D49873 /* Pods-Kuaidi.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Kuaidi.release.xcconfig"; path = "Target Support Files/Pods-Kuaidi/Pods-Kuaidi.release.xcconfig"; sourceTree = "<group>"; };
 		A26641192201A6307C867746 /* libPods-Kuaidi.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Kuaidi.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F416D0DD238AD953000146D5 /* KDCheckHisoryModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KDCheckHisoryModel.h; sourceTree = "<group>"; };
+		F416D0DE238AD953000146D5 /* KDCheckHisoryModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KDCheckHisoryModel.m; sourceTree = "<group>"; };
 		F4195EA52312128900F3EF10 /* PinyinHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PinyinHelper.h; sourceTree = "<group>"; };
 		F4195EA62312128900F3EF10 /* HanyuPinyinOutputFormat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HanyuPinyinOutputFormat.h; sourceTree = "<group>"; };
 		F4195EA72312128900F3EF10 /* NSString+PinYin4Cocoa.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+PinYin4Cocoa.m"; sourceTree = "<group>"; };
@@ -434,6 +442,8 @@
 		F419CD61230865B700553E29 /* KDAboutAsVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KDAboutAsVC.m; sourceTree = "<group>"; };
 		F419CD632308669700553E29 /* 关于-图片@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "关于-图片@2x.png"; sourceTree = "<group>"; };
 		F419CD642308669700553E29 /* 关于-图片@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "关于-图片@3x.png"; sourceTree = "<group>"; };
+		F41A3B92238ADAA200B4B331 /* KDCheckHistoryView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KDCheckHistoryView.h; sourceTree = "<group>"; };
+		F41A3B93238ADAA200B4B331 /* KDCheckHistoryView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KDCheckHistoryView.m; sourceTree = "<group>"; };
 		F41B096D231298080094A5AC /* 图标-官方网站@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "图标-官方网站@2x.png"; sourceTree = "<group>"; };
 		F41B096E231298080094A5AC /* 图标-电话@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "图标-电话@2x.png"; sourceTree = "<group>"; };
 		F41B096F231298090094A5AC /* 快递背景@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "快递背景@2x.png"; sourceTree = "<group>"; };
@@ -476,6 +486,12 @@
 		F41C801223081D2F00DA1C2F /* KDPhoneVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KDPhoneVC.m; sourceTree = "<group>"; };
 		F41C801323081D2F00DA1C2F /* KDCodeVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KDCodeVC.m; sourceTree = "<group>"; };
 		F41C801423081D2F00DA1C2F /* KDPhoneVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KDPhoneVC.h; sourceTree = "<group>"; };
+		F41C86352390167F00D8B161 /* 图标-更多@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "图标-更多@2x.png"; sourceTree = "<group>"; };
+		F41C86362390167F00D8B161 /* 图标-更多@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "图标-更多@3x.png"; sourceTree = "<group>"; };
+		F41C86392390223500D8B161 /* KDQueryHistoryVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KDQueryHistoryVC.h; sourceTree = "<group>"; };
+		F41C863A2390223500D8B161 /* KDQueryHistoryVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KDQueryHistoryVC.m; sourceTree = "<group>"; };
+		F41C863C2390233700D8B161 /* KDQueryHistoryCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KDQueryHistoryCell.h; sourceTree = "<group>"; };
+		F41C863D2390233700D8B161 /* KDQueryHistoryCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KDQueryHistoryCell.m; sourceTree = "<group>"; };
 		F41CCC922312AE1B0018B5A8 /* KDExpressDetailModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KDExpressDetailModel.h; sourceTree = "<group>"; };
 		F41CCC932312AE1B0018B5A8 /* KDExpressDetailModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KDExpressDetailModel.m; sourceTree = "<group>"; };
 		F41D4C79231BF03900056F54 /* KDScoreModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KDScoreModel.h; sourceTree = "<group>"; };
@@ -734,6 +750,8 @@
 		162AB4072309776700EF8225 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				F416D0DD238AD953000146D5 /* KDCheckHisoryModel.h */,
+				F416D0DE238AD953000146D5 /* KDCheckHisoryModel.m */,
 				16BCC7BF231BA12A00AF583F /* KDWuliuGuijiModel.h */,
 				16BCC7C0231BA12A00AF583F /* KDWuliuGuijiModel.m */,
 			);
@@ -807,6 +825,8 @@
 		164096EB2309B1290055C0FB /* View */ = {
 			isa = PBXGroup;
 			children = (
+				F41A3B92238ADAA200B4B331 /* KDCheckHistoryView.h */,
+				F41A3B93238ADAA200B4B331 /* KDCheckHistoryView.m */,
 				16BCC7B8231B9BCB00AF583F /* 条形码扫描 */,
 				164096EC2309B1290055C0FB /* DKScanView.h */,
 				164096ED2309B1290055C0FB /* DKScanView.m */,
@@ -820,6 +840,8 @@
 				162DEB88230C4AE60099F44E /* DKExpressSendInfoCell.m */,
 				16BC300E2358B8BF009C17CC /* DKWXShareView.h */,
 				16BC300F2358B8BF009C17CC /* DKWXShareView.m */,
+				F41C863C2390233700D8B161 /* KDQueryHistoryCell.h */,
+				F41C863D2390233700D8B161 /* KDQueryHistoryCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1117,6 +1139,8 @@
 				164096E92309B1160055C0FB /* KDExpressSendInfoController.m */,
 				1645FF01231B954C00576A2C /* KDScanQRViewController.h */,
 				1645FF02231B954C00576A2C /* KDScanQRViewController.m */,
+				F41C86392390223500D8B161 /* KDQueryHistoryVC.h */,
+				F41C863A2390223500D8B161 /* KDQueryHistoryVC.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -1310,6 +1334,8 @@
 		F424E6B523098568002D340E /* 个人中心 */ = {
 			isa = PBXGroup;
 			children = (
+				F41C86352390167F00D8B161 /* 图标-更多@2x.png */,
+				F41C86362390167F00D8B161 /* 图标-更多@3x.png */,
 				F41D4C81231BF70700056F54 /* 图标-上@2x.png */,
 				F41D4C7F231BF70600056F54 /* 图标-上@3x.png */,
 				F41D4C80231BF70600056F54 /* 图标-下@2x.png */,
@@ -1697,6 +1723,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F41C86382390167F00D8B161 /* 图标-更多@3x.png in Resources */,
 				F465DE08230454B9002DFD4C /* 图标-账号@3x.png in Resources */,
 				F424E6B92309857C002D340E /* 图标-收藏 @2x.png in Resources */,
 				F41B09792312980D0094A5AC /* 快递背景@2x.png in Resources */,
@@ -1786,6 +1813,7 @@
 				F424E6B82309857C002D340E /* 图标-收藏 @3x.png in Resources */,
 				F481FF64230AE99000761A3A /* 地址-图标-地址@2x.png in Resources */,
 				3D65BF48230102F700B12F3D /* Assets.xcassets in Resources */,
+				F41C86372390167F00D8B161 /* 图标-更多@2x.png in Resources */,
 				F41BCCAA2308298400BCD691 /* 注册-图标-未选@2x.png in Resources */,
 				F465DE3C230454BA002DFD4C /* 图标-查件-未选@2x.png in Resources */,
 				F465DE23230454B9002DFD4C /* 我的-图标-淘宝@2x.png in Resources */,
@@ -1921,6 +1949,7 @@
 				F41FD250231431D9006F9ECA /* KDOrderDetailVC.m in Sources */,
 				F419CD5B2308603600553E29 /* KDCodeForPwdVC.m in Sources */,
 				160D8570233F1D900081AE75 /* ButtonColor.m in Sources */,
+				F41C863E2390233700D8B161 /* KDQueryHistoryCell.m in Sources */,
 				F4E524D32316B219008F5724 /* KDReceivedView.m in Sources */,
 				1645FF03231B954C00576A2C /* KDScanQRViewController.m in Sources */,
 				F465DE4B230454FF002DFD4C /* KDLoginVC.m in Sources */,
@@ -1952,11 +1981,13 @@
 				16E3D0BA23252AC200D4B831 /* KDCancellOrderController.m in Sources */,
 				1661B01D230AE5DD0028801C /* DKExpressSendInfoHeaderView.m in Sources */,
 				162DEB89230C4AE60099F44E /* DKExpressSendInfoCell.m in Sources */,
+				F41C863B2390223500D8B161 /* KDQueryHistoryVC.m in Sources */,
 				F422E95A230C51FE00F10B21 /* KDUserModelTool.m in Sources */,
 				F4C3083F230935F400CF65CA /* KDAddressAdminModel.m in Sources */,
 				3D434B9B232A355F00AD650D /* QRCodeTool.m in Sources */,
 				3D65BFC32301169500B12F3D /* UIView+YYAdd.m in Sources */,
 				F424E6BD23098716002D340E /* KDSetupVC.m in Sources */,
+				F41A3B94238ADAA200B4B331 /* KDCheckHistoryView.m in Sources */,
 				16BC30102358B8BF009C17CC /* DKWXShareView.m in Sources */,
 				F41BCCB223082A1200BCD691 /* UIButton+EnlargeTouchArea.m in Sources */,
 				3D65BF4E230102F700B12F3D /* main.m in Sources */,
@@ -1978,6 +2009,7 @@
 				163588092307DF370017F510 /* KDGoodsInfoView.m in Sources */,
 				160D8571233F1D900081AE75 /* ShakeDebug.m in Sources */,
 				F41C800723081C0300DA1C2F /* NSString+Valid.m in Sources */,
+				F416D0DF238AD953000146D5 /* KDCheckHisoryModel.m in Sources */,
 				F41B0983231298700094A5AC /* KDExpressDetailVC.m in Sources */,
 				F41D4C7B231BF03900056F54 /* KDScoreModel.m in Sources */,
 				164097062309B2CE0055C0FB /* KDMessageBoardView.m in Sources */,

@@ -10,11 +10,19 @@
 #import "DKScanView.h"
 #import "KDExpressSendInfoController.h"
 #import "KDScanQRViewController.h"
+#import "KDCheckHistoryView.h"
+#import "KDCheckHisoryModel.h"
 
 @interface KDCheckPieceVC ()<DKScanViewDelegate>
 
 @property(nonatomic, strong)DKScanView *scanView;
 
+
+
+@property (nonatomic,strong) UIView *checkHistoryView;
+@property (nonatomic,strong) UIButton *checkMoreBtn;
+
+@property (nonatomic,strong) NSMutableArray *queryHistoryArrM;
 @end
 
 @implementation KDCheckPieceVC
@@ -60,8 +68,79 @@
         make.height.mas_equalTo(156);
     }];
     
+    
+    
+    
+    
+}
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:YES];
+    [self.view addSubview:self.checkHistoryView];
+    [self getQueryHistoryData];
+}
+-(void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:YES];
+    [self.checkHistoryView removeFromSuperview];
+    self.checkHistoryView = nil;
+    [self.queryHistoryArrM removeAllObjects];
 }
 
+-(void)getQueryHistoryData{
+    
+    KDUserModel* model = [KDUserModelTool userModel];
+    if(model.userId){
+        NSDictionary * headdic = @{@"XX-Token":model.token,@"XX-Device-Type":kDeviceType};
+        
+        NSDictionary * param = @{@"user_id":model.userId,@"page":@"0",@"limit":@"10"};
+        __weak typeof(self) weakSelf = self;
+        [KDNetWorkManager GetHttpDataWithUrlStr:kKdniaoGethistory Dic:param headDic:headdic SuccessBlock:^(id obj) {
+            
+            for (NSDictionary*dic in obj[@"data"]) {
+                KDCheckHisoryModel*hisModel =   [KDCheckHisoryModel mj_objectWithKeyValues:dic];
+                [weakSelf.queryHistoryArrM addObject:hisModel];
+                
+            }
+            dispatch_async(dispatch_get_main_queue(), ^{
+                 [weakSelf updateCheckHistoryView];
+            });
+           
+        } FailureBlock:^(id obj) {
+            
+        }];
+    }
+    
+   
+}
+
+
+-(void)updateCheckHistoryView{
+    
+     __weak typeof(self) weakSelf = self;
+    for(NSInteger i =0;i<weakSelf.queryHistoryArrM.count ;i++){
+        KDCheckHistoryView* v = [[KDCheckHistoryView alloc]initWithFrame:CGRectMake(0, 36+i*kAdaptationWidth(96), self.checkHistoryView.width, kAdaptationWidth(96) )];
+        KDCheckHisoryModel*  model = weakSelf.queryHistoryArrM[i];
+
+        v.model = model;
+        [self.checkHistoryView addSubview:v];
+        
+        v.clickBlock = ^(KDCheckHisoryModel* kCheckHisoryModel){
+            KDExpressSendInfoController *vc = [[KDExpressSendInfoController alloc] init];
+            vc.hidesBottomBarWhenPushed = YES;
+            vc.scanString = kCheckHisoryModel.delivery_orderno;
+            [weakSelf.navigationController pushViewController:vc animated:YES];
+        };
+        
+        
+    }
+    if(weakSelf.queryHistoryArrM.count == 0){
+         [_checkMoreBtn setTitle:@"暂无查件历史" forState:UIControlStateNormal];
+    }
+    self.checkHistoryView.height = self.checkHistoryView.height + weakSelf.queryHistoryArrM.count *90;
+    self.checkMoreBtn.bottom = self.checkHistoryView.height;
+    [self.checkMoreBtn setTitleEdgeInsets:UIEdgeInsetsMake(0, -self.checkMoreBtn.imageView.bounds.size.width*1.1, 0, self.checkMoreBtn.imageView.bounds.size.width)];
+    [self.checkMoreBtn setImageEdgeInsets:UIEdgeInsetsMake(0, self.checkMoreBtn.titleLabel.bounds.size.width*1.1, 0, -self.checkMoreBtn.titleLabel.bounds.size.width)];
+    
+}
 - (UIView *)bgView{
     
     UIView *bgView = [[UIView alloc] init];
@@ -74,6 +153,51 @@
     gl.locations = @[@(0.0),@(1.0f)];
     [bgView.layer addSublayer:gl];
     return bgView;
+}
+-(UIView*)checkHistoryView{
+    if(!_checkHistoryView){
+        _checkHistoryView = [[UIView alloc]initWithFrame:CGRectMake(18, NavibarH+165, kScreenWidth-36, 120)];
+        _checkHistoryView.layer.cornerRadius = 10;
+        _checkHistoryView.layer.masksToBounds= YES;
+        _checkHistoryView.backgroundColor = [UIColor whiteColor];
+        
+        //查询历史
+        UILabel* titleLabel=[[UILabel alloc]initWithFrame:CGRectMake(10,8, 200, 30)];
+        titleLabel.text=@"查询历史";
+        titleLabel.textColor=[UIColor colorWithHex:@"#0B0B0B"];
+        titleLabel.font =PingFangBold(15);
+        [_checkHistoryView addSubview:titleLabel];
+        
+        UILabel* sepLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, titleLabel.bottom+8, _checkHistoryView.width, 2)];
+        sepLabel.backgroundColor=[UIColor colorWithHex:@"#F1F1F1"];
+        [_checkHistoryView addSubview:sepLabel];
+        
+        self.checkMoreBtn.frame = CGRectMake(0, sepLabel.bottom+5, _checkHistoryView.width, 40);
+        [_checkHistoryView addSubview:self.checkMoreBtn];
+        
+        _checkHistoryView.height = self.checkMoreBtn.bottom;
+    }
+    return _checkHistoryView;
+}
+
+-(UIButton*)checkMoreBtn{
+    if(!_checkMoreBtn){
+        _checkMoreBtn=[[UIButton alloc]init];
+        _checkMoreBtn.titleLabel.font = PingFangRegular(14);
+        [_checkMoreBtn setTitleColor:[UIColor colorWithHex:@"#5C5C5C"] forState:UIControlStateNormal];
+        [_checkMoreBtn setTitle:@"查看更多查件历史" forState:UIControlStateNormal];
+        [_checkMoreBtn setImage:[UIImage imageNamed:@"我的-图标-关于我们"] forState:UIControlStateNormal];
+        [_checkMoreBtn addTarget:self action:@selector(checkMoreBtnClick) forControlEvents:UIControlEventTouchUpInside];
+        [_checkMoreBtn setTitleEdgeInsets:UIEdgeInsetsMake(0, -_checkMoreBtn.imageView.bounds.size.width*1.1, 0, _checkMoreBtn.imageView.bounds.size.width)];
+        [_checkMoreBtn setImageEdgeInsets:UIEdgeInsetsMake(0, _checkMoreBtn.titleLabel.bounds.size.width*1.1, 0, -_checkMoreBtn.titleLabel.bounds.size.width)];
+    }
+    return _checkMoreBtn;
+}
+//点击查询历史
+-(void)checkMoreBtnClick{
+    KDQueryHistoryVC* vc = [[KDQueryHistoryVC alloc]init];
+    vc.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 #pragma mark -- DKScanViewDelegate
@@ -104,5 +228,11 @@
     [super touchesBegan:touches withEvent:event];
     [self.view endEditing:YES];
     
+}
+-(NSMutableArray*)queryHistoryArrM{
+    if(!_queryHistoryArrM){
+        _queryHistoryArrM = [[NSMutableArray alloc]init];
+    }
+    return _queryHistoryArrM;
 }
 @end

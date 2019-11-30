@@ -7,7 +7,7 @@
 //
 
 #import "RootViewController.h"
-
+#import "KDQueryHistoryVC.h"
 NS_ASSUME_NONNULL_BEGIN
 
 @interface KDCheckPieceVC : RootViewController
