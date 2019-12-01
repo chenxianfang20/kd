@@ -292,7 +292,7 @@ KDAddressInfoViewDelegate>
                              @"user_remark" : self.goodsInfoView.messageTF.text,
                              @"goods_type" : goodsModel.goods_name,
                              @"weight" : self.count,
-                             @"goods_imgs" : @"",
+                             @"goods_imgs" : (self.imageUrl == nil ? @"" : self.imageUrl),
                              @"goods_price" : @(self.goodsInfoView.money)
                              };
     [SVProgressHUD showWithStatus:@"下单中..."];
