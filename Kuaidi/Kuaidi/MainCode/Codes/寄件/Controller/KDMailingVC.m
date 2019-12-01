@@ -264,71 +264,97 @@ KDAddressInfoViewDelegate>
 
 -(void)clickConfirmButton{
     
-    //下单
-    KDUserModel* model = [KDUserModelTool userModel];
-    KDWuliuListModel *wuliuModel = self.wuliuArr[self.wuliuIndex + 1];
-    KDGoodsListModel *goodsModel = self.goodsArr[self.goodsIndex];
-    __weak typeof(self) weakSelf =self;
-    NSDictionary *params = @{
-                             @"type":@(self.sendTitleView.index),
-                             @"user_id":model.userId,
-                             @"pay_money":@"0",
-                             @"send_name":self.addressView.sendAddressModel.name,
-                             @"send_mobile":self.addressView.sendAddressModel.mobile,
-                             @"send_province_name":self.addressView.sendAddressModel.province_name,
-                             @"send_city_name":self.addressView.sendAddressModel.city_name,
-                             @"send_district_name":self.addressView.sendAddressModel.district_name,
-                             @"send_address":self.addressView.sendAddressModel.address,
-                             @"accept_name":self.addressView.receiveAddressModel.name,
-                             @"accept_mobile":self.addressView.receiveAddressModel.mobile,
-                             @"accept_province_name":self.addressView.receiveAddressModel.province_name,
-                             @"accept_city_name":self.addressView.receiveAddressModel.city_name,
-                             @"accept_district_name":self.addressView.receiveAddressModel.district_name,
-                             @"accept_address":self.addressView.receiveAddressModel.address,
-                             @"delivery_code" : wuliuModel.logistics_code,
-                             @"delivery_name" : wuliuModel.logistics_name,
-                             @"delivery_orderno" : wuliuModel.id,
-                             @"deliver_want_time" : self.goodsInfoView.timeTF.text,
-                             @"user_remark" : self.goodsInfoView.messageTF.text,
-                             @"goods_type" : goodsModel.goods_name,
-                             @"weight" : self.count,
-                             @"goods_imgs" : (self.imageUrl == nil ? @"" : self.imageUrl),
-                             @"goods_price" : @(self.goodsInfoView.money)
-                             };
-    [SVProgressHUD showWithStatus:@"下单中..."];
-    [KDNetWorkManager GetHttpDataWithUrlStr:kCreateOrder Dic:params headDic:nil SuccessBlock:^(id obj) {
-
-        [SVProgressHUD dismiss];
-
-        if([obj[@"code"] integerValue] == 1){
-            [SVProgressHUD showSuccessWithStatus:@"下单成功"];
-            KDExpressRecordController *vc = [[KDExpressRecordController alloc] init];
-            vc.hidesBottomBarWhenPushed = YES;
-            [weakSelf.navigationController pushViewController:vc animated:YES];
-
-            self.goodsIndex = -1;
-            
-            self.wuliuIndex = 0;
-            
-            self.goodsInfoView.timeTF.text = @"";
-            
-            self.goodsInfoView.messageTF.text = @"";
-            
-            [self.addressView clearnAllInfo];
-            
-            [self updateFrame];
-
-        }else{
-
-            NSString *msg = obj[@"msg"];
-            [ZJCustomHud showWithText:msg WithDurations:2.0];
-        }
-
-    } FailureBlock:^(id obj) {
-
-    }];
+//    //下单
+//    KDUserModel* model = [KDUserModelTool userModel];
+//    KDWuliuListModel *wuliuModel = self.wuliuArr[self.wuliuIndex + 1];
+//    KDGoodsListModel *goodsModel = self.goodsArr[self.goodsIndex];
+//    __weak typeof(self) weakSelf =self;
+//    NSDictionary *params = @{
+//                             @"type":@(self.sendTitleView.index),
+//                             @"user_id":model.userId,
+//                             @"pay_money":@"0",
+//                             @"send_name":self.addressView.sendAddressModel.name,
+//                             @"send_mobile":self.addressView.sendAddressModel.mobile,
+//                             @"send_province_name":self.addressView.sendAddressModel.province_name,
+//                             @"send_city_name":self.addressView.sendAddressModel.city_name,
+//                             @"send_district_name":self.addressView.sendAddressModel.district_name,
+//                             @"send_address":self.addressView.sendAddressModel.address,
+//                             @"accept_name":self.addressView.receiveAddressModel.name,
+//                             @"accept_mobile":self.addressView.receiveAddressModel.mobile,
+//                             @"accept_province_name":self.addressView.receiveAddressModel.province_name,
+//                             @"accept_city_name":self.addressView.receiveAddressModel.city_name,
+//                             @"accept_district_name":self.addressView.receiveAddressModel.district_name,
+//                             @"accept_address":self.addressView.receiveAddressModel.address,
+//                             @"delivery_code" : wuliuModel.logistics_code,
+//                             @"delivery_name" : wuliuModel.logistics_name,
+//                             @"delivery_orderno" : wuliuModel.id,
+//                             @"deliver_want_time" : self.goodsInfoView.timeTF.text,
+//                             @"user_remark" : self.goodsInfoView.messageTF.text,
+//                             @"goods_type" : goodsModel.goods_name,
+//                             @"weight" : self.count,
+//                             @"goods_imgs" : (self.imageUrl == nil ? @"" : self.imageUrl),
+//                             @"goods_price" : @(self.goodsInfoView.money)
+//                             };
+//    [SVProgressHUD showWithStatus:@"下单中..."];
+//    [KDNetWorkManager GetHttpDataWithUrlStr:kCreateOrder Dic:params headDic:nil SuccessBlock:^(id obj) {
+//
+//        [SVProgressHUD dismiss];
+//
+//        if([obj[@"code"] integerValue] == 1){
+//            [SVProgressHUD showSuccessWithStatus:@"下单成功"];
+//            KDExpressRecordController *vc = [[KDExpressRecordController alloc] init];
+//            vc.hidesBottomBarWhenPushed = YES;
+//            [weakSelf.navigationController pushViewController:vc animated:YES];
+//
+//            self.goodsIndex = -1;
+//
+//            self.wuliuIndex = 0;
+//
+//            self.goodsInfoView.timeTF.text = @"";
+//
+//            self.goodsInfoView.messageTF.text = @"";
+//
+//            [self.addressView clearnAllInfo];
+//
+//            [self updateFrame];
+//
+//        }else{
+//
+//            NSString *msg = obj[@"msg"];
+//            [ZJCustomHud showWithText:msg WithDurations:2.0];
+//        }
+//
+//    } FailureBlock:^(id obj) {
+//
+//    }];
     
-   
+    [SVProgressHUD showSuccessWithStatus:@"下单成功"];
+    KDExpressRecordController *vc = [[KDExpressRecordController alloc] init];
+    vc.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:vc animated:YES];
+    [self resetOrderInfo];
+    
+}
+
+- (void)resetOrderInfo{
+    
+    self.goodsIndex = -1;
+    
+    self.wuliuIndex = 0;
+    
+    self.count = @"0";
+    
+    self.goodsInfoView.goodsTypeTF.text = @"";
+    
+    self.goodsInfoView.timeTF.text = @"";
+    
+    self.goodsInfoView.messageTF.text = @"";
+    
+    [self.addressView clearnAllInfo];
+    
+    [self updateFrame];
+    
+    [self updateOrderButtonStatus];
 }
 
 #pragma mark -- KDTitleViewDelegate
@@ -427,6 +453,8 @@ KDAddressInfoViewDelegate>
     
     if (self.count.integerValue > 0) {
         self.goodsInfoView.money = 12 + 5*(self.count.integerValue - 1);
+    }else{
+        self.goodsInfoView.money = 0;
     }
     
 }

@@ -272,7 +272,10 @@ UIImagePickerControllerDelegate>
         make.size.mas_equalTo(CGSizeMake(60, 60));
     }];
     if (self.imageUrl) {
-        [addImageButton.imageView sd_setImageWithURL:[NSURL URLWithString:self.imageUrl] placeholderImage:[UIImage imageNamed:@"图标-上传照片"]];
+//        [addImageButton.imageView sd_setImageWithURL:[NSURL URLWithString:self.imageUrl] placeholderImage:[UIImage imageNamed:@"图标-上传照片"]];
+        [addImageButton.imageView sd_setImageWithURL:[NSURL URLWithString:self.imageUrl] completed:^(UIImage * _Nullable image, NSError * _Nullable error, SDImageCacheType cacheType, NSURL * _Nullable imageURL) {
+            [addImageButton setImage:image forState:UIControlStateNormal];
+        }];
     }
     [addImageButton addTarget:self action:@selector(uploadButtonAction) forControlEvents:UIControlEventTouchUpInside];
     
