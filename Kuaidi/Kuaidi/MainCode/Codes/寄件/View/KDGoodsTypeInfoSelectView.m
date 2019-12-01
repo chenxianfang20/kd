@@ -23,7 +23,7 @@ UIImagePickerControllerDelegate>
 
 @property(nonatomic, copy)NSString *imageUrl;
 
-@property(nonatomic, strong)UILabel *countLabel;
+@property(nonatomic, strong)UITextField *countLabel;
 
 @property(nonatomic, strong)UIButton *subtractButton;
 
@@ -91,8 +91,18 @@ UIImagePickerControllerDelegate>
         }
         
         [self createSubViews];
+        
+        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapClick)];
+        [self addGestureRecognizer:tap];
     }
     return self;
+}
+
+- (void)tapClick{
+    [self endEditing:YES];
+    if (self.countLabel.text.length == 0) {
+        self.countLabel.text = @"1";
+    }
 }
 
 - (void)createSubViews{
@@ -222,17 +232,21 @@ UIImagePickerControllerDelegate>
     [addButton addTarget:self action:@selector(addButtonClick:) forControlEvents:UIControlEventTouchUpInside];
     
     
-    UILabel *countLabel = [[UILabel alloc] init];
+    UITextField *countLabel = [[UITextField alloc] init];
     self.countLabel = countLabel;
     countLabel.text = model.goods_weight.stringValue;
     countLabel.textAlignment = NSTextAlignmentCenter;
+    countLabel.keyboardType = UIKeyboardTypeNumberPad;
+    countLabel.layer.borderWidth = 1;
+    countLabel.layer.borderColor = rgb(240, 240, 240, 1.0).CGColor;
+    countLabel.layer.cornerRadius = 3;
     countLabel.textColor = rgb(11, 11, 11, 1);
     countLabel.font = PingFangBold(20);
     [self addSubview:countLabel];
     [countLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.right.equalTo(addButton.mas_left).offset(0);
+        make.right.equalTo(addButton.mas_left).offset(-3);
         make.centerY.equalTo(weightTitleLabel.mas_centerY).offset(0);
-        make.size.mas_equalTo(CGSizeMake(48, 24));
+        make.size.mas_equalTo(CGSizeMake(42, 24));
     }];
     
     UIButton *subtractButton = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -242,7 +256,7 @@ UIImagePickerControllerDelegate>
     [subtractButton setImage:[UIImage imageNamed:@"图标-减少-可以点击"] forState:UIControlStateSelected];
     [self addSubview:subtractButton];
     [subtractButton mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.right.equalTo(countLabel.mas_left).offset(0);
+        make.right.equalTo(countLabel.mas_left).offset(-3);
         make.centerY.equalTo(weightTitleLabel.mas_centerY).offset(0);
         make.size.mas_equalTo(CGSizeMake(24, 24));
     }];
@@ -323,6 +337,12 @@ UIImagePickerControllerDelegate>
 }
 
 - (void)hidden{
+    
+    [self endEditing:YES];
+    
+    if (self.countLabel.text.length == 0) {
+        self.countLabel.text = @"1";
+    }
     
     [UIView animateWithDuration:.25 animations:^{
         
