@@ -10,6 +10,8 @@
 
 @interface DKScanView()<UITextFieldDelegate>
 
+@property(nonatomic,strong)UIButton *lookUpButton;
+
 @end
 
 @implementation DKScanView
@@ -69,6 +71,28 @@
         make.size.mas_equalTo(CGSizeMake(18, 18));
     }];
     
+    UIButton *scanButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [scanButton setImage:[UIImage imageNamed:@"图标-扫码"] forState:UIControlStateNormal];
+    [bgView addSubview:scanButton];
+    [scanButton mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.right.equalTo(bgView).offset(-18);
+        make.centerY.equalTo(bgView).offset(0);
+        make.size.mas_equalTo(CGSizeMake(25, 25));
+    }];
+    [scanButton addTarget:self action:@selector(scanButtonClick:) forControlEvents:UIControlEventTouchUpInside];
+    
+    UIView *textFieldView = [[UIView alloc] init];
+    textFieldView.layer.borderWidth = 1;
+    textFieldView.layer.borderColor = rgb(240, 240, 240, 1.0).CGColor;
+    textFieldView.layer.cornerRadius = 5;
+    [bgView addSubview:textFieldView];
+    [textFieldView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(qrcodeV.mas_right).offset(20);
+        make.right.equalTo(scanButton.mas_left).offset(-20);
+        make.centerY.equalTo(bgView).offset(0);
+        make.height.mas_equalTo(35);
+    }];
+    
     UITextField *textField = [[UITextField alloc] init];
     self.textField = textField;
     textField.textColor = rgb(11, 11, 11, 1.0);
@@ -80,25 +104,17 @@
     textField.keyboardType = UIKeyboardTypeDefault;
     textField.returnKeyType = UIReturnKeyDone;
     textField.delegate = self;
-    [bgView addSubview:textField];
+    [textFieldView addSubview:textField];
     [textField mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(bgView).offset(54);
-        make.right.equalTo(bgView).offset(-96);
+        make.left.equalTo(textFieldView).offset(10);
+        make.right.equalTo(textFieldView).offset(-10);
         make.centerY.equalTo(bgView).offset(0);
         make.height.mas_equalTo(25);
     }];
-    
-    UIButton *scanButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    [scanButton setImage:[UIImage imageNamed:@"图标-扫码"] forState:UIControlStateNormal];
-    [bgView addSubview:scanButton];
-    [scanButton mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.right.equalTo(bgView).offset(-18);
-        make.centerY.equalTo(bgView).offset(0);
-        make.size.mas_equalTo(CGSizeMake(25, 25));
-    }];
-    [scanButton addTarget:self action:@selector(scanButtonClick:) forControlEvents:UIControlEventTouchUpInside];
+    [textField addTarget:self action:@selector(textFieldChange:) forControlEvents:UIControlEventEditingChanged];
     
     UIButton *lookUpButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    self.lookUpButton = lookUpButton;
     [lookUpButton setTitle:@"查询快递" forState:UIControlStateNormal];
     lookUpButton.titleLabel.font = PingFangBold(15);
     lookUpButton.layer.cornerRadius = 4;
@@ -111,6 +127,16 @@
         make.top.equalTo(bgView.mas_bottom).offset(18);
     }];
     [lookUpButton addTarget:self action:@selector(lookUpButtonClick:) forControlEvents:UIControlEventTouchUpInside];
+}
+
+- (void)textFieldChange:(UITextField *)textfield{
+    
+    if (textfield.text.length >= 5) {
+        self.lookUpButton.selected = YES;
+    }else{
+        self.lookUpButton.selected = NO;
+    }
+    [self selectButtonCovert:self.lookUpButton];
 }
 
 - (void)selectButtonCovert:(UIButton *)button{
