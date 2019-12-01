@@ -34,7 +34,7 @@
 -(NSArray *)iconArr{
     
     if (!_iconArr) {
-        _iconArr = @[@"图标-反序",@"图标-未订阅",@"图标-分享"];
+        _iconArr = @[@"图标-分享"];//@"图标-反序",@"图标-未订阅",
     }
     return _iconArr;
 }
@@ -167,7 +167,7 @@
 
 - (void)buttonClick:(UIButton *)button{
     
-    if (button.tag == 2) {
+    if (button.tag == 0) {
         
         if ([self.delegate respondsToSelector:@selector(clickShareButton)]) {
             [self.delegate clickShareButton];

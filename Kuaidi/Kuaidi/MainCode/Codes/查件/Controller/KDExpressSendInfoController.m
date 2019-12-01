@@ -180,7 +180,17 @@ DKExpressSendInfoHeaderViewDelegate>
     return self.model.Traces.count;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return 115;
+    KDWuliuTraces *tracesModel = self.model.Traces[indexPath.row];
+    return [self heightWithString:tracesModel.AcceptStation withWidth:self.view.width - 45 - 20 - 18 withFontSize:14] + 65;
+}
+
+- (CGFloat)heightWithString:(NSString *)text withWidth:(CGFloat)width withFontSize:(CGFloat)fontSize {
+    
+    CGSize textSize = CGSizeMake(width, 0);
+    NSDictionary *font = @{NSFontAttributeName : PingFangBold(fontSize)};
+    CGRect rect = [text boundingRectWithSize:textSize options:NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingUsesFontLeading attributes:font context:nil];
+    return rect.size.height;
+    
 }
 
 #pragma mark -- 请求物流轨迹数据
@@ -209,7 +219,7 @@ DKExpressSendInfoHeaderViewDelegate>
         if([obj[@"code"] integerValue] == 1){
             //查询成功
             NSDictionary *dic = obj[@"data"];
-            if (dic.count != 0) {
+            if ([dic isKindOfClass:[NSDictionary class]] && dic.count != 0) {
                 
                 KDWuliuGuijiModel *model = [KDWuliuGuijiModel mj_objectWithKeyValues:dic];
                 model.logistic.logistics_code = self.scanString;
