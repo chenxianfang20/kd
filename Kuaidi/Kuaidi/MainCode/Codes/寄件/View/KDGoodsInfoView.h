@@ -14,6 +14,7 @@ NS_ASSUME_NONNULL_BEGIN
 @optional
 -(void)selectCellIndexPath:(NSIndexPath *)indexPath;
 -(void)clickConfirmButton;
+-(void)clickCancellOrder;
 @end
 
 @interface KDGoodsInfoView : UITableView
