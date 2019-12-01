@@ -19,6 +19,7 @@
 		160D8575233F1D900081AE75 /* RandomKey.m in Sources */ = {isa = PBXBuildFile; fileRef = 160D8568233F1D900081AE75 /* RandomKey.m */; };
 		160D8576233F1D900081AE75 /* MD5.m in Sources */ = {isa = PBXBuildFile; fileRef = 160D856B233F1D900081AE75 /* MD5.m */; };
 		160D8579233F2A140081AE75 /* WXUserInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 160D8578233F2A140081AE75 /* WXUserInfoModel.m */; };
+		160E829B238AC5F20063E644 /* DKNetFileParam.m in Sources */ = {isa = PBXBuildFile; fileRef = 160E8299238AC5F20063E644 /* DKNetFileParam.m */; };
 		1619AC532307FDD2003463C7 /* KDGoodsInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1619AC522307FDD2003463C7 /* KDGoodsInfoCell.m */; };
 		1619AC56230804D4003463C7 /* KDGoodsTypeInfoSelectView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1619AC55230804D4003463C7 /* KDGoodsTypeInfoSelectView.m */; };
 		1619AC5923084897003463C7 /* KDExpressRecordController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1619AC5823084897003463C7 /* KDExpressRecordController.m */; };
@@ -274,6 +275,8 @@
 		160D856D233F1D900081AE75 /* RSA.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSA.h; sourceTree = "<group>"; };
 		160D8577233F2A140081AE75 /* WXUserInfoModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WXUserInfoModel.h; sourceTree = "<group>"; };
 		160D8578233F2A140081AE75 /* WXUserInfoModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WXUserInfoModel.m; sourceTree = "<group>"; };
+		160E8299238AC5F20063E644 /* DKNetFileParam.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DKNetFileParam.m; sourceTree = "<group>"; };
+		160E829A238AC5F20063E644 /* DKNetFileParam.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DKNetFileParam.h; sourceTree = "<group>"; };
 		1619AC512307FDD2003463C7 /* KDGoodsInfoCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KDGoodsInfoCell.h; sourceTree = "<group>"; };
 		1619AC522307FDD2003463C7 /* KDGoodsInfoCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KDGoodsInfoCell.m; sourceTree = "<group>"; };
 		1619AC54230804D4003463C7 /* KDGoodsTypeInfoSelectView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KDGoodsTypeInfoSelectView.h; sourceTree = "<group>"; };
@@ -1136,6 +1139,8 @@
 		3D696F88230A797400593437 /* 网络 */ = {
 			isa = PBXGroup;
 			children = (
+				160E829A238AC5F20063E644 /* DKNetFileParam.h */,
+				160E8299238AC5F20063E644 /* DKNetFileParam.m */,
 				3D696F89230A797F00593437 /* KDNetWorkManager.h */,
 				3D696F8A230A797F00593437 /* KDNetWorkManager.m */,
 				3D696F8C230A797F00593437 /* KDSessionManager.h */,
@@ -1921,6 +1926,7 @@
 				F41FD250231431D9006F9ECA /* KDOrderDetailVC.m in Sources */,
 				F419CD5B2308603600553E29 /* KDCodeForPwdVC.m in Sources */,
 				160D8570233F1D900081AE75 /* ButtonColor.m in Sources */,
+				160E829B238AC5F20063E644 /* DKNetFileParam.m in Sources */,
 				F4E524D32316B219008F5724 /* KDReceivedView.m in Sources */,
 				1645FF03231B954C00576A2C /* KDScanQRViewController.m in Sources */,
 				F465DE4B230454FF002DFD4C /* KDLoginVC.m in Sources */,
