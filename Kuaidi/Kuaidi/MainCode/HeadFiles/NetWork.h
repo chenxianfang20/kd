@@ -94,6 +94,10 @@
 //关于我们
 #define kArticles @"/api/portal/articles/2"
 
+//查询历史
+#define kKdniaoGethistory @"/api//logistics/kdniao/gethistory"
+
+
 //第三方登录
 #define APP_ID @"wx822e0fdc66d89ea0"
 

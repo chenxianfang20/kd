@@ -193,12 +193,12 @@
     _fromNameLabel.text=model.send_name;
     _toCityLabel.text=model.accept_city_name;
     _toNameLabel.text=model.accept_name;
-    _moneyLabel.text=[NSString stringWithFormat:@"已支付￥%@元",model.pay_money] ;
+    //_moneyLabel.text=[NSString stringWithFormat:@"已支付￥%@元",model.pay_money] ;
     [self setInfoDetail:model];
 }
 -(void)setInfoDetail:(KDOrderListModel *)model{
     
-    //****底部具体信息
+    //****底部具体信息 
     _bottomBgView = [[UIView alloc]initWithFrame:CGRectMake(kLeftX, _midBgView.bottom+12, kAdaptationWidth(339), kAdaptationWidth(460))];
     _bottomBgView.backgroundColor=[UIColor whiteColor];
     _bottomBgView.layer.cornerRadius=10.0f;
@@ -297,21 +297,21 @@
     [messageDetailLabel sizeToFit];
     
     //***已付运费
-    UILabel* moneyInfoLabel =[[UILabel alloc]initWithFrame:CGRectMake(kLeftX,messageDetailLabel.bottom+20, kAdaptationWidth(65), kAdaptationWidth(18))];
-    moneyInfoLabel.text=@"已付运费";
-    moneyInfoLabel.textColor=[UIColor colorWithHex:@"#5C5C5C"];
-    moneyInfoLabel.font = PingFangMedium(14);
-    [_bottomBgView addSubview:moneyInfoLabel];
-    
-    UILabel* moneyDetailLabel =[[UILabel alloc]initWithFrame:CGRectMake(kAdaptationWidth(98), moneyInfoLabel.top, kAdaptationWidth(120), kAdaptationWidth(18))];
-    moneyDetailLabel.text=[NSString stringWithFormat:@"￥ %@",model.pay_money];
-    moneyDetailLabel.textColor=[UIColor colorWithHex:@"#0B0B0B"];
-    moneyDetailLabel.font = PingFangMedium(14);
-    [_bottomBgView addSubview:moneyDetailLabel];
+//    UILabel* moneyInfoLabel =[[UILabel alloc]initWithFrame:CGRectMake(kLeftX,messageDetailLabel.bottom+20, kAdaptationWidth(65), kAdaptationWidth(18))];
+//    moneyInfoLabel.text=@"已付运费";
+//    moneyInfoLabel.textColor=[UIColor colorWithHex:@"#5C5C5C"];
+//    moneyInfoLabel.font = PingFangMedium(14);
+//    [_bottomBgView addSubview:moneyInfoLabel];
+//
+//    UILabel* moneyDetailLabel =[[UILabel alloc]initWithFrame:CGRectMake(kAdaptationWidth(98), moneyInfoLabel.top, kAdaptationWidth(120), kAdaptationWidth(18))];
+//    moneyDetailLabel.text=[NSString stringWithFormat:@"￥ %@",model.pay_money];
+//    moneyDetailLabel.textColor=[UIColor colorWithHex:@"#0B0B0B"];
+//    moneyDetailLabel.font = PingFangMedium(14);
+//    [_bottomBgView addSubview:moneyDetailLabel];
     
     
     //***订单编号
-    UILabel* orderLabel =[[UILabel alloc]initWithFrame:CGRectMake(kLeftX,moneyDetailLabel.bottom+20, kAdaptationWidth(60), kAdaptationWidth(18))];
+    UILabel* orderLabel =[[UILabel alloc]initWithFrame:CGRectMake(kLeftX,messageDetailLabel.bottom+20, kAdaptationWidth(60), kAdaptationWidth(18))];
     orderLabel.text=@"订单编号";
     orderLabel.textColor=[UIColor colorWithHex:@"#5C5C5C"];
     orderLabel.font = PingFangMedium(14);

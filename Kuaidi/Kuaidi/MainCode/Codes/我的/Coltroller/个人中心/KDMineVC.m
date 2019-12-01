@@ -172,7 +172,7 @@
     }
     
     //个人设置UIview********
-    _infoBgView = [[UIView alloc]initWithFrame:CGRectMake(kAdaptationWidth(18), orderBgView.bottom+kAdaptationWidth(12), kAdaptationWidth(339),kAdaptationWidth(270))];
+    _infoBgView = [[UIView alloc]initWithFrame:CGRectMake(kAdaptationWidth(18), orderBgView.bottom+kAdaptationWidth(12), kAdaptationWidth(339),kAdaptationWidth(185))];
     _infoBgView.backgroundColor=[UIColor whiteColor];
     _infoBgView.layer.cornerRadius=6.0f;
     _infoBgView.layer.masksToBounds=YES;
@@ -189,6 +189,7 @@
     KDUserModel* model = [KDUserModelTool userModel];
     if(!model.token){
         [self.view showToastWithText:@"请先登录" time:1];
+        [self loginTapClick];
         return;
     }
     KDMailingScanVC* vc = [[KDMailingScanVC alloc]init];
@@ -233,7 +234,7 @@
 -(NSMutableArray*)dataSource{
     if(!_dataSource){
         _dataSource = [[NSMutableArray alloc]init];
-        NSArray* headImgArr= @[@"我的-图标-积分",@"我的-图标-地址管理",@"我的-图标-常用快递",@"我的-图-系统设置",@"我的-图标-帮助中心",@"我的-图标-我们"];
+        NSArray* headImgArr= @[@"我的-图标-地址管理",@"我的-图标-常用快递",@"我的-图-系统设置",@"我的-图标-我们"];
         KDUserModel* model = [KDUserModelTool userModel];
         NSString* score;
         if(model.score.integerValue > 0){
@@ -241,8 +242,8 @@
         }else{
             score=@"积分:0";
         }
-        NSArray* titleArr= @[score,@"地址管理",@"常用快递",@"系统设置",@"帮助中心",@"关于我们"];
-        NSArray* desArr= @[@"玩转任务,挣取积分",@"",@"关联平台,管理快递",@"",@"",@""];
+        NSArray* titleArr= @[@"地址管理",@"常用快递",@"系统设置",@"关于我们"];
+        NSArray* desArr= @[@"",@"关联平台,管理快递",@"",@""];
         for (NSInteger i=0;i<headImgArr.count;i++){
             KDInfoModel* model = [[KDInfoModel alloc]init];
             model.headImgName=headImgArr[i];
@@ -284,20 +285,11 @@
     
     KDUserModel* usermodel = [KDUserModelTool userModel];
     
-    //积分
+    //地址管理
     if(indexPath.row == 0){
         if(!usermodel.token){
             [self.view showToastWithText:@"请先登录" time:1];
-            return;
-        }
-        KDScoreVC* vc= [[KDScoreVC alloc]init];
-        vc.hidesBottomBarWhenPushed=YES;
-        [self.navigationController pushViewController:vc animated:YES];
-    }
-    //地址管理
-    if(indexPath.row == 1){
-        if(!usermodel.token){
-            [self.view showToastWithText:@"请先登录" time:1];
+            [self  loginTapClick];
             return;
         }
         KDAddressAdminVC* vc= [[KDAddressAdminVC alloc]init];
@@ -305,9 +297,10 @@
         [self.navigationController pushViewController:vc animated:YES];
     }
     //常用快递
-    if(indexPath.row == 2){
+    if(indexPath.row == 1){
         if(!usermodel.token){
             [self.view showToastWithText:@"请先登录" time:1];
+            [self  loginTapClick];
             return;
         }
         KDExpressVC* vc= [[KDExpressVC alloc]init];
@@ -315,7 +308,7 @@
         [self.navigationController pushViewController:vc animated:YES];
     }
     //系统设置
-    if(indexPath.row == 3){
+    if(indexPath.row == 2){
 //        if(!usermodel.token){
 //            [self.view showToastWithText:@"请先登录" time:1];
 //            return;
@@ -325,18 +318,18 @@
         [self.navigationController pushViewController:vc animated:YES];
     }
     //帮助中心
-    if(indexPath.row == 4){
-//        if(!usermodel.token){
-//            [self.view showToastWithText:@"请先登录" time:1];
-//            return;
-//        }
-        KDHelpVC* vc= [[KDHelpVC alloc]init];
-        vc.hidesBottomBarWhenPushed=YES;
-        [self.navigationController pushViewController:vc animated:YES];
-    }
+//    if(indexPath.row == 4){
+////        if(!usermodel.token){
+////            [self.view showToastWithText:@"请先登录" time:1];
+////            return;
+////        }
+//        KDHelpVC* vc= [[KDHelpVC alloc]init];
+//        vc.hidesBottomBarWhenPushed=YES;
+//        [self.navigationController pushViewController:vc animated:YES];
+//    }
     
     //关于我们
-    if(indexPath.row == 5){
+    if(indexPath.row == 3){
 //        if(!usermodel.token){
 //            [self.view showToastWithText:@"请先登录" time:1];
 //            return;

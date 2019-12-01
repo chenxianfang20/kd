@@ -123,7 +123,14 @@ DKExpressSendInfoHeaderViewDelegate>
 
 -(void)back
 {
-    [self.navigationController popToRootViewControllerAnimated:YES];
+    
+    if(self.isNeedBackToLastFlag == YES){
+        [self.navigationController popViewControllerAnimated:YES];
+    }else{
+        [self.navigationController popToRootViewControllerAnimated:YES];
+    }
+    
+
 }
 
 - (void)createSubViews{
@@ -184,9 +191,15 @@ DKExpressSendInfoHeaderViewDelegate>
         return;
     }
     
+    KDUserModel* model = [KDUserModelTool userModel];
     NSDictionary *params = @{
                              @"code" : self.scanString
                              };
+    if([[NSString stringWithFormat:@"%@",model.userId] length]> 0){
+        params = @{
+                   @"code" : self.scanString,@"user_id":@"8"
+                   };
+    }
     NSString *url = kWuliuGuiji;
     [SVProgressHUD showWithStatus:@"查询中..."];
     [KDNetWorkManager GetHttpDataWithUrlStr:url Dic:params headDic:nil SuccessBlock:^(id obj) {
