@@ -12,6 +12,8 @@
 
 @property(nonatomic, strong)UIButton *orderButton;
 
+@property(nonatomic, strong)UIButton *cancellButton;
+
 @property(nonatomic, strong)UILabel *feeValueLabel;
 
 @end
@@ -70,17 +72,35 @@
         make.height.mas_equalTo(15);
     }];
 
+    CGFloat buttonW = 86;
+    
+    UIButton *cancellButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    self.cancellButton = cancellButton;
+    [cancellButton setTitle:@"取消下单" forState:UIControlStateNormal];
+    cancellButton.titleLabel.font = PingFangBold(15);
+    [self selectButtonConvert:cancellButton];
+    cancellButton.layer.cornerRadius = 20;
+    [self addSubview:cancellButton];
+    [cancellButton mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self).offset(13);
+        make.right.equalTo(self).offset(-18 - buttonW - 10);
+        make.size.mas_equalTo(CGSizeMake(buttonW, 40));
+    }];
+    [cancellButton addTarget:self action:@selector(cancellButtonClick:) forControlEvents:UIControlEventTouchUpInside];
+    cancellButton.selected = YES;
+    [self selectButtonConvert:self.cancellButton];
+    
     UIButton *orderButton = [UIButton buttonWithType:UIButtonTypeCustom];
     self.orderButton = orderButton;
     [orderButton setTitle:@"立即下单" forState:UIControlStateNormal];
     orderButton.titleLabel.font = PingFangBold(15);
     [self selectButtonConvert:orderButton];
-    orderButton.layer.cornerRadius = 21;
+    orderButton.layer.cornerRadius = 20;
     [self addSubview:orderButton];
     [orderButton mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self).offset(13);
         make.right.equalTo(self).offset(-18);
-        make.size.mas_equalTo(CGSizeMake(96, 42));
+        make.size.mas_equalTo(CGSizeMake(buttonW, 40));
     }];
     [orderButton addTarget:self action:@selector(orderButtonClick:) forControlEvents:UIControlEventTouchUpInside];
 }
@@ -105,6 +125,13 @@
     
     if ([self.delegate respondsToSelector:@selector(clickConfirmButton)]) {
         [self.delegate clickConfirmButton];
+    }
+}
+
+- (void)cancellButtonClick:(UIButton *)button {
+    
+    if ([self.delegate respondsToSelector:@selector(clickCancellOrder)]) {
+        [self.delegate clickCancellOrder];
     }
     
 }

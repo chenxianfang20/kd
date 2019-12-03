@@ -126,6 +126,12 @@
     
 }
 
+- (void)clickCancellOrder{
+    if ([self.goodsInfoViewDelegate respondsToSelector:@selector(clickCancellOrder)]) {
+        [self.goodsInfoViewDelegate clickCancellOrder];
+    }
+}
+
 - (void)setIsOrderButtonSelect:(BOOL)isOrderButtonSelect{
     self.footerView.isOrderButtonSelect = isOrderButtonSelect;
 }

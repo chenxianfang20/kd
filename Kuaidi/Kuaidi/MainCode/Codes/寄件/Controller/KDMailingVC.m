@@ -292,7 +292,7 @@ KDAddressInfoViewDelegate>
                              @"user_remark" : self.goodsInfoView.messageTF.text,
                              @"goods_type" : goodsModel.goods_name,
                              @"weight" : self.count,
-                             @"goods_imgs" : @"",
+                             @"goods_imgs" : (self.imageUrl == nil ? @"" : self.imageUrl),
                              @"goods_price" : @(self.goodsInfoView.money)
                              };
     [SVProgressHUD showWithStatus:@"下单中..."];
@@ -301,23 +301,13 @@ KDAddressInfoViewDelegate>
         [SVProgressHUD dismiss];
 
         if([obj[@"code"] integerValue] == 1){
+            
             [SVProgressHUD showSuccessWithStatus:@"下单成功"];
             KDExpressRecordController *vc = [[KDExpressRecordController alloc] init];
             vc.hidesBottomBarWhenPushed = YES;
             [weakSelf.navigationController pushViewController:vc animated:YES];
-
-            self.goodsIndex = -1;
+            [weakSelf resetOrderInfo];
             
-            self.wuliuIndex = 0;
-            
-            self.goodsInfoView.timeTF.text = @"";
-            
-            self.goodsInfoView.messageTF.text = @"";
-            
-            [self.addressView clearnAllInfo];
-            
-            [self updateFrame];
-
         }else{
 
             NSString *msg = obj[@"msg"];
@@ -327,8 +317,33 @@ KDAddressInfoViewDelegate>
     } FailureBlock:^(id obj) {
 
     }];
+}
+
+- (void)clickCancellOrder{
     
-   
+    [self resetOrderInfo];
+    
+}
+
+- (void)resetOrderInfo{
+    
+    self.goodsIndex = -1;
+    
+    self.wuliuIndex = 0;
+    
+    self.count = @"0";
+    
+    self.goodsInfoView.goodsTypeTF.text = @"";
+    
+    self.goodsInfoView.timeTF.text = @"";
+    
+    self.goodsInfoView.messageTF.text = @"";
+    
+    [self.addressView clearnAllInfo];
+    
+    [self updateFrame];
+    
+    [self updateOrderButtonStatus];
 }
 
 #pragma mark -- KDTitleViewDelegate
@@ -427,6 +442,8 @@ KDAddressInfoViewDelegate>
     
     if (self.count.integerValue > 0) {
         self.goodsInfoView.money = 12 + 5*(self.count.integerValue - 1);
+    }else{
+        self.goodsInfoView.money = 0;
     }
     
 }

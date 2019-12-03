@@ -17,6 +17,9 @@
 //用户下单
 #define kCreateOrder @"/api/logistics/kdniao/createOrder"
 
+//上传图片
+#define uploadOrderImageUrl @"/api/logistics/upload/one"
+
 //订单列表
 #define kOrderList @"/api/logistics/order/index"
 

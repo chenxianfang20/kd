@@ -111,4 +111,25 @@ static UIActivityIndicatorView *_indicatorView;
 //#import "ErrorTitle.h"
 //#import "ErrorHandler.h"
 
+#define SHOW_MBProgressHUD   [MBProgressHUD showHUDAddedTo:[[[UIApplication sharedApplication] delegate] window] animated:YES];
+
+#define HIDE_MBProgressHUD   [MBProgressHUD hideHUDForView:[[[UIApplication sharedApplication] delegate] window] animated:YES];
+
+#define MBProgressHUDSuccess(successStr) {\
+MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:WINDOW animated:YES];\
+hud.mode = MBProgressHUDModeCustomView;\
+UIImage *image = [[UIImage imageNamed:@"Checkmark"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];\
+hud.customView = [[UIImageView alloc] initWithImage:image];\
+hud.square = YES;\
+hud.label.text = NSLocalizedString(successStr, @"HUD done title");\
+[hud hideAnimated:YES afterDelay:2.f];\
+}
+
+#define dispatch_async_main_safe(block)\
+if ([NSThread isMainThread]) {\
+block();\
+} else {\
+dispatch_async(dispatch_get_main_queue(), block);\
+}
+
 #endif

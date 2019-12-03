@@ -162,7 +162,9 @@
     KDUserModel* model = [KDUserModelTool userModel];
     NSDictionary* dic = @{@"XX-Token":model.token,@"XX-Device-Type":kDeviceType};
     __weak typeof(self) weakSelf =self;
+    [SVProgressHUD showWithStatus:@"加载中..."];
     [KDNetWorkManager GetHttpDataWithUrlStr:kAddressList Dic:nil headDic:dic SuccessBlock:^(id obj) {
+        [SVProgressHUD dismiss];
         if([obj[@"code"] integerValue] == 1){
             NSArray*  resArr = obj[@"data"];
             if(resArr.count>0){

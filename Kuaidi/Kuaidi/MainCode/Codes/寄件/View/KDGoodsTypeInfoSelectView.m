@@ -10,6 +10,8 @@
 #import "KDGoodsListModel.h"
 
 @interface KDGoodsTypeInfoSelectView()
+<UINavigationControllerDelegate,
+UIImagePickerControllerDelegate>
 
 @property(nonatomic, strong)UIView *bgView;
 
@@ -21,11 +23,13 @@
 
 @property(nonatomic, copy)NSString *imageUrl;
 
-@property(nonatomic, strong)UILabel *countLabel;
+@property(nonatomic, strong)UITextField *countLabel;
 
 @property(nonatomic, strong)UIButton *subtractButton;
 
 @property(nonatomic, strong)UIButton *addButton;
+
+@property(nonatomic, strong)UIButton *addImageButton;
 
 @property(nonatomic, copy)void(^confirmBlock)(NSInteger index, NSString *imageUrl, NSString *count);
 
@@ -50,9 +54,10 @@
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:view action:@selector(hidden)];
     [bgView addGestureRecognizer:tap];
     
-    UIWindow *window = [UIApplication sharedApplication].keyWindow;
-    [window addSubview:bgView];
-    [window addSubview:view];
+//    UIWindow *window = [UIApplication sharedApplication].keyWindow;
+    UIViewController *currentVc = [view jsd_getCurrentViewController];
+    [currentVc.view addSubview:bgView];
+    [currentVc.view addSubview:view];
     
     [UIView animateWithDuration:.25 animations:^{
         
@@ -62,16 +67,6 @@
     }];
     
 }
-
-//-(NSArray *)titles{
-//
-//    if (!_titles) {
-//        _titles = @[@"文件",@"食品",@"蛋糕",@"药品",
-//                    @"生鲜",@"鲜花",@"数码",@"服装鞋帽",
-//                    @"汽车配件",@"证照",@"珠宝",@"其他"];
-//    }
-//    return _titles;
-//}
 
 -(NSMutableArray *)buttonArr{
     if (!_buttonArr) {
@@ -96,8 +91,18 @@
         }
         
         [self createSubViews];
+        
+        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapClick)];
+        [self addGestureRecognizer:tap];
     }
     return self;
+}
+
+- (void)tapClick{
+    [self endEditing:YES];
+    if (self.countLabel.text.length == 0) {
+        self.countLabel.text = @"1";
+    }
 }
 
 - (void)createSubViews{
@@ -145,6 +150,7 @@
     [notSendTipBtn setTitle:@"什么不能寄？" forState:UIControlStateNormal];
     [notSendTipBtn setTitleColor:rgb(49, 191, 189, 1) forState:UIControlStateNormal];
     notSendTipBtn.titleLabel.font = PingFangBold(14);
+    notSendTipBtn.hidden = YES;
     [self addSubview:notSendTipBtn];
     [notSendTipBtn mas_makeConstraints:^(MASConstraintMaker *make) {
         make.right.equalTo(self).offset(-18);
@@ -226,17 +232,21 @@
     [addButton addTarget:self action:@selector(addButtonClick:) forControlEvents:UIControlEventTouchUpInside];
     
     
-    UILabel *countLabel = [[UILabel alloc] init];
+    UITextField *countLabel = [[UITextField alloc] init];
     self.countLabel = countLabel;
     countLabel.text = model.goods_weight.stringValue;
     countLabel.textAlignment = NSTextAlignmentCenter;
+    countLabel.keyboardType = UIKeyboardTypeNumberPad;
+    countLabel.layer.borderWidth = 1;
+    countLabel.layer.borderColor = rgb(240, 240, 240, 1.0).CGColor;
+    countLabel.layer.cornerRadius = 3;
     countLabel.textColor = rgb(11, 11, 11, 1);
     countLabel.font = PingFangBold(20);
     [self addSubview:countLabel];
     [countLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.right.equalTo(addButton.mas_left).offset(0);
+        make.right.equalTo(addButton.mas_left).offset(-3);
         make.centerY.equalTo(weightTitleLabel.mas_centerY).offset(0);
-        make.size.mas_equalTo(CGSizeMake(48, 24));
+        make.size.mas_equalTo(CGSizeMake(42, 24));
     }];
     
     UIButton *subtractButton = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -246,13 +256,14 @@
     [subtractButton setImage:[UIImage imageNamed:@"图标-减少-可以点击"] forState:UIControlStateSelected];
     [self addSubview:subtractButton];
     [subtractButton mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.right.equalTo(countLabel.mas_left).offset(0);
+        make.right.equalTo(countLabel.mas_left).offset(-3);
         make.centerY.equalTo(weightTitleLabel.mas_centerY).offset(0);
         make.size.mas_equalTo(CGSizeMake(24, 24));
     }];
     [subtractButton addTarget:self action:@selector(subtractButtonClick:) forControlEvents:UIControlEventTouchUpInside];
     
     UIButton *addImageButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    self.addImageButton = addImageButton;
     [addImageButton setImage:[UIImage imageNamed:@"图标-上传照片"] forState:UIControlStateNormal];
     [self addSubview:addImageButton];
     [addImageButton mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -261,8 +272,12 @@
         make.size.mas_equalTo(CGSizeMake(60, 60));
     }];
     if (self.imageUrl) {
-        [addImageButton.imageView sd_setImageWithURL:[NSURL URLWithString:self.imageUrl] placeholderImage:[UIImage imageNamed:@"图标-上传照片"]];
+//        [addImageButton.imageView sd_setImageWithURL:[NSURL URLWithString:self.imageUrl] placeholderImage:[UIImage imageNamed:@"图标-上传照片"]];
+        [addImageButton.imageView sd_setImageWithURL:[NSURL URLWithString:self.imageUrl] completed:^(UIImage * _Nullable image, NSError * _Nullable error, SDImageCacheType cacheType, NSURL * _Nullable imageURL) {
+            [addImageButton setImage:image forState:UIControlStateNormal];
+        }];
     }
+    [addImageButton addTarget:self action:@selector(uploadButtonAction) forControlEvents:UIControlEventTouchUpInside];
     
     UILabel *tipLabel = [[UILabel alloc] init];
     tipLabel.text = @"照片可以帮助快递小哥判断物品的大小以及选择合适的运输工具。";
@@ -326,6 +341,12 @@
 
 - (void)hidden{
     
+    [self endEditing:YES];
+    
+    if (self.countLabel.text.length == 0) {
+        self.countLabel.text = @"1";
+    }
+    
     [UIView animateWithDuration:.25 animations:^{
         
         self.alpha = 0.0;
@@ -362,6 +383,166 @@
     self.addButton.selected = count - 1 < 30;
 }
 
+//选择头像
+#pragma mark - TZImagePickerController
+- (void)uploadButtonAction
+{
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"选择圈子头像" message:nil preferredStyle:UIAlertControllerStyleActionSheet];
+    
+    UIAlertAction *photoAction = [UIAlertAction actionWithTitle:@"相册获取" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        UIImagePickerController *imagePicker = [[UIImagePickerController alloc] init];
+        imagePicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+        imagePicker.delegate = self;
+        imagePicker.allowsEditing = YES;
+        imagePicker.navigationBar.barTintColor = rgb(33, 33, 33, 1.0);
+        //COLOR_WITH_HEX(0x333333);
+        UIViewController *currentVc = [self jsd_getCurrentViewController];
+        [currentVc presentViewController:imagePicker animated:YES completion:nil];
+        
+    }];
+    
+    UIAlertAction *takeAction = [UIAlertAction actionWithTitle:@"现场拍照" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        
+        if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
+            
+            UIImagePickerController *picker = [[UIImagePickerController alloc] init];
+            picker.delegate = self;
+            picker.sourceType = UIImagePickerControllerSourceTypeCamera;
+            picker.allowsEditing = YES;
+            picker.navigationBar.barTintColor = rgb(33, 33, 33, 1.0);
+            //COLOR_WITH_HEX(0x333333);
+            UIViewController *currentVc = [self jsd_getCurrentViewController];
+            [currentVc presentViewController:picker animated:YES completion:nil];
+            
+        }else{
+            
+            [ZJCustomHud showWithText:@"摄像头不可用！" WithDurations:2.0];
+            [alertController dismissViewControllerAnimated:YES completion:nil];
+            
+        }
+        
+        
+    }];
+    
+    UIAlertAction *cancelActionS = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
+    
+    [alertController addAction:photoAction];
+    
+    [alertController addAction:takeAction];
+    
+    [alertController addAction:cancelActionS];
+    
+    UIViewController *currentVc = [self jsd_getCurrentViewController];
+    
+    [currentVc presentViewController:alertController animated:YES completion:nil];
+    
+}
 
+#pragma mark -- UIImagePickerControllerDelegate
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info
+{
+    UIImage *avatarImage = [info objectForKey:UIImagePickerControllerEditedImage];
+    
+    [picker dismissViewControllerAnimated:YES completion:nil];
+    
+    NSData *data = UIImageJPEGRepresentation(avatarImage, 1.0f);
+    
+    NSUInteger maxLength = 200000;
+    NSUInteger lastDataLength = 0;
+    while (data.length > maxLength && data.length != lastDataLength) {
+        lastDataLength = data.length;
+        CGFloat ratio = (CGFloat)maxLength / data.length;
+        CGSize size = CGSizeMake((NSUInteger)(avatarImage.size.width * sqrtf(ratio)),
+                                 (NSUInteger)(avatarImage.size.height * sqrtf(ratio))); // Use NSUInteger to prevent white blank
+        UIGraphicsBeginImageContext(size);
+        
+        [avatarImage drawInRect:CGRectMake(0, 0, size.width, size.height)];
+        avatarImage = UIGraphicsGetImageFromCurrentImageContext();
+        UIGraphicsEndImageContext();
+        data = UIImageJPEGRepresentation(avatarImage, 1);
+    }
+    
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    formatter.dateFormat = @"yyyyMMddHHmmssSSS";
+    NSString *fileNameStr = [NSString stringWithFormat:@"%@.png",[formatter stringFromDate:[NSDate date]]];
+    DKNetFileParam *param = [[DKNetFileParam alloc] init];
+    param.data = data;
+    param.fileName = fileNameStr;
+    param.name = @"file";
+    param.mimeType = @"audio/mpeg";
+    
+//    UIViewController *currentVc = [self jsd_getCurrentViewController];
+    UIWindow *window = [UIApplication sharedApplication].keyWindow;
+    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:window animated:YES];
+    hud.mode = MBProgressHUDModeDeterminate;
+    hud.label.text = NSLocalizedString(@"上传中...",@"HUD loading title");
+    
+    [KDNetWorkManager uploadFileWithUrlStr:uploadOrderImageUrl params:@{@"file":fileNameStr} uploadProgress:^(NSProgress *uploadProgress) {
+        
+        dispatch_async_main_safe(^{
+            CGFloat progress = uploadProgress.completedUnitCount/@(uploadProgress.totalUnitCount).floatValue;
+            hud.progress = progress;
+        })
+        
+    } successBlock:^(NSDictionary *dataDic) {
+        [hud hideAnimated:YES];
+        //上传成功获取URL显示图片
+        NSNumber *code = dataDic[@"code"];
+        if (code.intValue == 1) {
+            NSString *urlStr = dataDic[@"data"][@"url"];
+            self.imageUrl = [NSString stringWithFormat:@"%@%@",kBaseUrl,urlStr];
+            [self.addImageButton setImage:avatarImage forState:UIControlStateNormal];
+        }else{
+            NSString *errMsg = dataDic[@"msg"];
+            [ZJCustomHud showWithText:errMsg WithDurations:2.0];
+        }
+        
+    } failureBlock:^(NSError *error) {
+        [hud hideAnimated:YES];
+        [ZJCustomHud showWithText:@"网络错误，请重新上传！" WithDurations:2.0];
+    } uploadParam:param];
+}
+
+- (UIViewController *)jsd_getCurrentViewController{
+    
+    UIViewController* currentViewController = [self jsd_getRootViewController];
+    BOOL runLoopFind = YES;
+    while (runLoopFind) {
+        if (currentViewController.presentedViewController) {
+            
+            currentViewController = currentViewController.presentedViewController;
+        } else if ([currentViewController isKindOfClass:[UINavigationController class]]) {
+            
+            UINavigationController* navigationController = (UINavigationController* )currentViewController;
+            currentViewController = [navigationController.childViewControllers lastObject];
+            
+        } else if ([currentViewController isKindOfClass:[UITabBarController class]]) {
+            
+            UITabBarController* tabBarController = (UITabBarController* )currentViewController;
+            currentViewController = tabBarController.selectedViewController;
+        } else {
+            
+            NSUInteger childViewControllerCount = currentViewController.childViewControllers.count;
+            if (childViewControllerCount > 0) {
+                
+                currentViewController = currentViewController.childViewControllers.lastObject;
+                
+                return currentViewController;
+            } else {
+                
+                return currentViewController;
+            }
+        }
+        
+    }
+    return currentViewController;
+}
+
+- (UIViewController *)jsd_getRootViewController{
+    
+    UIWindow* window = [[[UIApplication sharedApplication] delegate] window];
+    NSAssert(window, @"The window is empty");
+    return window.rootViewController;
+}
 
 @end
