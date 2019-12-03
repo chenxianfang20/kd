@@ -62,15 +62,19 @@
         } FailureBlock:^(id obj) {
             
         }];
+    }else{
+        _noticeView.hidden=NO;
+        self.tableview.hidden = YES;
     }
 }
 -(void)setupStateRefresh{
     self.tableview.mj_footer.hidden=NO;
     if(self.dataSource.count == 0){
         _noticeView.hidden=NO;
+        self.tableview.hidden = YES;
     }else{
         _noticeView.hidden=YES;
-        
+         self.tableview.hidden = NO;
     }
     if(self.dataSource.count < 6){
         self.tableview.mj_footer.hidden = YES;

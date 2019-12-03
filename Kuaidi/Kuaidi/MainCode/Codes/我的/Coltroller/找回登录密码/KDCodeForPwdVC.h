@@ -12,6 +12,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface KDCodeForPwdVC : RootViewController
 @property (nonatomic,strong) NSString *phoneStr;
+@property(nonatomic,assign)NSInteger timeCount;
+@property (nonatomic,strong) NSTimer* timer ;
 @end
 
 NS_ASSUME_NONNULL_END

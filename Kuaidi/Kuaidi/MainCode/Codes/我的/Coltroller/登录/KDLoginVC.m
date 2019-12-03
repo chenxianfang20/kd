@@ -173,7 +173,6 @@
     //    [self.view addSubview:wbLabel];
     //    wbLabel.centerX=wbLoginBtn.centerX;
     
-    forgetPwdBtn.hidden = YES;
 }
 
 -(void)phoneTFChanged:(UITextField*)textField{

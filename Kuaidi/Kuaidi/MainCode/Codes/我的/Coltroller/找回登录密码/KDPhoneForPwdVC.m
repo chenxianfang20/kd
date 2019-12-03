@@ -40,7 +40,7 @@
     UILabel* desLabel=[[UILabel alloc]initWithFrame:CGRectMake(0,titleLabel.bottom, kScreenWidth, 30)];
     desLabel.text=@"请输入注册时所填的手机号码";
     desLabel.textColor=[UIColor colorWithHex:@"#A9A9A9"];
-    desLabel.font =PingFangMedium(15);
+    desLabel.font =PingFangMedium(13);
     desLabel.textAlignment=NSTextAlignmentCenter;
     [self.view addSubview:desLabel];
     
@@ -49,7 +49,7 @@
     self.phoneTF.font= PingFangBold(30);
     self.phoneTF.placeholder=@"请输入手机号码";
     self.phoneTF.keyboardType=UIKeyboardTypeNumberPad;
-    [self.phoneTF setValue: PingFangBold(25) forKeyPath:@"_placeholderLabel.font"];
+    [self.phoneTF setValue: PingFangBold(20) forKeyPath:@"_placeholderLabel.font"];
     [self.view addSubview:self.phoneTF];
     self.phoneTF.clearButtonMode=UITextFieldViewModeAlways;
     [self.phoneTF addTarget:self action:@selector(phoneTFChanged:) forControlEvents:UIControlEventEditingChanged];
@@ -80,10 +80,25 @@
         [self.view showToastWithText:@"手机号不合法" time:1];
         return;
     }
-    
-    KDCodeForPwdVC* vc= [[KDCodeForPwdVC alloc]init];
-    vc.phoneStr = self.phoneTF.text;
-    [self.navigationController pushViewController:vc animated:YES];
+    [self sendCode];
+   
+}
+-(void)sendCode{
+    NSString *phoneStr =[self.phoneTF.text stringByReplacingOccurrencesOfString:@" "withString:@""];
+    NSDictionary*  dic = @{@"phone":phoneStr};
+    __weak typeof(self) weakSelf =self;
+    [KDNetWorkManager GetHttpDataWithUrlStr:kSendReCode Dic:dic headDic:nil SuccessBlock:^(id obj) {
+        if([obj[@"code"] integerValue] == 1){
+            KDCodeForPwdVC* vc= [[KDCodeForPwdVC alloc]init];
+            vc.phoneStr = weakSelf.phoneTF.text;
+            [weakSelf.navigationController pushViewController:vc animated:YES];
+            
+        }else{
+            [weakSelf.view showToastWithText:obj[@"msg"] time:1];
+        }
+    } FailureBlock:^(id obj) {
+        
+    }];
 }
 -(void)phoneTFChanged:(UITextField*)textField{
     if (textField == self.phoneTF) {
@@ -106,7 +121,7 @@
             i = textField.text.length;
         }
         NSString *phoneFieldStr =[self.phoneTF.text stringByReplacingOccurrencesOfString:@" "withString:@""];
-        if (textField.text.length >= 13 && [NSString isValidatePhoneNum:phoneFieldStr]) {//输入完成
+        if (textField.text.length >= 13 ) {//输入完成
             nextBtn.userInteractionEnabled=YES;
             [nextBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
             [nextBtn setBackgroundImage:[UIImage imageWithColor:rgb(247, 70, 74, 1)] forState:UIControlStateNormal];
@@ -122,7 +137,7 @@
 -(void)setNav{
     self.titleView.type = TitleViewType_title;
     self.titleView.titleLable.textColor=[UIColor colorWithHex:@"#0B0B0B"];
-    [self.titleView setTitle:@"快速注册"];
+    [self.titleView setTitle:@"找回密码"];
     [self.backButton setImage:[UIImage imageNamed:@"注册-图标-后退"] forState:UIControlStateNormal];
     self.backgroungImgView.image=[UIImage imageWithColor:[UIColor whiteColor]];
 }

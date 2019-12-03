@@ -123,13 +123,34 @@
 }
 -(void)doneBtnClick{
     if(self.pwdTF.text.length == 0){
-        [self.view showToastWithText:@"请输入登录密码" time:1];
+        [self.view showToastWithText:@"请输入新的密码" time:1];
         return;
     }
     if(self.pwdTF.text.length <6){
         [self.view showToastWithText:@"密码不得少于6位" time:1];
         return;
     }
+    NSString *phoneStr =[self.phoneStr stringByReplacingOccurrencesOfString:@" "withString:@""];
+    NSDictionary*  dic = @{@"username":phoneStr,@"verification_code":self.codeStr,@"password":self.pwdTF.text};
+    __weak typeof(self) weakSelf =self;
+    [KDNetWorkManager GetHttpDataWithUrlStr:kPasswordReset Dic:dic headDic:nil SuccessBlock:^(id obj) {
+        if([obj[@"code"] integerValue] == 1){
+            [ZJCustomHud showWithSuccess:@"找回密码成功"];
+            
+            NSArray *vcs = [self.navigationController viewControllers];
+            for (UIViewController *vc in vcs) {
+                if([vc isKindOfClass:NSClassFromString(@"KDLoginVC")]){
+                    [self.navigationController popToViewController:vc animated:NO];
+                }
+            }
+        }else{
+            [weakSelf.view showToastWithText:obj[@"msg"] time:1];
+        }
+    } FailureBlock:^(id obj) {
+        
+    }];
+    
+    
     
 }
 
@@ -147,7 +168,7 @@
 -(void)setNav{
     self.titleView.type = TitleViewType_title;
     self.titleView.titleLable.textColor=[UIColor colorWithHex:@"#0B0B0B"];
-    [self.titleView setTitle:@"快速注册"];
+    [self.titleView setTitle:@"找回密码"];
     [self.backButton setImage:[UIImage imageNamed:@"注册-图标-后退"] forState:UIControlStateNormal];
     self.backgroungImgView.image=[UIImage imageWithColor:[UIColor whiteColor]];
 }

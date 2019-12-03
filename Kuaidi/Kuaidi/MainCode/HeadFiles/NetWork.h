@@ -41,6 +41,15 @@
 //注册
 #define kRegister @"/api/user/public/register"
 
+
+//找回密码发送验证码
+#define kSendReCode @"/api/user/public/sendReCode"
+
+//找回密码
+#define kPasswordReset @"/api/user/public/passwordReset"
+
+
+
 //登录
 #define kLogin @"/api/user/public/login"
 

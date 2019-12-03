@@ -9,7 +9,9 @@
 #import "KDCodeForPwdVC.h"
 #import "CRBoxInputView.h"
 #import "KDResetLoginPwdVC.h"
-@interface KDCodeForPwdVC()
+@interface KDCodeForPwdVC(){
+    UIButton* resendCodeBtn;
+}
 
 @property(nonatomic ,strong)NSString* codeStr;
 @property (nonatomic,strong) UIButton*  nextBtn ;
@@ -73,14 +75,18 @@
     boxInputView.customCellProperty = cellProperty;
     [boxInputView loadAndPrepareViewWithBeginEdit:YES];
     
-    //快速注册按钮
-    UIButton* resendCodeBtn = [[UIButton alloc]initWithFrame:CGRectMake(8, boxInputView.bottom, kAdaptationWidth(105), kAdaptationWidth(40))];
+     resendCodeBtn = [[UIButton alloc]initWithFrame:CGRectMake(kAdaptationWidth(32), boxInputView.bottom, kAdaptationWidth(105), kAdaptationWidth(40))];
     [resendCodeBtn setTitle:@"重新发送" forState:UIControlStateNormal];
     resendCodeBtn.titleLabel.font = [UIFont fontWithName:@"PingFang SC" size: 15];
     [resendCodeBtn setTitleColor:[UIColor colorWithHex:@"#5C5C5C"] forState:UIControlStateNormal];
     [resendCodeBtn addTarget:self action:@selector(resendCodeBtnClick) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:resendCodeBtn];
+    resendCodeBtn.enabled = NO;
     
+    
+    self.timeCount=60;
+    self.timer=[NSTimer scheduledTimerWithTimeInterval:1.0f target:self selector:@selector(timeCountTimer) userInfo:nil repeats:YES];
+    [ weakSelf.timer fire];
     
     //下一步
     _nextBtn=[[UIButton alloc]initWithFrame:CGRectMake(kAdaptationWidth(36), boxInputView.bottom+kAdaptationWidth(72), kAdaptationWidth(303), kAdaptationWidth(54))];
@@ -98,9 +104,44 @@
 //重新发送验证码
 -(void)resendCodeBtnClick{
     
+    NSString *phoneStr =[self.phoneStr stringByReplacingOccurrencesOfString:@" "withString:@""];
+    NSDictionary*  dic = @{@"phone":phoneStr};
+    __weak typeof(self) weakSelf =self;
+    [KDNetWorkManager GetHttpDataWithUrlStr:kSendReCode Dic:dic headDic:nil SuccessBlock:^(id obj) {
+        if([obj[@"code"] integerValue] == 1){
+            KDCodeForPwdVC* vc= [[KDCodeForPwdVC alloc]init];
+            vc.phoneStr = weakSelf.phoneStr;
+            [weakSelf.navigationController pushViewController:vc animated:YES];
+            
+        }else{
+            [weakSelf.view showToastWithText:obj[@"msg"] time:1];
+        }
+    } FailureBlock:^(id obj) {
+        
+    }];
+    
+}
+/**
+ *  点击获取验证码成功后,60秒内不能重复获取
+ */
+-(void)timeCountTimer{
+    if(_timeCount==0){
+        resendCodeBtn.enabled=YES;
+        [resendCodeBtn setTitle:@"重新发送" forState:UIControlStateNormal];
+        
+        _timeCount=60;
+        if(_timer){
+            [_timer invalidate];
+            _timer=nil;
+        }
+        return;
+    }
+    [resendCodeBtn setTitle:[NSString stringWithFormat:@"%ld秒后",_timeCount] forState:UIControlStateNormal];
+    resendCodeBtn.enabled=NO;
+    _timeCount--;
 }
 -(void)nextBtnClick{
-    if(self.codeStr.length!= 6){
+    if(self.codeStr.length!= 4){
         [self.view showToastWithText:@"验证码输入不全" time:1];
         
         return;
@@ -115,7 +156,7 @@
 -(void)endEdit:(NSString*)text{
     NSLog(@"text:%@", text);
     self.codeStr = text;
-    if (text.length>=6) {//输入完成
+    if (text.length>=4) {//输入完成
         _nextBtn.userInteractionEnabled=YES;
         [_nextBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         [_nextBtn setBackgroundImage:[UIImage imageWithColor:rgb(247, 70, 74, 1)] forState:UIControlStateNormal];
@@ -128,7 +169,7 @@
 -(void)setNav{
     self.titleView.type = TitleViewType_title;
     self.titleView.titleLable.textColor=[UIColor colorWithHex:@"#0B0B0B"];
-    [self.titleView setTitle:@"快速注册"];
+    [self.titleView setTitle:@"找回密码"];
     [self.backButton setImage:[UIImage imageNamed:@"注册-图标-后退"] forState:UIControlStateNormal];
     self.backgroungImgView.image=[UIImage imageWithColor:[UIColor whiteColor]];
 }
