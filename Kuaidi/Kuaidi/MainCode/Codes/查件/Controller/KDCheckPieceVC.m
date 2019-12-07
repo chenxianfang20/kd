@@ -186,10 +186,8 @@
         _checkMoreBtn.titleLabel.font = PingFangRegular(14);
         [_checkMoreBtn setTitleColor:[UIColor colorWithHex:@"#5C5C5C"] forState:UIControlStateNormal];
         [_checkMoreBtn setTitle:@"查看更多查件历史" forState:UIControlStateNormal];
-        [_checkMoreBtn setImage:[UIImage imageNamed:@"我的-图标-关于我们"] forState:UIControlStateNormal];
         [_checkMoreBtn addTarget:self action:@selector(checkMoreBtnClick) forControlEvents:UIControlEventTouchUpInside];
-        [_checkMoreBtn setTitleEdgeInsets:UIEdgeInsetsMake(0, -_checkMoreBtn.imageView.bounds.size.width*1.1, 0, _checkMoreBtn.imageView.bounds.size.width)];
-        [_checkMoreBtn setImageEdgeInsets:UIEdgeInsetsMake(0, _checkMoreBtn.titleLabel.bounds.size.width*1.1, 0, -_checkMoreBtn.titleLabel.bounds.size.width)];
+        
     }
     return _checkMoreBtn;
 }
