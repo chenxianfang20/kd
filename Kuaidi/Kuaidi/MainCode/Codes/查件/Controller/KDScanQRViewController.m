@@ -11,7 +11,7 @@
 #import "WSLNativeScanTool.h"
 #import "KDExpressSendInfoController.h"
 
-@interface KDScanQRViewController ()
+@interface KDScanQRViewController ()<UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 
 @property (nonatomic, strong)  WSLNativeScanTool * scanTool;
 @property (nonatomic, strong)  WSLScanView * scanView;
@@ -38,6 +38,10 @@
     self.titleView.titleLable.text = @"二维码/条码";
     self.titleView.titleLable.hidden = NO;
     
+    [self.rightBtn setTitle:@"相册" forState:UIControlStateNormal];
+    [self.rightBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    self.rightBtn.titleLabel.font = PingFangMedium(16);
+    self.rightBtn.hidden = NO;
 }
 
 - (void)createSubViews{
@@ -93,6 +97,34 @@
     [_scanTool sessionStartRunning];
     [_scanView startScanAnimation];
     
+}
+
+#pragma mark -- Events Handle
+-(void)rightClick:(UIButton*)button{
+    if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypePhotoLibrary]){
+        UIImagePickerController * _imagePickerController = [[UIImagePickerController alloc] init];
+        _imagePickerController.delegate = self;
+        _imagePickerController.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
+        _imagePickerController.allowsEditing = YES;
+        _imagePickerController.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+        [self presentViewController:_imagePickerController animated:YES completion:nil];
+    }else{
+        NSLog(@"不支持访问相册");
+    }
+}
+
+- (void)showAlertWithTitle:(NSString *)title message:(NSString *)message handler:(void (^) (UIAlertAction *action))handler{
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:title message:message preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *action = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:handler];
+    [alert addAction:action];
+    [self presentViewController:alert animated:YES completion:nil];
+}
+#pragma mark UIImagePickerControllerDelegate
+//该代理方法仅适用于只选取图片时
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingImage:(UIImage *)image editingInfo:(nullable NSDictionary<NSString *,id> *)editingInfo {
+    //    NSLog(@"选择完毕----image:%@-----info:%@",image,editingInfo);
+    [self dismissViewControllerAnimated:YES completion:nil];
+    [_scanTool scanImageQRCode:image];
 }
 
 - (void)viewWillAppear:(BOOL)animated{
