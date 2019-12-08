@@ -143,7 +143,7 @@ KDAddressInfoViewDelegate>
     
     self.goodsIndex = -1;
     
-    self.wuliuIndex = 0;
+    self.wuliuIndex = 1;
     
     [self setNav];
     
@@ -225,7 +225,7 @@ KDAddressInfoViewDelegate>
         [KDExpressSelectView showSelectViewWithWuliuArr:self.wuliuArr select:self.wuliuIndex ConfirmBlock:^(NSInteger index) {
             
             weakSelf.wuliuIndex = index;
-            KDWuliuListModel *model = weakSelf.wuliuArr[weakSelf.wuliuIndex + 1];
+            KDWuliuListModel *model = weakSelf.wuliuArr[weakSelf.wuliuIndex];
             weakSelf.goodsInfoView.expressTypeTF.text = model.logistics_name;
             [weakSelf updateOrderButtonStatus];
             
@@ -476,7 +476,7 @@ KDAddressInfoViewDelegate>
                 
             }
             
-            KDWuliuListModel *model = weakSelf.wuliuArr[weakSelf.wuliuIndex + 1];
+            KDWuliuListModel *model = weakSelf.wuliuArr[weakSelf.wuliuIndex];
             weakSelf.goodsInfoView.expressTypeTF.text = model.logistics_name;
             
         }else{

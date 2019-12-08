@@ -99,6 +99,11 @@
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
 }
 
+-(void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
+    [SVProgressHUD dismiss];
+}
+
 - (void)dealloc {
     NSLog(@"+++++dealloc+++++%@",NSStringFromClass([self class]));
 }

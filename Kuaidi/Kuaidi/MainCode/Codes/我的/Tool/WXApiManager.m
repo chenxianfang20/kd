@@ -186,8 +186,8 @@ static NSString* const kWXLogNotInstallErrorTitle = @"您还没有安装微信�
         object.withShareTicket = YES;
         object.miniProgramType = WXMiniProgramTypeRelease;
         WXMediaMessage *message = [WXMediaMessage message];
-        message.title = @"快递神奇";
-        message.description = @"查快递 寄快递 就上快递么";
+        message.title = @"查快递 寄快递 就用快递么";//@"快递神奇";
+        message.description = @"查快递 寄快递 就用快递么";
         message.thumbData = nil;  //兼容旧版本节点的图片，小于32KB，新版本优先
         //使用WXMiniProgramObject的hdImageData属性
         message.mediaObject = object;

@@ -49,30 +49,30 @@
         make.height.mas_equalTo(1);
     }];
     
-    UILabel *feeTitleLabel = [[UILabel alloc] init];
-    feeTitleLabel.text = @"预计运费：";
-    feeTitleLabel.textColor = rgb(11, 11, 11, 1);
-    feeTitleLabel.font = PingFangMedium(15);
-    [self addSubview:feeTitleLabel];
-    [feeTitleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(self).offset(18);
-        make.top.equalTo(self).offset(27);
-        make.height.mas_equalTo(15);
-    }];
-    
-    UILabel *feeValueLabel = [[UILabel alloc] init];
-    self.feeValueLabel = feeValueLabel;
-    feeValueLabel.text = @"¥0.0";
-    feeValueLabel.textColor = rgb(223, 47, 49, 1);
-    feeValueLabel.font = [UIFont fontWithName:@"PingFangSC-Heavy" size: 15];
-    [self addSubview:feeValueLabel];
-    [feeValueLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(feeTitleLabel.mas_right).offset(0);
-        make.centerY.equalTo(feeTitleLabel.mas_centerY).offset(0);
-        make.height.mas_equalTo(15);
-    }];
+//    UILabel *feeTitleLabel = [[UILabel alloc] init];
+//    feeTitleLabel.text = @"预计运费：";
+//    feeTitleLabel.textColor = rgb(11, 11, 11, 1);
+//    feeTitleLabel.font = PingFangMedium(15);
+//    [self addSubview:feeTitleLabel];
+//    [feeTitleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.left.equalTo(self).offset(18);
+//        make.top.equalTo(self).offset(27);
+//        make.height.mas_equalTo(15);
+//    }];
+//    
+//    UILabel *feeValueLabel = [[UILabel alloc] init];
+//    self.feeValueLabel = feeValueLabel;
+//    feeValueLabel.text = @"¥0.0";
+//    feeValueLabel.textColor = rgb(223, 47, 49, 1);
+//    feeValueLabel.font = [UIFont fontWithName:@"PingFangSC-Heavy" size: 15];
+//    [self addSubview:feeValueLabel];
+//    [feeValueLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+//        make.left.equalTo(feeTitleLabel.mas_right).offset(0);
+//        make.centerY.equalTo(feeTitleLabel.mas_centerY).offset(0);
+//        make.height.mas_equalTo(15);
+//    }];
 
-    CGFloat buttonW = 86;
+    CGFloat buttonW = 120;
     
     UIButton *cancellButton = [UIButton buttonWithType:UIButtonTypeCustom];
     self.cancellButton = cancellButton;
@@ -83,7 +83,7 @@
     [self addSubview:cancellButton];
     [cancellButton mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self).offset(13);
-        make.right.equalTo(self).offset(-18 - buttonW - 10);
+        make.left.equalTo(self).offset(18);
         make.size.mas_equalTo(CGSizeMake(buttonW, 40));
     }];
     [cancellButton addTarget:self action:@selector(cancellButtonClick:) forControlEvents:UIControlEventTouchUpInside];
