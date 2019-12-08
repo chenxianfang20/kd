@@ -100,6 +100,7 @@
                 [weakSelf.queryHistoryArrM addObject:hisModel];
                 
             }
+          
             dispatch_async(dispatch_get_main_queue(), ^{
                  [weakSelf updateCheckHistoryView];
             });
@@ -116,7 +117,9 @@
 -(void)updateCheckHistoryView{
     
      __weak typeof(self) weakSelf = self;
-    for(NSInteger i =0;i<weakSelf.queryHistoryArrM.count ;i++){
+    
+    NSInteger count = weakSelf.queryHistoryArrM.count>=3?3:weakSelf.queryHistoryArrM.count;
+    for(NSInteger i =0;i<count ;i++){
         KDCheckHistoryView* v = [[KDCheckHistoryView alloc]initWithFrame:CGRectMake(0, 36+i*kAdaptationWidth(96), self.checkHistoryView.width, kAdaptationWidth(96) )];
         KDCheckHisoryModel*  model = weakSelf.queryHistoryArrM[i];
 
@@ -135,7 +138,7 @@
     if(weakSelf.queryHistoryArrM.count == 0){
          [_checkMoreBtn setTitle:@"暂无查件历史" forState:UIControlStateNormal];
     }
-    self.checkHistoryView.height = self.checkHistoryView.height + weakSelf.queryHistoryArrM.count *90;
+    self.checkHistoryView.height = self.checkHistoryView.height + count *90+5;
     self.checkMoreBtn.bottom = self.checkHistoryView.height;
     [self.checkMoreBtn setTitleEdgeInsets:UIEdgeInsetsMake(0, -self.checkMoreBtn.imageView.bounds.size.width*1.1, 0, self.checkMoreBtn.imageView.bounds.size.width)];
     [self.checkMoreBtn setImageEdgeInsets:UIEdgeInsetsMake(0, self.checkMoreBtn.titleLabel.bounds.size.width*1.1, 0, -self.checkMoreBtn.titleLabel.bounds.size.width)];
@@ -186,10 +189,8 @@
         _checkMoreBtn.titleLabel.font = PingFangRegular(14);
         [_checkMoreBtn setTitleColor:[UIColor colorWithHex:@"#5C5C5C"] forState:UIControlStateNormal];
         [_checkMoreBtn setTitle:@"查看更多查件历史" forState:UIControlStateNormal];
-        [_checkMoreBtn setImage:[UIImage imageNamed:@"我的-图标-关于我们"] forState:UIControlStateNormal];
         [_checkMoreBtn addTarget:self action:@selector(checkMoreBtnClick) forControlEvents:UIControlEventTouchUpInside];
-        [_checkMoreBtn setTitleEdgeInsets:UIEdgeInsetsMake(0, -_checkMoreBtn.imageView.bounds.size.width*1.1, 0, _checkMoreBtn.imageView.bounds.size.width)];
-        [_checkMoreBtn setImageEdgeInsets:UIEdgeInsetsMake(0, _checkMoreBtn.titleLabel.bounds.size.width*1.1, 0, -_checkMoreBtn.titleLabel.bounds.size.width)];
+        
     }
     return _checkMoreBtn;
 }

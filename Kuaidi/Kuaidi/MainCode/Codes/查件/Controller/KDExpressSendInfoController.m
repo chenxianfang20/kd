@@ -202,12 +202,15 @@ DKExpressSendInfoHeaderViewDelegate>
     }
     
     KDUserModel* model = [KDUserModelTool userModel];
-    NSDictionary *params = @{
-                             @"code" : self.scanString
-                             };
-    if([[NSString stringWithFormat:@"%@",model.userId] length]> 0){
+    NSDictionary *params ;
+    NSString*  userID =[NSString stringWithFormat:@"%@",model.userId];
+    if([userID length]> 0){
         params = @{
-                   @"code" : self.scanString,@"user_id":@"8"
+                   @"code" : self.scanString,@"user_id":userID
+                   };
+    }else{
+        params = @{
+                   @"code" : self.scanString
                    };
     }
     NSString *url = kWuliuGuiji;
