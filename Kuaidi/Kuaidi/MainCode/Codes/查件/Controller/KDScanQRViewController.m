@@ -38,10 +38,10 @@
     self.titleView.titleLable.text = @"二维码/条码";
     self.titleView.titleLable.hidden = NO;
     
-    [self.rightBtn setTitle:@"相册" forState:UIControlStateNormal];
-    [self.rightBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    self.rightBtn.titleLabel.font = PingFangMedium(16);
-    self.rightBtn.hidden = NO;
+//    [self.rightBtn setTitle:@"相册" forState:UIControlStateNormal];
+//    [self.rightBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+//    self.rightBtn.titleLabel.font = PingFangMedium(16);
+//    self.rightBtn.hidden = NO;
 }
 
 - (void)createSubViews{

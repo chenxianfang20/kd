@@ -139,31 +139,31 @@
     [saveAddressBtn addTarget:self action:@selector(saveAddressBtnClick) forControlEvents:UIControlEventTouchUpInside];
     saveAddressBtn.centerY=saveAddressLabel.centerY;
     
-    //
-    UIView* midBgView =[[UIView alloc]initWithFrame:CGRectMake(kLeftX, topBgView.bottom+12, kAdaptationWidth(339), kAdaptationWidth(132))];
-    midBgView.backgroundColor=[UIColor whiteColor];
-    midBgView.layer.cornerRadius=10.0f;
-    midBgView.layer.masksToBounds=YES;
-    [self.view addSubview:midBgView];
+//    //
+//    UIView* midBgView =[[UIView alloc]initWithFrame:CGRectMake(kLeftX, topBgView.bottom+12, kAdaptationWidth(339), kAdaptationWidth(132))];
+//    midBgView.backgroundColor=[UIColor whiteColor];
+//    midBgView.layer.cornerRadius=10.0f;
+//    midBgView.layer.masksToBounds=YES;
+//    [self.view addSubview:midBgView];
     
-    //智能识别
-    UILabel* zsLabel=[[UILabel alloc]initWithFrame:CGRectMake(kLeftX, kAdaptationWidth(21), kAdaptationWidth(160), kAdaptationWidth(18))];
-    zsLabel.font=PingFangRegular(14);
-    zsLabel.textColor=[UIColor colorWithHex:@"#5C5C5C"];
-    zsLabel.text=@"智能识别";
-    [midBgView addSubview:zsLabel];
+//    //智能识别
+//    UILabel* zsLabel=[[UILabel alloc]initWithFrame:CGRectMake(kLeftX, kAdaptationWidth(21), kAdaptationWidth(160), kAdaptationWidth(18))];
+//    zsLabel.font=PingFangRegular(14);
+//    zsLabel.textColor=[UIColor colorWithHex:@"#5C5C5C"];
+//    zsLabel.text=@"智能识别";
+//    [midBgView addSubview:zsLabel];
+//
+//    UIButton * albumBtn = [[UIButton alloc]initWithFrame:CGRectMake(kAdaptationWidth(267), kAdaptationWidth(18), kAdaptationWidth(18), kAdaptationWidth(18))];
+//    [albumBtn  setBackgroundImage:[UIImage imageNamed:@"地址-图标-照片"] forState:UIControlStateNormal];
+//    [midBgView addSubview:albumBtn];
+//    albumBtn.centerY=zsLabel.centerY;
+//
+//    UIButton* voiceBtn = [[UIButton alloc]initWithFrame:CGRectMake(kAdaptationWidth(303), kAdaptationWidth(18), kAdaptationWidth(18), kAdaptationWidth(18))];
+//    [voiceBtn  setBackgroundImage:[UIImage imageNamed:@"地址-图标-语音"] forState:UIControlStateNormal];
+//    [midBgView addSubview:voiceBtn];
+//    voiceBtn.centerY=zsLabel.centerY;
     
-    UIButton * albumBtn = [[UIButton alloc]initWithFrame:CGRectMake(kAdaptationWidth(267), kAdaptationWidth(18), kAdaptationWidth(18), kAdaptationWidth(18))];
-    [albumBtn  setBackgroundImage:[UIImage imageNamed:@"地址-图标-照片"] forState:UIControlStateNormal];
-    [midBgView addSubview:albumBtn];
-    albumBtn.centerY=zsLabel.centerY;
-    
-    UIButton* voiceBtn = [[UIButton alloc]initWithFrame:CGRectMake(kAdaptationWidth(303), kAdaptationWidth(18), kAdaptationWidth(18), kAdaptationWidth(18))];
-    [voiceBtn  setBackgroundImage:[UIImage imageNamed:@"地址-图标-语音"] forState:UIControlStateNormal];
-    [midBgView addSubview:voiceBtn];
-    voiceBtn.centerY=zsLabel.centerY;
-    
-    UILabel* noticeLabel=[[UILabel alloc]initWithFrame:CGRectMake(0, midBgView.bottom+ kAdaptationWidth(18), kScreenWidth, kAdaptationWidth(18))];
+    UILabel* noticeLabel=[[UILabel alloc]initWithFrame:CGRectMake(0, topBgView.bottom+ kAdaptationWidth(18), kScreenWidth, kAdaptationWidth(18))];
     noticeLabel.font=PingFangMedium(13) ;
     noticeLabel.textColor=[UIColor colorWithHex:@"#DF2F31"];
     noticeLabel.text=@"温馨提示：国际速运只需填写收件人的姓名，以及联系方式。";
